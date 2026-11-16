@@ -1,9 +1,9 @@
 {
-  "package": "workflow-group-personal-use",
-  "generatedAt": "2026-11-16T02:53:44Z",
-  "generatedBy": "stage_packages (workflow run openrig-personal-publish-20261116)",
-  "fileCount": 553,
-  "bytes": 4173254,
+  "package": "openrig-personal-control",
+  "generatedAt": "2026-11-16T03:10:27Z",
+  "generatedBy": "OpenRig Personal Stack rename/alignment 2026-11-16",
+  "fileCount": 555,
+  "bytes": 4177268,
   "largest": [
     {
       "path": "runs/openrig-p1-hard-constraints-20261116/reports/evidence/00-baseline.json",
@@ -47,7 +47,7 @@
     }
   ],
   "sha256Manifest": "SHA256SUMS",
-  "sha256ManifestLines": 553,
+  "sha256ManifestLines": 555,
   "exclusions": [
     ".venv/",
     ".r7-work/",
@@ -80,5 +80,6 @@
   ],
   "notes": [
     "SHA256SUMS and PACKAGE-MANIFEST.json are not listed within themselves; every other file is covered."
-  ]
+  ],
+  "version": "1.0.0"
 }

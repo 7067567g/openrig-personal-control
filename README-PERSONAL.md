@@ -1,6 +1,9 @@
-# Workflow Group Personal Use
+# OpenRig Personal Control
 
-**Workflow Group Personal Use** is a personal, portable copy of the
+> Part of the **OpenRig Personal Stack** — control plane.
+
+
+**OpenRig Personal Control** is a personal, portable copy of the
 *workflow-group* control plane: a documentation-as-interface way of running a
 small team of agents (PMO / TDO / QA, optionally an independent SAFETY reviewer)
 over a project, where every hand-off is a file rather than a chat message.

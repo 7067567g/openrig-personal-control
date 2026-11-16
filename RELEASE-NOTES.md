@@ -1,6 +1,6 @@
-# Workflow Group Personal Use
+# OpenRig Personal Control
 
-**Release tag:** `v2026.11.16`
+**Release tag:** `v1.0.0`
 **Release date:** 2026-11-16
 
 A personal, portable copy of the workflow-group control plane: a
