@@ -1,0 +1,15 @@
+# workflow-group 本地/CI 开发依赖
+#
+# Everything the test suite imports at module level must be declared here, so a
+# fresh clone can run `bash runtime/bootstrap.sh` without a pre-warmed venv.
+# Rule learned the hard way: an undeclared import that happens to exist in a
+# developer's environment turns a red suite into a false green.
+openpyxl>=3.1,<4
+pytest>=8,<10
+# tests/test_workflow_rework.py imports yaml directly
+PyYAML>=6,<7
+
+# Optional runtime dependency (NOT required for tests or bootstrap):
+#   psutil   - only used by `wf.py` for a best-effort free-memory reading; the
+#              call site is wrapped in try/except and degrades to None.
+#   install with: pip install psutil>=5.9

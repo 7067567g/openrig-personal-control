@@ -1,0 +1,5 @@
+cmd: python -c "sys.modules['openpyxl']=None; import issues; print(HAS_OPENPYXL); read_rows(tmp/ISSUES.xlsx)"
+HAS_OPENPYXL = False
+rows = [{'ID': 'P0-001', '轮次': '', '类型': '', '标题': '', '描述': '', '严重度': '', '状态': '', '责任角色': '', '来源': '', '建议动作': '', '需主会话决策': '', '关联决策ID': '', '创建时间': '', '更新时间': ''}]
+IMPORT_OK = True
+rc=0

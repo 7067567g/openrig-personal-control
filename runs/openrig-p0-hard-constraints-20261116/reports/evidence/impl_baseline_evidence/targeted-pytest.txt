@@ -1,0 +1,7 @@
+# Packet B targeted pytest
+# cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+# started_at=2026-11-16T00:28:51+08:00
+...........                                                              [100%]
+11 passed in 0.43s
+rc=0
+# finished_at=2026-11-16T00:28:51+08:00

@@ -1,0 +1,32 @@
+# Packet A scope sweep — files with mtime after the plan baseline (2026-11-16 00:47:32 +0800)
+# cmd: find . -path <this run> -prune -o -path ./.git -prune -o -type f -newermt '2026-11-16 00:47:32 +0800' -print
+# product repo untouched by design (read-only, no writes in this packet)
+
+./AGENTS.md
+./workflow-group/kickoff/openrig-p1-hard-constraints-20261116.txt
+./workflow-group/.pytest_cache/v/cache/nodeids
+./workflow-group/scripts/openrig_preflight.py
+./workflow-group/scripts/__pycache__/openrig_preflight.cpython-312.pyc
+./workflow-group/scripts/__pycache__/required_components.cpython-314.pyc
+./workflow-group/scripts/__pycache__/snapshot_files.cpython-312.pyc
+./workflow-group/scripts/__pycache__/wf.cpython-312.pyc
+./workflow-group/scripts/snapshot_files.py
+./workflow-group/scripts/wf.py
+./workflow-group/tests/__pycache__/test_openrig_preflight.cpython-312-pytest-9.0.2.pyc
+./workflow-group/tests/__pycache__/test_snapshot_files.cpython-312-pytest-9.0.2.pyc
+./workflow-group/tests/__pycache__/test_wf_baseline.cpython-312-pytest-9.0.2.pyc
+./workflow-group/tests/test_openrig_preflight.py
+./workflow-group/tests/test_snapshot_files.py
+./workflow-group/tests/test_wf_baseline.py
+
+# --- classification ---
+IN-SCOPE  workflow-group/scripts/{openrig_preflight.py,wf.py,snapshot_files.py}
+IN-SCOPE  workflow-group/tests/{test_openrig_preflight.py,test_wf_baseline.py,test_snapshot_files.py}
+EXPECTED  AGENTS.md (documented pre-existing drift, plan 00-plan.md §2.1; not authored by A)
+EXPECTED  workflow-group/kickoff/openrig-p1-hard-constraints-20261116.txt (created by control-main at plan time, not by A)
+EXCLUDED  */__pycache__/*, workflow-group/.pytest_cache/* (build artifacts)
+
+# --- product repo three-value check (read-only, same method as 00-plan.md §2) ---
+# HEAD                 e932ae94e4c07b619c39902f29db949464ebb295   (matches plan §2)
+# status --porcelain   3b64cf901a0c232fbbae7e5937111671a01be558c910ae09132756fe54b7e269 (matches plan §2; 29 pre-existing dirty)
+# git diff sha256      2cbcef6ebf021e87f1e084092af0c0105872057249ee72a2aff2eaf7c4d0e4f7 (matches plan §2)

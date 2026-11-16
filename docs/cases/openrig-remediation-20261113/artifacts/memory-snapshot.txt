@@ -1,0 +1,12 @@
+               total        used        free      shared  buff/cache   available
+内存：          14Gi       4.4Gi       1.7Gi       242Mi       8.9Gi         9Gi
+交换：         4.0Gi       335Mi       3.7Gi
+=== cgroup
+Id=dsh-terminal-119299-6b4af77eca66.scope
+MemoryCurrent=4485120
+MemoryPeak=16252928
+MemorySwapCurrent=0
+Id=dsh-terminal-119299-ae53f28394df.scope
+MemoryCurrent=47390720
+MemoryPeak=63709184
+MemorySwapCurrent=0

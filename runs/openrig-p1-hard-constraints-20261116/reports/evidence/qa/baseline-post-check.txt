@@ -1,0 +1,14 @@
+# cmd: (cwd=templates/specialized/openrig-workflow-master) sha256sum -c BASELINE-post.sha256
+./ENTRYPOINTS.md: FAILED
+./README.md: FAILED
+./SPEC.md: FAILED
+sha256sum: WARNING: 3 computed checksums did NOT match
+rc=1
+
+# mtimes
+2026-10-23 15:39:10.780020117 +0800 README.md
+2026-10-23 15:15:31.732682195 +0800 SPEC.md
+2026-11-16 00:56:54.187572405 +0800 ENTRYPOINTS.md
+2026-10-20 09:17:36.108100814 +0800 BASELINE-post.sha256
+
+# decision: D-005 — report only, do not refresh (version bump is outside TASK §0)

@@ -1,0 +1,103 @@
+# Packet C scope snapshot
+ M AGENTS.md
+ M workflow-group/scripts/issues.py
+ M workflow-group/scripts/wf.py
+ M workflow-group/tests/test_issues.py
+ M workflow-group/tests/test_p5_legacy.py
+ M workflow-group/tests/test_wf.py
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/DECISIONS.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/ISSUES.xlsx
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/PROJECT.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/SPEC.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/STATUS-Round-1.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/TASK.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/openrig/guidance/team.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/openrig/render-manifest.json
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/openrig/rig.yaml
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/openrig/workflow.yaml
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/00-plan.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.json
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/00-baseline.startup.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/SUMMARY.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/baseline.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/changed-files.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/evidence-run-exit7.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/evidence-run-pipefail.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/full-pytest-smoke.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/scope.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/targeted-pytest.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/verify-after-full-pytest.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/verify-baseline.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/verify-drift-detected.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_baseline_evidence/verify-restored.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/archive-gate-guard-rc1.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/archive-gate-live.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/archive-gate-missing.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/archive-gate-partial.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/changed-files.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/close-lint-strict-live.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/close-lint-strict-temp.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/full-pytest-smoke.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/scope.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/targeted-pytest.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/verify-render-live.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/verify-render-mutated-strict.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/verify-render-mutated-warn.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/verify-render-no-manifest.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/SUMMARY.md
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/agents.md.sha256.after
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/agents.md.sha256.before
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/changed-files.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/dashboard-target.sha256.after
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/dashboard-target.sha256.before
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/doctor.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/full-pytest-smoke.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/negative-advisory.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/negative-no-context.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/negative-required-components.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/positive-injected.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/scope.txt
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_preflight_components/targeted-pytest.txt
+?? workflow-group/scripts/adapters/__init__.py
+?? workflow-group/scripts/adapters/headless.py
+?? workflow-group/scripts/bootstrap_env.sh
+?? workflow-group/scripts/contract_lock.py
+?? workflow-group/scripts/doc_consistency.py
+?? workflow-group/scripts/evidence_run.sh
+?? workflow-group/scripts/hdrive_gate.py
+?? workflow-group/scripts/openrig_preflight.py
+?? workflow-group/scripts/required_components.py
+?? workflow-group/scripts/test.sh
+?? workflow-group/scripts/verify_render.py
+?? workflow-group/scripts/wf_close_lint.py
+?? workflow-group/scripts/windows/hdrive_move_gate.ps1
+?? workflow-group/scripts/windows/hgate.py
+?? workflow-group/tests/test_advisor_report_fusion.py
+?? workflow-group/tests/test_archive_gate.py
+?? workflow-group/tests/test_doc_consistency.py
+?? workflow-group/tests/test_doc_noise.py
+?? workflow-group/tests/test_evidence_record.py
+?? workflow-group/tests/test_evidence_run.py
+?? workflow-group/tests/test_hdrive_gate.py
+?? workflow-group/tests/test_headless_adapter.py
+?? workflow-group/tests/test_openrig_bridge_doctor.py
+?? workflow-group/tests/test_openrig_preflight.py
+?? workflow-group/tests/test_openrig_teardown_guard.py
+?? workflow-group/tests/test_render_master_portability.py
+?? workflow-group/tests/test_required_components.py
+?? workflow-group/tests/test_template_layers.py
+?? workflow-group/tests/test_verify_render.py
+?? workflow-group/tests/test_wf_baseline.py
+?? workflow-group/tests/test_wf_close_lint.py
+?? workflow-group/tests/test_wf_opencode_guard.py
+?? workflow-group/tests/test_workflow_rework.py
+?? workflow-group/tests/windows/test_hdrive_move_gate.ps1
+
+# product repo (must equal plan baseline)
+HEAD e932ae94e4c07b619c39902f29db949464ebb295
+status_sha256 3b64cf901a0c232fbbae7e5937111671a01be558c910ae09132756fe54b7e269
+diff_sha256 dc564a37b301c610e7b451bf8eb401cea3baddb3b838bc8a7cc9c292d50e8172
+dirty_count 29

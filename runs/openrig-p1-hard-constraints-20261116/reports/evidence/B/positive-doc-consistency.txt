@@ -1,0 +1,17 @@
+command=bash -o pipefail -c $'\n.venv/bin/python scripts/doc_consistency.py --check; echo "doc-consistency.rc=$?"\n.venv/bin/python tests/test_doc_consistency.py 2>&1 | tail -3; echo "test-doc-consistency.rc=$?"\ngrep -n "canonical=62" WORKFLOW-TAGS.md | head -2\n'
+label=R09 pos: doc_consistency --check rc0 + test_doc_consistency.py rc0
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:55:22+08:00
+finished_at=2026-11-16T00:55:22+08:00
+rc=0
+stdout_sha256=06fa7f71c51974d3f47656fe4e340ddbb5faff5b0e3dd5cd57c87d0039a50093
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+doc_consistency: 0 error(s), 0 warning(s)
+doc-consistency.rc=0
+Ran 8 tests in 0.003s
+
+OK
+test-doc-consistency.rc=0
+6:> **时效声明（2026-10-23 快照）**：本文件是 2026-10-23 快照，不是当前索引；canonical run 数以 `runs/` 目录和 `scripts/doc_consistency.py` 为准；当前 canonical=62、baseline=9、specialized=26。外部/历史快照单独标注，不在本仓校验。
+--- stderr ---

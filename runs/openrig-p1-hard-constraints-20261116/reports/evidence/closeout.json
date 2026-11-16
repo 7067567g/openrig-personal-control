@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "closedAt": "2026-11-16T01:09:49+08:00",
+  "entries": [
+    {
+      "path": "FINAL.md",
+      "bytes": 8591,
+      "sha256": "603fd212f1d07b046f3e0c1098f34e99f0fb5875a1a652fe56be958c892a2a18",
+      "command": "MAIN close_round: write root FINAL (identical copy)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final closeout",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/FINAL.md",
+      "bytes": 8591,
+      "sha256": "603fd212f1d07b046f3e0c1098f34e99f0fb5875a1a652fe56be958c892a2a18",
+      "command": "MAIN close_round: write reports FINAL",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final closeout",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/00-plan.md",
+      "bytes": 14605,
+      "sha256": "af823f82c832b7aa3ea027e9e67cf8fc31f9ed913681cd621a957bb512c46ea6",
+      "command": "MAIN plan: write execution plan",
+      "rc": 0,
+      "revision": 1,
+      "reason": "plan evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/CLOSE-CHECKLIST.md",
+      "bytes": 4131,
+      "sha256": "ce90e0f92f7ec4a170daced31afff8ff7a6bbb77e4f5ee626f0714ee28d9dd46",
+      "command": "MAIN close_round: close checklist",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close procedure",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/QA-VERDICT.md",
+      "bytes": 14421,
+      "sha256": "df7588116c45d571b6ea190ec1df1b94951b9d2bd59560e9d881c65868e4944d",
+      "command": "QA independent verification",
+      "rc": 0,
+      "revision": 1,
+      "reason": "QA verdict",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/A/SUMMARY.md",
+      "bytes": 6024,
+      "sha256": "ccc2fb09544820dc9fd29dc3a7950c66c0b77cd9bad7fb3d435b92f31a2caaaa",
+      "command": "TDO Packet A: W2/W3/W4",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet A evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/B/SUMMARY.md",
+      "bytes": 4651,
+      "sha256": "4ddb6c03a97867ee19d77c99feba3bac4cbe008f38ace72474e37d1d62dfb37d",
+      "command": "TDO Packet B: R09/R10",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet B evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/C/SUMMARY.md",
+      "bytes": 6216,
+      "sha256": "887ccd4a9fafa70a1053f9536c30e23b6ea8b788bb0ec2495d61fe2b24809868",
+      "command": "TDO Packet C: R11/R12",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet C evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/D/SUMMARY.md",
+      "bytes": 6012,
+      "sha256": "50a5e913db3a04c40abbe739f2586b831238de2721d75f9a108db9e14d8f1735",
+      "command": "TDO Packet D: W5/R04b",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet D evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/main-verify-decisions.txt",
+      "bytes": 3166,
+      "sha256": "3941783e75ad80ab74dc17c6d9fbb86b7680d7eb61509869db016520cdf9ecc0",
+      "command": "MAIN independent verification of TDO claims",
+      "rc": 0,
+      "revision": 1,
+      "reason": "MAIN evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/watchdog-false-positive-check.txt",
+      "bytes": 2270,
+      "sha256": "6f722c524d8075c25668c2ccc5c6fa087c130bf732f8f28619505d7eabab6942",
+      "command": "MAIN check of reported watchdog false positive",
+      "rc": 0,
+      "revision": 1,
+      "reason": "MAIN evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/full-pytest.txt",
+      "bytes": 420,
+      "sha256": "6e9965f2ba42f0891dc07cbb2d4b62e4e74f6d996bcaca3e783978b130aecf77",
+      "command": "pytest tests -q (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/doc-consistency.txt",
+      "bytes": 42,
+      "sha256": "57dff28dbdd700ffb29655056da157dec0d17fecfbb294df20c517335f2a44c5",
+      "command": "doc_consistency.py --check (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/preflight-advisory.txt",
+      "bytes": 5357,
+      "sha256": "0eab9ce4e8b2828c8a36fc1c796cb3d172a7c4dc391d90581cd15971483f8886",
+      "command": "openrig_preflight.py --json --advisory (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/audit-agents.txt",
+      "bytes": 1930,
+      "sha256": "07db85e5ebcc82f6fc7aec2e91b32fc59aea6896a2ac9c6ca8fb2cfe6cc0d0b9",
+      "command": "audit_managed_blocks.py --path AGENTS.md (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/openrig-run-check.txt",
+      "bytes": 1578,
+      "sha256": "b55ddeb0c56c120c6985dd29cd52a5189683c253d8ed234b4808825461e32ded",
+      "command": "openrig_run.py check --allow-daemon-down (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/openrig-run-start-dryrun.txt",
+      "bytes": 3223,
+      "sha256": "3a9b8156d20de35fa04e4caaec73480238c15d2a0cc9593801bd3d852b8a0e22",
+      "command": "openrig_run.py start --dry-run (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/verify-render-pre.txt",
+      "bytes": 3489,
+      "sha256": "64db0e0abaeb0801962459f942b2eb20ec2abe72308dc25767d5332cbce82bd2",
+      "command": "verify_render.py default before specialization (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/close/verify-render-strict.json",
+      "bytes": 4904,
+      "sha256": "43a7f856fa98364013fa21c186cdcf67f0670c3c4784d90870a90d4f31d5c268",
+      "command": "verify_render.py --strict after specialization (close)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "close acceptance",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/entrypoints.txt",
+      "bytes": 2239,
+      "sha256": "ead9373362384fe8f17c5825cf420a87b5cca5549e0313b1a8d355769d546e85",
+      "command": "QA acceptance entrypoints",
+      "rc": 0,
+      "revision": 1,
+      "reason": "QA evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/product-baseline.txt",
+      "bytes": 461,
+      "sha256": "c587c288c241a8323e8a0f3e9b0220dc52be2ee635678bfe81ab34944b8afc95",
+      "command": "QA product repo baseline",
+      "rc": 0,
+      "revision": 1,
+      "reason": "scope evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/scope-diff.txt",
+      "bytes": 2101,
+      "sha256": "cb0bea15d53818338f47277ead65e3603049c0bfbb4c274dea35414b9fe2548b",
+      "command": "QA scope diff",
+      "rc": 0,
+      "revision": 1,
+      "reason": "scope evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/AGENTS-target-sideeffects.txt",
+      "bytes": 957,
+      "sha256": "798251d90772da14a79798abf1a518744ccf8279e2b06a78a369dd4e99af57b3",
+      "command": "QA AGENTS/target side-effect check",
+      "rc": 0,
+      "revision": 1,
+      "reason": "scope evidence",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "openrig/render-specializations.json",
+      "bytes": 1976,
+      "sha256": "dc1574554fd85b61987ca01d1959d3691efdb8676414a70a2065d1ca024a0c76",
+      "command": "MAIN close_round: render-specialize x4",
+      "rc": 0,
+      "revision": 1,
+      "reason": "D-004 recorded specialization",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/QA-VERDICT.r1.md",
+      "bytes": 11998,
+      "sha256": "bbde1ad1696fae0c6e53b11ac9a70f4e8d4a1e4ead0f2df739ca1b13ec84e5fa",
+      "command": "QA preserved qa_final handoff artifact (r1)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "r1 superseded by r2; kept so the stale qa_final closure digest is re-verifiable",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    },
+    {
+      "path": "reports/FINAL.r1.md",
+      "bytes": 7709,
+      "sha256": "896c4ab34b714660857f9686cadd5d589b260094aff70e5f0a692ff790417639",
+      "command": "MAIN preserved close_round-bound FINAL v1",
+      "rc": 0,
+      "revision": 1,
+      "reason": "closure digest 896c4ab3 resolves here; current FINAL carries accuracy corrections",
+      "recordedAt": "2026-11-16T01:09:49+08:00"
+    }
+  ]
+}

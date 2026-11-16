@@ -1,0 +1,39 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pA-legacy\nR=$T/burn-postmortem-20261014\nrm -rf "$T"; mkdir -p "$T"\ncp -a runs/burn-postmortem-20261014 "$R"\nrm -f "$R/.run-meta.json" "$R/reports/evidence/00-baseline.json" "$R/reports/evidence/00-baseline.txt"\necho "meta.exists.before=$([ -e "$R/.run-meta.json" ] && echo yes || echo no)"\nset +e\n.venv/bin/python - "$R" <<PY\nimport argparse, json, sys\nfrom pathlib import Path\nsys.path.insert(0, "scripts")\nimport wf\nrun_id = "burn-postmortem-20261014"\nwf.RUNS = Path(sys.argv[1]).parent\nrc = wf.cmd_meta_set(argparse.Namespace(run_id=run_id, project_root="/home/a7067567g/下载/deepseek/deepseek-知识库", scope="", json=True))\nprint("meta-set.rc=", rc)\nmeta = json.loads((wf.RUNS / run_id / ".run-meta.json").read_text(encoding="utf-8"))\nprint("meta=", {k: meta[k] for k in ("runId", "projectRoot", "scope", "updatedAt")})\nrc2 = wf.cmd_baseline(argparse.Namespace(run_id=run_id, project_root="", json=True))\nprint("baseline.rc(no --project-root)=", rc2)\nPY\nrc=$?\nset -e\necho "chain.rc=$rc"\necho "meta.exists.after=$([ -e "$R/.run-meta.json" ] && echo yes || echo no)"\necho "baseline.txt.exists=$([ -e "$R/reports/evidence/00-baseline.txt" ] && echo yes || echo no)"\necho "real-run-meta.untouched=$([ -e runs/burn-postmortem-20261014/.run-meta.json ] && echo NO || echo yes)"\n'
+label=W3 pos: temp copy of legacy run -> meta-set -> baseline rc0 (repo untouched)
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:49+08:00
+finished_at=2026-11-16T00:52:49+08:00
+rc=0
+stdout_sha256=287310d0a3eff4c2ba6fdb91a8ac873c96a603d574be5164b4409d036be888ca
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+meta.exists.before=no
+{
+  "ok": true,
+  "runId": "burn-postmortem-20261014",
+  "metaPath": "/tmp/opencode/pA-legacy/burn-postmortem-20261014/.run-meta.json",
+  "projectRoot": "/home/a7067567g/下载/deepseek/deepseek-知识库",
+  "scope": "",
+  "updatedAt": "2026-11-16T00:52:49+08:00"
+}
+meta-set.rc= 0
+meta= {'runId': 'burn-postmortem-20261014', 'projectRoot': '/home/a7067567g/下载/deepseek/deepseek-知识库', 'scope': '', 'updatedAt': '2026-11-16T00:52:49+08:00'}
+{
+  "ok": true,
+  "runId": "burn-postmortem-20261014",
+  "jsonPath": "/tmp/opencode/pA-legacy/burn-postmortem-20261014/reports/evidence/00-baseline.json",
+  "txtPath": "/tmp/opencode/pA-legacy/burn-postmortem-20261014/reports/evidence/00-baseline.txt",
+  "head": "9fa8d27a95dba40c9f324f91497bc6754aa4b9ac",
+  "statusSha256": "93d0aee30df45e403a6b0fa4a6007507471f212162ff41dbd47a82db3a3c75d4",
+  "diffSha256": "6ba74ce8df5198a11f2a6b78ac8c0a9fbb63318ce534227bfc5a7581e17081d8",
+  "statusCount": 1938,
+  "excludePaths": [
+    "workflow-group/runs/burn-postmortem-20261014"
+  ]
+}
+baseline.rc(no --project-root)= 0
+chain.rc=0
+meta.exists.after=yes
+baseline.txt.exists=yes
+real-run-meta.untouched=yes
+--- stderr ---

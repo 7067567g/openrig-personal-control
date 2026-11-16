@@ -1,0 +1,58 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pD-run\n.venv/bin/python - "$T" <<PY\nimport argparse, sys\nsys.path.insert(0, "scripts")\nimport wf\nfrom pathlib import Path\nwf.RUNS = Path("/tmp/opencode/pD-runs")\nfor rel in ("rig.yaml", "workflow.yaml", "guidance/team.md", "OPENRIG-BRIDGE.json"):\n    rc = wf.cmd_render_specialize(argparse.Namespace(run_id="openrig-p1-hard-constraints-20261116", path=rel, reason="demo record for "+rel, json=True))\n    print("recorded", rel, "rc=", rc)\nPY\nset +e\n.venv/bin/python scripts/verify_render.py --run-dir "$T" --json --strict > /tmp/opencode/pD-5.json 2>&1; echo "all-specialized-strict.rc=$?"\nset -e\n.venv/bin/python - /tmp/opencode/pD-5.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("ok=",d["ok"],"specialized=",d["specialized"],"mismatches=",d["mismatches"])\nprint("entries=",[e["path"] for e in d["specializations"]["applied"]])\nprint("stale=",d["specializations"]["stale"])\nPY\n'
+label=W5 pos: every drifted file recorded -> ok:true and --strict rc0
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:59:46+08:00
+finished_at=2026-11-16T00:59:46+08:00
+rc=0
+stdout_sha256=f9717b7fc2434d31a86e56bd6dffe09831471aa5831d2dd2236f9e226aef7d2f
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "rig.yaml",
+  "bytes": 29,
+  "sha256": "3b759ae09c0a11584141c67a22c5d6b4b11928b97c1f473dcb5df84a8e13293c",
+  "reason": "demo record for rig.yaml",
+  "specPath": "/tmp/opencode/pD-run/openrig/render-specializations.json",
+  "entries": 2
+}
+recorded rig.yaml rc= 0
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "workflow.yaml",
+  "bytes": 3813,
+  "sha256": "1c458f6f0553d500f331a72fd23745da5c39a2ee9412d82de1acffde992579cb",
+  "reason": "demo record for workflow.yaml",
+  "specPath": "/tmp/opencode/pD-run/openrig/render-specializations.json",
+  "entries": 2
+}
+recorded workflow.yaml rc= 0
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "guidance/team.md",
+  "bytes": 470,
+  "sha256": "d4d0551d83006327828a0a730c12834b12a08fa299736c594807f9aa76626339",
+  "reason": "demo record for guidance/team.md",
+  "specPath": "/tmp/opencode/pD-run/openrig/render-specializations.json",
+  "entries": 3
+}
+recorded guidance/team.md rc= 0
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "OPENRIG-BRIDGE.json",
+  "bytes": 1038,
+  "sha256": "7b1c523c5a6d0ddbe47faa46deb861b3505f0604ad513eb2af40c4d9a80d8bba",
+  "reason": "demo record for OPENRIG-BRIDGE.json",
+  "specPath": "/tmp/opencode/pD-run/openrig/render-specializations.json",
+  "entries": 4
+}
+recorded OPENRIG-BRIDGE.json rc= 0
+all-specialized-strict.rc=0
+ok= True specialized= ['rig.yaml', 'workflow.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json'] mismatches= []
+entries= ['rig.yaml', 'workflow.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json']
+stale= []
+--- stderr ---

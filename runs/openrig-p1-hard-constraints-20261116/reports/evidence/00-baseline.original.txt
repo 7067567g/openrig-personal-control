@@ -1,0 +1,251 @@
+# baseline 2026-11-15T16:47:32Z
+# repo /home/a7067567g/下载/deepseek/deepseek-知识库
+# HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac
+# status_sha256 b4b8dca1caa3091e8fc56b902fe281e299b09f9fa0256ac64c00f6331951367e
+# diff_sha256 cd0c7c3397b697dbb15df4c92c3fe69c27d25247e3015d157a9ba168f4c271db
+# --- status (exclude run dir) ---
+ M .github/workflows/kb-validate.yml
+ M .gitignore
+ M 00-overview/golden-questions.md
+ M 00-overview/task-router.md
+ M AGENTS.md
+ M README.md
+ M content-review-queue.md
+ M docs/agents/triage-labels.md
+ M workflow-group/AGENTS.md
+ M workflow-group/DESIGN.md
+ M workflow-group/README.md
+ M workflow-group/WORKFLOW.md
+ M workflow-group/burner/queue.json
+ M workflow-group/drafts/sctg-openrig-channel-pattern-v0.1.md
+ M workflow-group/drafts/sctg/README.md
+ M workflow-group/drafts/sctg/direction-01-review-first.md
+ M workflow-group/drafts/sctg/extension-01-direction-map.md
+ M workflow-group/drafts/sctg/kit/gates/g1_scope.py
+ M workflow-group/drafts/sctg/kit/gates/g2_evidence.py
+ M workflow-group/drafts/sctg/kit/sctg.py
+ M workflow-group/drafts/sctg/lessons-01-single-line-orchestration.md
+ M workflow-group/drafts/sctg/openrig-integration-and-applicability-v0.1.md
+ M workflow-group/drafts/sctg/pre-solution-01-review-v0.2.md
+ M workflow-group/drafts/sctg/pre-solution-01.md
+ M workflow-group/drafts/sctg/pre-solution-02.md
+ M workflow-group/drafts/sctg/pre-solution-03.md
+ M workflow-group/drafts/sctg/simulations/01-openrig-real-runs.md
+ M workflow-group/drafts/sctg/simulations/02-stageguide-real-runs.md
+ M workflow-group/drafts/sctg/simulations/03-workflow-knowledge-gates.md
+ M workflow-group/drafts/sctg/simulations/README.md
+ M workflow-group/drafts/sctg/simulations/cross-01-openrig.md
+ M workflow-group/drafts/sctg/simulations/cross-02-stageguide.md
+ M workflow-group/drafts/sctg/simulations/cross-03-workflow.md
+ M workflow-group/drafts/sctg/stage2-workflow-plan-v0.1.md
+ M workflow-group/drafts/sctg/step1-10card-experience.md
+ M workflow-group/drafts/sctg/step1-shadow-run-report.md
+ M workflow-group/drafts/sctg/step1-trial-experience.md
+ M workflow-group/drafts/sctg/step1-trial2-experience.md
+ M workflow-group/drafts/sctg/strategy-3step-v0.1.md
+ M workflow-group/drafts/sctg/thought-supplement-01.md
+ M workflow-group/reports/full-curation-20261115/CURATION.md
+ M workflow-group/reports/full-curation-20261115/VERIFY-ENV.md
+ M workflow-group/reports/full-curation-20261115/VERIFY.md
+ M workflow-group/roles/PMO.md
+ M workflow-group/roles/QA.md
+ M workflow-group/roles/TDO.md
+ M workflow-group/roles/common-contract.md
+ M workflow-group/roles/delegation-briefs.md
+ M workflow-group/runs/README.md
+ M workflow-group/runs/burn-postmortem-20261014/PROJECT.md
+ M workflow-group/runs/dist-ops-20261014/DECISIONS.md
+ M workflow-group/runs/dist-ops-20261014/ISSUES.xlsx
+ M workflow-group/runs/dist-ops-20261014/PROJECT.md
+ M workflow-group/runs/geophysics-correctness-20261014/DECISIONS.md
+ M workflow-group/runs/geophysics-correctness-20261014/PROJECT.md
+ M workflow-group/runs/kb-claim-verify-20261014/PROJECT.md
+ M workflow-group/runs/kb-consume-20261014/DECISIONS.md
+ M workflow-group/runs/kb-consume-20261014/PROJECT.md
+ M workflow-group/runs/kb-debt-20261013/DECISIONS.md
+ M workflow-group/runs/kb-debt-20261013/ISSUES.xlsx
+ M workflow-group/runs/kb-debt-20261013/PROJECT.md
+ M workflow-group/runs/kb-fix-20261014/DECISIONS.md
+ M workflow-group/runs/kb-fix-20261014/ISSUES.xlsx
+ M workflow-group/runs/kb-fix-20261014/PROJECT.md
+ M workflow-group/runs/kb-method-action-20261014/DECISIONS.md
+ M workflow-group/runs/kb-method-action-20261014/PROJECT.md
+ M workflow-group/runs/nutstore-review-20261014/DECISIONS.md
+ M workflow-group/runs/nutstore-review-20261014/ISSUES.xlsx
+ M workflow-group/runs/nutstore-review-20261014/PROJECT.md
+ M workflow-group/runs/openrig-docs-governance-20261115/DECISIONS.md
+ M workflow-group/runs/openrig-docs-governance-20261115/PROJECT.md
+ M workflow-group/runs/ops-reliability-20261014/DECISIONS.md
+ M workflow-group/runs/ops-reliability-20261014/ISSUES.xlsx
+ M workflow-group/runs/ops-reliability-20261014/PROJECT.md
+ M workflow-group/runs/project-freeze-20261014/DECISIONS.md
+ M workflow-group/runs/project-freeze-20261014/ISSUES.xlsx
+ M workflow-group/runs/project-freeze-20261014/PROJECT.md
+ M workflow-group/runs/signaldeck-audit-20261013/DECISIONS.md
+ M workflow-group/runs/signaldeck-audit-20261013/ISSUES.xlsx
+ M workflow-group/runs/signaldeck-audit-20261013/PROJECT.md
+ M workflow-group/runs/signaldeck-refactor-20261025/DECISIONS.md
+ M workflow-group/runs/signaldeck-refactor-20261025/PROJECT.md
+ M workflow-group/runs/signaldeck-refactor-20261025/ROUND-PLAN.md
+ M workflow-group/runs/signaldeck-runtime-20261014/PROJECT.md
+ M workflow-group/runs/wf-engine-tests-20261014/DECISIONS.md
+ M workflow-group/runs/wf-engine-tests-20261014/ISSUES.xlsx
+ M workflow-group/runs/wf-engine-tests-20261014/PROJECT.md
+ M workflow-group/scripts/issues.py
+ M workflow-group/scripts/wf.py
+ M workflow-group/templates/DECISIONS.md
+ M workflow-group/templates/PROJECT.md
+ M workflow-group/templates/README.md
+ M workflow-group/templates/STATUS-Round-n.md
+ M workflow-group/templates/specialized/README.md
+ M workflow-group/templates/specialized/burn-postmortem/SPEC.md
+ M workflow-group/templates/specialized/dist-ops-hardening/SPEC.md
+ M workflow-group/templates/specialized/geophysics-correctness/SPEC.md
+ M workflow-group/templates/specialized/kb-claim-verify/SPEC.md
+ M workflow-group/templates/specialized/kb-consume-interface/SPEC.md
+ M workflow-group/templates/specialized/kb-debt-burn/SPEC.md
+ M workflow-group/templates/specialized/kb-fix-wave/SPEC.md
+ M workflow-group/templates/specialized/kb-method-action/SPEC.md
+ M workflow-group/templates/specialized/nutstore-sync-review/SPEC.md
+ M workflow-group/templates/specialized/ops-reliability/SPEC.md
+ M workflow-group/templates/specialized/project-freeze-facts/SPEC.md
+ M workflow-group/templates/specialized/signaldeck-runtime-verify/SPEC.md
+ M workflow-group/templates/specialized/wf-engine-tests/SPEC.md
+ M workflow-group/tests/test_issues.py
+ M workflow-group/tests/test_p5_legacy.py
+ M workflow-group/tests/test_wf.py
+?? .dsh-screenshots/
+?? auto_driver.pid
+?? workflow-group/.r7-work/
+?? workflow-group/ADVISOR-GEMINI4ARGON-20261023.md
+?? workflow-group/ADVISOR-GEMINI4ARGON-DSH-20261023.md
+?? workflow-group/ADVISOR-QUALITY-COMPARISON-20261023.md
+?? workflow-group/EVOLUTION.md
+?? workflow-group/EXAMPLE.md
+?? workflow-group/WORKFLOW-TAGS.md
+?? workflow-group/burner/signaldeck-heartbeat.sh
+?? workflow-group/burner/signaldeck-prompt.txt
+?? workflow-group/burner/signaldeck-run.sh
+?? workflow-group/docs/cases/openrig-remediation-20261113/
+?? workflow-group/drafts/reviews/
+?? workflow-group/drafts/sctg/ASSET-INDEX.md
+?? workflow-group/drafts/sctg/DOC-MAP.md
+?? workflow-group/drafts/sctg/development-status-20261115.md
+?? workflow-group/drafts/so-role-draft-v0.1.md
+?? workflow-group/drafts/so-role-draft.md
+?? workflow-group/kickoff/h-drive-cleanup-goal.txt
+?? workflow-group/kickoff/h-drive-cleanup.md
+?? workflow-group/kickoff/h-drive-old-backup-audit-20261018.md
+?? workflow-group/kickoff/h-drive-windows-plan.md
+?? workflow-group/kickoff/h-drive-windows-protected-v2.json
+?? workflow-group/kickoff/h-drive-windows-protected-v3.json
+?? workflow-group/kickoff/h-drive-windows-protected.json
+?? workflow-group/kickoff/openrig-advisor-refit-goal.txt
+?? workflow-group/kickoff/openrig-full-verify-goal.txt
+?? workflow-group/kickoff/openrig-hard-constraints-20261115.txt
+?? workflow-group/kickoff/openrig-launch-guardrails-20261115.txt
+?? workflow-group/kickoff/openrig-local-refit-goal.txt
+?? workflow-group/kickoff/openrig-local-refit.md
+?? workflow-group/kickoff/openrig-master-v12-audit.md
+?? workflow-group/kickoff/openrig-master-v12-goal.txt
+?? workflow-group/kickoff/openrig-opencode-dsh-goal.txt
+?? workflow-group/kickoff/openrig-p0-hard-constraints-20261116.txt
+?? workflow-group/kickoff/openrig-p1-hard-constraints-20261116.txt
+?? workflow-group/kickoff/openrig-token-factfind-20261115.txt
+?? workflow-group/kickoff/openrig-token-governance-design-20261115.txt
+?? workflow-group/kickoff/openrig-token-r1-implement-20261115.txt
+?? workflow-group/kickoff/openrig-unparsed-bytes-20261020.txt
+?? workflow-group/kickoff/signaldeck-refactor.md
+?? workflow-group/reports/close-lint-20261111.txt
+?? workflow-group/reports/close-semantics-20261111/
+?? workflow-group/reports/public-repo-gap-20261113.md
+?? workflow-group/requirements-dev.txt
+?? workflow-group/roles/MAIN.md
+?? workflow-group/roles/SAFETY.md
+?? workflow-group/runs/advisor-report-fusion-20261023/
+?? workflow-group/runs/android-app-complete-20261112/
+?? workflow-group/runs/close-semantics-remediation-20261111/
+?? workflow-group/runs/h-drive-cleanup-20261018/
+?? workflow-group/runs/h-drive-od-dismantle-20261018/
+?? workflow-group/runs/h-drive-root-layout-20261018/
+?? workflow-group/runs/master-adoption-20261015/
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/
+?? workflow-group/runs/openrig-advisor-refit-20261023/
+?? workflow-group/runs/openrig-audit-fix-20261020/
+?? workflow-group/runs/openrig-deepseek-refit-20261018/
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/
+?? workflow-group/runs/openrig-full-verify-20261019/
+?? workflow-group/runs/openrig-hard-constraints-20261115/
+?? workflow-group/runs/openrig-launch-guardrails-20261115/
+?? workflow-group/runs/openrig-local-refit-20261018/
+?? workflow-group/runs/openrig-master-selfopt-20261020/
+?? workflow-group/runs/openrig-master-v12-20261020/
+?? workflow-group/runs/openrig-next-stage-20261022/
+?? workflow-group/runs/openrig-opencode-dsh-20261018/
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/
+?? workflow-group/runs/openrig-seat-isolation-20261023/
+?? workflow-group/runs/openrig-token-factfind-20261115/
+?? workflow-group/runs/openrig-token-governance-design-20261115/
+?? workflow-group/runs/openrig-token-r1-implement-20261115/
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/
+?? workflow-group/runs/role-boundary-audit-20261015/
+?? workflow-group/runs/signaldeck-refactor-20261025/DELEGATIONS.md
+?? workflow-group/runs/signaldeck-refactor-20261025/STATUS-Round-7.md
+?? workflow-group/runs/signaldeck-refactor-20261025/delegations/2026-11-04-05-08-pmo-pmo.md
+?? workflow-group/runs/signaldeck-refactor-20261025/delegations/2026-11-04-05-19-pmo-pmo.md
+?? workflow-group/runs/signaldeck-refactor-20261025/delegations/2026-11-04-05-25-tdo-tdo-a2.md
+?? workflow-group/runs/signaldeck-refactor-20261025/reports/GATE-LOCK-R7.md
+?? workflow-group/runs/signaldeck-refactor-20261025/reports/patches/
+?? workflow-group/runs/so-necessity-research-20261015/
+?? workflow-group/runs/wf-docs-distill-20261015/
+?? workflow-group/runs/yueyue-governance-20261110/
+?? workflow-group/scripts/adapters/
+?? workflow-group/scripts/bootstrap_env.sh
+?? workflow-group/scripts/contract_lock.py
+?? workflow-group/scripts/doc_consistency.py
+?? workflow-group/scripts/evidence_run.sh
+?? workflow-group/scripts/hdrive_gate.py
+?? workflow-group/scripts/openrig_preflight.py
+?? workflow-group/scripts/required_components.py
+?? workflow-group/scripts/test.sh
+?? workflow-group/scripts/verify_render.py
+?? workflow-group/scripts/wf_close_lint.py
+?? workflow-group/scripts/windows/
+?? workflow-group/templates/baseline/
+?? workflow-group/templates/contracts/
+?? workflow-group/templates/specialized/BASELINE-MAP.md
+?? workflow-group/templates/specialized/advisor-report-fusion/
+?? workflow-group/templates/specialized/h-drive-cleanup/
+?? workflow-group/templates/specialized/issue-sync/
+?? workflow-group/templates/specialized/openrig-advisor-refit/
+?? workflow-group/templates/specialized/openrig-full-verify/
+?? workflow-group/templates/specialized/openrig-local-refit/
+?? workflow-group/templates/specialized/openrig-master-v12/
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/
+?? workflow-group/templates/specialized/openrig-workflow-master/
+?? workflow-group/templates/specialized/signaldeck-refactor/
+?? workflow-group/templates/specialized/wechat-yueyue-redesign/
+?? workflow-group/templates/specialized/wf-docs-distill/
+?? workflow-group/templates/specialized/yueyue-governance/
+?? workflow-group/tests/test_advisor_report_fusion.py
+?? workflow-group/tests/test_archive_gate.py
+?? workflow-group/tests/test_doc_consistency.py
+?? workflow-group/tests/test_doc_noise.py
+?? workflow-group/tests/test_evidence_record.py
+?? workflow-group/tests/test_evidence_run.py
+?? workflow-group/tests/test_hdrive_gate.py
+?? workflow-group/tests/test_headless_adapter.py
+?? workflow-group/tests/test_openrig_bridge_doctor.py
+?? workflow-group/tests/test_openrig_preflight.py
+?? workflow-group/tests/test_openrig_teardown_guard.py
+?? workflow-group/tests/test_render_master_portability.py
+?? workflow-group/tests/test_required_components.py
+?? workflow-group/tests/test_template_layers.py
+?? workflow-group/tests/test_verify_render.py
+?? workflow-group/tests/test_wf_baseline.py
+?? workflow-group/tests/test_wf_close_lint.py
+?? workflow-group/tests/test_wf_opencode_guard.py
+?? workflow-group/tests/test_workflow_rework.py
+?? workflow-group/tests/windows/
+?? workflow-group/tools/dsh-web-shim
+?? workflow-group/workflow-tags.json

@@ -1,0 +1,64 @@
+# impl_p2 acceptance evidence 2026-11-16T08:46+0800 (TDO-OC)
+# 本文件只记录本步命令 + 退出码 + 关键输出摘要；完整输出未入库（避免贴日志）。
+
+## 0. 改动清单（sha256 after）
+462b8001d67fd763f5c4056702500a47fef38b369dabf9f05f9d41ca810edf76  scripts/openrig_run.py        (P2: next 子命令)
+2e2fcc44a088dd34b1fea555297f3afa9f19190d802653eecb0dc8041bcf474f  scripts/wf_close_lint.py      (P3: closeout_resolved_final_missing)
+a39e35764b43e54229c4772f864a9e9490e9918456b9201b6b790bc400de08cc  scripts/workflow_invariants_probe.py  (P1: 新增)
+94c5a3d0e1687f7c172b58272d578dba7a7d8bbe97d37e6133428f8cd2ca9310  WORKFLOW-TAGS.md              (P4: canonical 62→63)
+89d8f471dd36993715a8fc1804fafb6369610a49bbf1d533ced88783f49f3142  tests/test_openrig_run.py     (+5 next 测试)
+0a3b16b2f925c80497d740c82b40188cdeeb1bd711d60fa0199bc0b4f3759507  tests/test_wf_close_lint.py   (+3 F-3 测试)
+e16253791fe91fc0a4e9a995dfd316a43e0eecbe78d559e5be04a35874b88aa4  tests/test_workflow_invariants_probe.py (新增 12 测试)
+
+## 1. 全量 pytest
+$ .venv/bin/python -m pytest tests -q
+329 passed in 7.42s        (基线 310 → +19；rc=0)
+
+## 2. doc_consistency
+$ .venv/bin/python scripts/doc_consistency.py --check
+doc_consistency: 0 error(s), 0 warning(s)   rc=0   (基线 rc=1 tags-count 62≠63)
+
+## 3. R13 probe（本 run）
+$ .venv/bin/python scripts/workflow_invariants_probe.py --run-dir runs/openrig-p2-closure-20261116 --json
+rc=0; ok=true; steps=[plan, impl_p2, qa_final, close_round]
+terminal=["close_round"]; unreachable=[]; duplicateIds=[]; missingDependsOn=[]; missingNextHopTargets=[]; problems=[]
+
+## 4. R13 probe 负向矩阵（临时 run，/tmp/opencode/p2neg）
+dup:     ok=false rc=1 duplicateIds=['a']            problems=['duplicate_id:a']
+nodep:   ok=false rc=1 missingDependsOn=['ghost']    problems=['missing_depends_on:b->ghost']
+nonext:  ok=false rc=1 missingNextHopTargets=['nowhere'] problems=['missing_next_hop_target:b->nowhere']
+unreachable 只进 WARN：单测 test_unreachable_is_warn_only（ok 仍 True）
+无 live 调用：单测 test_probe_makes_no_live_calls（subprocess.run/Popen 爆炸桩，calls=0/0）
+
+## 5. R14 next（本 run）
+$ .venv/bin/python scripts/openrig_run.py next --run-dir runs/openrig-p2-closure-20261116 --json
+rc=0; ok=true; 5 步顺序：
+  1. openrig-run check --run-dir runs/openrig-p2-closure-20261116
+  2. openrig-run start --run-dir runs/openrig-p2-closure-20261116 --dry-run
+  3. openrig-run start --run-dir runs/openrig-p2-closure-20261116
+  4. verify_render.py --run-dir runs/openrig-p2-closure-20261116 --strict
+  5. wf.py archive-gate openrig-p2-closure-20261116
+modeHints=2 条（local-only / hybrid，不阻断）；note=printed only, executes nothing
+缺 bridge → rc=2, steps=[]；缺 run dir → rc=2
+无 live 调用：单测 test_next_makes_no_live_calls（爆炸桩 0/0）；不写文件：test_next_writes_no_files
+
+## 6. F-3 closeout 覆盖实际解析 FINAL
+负向（双 FINAL 内容不同、只 attest 根）：
+$ .venv/bin/python scripts/wf_close_lint.py --run f3-run --runs-root /tmp/opencode/p2neg/runs --strict
+ERROR [f3-run] [closeout_resolved_final_missing] closeout 必须覆盖实际解析路径 reports/FINAL.md（entries 当前只含 ['FINAL.md']）
+正向（双 entry：reports/FINAL.md + FINAL.md）：该 finding 消失（错误数 5→4）
+  → 余 4 条均为合成 run 缺四件套（PROJECT.md / DECISIONS.md / ISSUES.xlsx / STATUS-Round-*.md），与 F-3 无关
+单测：tests/test_wf_close_lint.py +3（root-only ERROR / dual entry PASS / 内容相同也只认解析路径）
+
+## 7. 本 run close_lint（close 前，如实记录）
+$ .venv/bin/python scripts/wf_close_lint.py --run openrig-p2-closure-20261116 --strict
+rc=1; ERROR final_missing + closeout_missing
+  → 符合 00-plan §6.4：FINAL/closeout 由 close_round 产出，本步不伪造 PASS。
+
+## 8. 范围与零越界
+HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac（未变，无 commit/push）
+git status 相对 00-baseline（排除本 run 目录）唯一差异 = 新增两个白名单文件：
+  ?? workflow-group/scripts/workflow_invariants_probe.py
+  ?? workflow-group/tests/test_workflow_invariants_probe.py
+产品仓 60-外部仓库/openrig-upstream：git status --porcelain 0 行；HEAD cd1074651c8349f4e39b2705ef0d42116b83d78b（2026-10-24）；
+  find -newermt '-3 hours' → 0 个文件。60-外部仓库/openrig（非 git）近 3 小时 0 个文件。

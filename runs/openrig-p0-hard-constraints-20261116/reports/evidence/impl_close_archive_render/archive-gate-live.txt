@@ -1,0 +1,14 @@
+# R01 archive-gate on the live run (real product guard, dry-run only)
+{
+  "ok": false,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "guard": "/home/a7067567g/下载/deepseek/deepseek-项目/10-openrig-deepseek/scripts/openrig-teardown.py",
+  "guardRc": 1,
+  "gateRc": 2,
+  "archiveStatus": "MISSING",
+  "missing": [],
+  "missingRequired": [],
+  "error": "manifest not found",
+  "manifestPath": null
+}
+rc=2

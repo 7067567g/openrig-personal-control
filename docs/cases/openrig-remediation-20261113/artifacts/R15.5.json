@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "round": "R15.5",
+  "kind": "adb-real-device",
+  "at": "2026-11-13T14:58:08+08:00",
+  "target": "<tailnet-device>:5555",
+  "adb_verdict": "PASS",
+  "overall": "ADB_PASS_NEED_MAIN",
+  "device": {
+    "target": "<tailnet-device>:5555",
+    "model": "2407FRK8EC",
+    "manufacturer": "Xiaomi",
+    "android": "16",
+    "sdk": "36",
+    "build": "BP2A.250605.031.A3",
+    "wm": {
+      "text": "Physical size: 1220x2712",
+      "physical": [
+        1220,
+        2712
+      ],
+      "override": null,
+      "effective": [
+        1220,
+        2712
+      ]
+    },
+    "density": "Physical density: 520",
+    "rotation": 0
+  },
+  "package": {
+    "name": "com.yueyue.bridge",
+    "installed": true,
+    "path": "package:/data/app/~~h9GUFZI_ygDG_XH5SbH4IA==/com.yueyue.bridge-w5Z-uKLAKAEhkhGfJlhGAg==/base.apk",
+    "version_name": "0.2.1",
+    "version_code": "3",
+    "expected_version_name": "0.2.1",
+    "expected_version_code": "3",
+    "expected_source": "bridge-app/app/build.gradle"
+  },
+  "checks": {
+    "device_connected": true,
+    "package_installed": true,
+    "package_version": true,
+    "launch_ok": true,
+    "process_alive": true,
+    "foreground_ui": true,
+    "setup_screen_not_shown": true,
+    "composer_present": true,
+    "memory_panel_ok": true,
+    "search_panel_ok": true,
+    "no_fatal": true,
+    "fatal_logcat": false
+  },
+  "check_details": {
+    "device_connected": {
+      "ok": true,
+      "detail": "already connected to <tailnet-device>:5555",
+      "critical": true
+    },
+    "package_installed": {
+      "ok": true,
+      "detail": "package:/data/app/~~h9GUFZI_ygDG_XH5SbH4IA==/com.yueyue.bridge-w5Z-uKLAKAEhkhGfJlhGAg==/base.apk",
+      "critical": true
+    },
+    "package_version": {
+      "ok": true,
+      "detail": "installed=0.2.1 (3) expected=0.2.1 (3)",
+      "critical": true
+    },
+    "launch_ok": {
+      "ok": true,
+      "detail": "Starting: Intent { cmp=com.yueyue.bridge/.MainActivity } Status: ok LaunchState: COLD Activity: com.yueyue.bridge/.MainActivity TotalTime: 405 WaitTime: 407 Complete",
+      "critical": true
+    },
+    "process_alive": {
+      "ok": true,
+      "detail": "pid=5170 foreground=com.yueyue.bridge/.MainActivity",
+      "critical": true
+    },
+    "foreground_ui": {
+      "ok": true,
+      "detail": "月月bot=True App模式=True nodes=3380",
+      "critical": true
+    },
+    "setup_screen_not_shown": {
+      "ok": true,
+      "detail": "WebView 主界面",
+      "critical": true
+    },
+    "composer_present": {
+      "ok": true,
+      "detail": "input=True send=True",
+      "critical": true
+    },
+    "memory_panel_ok": {
+      "ok": true,
+      "detail": "tap memory-button @ 695,209; title=True body=True",
+      "critical": true
+    },
+    "search_panel_ok": {
+      "ok": true,
+      "detail": "tap message-search-button @ 848,209; title=True body=True",
+      "critical": true
+    },
+    "no_fatal": {
+      "ok": true,
+      "detail": "未发现 FATAL",
+      "critical": true
+    }
+  },
+  "probes": {
+    "input_focus": {
+      "status": "NEED_MAIN",
+      "detail": "键盘/输入法真实避让与中文键入不在 ADB 自动层判定。"
+    }
+  },
+  "safe_ui": {
+    "month_bot": true,
+    "app_mode": true,
+    "composer_present": true,
+    "memory_panel": true,
+    "search_panel": true
+  },
+  "evidence": {
+    "ui_dump": {
+      "node_count": 3380,
+      "bytes": 1334957,
+      "sha256": "ebcc94294fad5871879e93284308cfd8a28d44370851098eb3cd24385bc343ce",
+      "raw_committed": false
+    },
+    "screenshot": {
+      "width": 1220,
+      "height": 2712,
+      "bytes": 723245,
+      "sha256": "d26cd90767673a8581f2eb89d3985271f189b3e6c7f66408c12372a85b2429fb",
+      "committed": false
+    },
+    "logcat": {
+      "read_ok": true,
+      "fatal_count": 0,
+      "fatal_signatures": [],
+      "raw_committed": false
+    }
+  },
+  "privacy": {
+    "raw_screenshot_committed": false,
+    "raw_ui_dump_committed": false,
+    "raw_logcat_committed": false,
+    "report_contains_chat_text": false
+  },
+  "needs_main": [
+    {
+      "id": "keyboard",
+      "label": "键盘/输入法避让与真实中文键入",
+      "detail": "软键盘弹出时输入框、发送键是否可见；composition 是否被打断。",
+      "status": "PENDING"
+    },
+    {
+      "id": "touch",
+      "label": "触控手感、热区、滚动惯性与误触",
+      "detail": "顶栏图标、面板按钮、长列表滚动和快速连点的真实手感。",
+      "status": "PENDING"
+    },
+    {
+      "id": "visual",
+      "label": "视觉、字体、安全区、横屏/折叠屏",
+      "detail": "配色、字号、刘海/手势条、横屏和不同 DPI 下的布局。",
+      "status": "PENDING"
+    },
+    {
+      "id": "live",
+      "label": "live 服务、真实发送链路与长稳",
+      "detail": "真实本地服务、真实会话数据、断网/重连、长稳和回滚。",
+      "status": "PENDING"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "written": {
+    "report": "reports/sctg/R15.5.md",
+    "evidence": "reports/sctg/adb/R15.5.json"
+  }
+}

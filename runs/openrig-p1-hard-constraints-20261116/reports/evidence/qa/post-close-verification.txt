@@ -1,0 +1,6 @@
+=== verify_render --strict (post-registration)
+rc=0
+ok True specialized ['rig.yaml', 'workflow.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json'] mismatch []
+=== wf_close_lint --strict
+rc=0
+errors []

@@ -1,0 +1,37 @@
+# QA independent re-run of TASK §5 entrypoints (cwd=workflow-group)
+# env: .venv/bin/python 3.12.15 · pytest 9.0.2 · rig=openrig-local 0.1.4 · node=~/.local/node-v24.22.1
+# captured 2026-11-16T01:00Z–01:04Z
+
+1) .venv/bin/python -m pytest tests -q
+   rc=0   310 passed in 7.72s   (plan baseline 259 -> +51; file: full-pytest.txt)
+
+2) .venv/bin/python scripts/doc_consistency.py --check
+   rc=0   0 error(s), 0 warning(s)   (file: doc-consistency.txt)
+
+3) .venv/bin/python scripts/openrig_preflight.py --json --advisory
+   rc=0   ok=false, precheck.failed=[run_context, run_docs], injectedAgents=null, monitor=null
+   (advisory keeps rc0; no run-id passed => required checks fail; no side effect)
+   (file: entry-preflight-advisory.txt)
+
+4) .venv/bin/python scripts/audit_managed_blocks.py --path <KB>/AGENTS.md --json
+   rc=0   files=1 blocks=7 byKind={managed:7} orphanManaged=7 warnings=0 errors=0
+   --strict: rc=1, 7 x "has no ownerRig"   (files: entry-audit-agents.txt, negative-audit-strict.txt)
+
+5) .venv/bin/python scripts/openrig_run.py check --run-dir runs/<run> --json --allow-daemon-down
+   rc=0   ok=true; bridge ok, render WARN (4 files differ), doctor ok, workflow_validate ok, seats 3/3 ready
+   without --allow-daemon-down: rc=0 (daemon is up)   (files: entry-check-allow-down.txt, entry-check-no-allow.txt)
+
+6) .venv/bin/python scripts/openrig_run.py start --run-dir runs/<run> --dry-run --json
+   rc=0   plan=5 steps, executed=[], fake-rig invocation count = 0   (negative-openrig-run.txt)
+
+7) .venv/bin/python scripts/verify_render.py --run-dir runs/<run> --json
+   rc=0   ok=false, 4 mismatches (rig.yaml, workflow.yaml, guidance/team.md, OPENRIG-BRIDGE.json)
+   --strict: rc=1   (entry-verify-render.txt)
+
+8) .venv/bin/python scripts/wf_close_lint.py --run <run> --strict
+   rc=1   errors=[final_missing, closeout_missing] — expected before close_round (plan §6.1, DECISIONS D-007)
+   dual-path matrix: reports-only PASS, root-only PASS, both PASS (reports preferred), none ERROR
+   (negative-close-lint-dual-final.txt)
+
+Scope: verify-baseline ok=false is expected (aggregate hashes must move); path set + mtime sweep clean.
+Product repo: HEAD/status/diff all identical to 00-plan §2 (product-baseline.txt).

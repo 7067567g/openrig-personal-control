@@ -1,0 +1,7 @@
+目标：实施 R1 运行时遥测最小闭环。把 opencode `step_finish` 与 dsh `status.step_end` 的分项 usage 通过 runner sidecar 接入 ContextUsageStore/ContextMonitor，写入 usage_samples，并让 `rig usage top/cost` 与 `rig ps --nodes --full` 能看到 opencode/dsh 数据。只做 push 路线；pull 对账不在本轮。
+
+硬约束：
+- 不改 budget kill 语义；不设金额硬预算。
+- 不 commit/push；只改指定产品文件与测试；pre-existing dirty 文件不得覆盖。
+- 每个 TDO packet 单写者、顺序执行；QA 失败只回紧邻 TDO step。
+- 所有结论带文件/行/测试输出；build + targeted tests 必须真跑。

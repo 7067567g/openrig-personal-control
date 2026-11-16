@@ -1,0 +1,9 @@
+# R01 negative: guard file missing → rc=3
+{
+  "ok": false,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "guard": "/tmp/opencode/p0c-demo/no-guard.py",
+  "error": "guard missing",
+  "gateRc": 3
+}
+rc=3

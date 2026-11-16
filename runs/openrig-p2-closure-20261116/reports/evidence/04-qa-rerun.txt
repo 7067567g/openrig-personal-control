@@ -1,0 +1,60 @@
+# qa_final independent re-run — 2026-11-16T08:5x+0800 (assurance-qa)
+# all commands run from workflow-group/ unless noted
+
+## Q1 full pytest
+.........................................                                [100%]
+329 passed in 7.44s
+rc=0
+
+## Q2 doc_consistency --check
+doc_consistency: 0 error(s), 0 warning(s)
+rc=0
+
+## Q3 probe on this run
+    }
+  ],
+  "duplicateIds": [],
+  "missingDependsOn": [],
+  "missingNextHopTargets": [],
+  "unreachable": [],
+  "terminal": [
+    "close_round"
+  ],
+  "problems": [],
+  "rc": 0
+}
+rc=0
+
+## Q5 next on this run
+rc= 0 ok= True
+1 check openrig-run check --run-dir runs/openrig-p2-closure-20261116
+2 start-dry-run openrig-run start --run-dir runs/openrig-p2-closure-20261116 --dry-run
+3 start openrig-run start --run-dir runs/openrig-p2-closure-20261116
+4 verify-render verify_render.py --run-dir runs/openrig-p2-closure-20261116 --strict
+5 archive-gate wf.py archive-gate openrig-p2-closure-20261116
+
+## Q9 close_lint --strict (pre-close, expected rc=1)
+
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=2 warnings=0 accepted_errors=0 unaccepted_errors=2 acceptances_loaded=0 used=0 unused=0
+RESULT FAIL
+rc=1
+
+## W7 verify_render --strict (this run)
+WARN [render] rig.yaml: bytes mismatch
+WARN [render] workflow.yaml: bytes mismatch
+WARN [render] guidance/team.md: bytes mismatch
+WARN [render] OPENRIG-BRIDGE.json: bytes mismatch
+RESULT MISMATCH checked=5 mismatches=4 specialized=0 rc=1
+rc=1
+
+## object hashes
+462b8001d67fd763f5c4056702500a47fef38b369dabf9f05f9d41ca810edf76  scripts/openrig_run.py
+2e2fcc44a088dd34b1fea555297f3afa9f19190d802653eecb0dc8041bcf474f  scripts/wf_close_lint.py
+a39e35764b43e54229c4772f864a9e9490e9918456b9201b6b790bc400de08cc  scripts/workflow_invariants_probe.py
+89d8f471dd36993715a8fc1804fafb6369610a49bbf1d533ced88783f49f3142  tests/test_openrig_run.py
+0a3b16b2f925c80497d740c82b40188cdeeb1bd711d60fa0199bc0b4f3759507  tests/test_wf_close_lint.py
+e16253791fe91fc0a4e9a995dfd316a43e0eecbe78d559e5be04a35874b88aa4  tests/test_workflow_invariants_probe.py
+94c5a3d0e1687f7c172b58272d578dba7a7d8bbe97d37e6133428f8cd2ca9310  WORKFLOW-TAGS.md
+
+## HEAD
+9fa8d27a95dba40c9f324f91497bc6754aa4b9ac

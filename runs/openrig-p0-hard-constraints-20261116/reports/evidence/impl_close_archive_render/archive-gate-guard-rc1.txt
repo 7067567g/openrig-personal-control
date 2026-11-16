@@ -1,0 +1,14 @@
+# R01 negative: fake guard manifest not found (guard rc=1 → gate rc=2)
+{
+  "ok": false,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "guard": "/tmp/opencode/p0c-demo/fake-guard-missing.py",
+  "guardRc": 1,
+  "gateRc": 2,
+  "archiveStatus": null,
+  "missing": [],
+  "missingRequired": [],
+  "error": "manifest not found",
+  "manifestPath": null
+}
+rc=2

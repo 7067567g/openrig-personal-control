@@ -1,0 +1,23 @@
+# QA post-close state check (independent, after MAIN's 17:08Z corrections)
+# QA-VERDICT.md intentionally NOT rewritten again: it is the qa_final point-in-time snapshot
+# (r2, df7588116c45, 14421 bytes). Closure of its findings lives in STATUS/DECISIONS/FINAL.
+
+## F-1 (S2: empty STATUS / ISSUES) -> CLOSED
+cmd: sed -n '/wf:progress:start/,/wf:progress:end/p' STATUS-Round-1.md
+result: 6 completed rows (plan, A, B, C, D, qa_final) + 交接给 QA + 收轮 sections
+cmd: sed -n '/### D-008/,/^###/p' DECISIONS.md
+result: D-008 生效 — STATUS backfilled via append-status; ISSUES intentionally empty (no open defect tickets)
+cmd: scripts/issues.py list runs/<run>/ISSUES.xlsx
+result: (无匹配行)
+
+## close_round -> COMPLETED
+cmd: rig workflow show 01M7G1QT72Y4ZNCDCCVT8S4T9X| status=completed; rig queue list -> []
+cmd: wf_close_lint.py --run <run> --strict  -> rc0, 0 ERROR (post-close-verification.txt)
+cmd: verify_render.py --run-dir <run> --strict -> rc0, 4 specialized:true (post-close-verification.txt)
+
+## FINAL carries the findings
+reports/FINAL.md §7 = QA 发现处置 (F-3/F-4 follow-ups), §10 = honesty statement incl. r1->r2 supersession
+
+## Note on the STATUS qa_final row
+It states 'PASS + 4 WARN + 1 S2(F-1)' — that is r1's count, written before r2. FINAL §7/§10 and
+QA-VERDICT r2 (2 decided WARN + 1 SKIP) are the reconciled form; no gate reads the STATUS row text.

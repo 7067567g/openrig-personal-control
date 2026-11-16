@@ -1,0 +1,7 @@
+# Packet B changed files (path | action | before_sha256 | after_sha256)
+scripts/wf.py | modify (run-meta + baseline/verify-baseline) | 1e611ceb6023f5d76bf9b0e82770269b23021ba1eb7c4e0c6b5a99fd61997647 | ea393adc687320b217bd99857cf0e4b79256e720fc562f28b364c11a8a8a6d26
+scripts/evidence_run.sh | create | - | e9e72e55fe94e3fc129bdef3d38658ee2554ed543afea103a7fa8af966062c22
+tests/test_wf_baseline.py | create | - | 343067f642ef840198d90de227f9d1e3be69320a72937dea9a3948eb74902d4f
+tests/test_evidence_run.py | create | - | 42f4b3f599991f33ff342a136dae8fef47c057252d9694a55dd90669a8399129
+runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.json | create | - | fffcb8be19989771ffecab697c80d96acd54f15eb6b10c8e0181aa69b6ae0445
+runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.txt | modify (startup capture preserved at impl_baseline_evidence/00-baseline.startup.txt) | ea3542169074ab6a1cb9878e19c9e6585b1545018ff7832ab5556d377d34d8f7 | 58e6fa760e71e2815e386fda6460d3f7563780799b55ed8f2500fdafb4f4e029

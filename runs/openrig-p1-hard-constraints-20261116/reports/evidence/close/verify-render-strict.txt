@@ -1,0 +1,5 @@
+[SPEC] rig.yaml: recorded specialization
+[SPEC] workflow.yaml: recorded specialization
+[SPEC] guidance/team.md: recorded specialization
+[SPEC] OPENRIG-BRIDGE.json: recorded specialization
+RESULT PASS checked=5 mismatches=0 specialized=4 rc=0

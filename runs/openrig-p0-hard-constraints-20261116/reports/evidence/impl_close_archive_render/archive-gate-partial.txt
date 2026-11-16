@@ -1,0 +1,16 @@
+# R01 negative: fake guard PARTIAL (rc=2)
+{
+  "ok": false,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "guard": "/tmp/opencode/p0c-demo/fake-guard-partial.py",
+  "guardRc": 2,
+  "gateRc": 2,
+  "archiveStatus": "PARTIAL",
+  "missing": [
+    "transcriptCapture"
+  ],
+  "missingRequired": [],
+  "error": null,
+  "manifestPath": null
+}
+rc=2

@@ -1,0 +1,55 @@
+== two blocks
+{
+  "schemaVersion": 1,
+  "paths": [
+    "/tmp/opencode/qa-p1/r10/two.md"
+  ],
+  "files": [
+    {
+      "path": "/tmp/opencode/qa-p1/r10/two.md",
+      "bytes": 237,
+      "blocks": [
+        {
+          "id": "culture.md",
+          "startLine": 2,
+          "endLine": 4,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "rig-abc123/guidance.md",
+          "startLine": 6,
+          "endLine": 8,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "files": 1,
+    "filesWithBlocks": 1,
+    "blocks": 2,
+    "byKind": {
+      "managed": 2
+    },
+    "orphanManaged": 2,
+    "warnings": 0,
+    "unterminated": 0,
+    "errors": 0
+  },
+  "strict": {
+    "enabled": false,
+    "failures": []
+  }
+}
+rc=0
+== zero blocks
+summary {'files': 1, 'filesWithBlocks': 0, 'blocks': 0, 'byKind': {}, 'orphanManaged': 0, 'warnings': 0, 'unterminated': 0, 'errors': 0}
+== strict orphan
+rc=1
+== directory recursion (--path dir)
+files 2 blocks 2

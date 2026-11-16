@@ -1,0 +1,7 @@
+{
+  "runId": "openrig-p2-closure-20261116",
+  "projectRoot": "/home/a7067567g/下载/deepseek/deepseek-知识库",
+  "scope": "workflow-group/scripts/**; workflow-group/tests/**; workflow-group/WORKFLOW-TAGS.md; workflow-group/runs/openrig-p2-closure-20261116/**",
+  "template": "templates/specialized/openrig-workflow-master",
+  "createdAt": "2026-11-16T08:40:00+08:00"
+}

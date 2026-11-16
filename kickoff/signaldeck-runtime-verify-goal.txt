@@ -1,0 +1,4 @@
+回答一个问题：SignalDeck 真的能跑吗。对 /home/dev/Desktop/deepseek/deepseek-项目/10-signaldeck 只读实跑验证：22 步门禁 tests/run-linux.sh、前端 npm run check/build、宿主 build:host + 冒烟、无显示器环境尽力启动（xvfb 优先）、交付包内容核对。
+写权限：只写 runs/<RUN-ID>/**；项目仓只读，不提交。
+成功判据：22 步门禁逐项 PASS/FAIL/SKIP+耗时+证据；构建产物与结果；运行尝试的最终结论（跑到哪、卡在哪、缺什么）；reports/runtime-verify.md；ISSUES 登记。
+反目标：不改项目仓、不伪造 PASS、不装重型依赖、不 push。

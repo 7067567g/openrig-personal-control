@@ -1,0 +1,118 @@
+cmd: openrig_run.py start --run-dir runs/openrig-p1-hard-constraints-20261116 --dry-run --json
+{
+  "schemaVersion": 1,
+  "mode": "start",
+  "dryRun": true,
+  "runDir": "runs/openrig-p1-hard-constraints-20261116",
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "rigName": "openrig-p1-hard-constraints-20261116",
+  "ok": true,
+  "plan": [
+    {
+      "step": "daemon-start",
+      "cmd": [
+        "/home/a7067567g/.local/bin/rig",
+        "daemon",
+        "start",
+        "--no-kernel",
+        "--port",
+        "47978"
+      ]
+    },
+    {
+      "step": "up",
+      "cmd": [
+        "/home/a7067567g/.local/bin/rig",
+        "up",
+        "runs/openrig-p1-hard-constraints-20261116/openrig/rig.yaml"
+      ]
+    },
+    {
+      "step": "wait-ready",
+      "cmd": [
+        "/home/a7067567g/.local/bin/rig",
+        "ps",
+        "--nodes",
+        "--rig",
+        "openrig-p1-hard-constraints-20261116",
+        "--json"
+      ],
+      "poll": true
+    },
+    {
+      "step": "workflow-validate",
+      "cmd": [
+        "/home/a7067567g/.local/bin/rig",
+        "workflow",
+        "validate",
+        "runs/openrig-p1-hard-constraints-20261116/openrig/workflow.yaml",
+        "--json"
+      ]
+    },
+    {
+      "step": "workflow-instantiate",
+      "cmd": [
+        "/home/a7067567g/.local/bin/rig",
+        "workflow",
+        "instantiate",
+        "runs/openrig-p1-hard-constraints-20261116/openrig/workflow.yaml",
+        "--json"
+      ]
+    }
+  ],
+  "executed": [],
+  "precheck": {
+    "schemaVersion": 1,
+    "mode": "check",
+    "runDir": "runs/openrig-p1-hard-constraints-20261116",
+    "runId": "openrig-p1-hard-constraints-20261116",
+    "rigName": "openrig-p1-hard-constraints-20261116",
+    "workflowSpec": "runs/openrig-p1-hard-constraints-20261116/openrig/workflow.yaml",
+    "ok": true,
+    "checks": [
+      {
+        "id": "bridge",
+        "status": "ok",
+        "detail": "runId=openrig-p1-hard-constraints-20261116 rig=openrig-p1-hard-constraints-20261116 seats=3"
+      },
+      {
+        "id": "render",
+        "status": "warn",
+        "detail": "4 file(s) differ from render-manifest.json (WARN: pass --strict-render to block)",
+        "rc": 0,
+        "mismatches": [
+          "rig.yaml",
+          "workflow.yaml",
+          "guidance/team.md",
+          "OPENRIG-BRIDGE.json"
+        ]
+      },
+      {
+        "id": "doctor",
+        "status": "ok",
+        "detail": "PASS bridge runId=openrig-p1-hard-constraints-20261116 rig=openrig-p1-hard-constraints-20261116 workflow=openrig-workflow-p1-hard-constraints-20261116 schema=2",
+        "rc": 0,
+        "tool": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/openrig-workflow-master/tools/openrig_bridge.py"
+      },
+      {
+        "id": "workflow_validate",
+        "status": "skipped",
+        "detail": "not executed (local-only mode)"
+      },
+      {
+        "id": "seats",
+        "status": "skipped",
+        "detail": "not executed (local-only mode)"
+      }
+    ],
+    "next": [
+      "verify_render.py --run-dir <run-dir> --json  (or re-render the bundle)"
+    ],
+    "capturedAt": "2026-11-16T01:04:47+0800",
+    "rc": 0
+  },
+  "note": "dry-run: no daemon start, no up, no workflow validate/instantiate, no ps",
+  "rc": 0,
+  "capturedAt": "2026-11-16T01:04:47+0800"
+}
+rc=0

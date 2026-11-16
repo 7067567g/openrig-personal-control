@@ -1,0 +1,84 @@
+{
+  "package": "workflow-group-personal-use",
+  "generatedAt": "2026-11-16T02:53:44Z",
+  "generatedBy": "stage_packages (workflow run openrig-personal-publish-20261116)",
+  "fileCount": 553,
+  "bytes": 4173254,
+  "largest": [
+    {
+      "path": "runs/openrig-p1-hard-constraints-20261116/reports/evidence/00-baseline.json",
+      "bytes": 179221
+    },
+    {
+      "path": "runs/openrig-p1-hard-constraints-20261116/reports/evidence/00-baseline.txt",
+      "bytes": 165526
+    },
+    {
+      "path": "runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.json",
+      "bytes": 164459
+    },
+    {
+      "path": "runs/openrig-p0-hard-constraints-20261116/reports/evidence/closeout/00-baseline.post-b.json",
+      "bytes": 164249
+    },
+    {
+      "path": "runs/openrig-p0-hard-constraints-20261116/reports/evidence/qa/pre-qa-00-baseline.json",
+      "bytes": 164249
+    },
+    {
+      "path": "runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.txt",
+      "bytes": 151660
+    },
+    {
+      "path": "runs/openrig-p0-hard-constraints-20261116/reports/evidence/closeout/00-baseline.post-b.txt",
+      "bytes": 151478
+    },
+    {
+      "path": "runs/openrig-p0-hard-constraints-20261116/reports/evidence/qa/pre-qa-00-baseline.txt",
+      "bytes": 151478
+    },
+    {
+      "path": "workflow-tags.json",
+      "bytes": 151290
+    },
+    {
+      "path": "scripts/wf.py",
+      "bytes": 116231
+    }
+  ],
+  "sha256Manifest": "SHA256SUMS",
+  "sha256ManifestLines": 553,
+  "exclusions": [
+    ".venv/",
+    ".r7-work/",
+    ".pytest_cache/",
+    "__pycache__/",
+    ".omo/",
+    "drafts/",
+    "delegations/",
+    "reports/",
+    "tools/",
+    "60 older runs",
+    "runs/**/evidence/openrig-transcripts/**",
+    "runs/**/openrig/**",
+    "runs/**/.locks/**",
+    "burner/*.out",
+    "burner/*.pid",
+    "burner/state.json",
+    "burner/*.log",
+    "*.sqlite*",
+    "*.db",
+    "*.log",
+    "*.tmp",
+    ".DS_Store"
+  ],
+  "knownGaps": [
+    "Exported subtree without independent git history.",
+    "60 older runs live only in the evidence asset.",
+    ".run-meta.json present for 2 of 3 shipped runs.",
+    "WORKFLOW-TAGS.md canonical count reduced to 3 to match the shipped run set; see CLEANING-REPORT §7.1."
+  ],
+  "notes": [
+    "SHA256SUMS and PACKAGE-MANIFEST.json are not listed within themselves; every other file is covered."
+  ]
+}

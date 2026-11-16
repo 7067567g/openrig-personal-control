@@ -1,0 +1,40 @@
+# MAIN independent re-run 2026-11-16T00:48:29Z after impl_p2 handoff
+# HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac
+
+## pytest
+.........................................                                [100%]
+329 passed in 7.66s
+
+## doc_consistency
+doc_consistency: 0 error(s), 0 warning(s)
+rc=0
+
+## probe
+{"ok":true,"terminal":["close_round"],"problems":[]}
+rc=0
+
+## next
+["openrig-run check --run-dir runs/openrig-p2-closure-20261116","openrig-run start --run-dir runs/openrig-p2-closure-20261116 --dry-run","openrig-run start --run-dir runs/openrig-p2-closure-20261116","verify_render.py --run-dir runs/openrig-p2-closure-20261116 --strict","wf.py archive-gate openrig-p2-closure-20261116"]
+
+## close_lint (expected pre-close)
+ERROR [openrig-p2-closure-20261116] [final_missing] FINAL.md: strict 模式要求 FINAL.md 存在（reports/FINAL.md 或根 FINAL.md）
+ERROR [openrig-p2-closure-20261116] [closeout_missing] reports/evidence/closeout.json: strict 模式要求 closeout.json 存在
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=2 warnings=0 accepted_errors=0 unaccepted_errors=2 acceptances_loaded=0 used=0 unused=0
+RESULT FAIL
+
+## verify_render --strict (D-004 known WARN)
+{"ok":false,"mismatches":["rig.yaml","workflow.yaml","guidance/team.md","OPENRIG-BRIDGE.json"]}
+
+## files changed since plan (whitelist check)
+  workflow-group/scripts/wf_close_lint.py
+  workflow-group/scripts/workflow_invariants_probe.py
+  workflow-group/scripts/openrig_run.py
+  workflow-group/tests/test_workflow_invariants_probe.py
+  workflow-group/tests/test_wf_close_lint.py
+  workflow-group/tests/test_openrig_run.py
+  workflow-group/WORKFLOW-TAGS.md
+
+## product dirs
+  60-外部仓库/openrig files newer than 08:00: 0
+  openrig-upstream HEAD: cd1074651c8349f4e39b2705ef0d42116b83d78b
+  repo HEAD: 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac

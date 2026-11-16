@@ -1,0 +1,12 @@
+command=.venv/bin/python -m pytest tests/test_openrig_run.py -q
+label=packet-C targeted pytest
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:57:51+08:00
+finished_at=2026-11-16T00:57:52+08:00
+rc=0
+stdout_sha256=71797afb08cd62dfbefc56ad7a9745c9ca34640204b111cf263942e54f73d48a
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+.............                                                            [100%]
+13 passed in 0.83s
+--- stderr ---

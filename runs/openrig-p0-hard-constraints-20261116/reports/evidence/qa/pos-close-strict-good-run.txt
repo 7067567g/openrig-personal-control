@@ -1,0 +1,4 @@
+OK [good-run] no findings
+
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=0 warnings=0 accepted_errors=0 unaccepted_errors=0 acceptances_loaded=0 used=0 unused=0
+RESULT PASS

@@ -1,0 +1,14 @@
+cmd: OPENRIG_TEARDOWN_GUARD=fake FAKE_GUARD_MODE=complete wf.py archive-gate ... --json
+{
+  "ok": true,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "guard": "/tmp/opencode/qa-neg/fake-guard.py",
+  "guardRc": 0,
+  "gateRc": 0,
+  "archiveStatus": "COMPLETE",
+  "missing": [],
+  "missingRequired": [],
+  "error": null,
+  "manifestPath": null
+}
+rc=0

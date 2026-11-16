@@ -1,0 +1,67 @@
+# R04 close-lint strict on the live run (FINAL/closeout belong to close_round; expected ERROR now)
+{
+  "runs": [
+    {
+      "run_id": "openrig-p0-hard-constraints-20261116",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p0-hard-constraints-20261116",
+      "project_state": "pmo-plan",
+      "ok": false,
+      "errors": 2,
+      "warnings": 0,
+      "stats": {
+        "issue_rows": 0,
+        "active_open_rows": 0,
+        "open_s1_s2": 0,
+        "suspended_s1_s2": 0,
+        "resolved_s1_s2": 0,
+        "unaccepted_s1_s2": 0,
+        "status_files": 1,
+        "status_conflict_files": 0
+      },
+      "findings": [
+        {
+          "level": "ERROR",
+          "code": "final_missing",
+          "message": "strict 模式要求 FINAL.md 存在",
+          "file": "FINAL.md",
+          "line": null,
+          "issue_id": "strict:final_missing",
+          "accepted": false,
+          "accepted_by": null
+        },
+        {
+          "level": "ERROR",
+          "code": "closeout_missing",
+          "message": "strict 模式要求 closeout.json 存在",
+          "file": "reports/evidence/closeout.json",
+          "line": null,
+          "issue_id": "strict:closeout_missing",
+          "accepted": false,
+          "accepted_by": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "runs_scanned": 1,
+    "closed_runs": 0,
+    "closed_violation_runs": 0,
+    "errors": 2,
+    "accepted_errors": 0,
+    "unaccepted_errors": 2,
+    "acceptances_loaded": 0,
+    "acceptances_used": 0,
+    "acceptances_unused": 0,
+    "warnings": 0,
+    "issue_rows": 0,
+    "active_open_rows": 0,
+    "open_s1_s2": 0,
+    "suspended_s1_s2": 0,
+    "resolved_s1_s2": 0,
+    "unaccepted_s1_s2": 0,
+    "status_files": 1,
+    "status_conflict_files": 0
+  },
+  "result": "FAIL"
+}
+rc=1

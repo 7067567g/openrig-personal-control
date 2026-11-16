@@ -1,0 +1,15 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pA-neg2\nrm -rf "$T"; mkdir -p "$T/ws"\nprintf "# AGENTS\\n\\nadvisory 下也不得注入\\n" > "$T/ws/AGENTS.md"\nbefore=$(sha256sum "$T/ws/AGENTS.md" | cut -d" " -f1)\nset +e\n.venv/bin/python scripts/openrig_preflight.py --json --advisory --workspace "$T/ws" --run-id definitely-no-such-run-zz > "$T/out.json" 2>&1\nrc=$?\nset -e\necho "rc=$rc"\n.venv/bin/python - "$T/out.json" <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("ok=",d["ok"],"advisory=",d["advisory"],"injectedAgents=",d["injectedAgents"],"monitor=",d["monitor"])\nPY\nafter=$(sha256sum "$T/ws/AGENTS.md" | cut -d" " -f1)\necho "agents.sha256.before=$before"\necho "agents.sha256.after=$after"\n[ "$before" = "$after" ] && echo "agents-unchanged=yes" || echo "agents-unchanged=NO"\n'
+label=W2 neg: --advisory keeps rc0 but never fakes ok / never injects
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:45+08:00
+finished_at=2026-11-16T00:52:45+08:00
+rc=0
+stdout_sha256=6ed6e5b84096b3033f29f2dcec29a8432dfbca2f109450ccba8a35e9fcb47ade
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+rc=0
+ok= False advisory= True injectedAgents= None monitor= None
+agents.sha256.before=aaad0b47ad05a32923271414f6df5c62845d77d882457f437881d3cdc1e5139b
+agents.sha256.after=aaad0b47ad05a32923271414f6df5c62845d77d882457f437881d3cdc1e5139b
+agents-unchanged=yes
+--- stderr ---

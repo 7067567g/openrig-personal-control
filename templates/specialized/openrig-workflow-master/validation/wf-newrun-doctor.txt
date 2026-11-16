@@ -1,0 +1,5 @@
+== doctor: openrig-workflow-master-scratch-20261020 ==
+[WARN ] STATUS-Round-1.md: 还没有进度条目
+[OK   ] ISSUES 已登记（open S1/S2=0）
+[OK   ] DECISIONS 已记 3 条
+结果: PASS (errors=0, warns=1)

@@ -1,0 +1,7 @@
+对 SignalDeck 做全面扫描与优化，在 24 小时额度窗口内最大化转化为可验证成果。
+项目根 = /home/dev/Desktop/deepseek/deepseek-项目/10-signaldeck；项目仓 git root = /home/dev/Desktop/deepseek/deepseek-项目（不要碰其他兄弟项目）。
+写权限白名单 = 10-signaldeck/**（项目仓内相对路径）；KB 正式域与其他仓库只读。
+审计维度（R1 每维一片 WS）：1) 前端架构/TS 类型/状态管理；2) 前端 UI/UX/样式/可访问性；3) desktop host/server/handlers 与契约镜像链（唯一源→生成镜像→build:host）；4) tools 与插件契约（manifest/runner/ctx，capture_to_ppt/quick_tools/stdtrack/well_ab_review）；5) 测试与 22 步门禁、23 个 verification 脚本覆盖与对等性；6) 打包/交付/路径环境变量化/Windows-Linux 对等；7) 安全边界（Host/Origin/Token/127.0.0.1/文件访问）；8) 文档与 KB canonical 一致性（README/docs vs 代码 vs KB 文档）；9) 性能与资源（启动、包体、渲染、worker）；10) 物探工具正确性与边界用例。
+成功判据：每轮有报告与 ISSUES 台账；发现问题必须带可复现证据或复跑命令；修复批次每项过相关门禁（最低 cd src/frontend && npm run check 与 bash tests/run-linux.sh 全绿）；最终全量门禁 0 FAIL 并产出审计总结。
+反目标：不做无证据的大重构；不跨 WS 文件边界；不 git add -A / commit / push 项目仓（统一由主会话每轮提交）；不删除文件；不改白名单外任何内容。
+节奏：扫描波 → QA → PMO 收轮 → 决策 → 修复波 → 回归波 → 优化波 → 收口；并行 TDO 6-8，直到额度到期、目标达成或连续两轮零新发现。

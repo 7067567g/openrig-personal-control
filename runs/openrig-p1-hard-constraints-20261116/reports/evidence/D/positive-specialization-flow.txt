@@ -1,0 +1,43 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pD-run\nrm -rf "$T"; mkdir -p "$T"\ncp -a runs/openrig-p1-hard-constraints-20261116/openrig "$T/openrig"\nRID=openrig-p1-hard-constraints-20261116\nset +e\n.venv/bin/python scripts/verify_render.py --run-dir "$T" --json > /tmp/opencode/pD-1.json 2>&1; echo "no-spec.rc=$?"\nset -e\necho "--- register specialization for the two drifted files via wf.py render-specialize ---"\n.venv/bin/python - "$T" <<PY\nimport argparse, json, sys\nfrom pathlib import Path\nsys.path.insert(0, "scripts")\nimport wf\nrun = Path(sys.argv[1])\nwf.RUNS = Path("/tmp/opencode/pD-runs")\nwf.RUNS.mkdir(parents=True, exist_ok=True)\ntarget = wf.RUNS / "openrig-p1-hard-constraints-20261116"\nif target.exists():\n    import shutil; shutil.rmtree(target)\ntarget.symlink_to(run)\nfor rel, why in (("rig.yaml", "demo: run binds port 47978"), ("workflow.yaml", "demo: run id in workflow header")):\n    rc = wf.cmd_render_specialize(argparse.Namespace(run_id="openrig-p1-hard-constraints-20261116", path=rel, reason=why, json=True))\n    print("render-specialize", rel, "rc=", rc)\nPY\nset +e\n.venv/bin/python scripts/verify_render.py --run-dir "$T" --json > /tmp/opencode/pD-2.json 2>&1; echo "with-spec.rc=$?"\n.venv/bin/python scripts/verify_render.py --run-dir "$T" --json --strict > /tmp/opencode/pD-3.json 2>&1; echo "with-spec-strict.rc=$?"\nset -e\n.venv/bin/python - /tmp/opencode/pD-1.json /tmp/opencode/pD-2.json /tmp/opencode/pD-3.json <<PY\nimport json,sys\na=json.load(open(sys.argv[1])); b=json.load(open(sys.argv[2])); c=json.load(open(sys.argv[3]))\nprint("before: ok=",a["ok"],"mismatches=",[m["path"] for m in a["mismatches"]])\nprint("after : ok=",b["ok"],"specialized=",b["specialized"],"remaining=",[m["path"] for m in b["mismatches"]])\nprint("strict: ok=",c["ok"],"rc=",c["rc"])\nprint("applied=",[x["path"] for x in b["specializations"]["applied"]],"stale=",b["specializations"]["stale"])\nPY\necho "--- stale check: mutate a specialized file after recording ---"\nprintf "rig: mutated after recording\\n" > "$T/openrig/rig.yaml"\nset +e\n.venv/bin/python scripts/verify_render.py --run-dir "$T" --json --strict > /tmp/opencode/pD-4.json 2>&1; echo "stale-strict.rc=$?"\nset -e\n.venv/bin/python - /tmp/opencode/pD-4.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("stale: ok=",d["ok"],"mismatches=",[m["path"] for m in d["mismatches"]],"rejected=",d["specializations"]["stale"])\nPY\n'
+label=W5 pos: no spec -> mismatch; exact spec -> ok+specialized; --strict -> rc0 (temp copy of this run's bundle)
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:59:40+08:00
+finished_at=2026-11-16T00:59:40+08:00
+rc=0
+stdout_sha256=f2ce6089b8cdb07e3446d1fff7059b3822489b28727e7e220ab1d03a1c826509
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+no-spec.rc=0
+--- register specialization for the two drifted files via wf.py render-specialize ---
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "rig.yaml",
+  "bytes": 1222,
+  "sha256": "3bd9446421c8f8b374de72b0abdedb85f5f8d36f690f8e9ff14963693a825de3",
+  "reason": "demo: run binds port 47978",
+  "specPath": "/tmp/opencode/pD-run/openrig/render-specializations.json",
+  "entries": 1
+}
+render-specialize rig.yaml rc= 0
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "workflow.yaml",
+  "bytes": 3813,
+  "sha256": "1c458f6f0553d500f331a72fd23745da5c39a2ee9412d82de1acffde992579cb",
+  "reason": "demo: run id in workflow header",
+  "specPath": "/tmp/opencode/pD-run/openrig/render-specializations.json",
+  "entries": 2
+}
+render-specialize workflow.yaml rc= 0
+with-spec.rc=0
+with-spec-strict.rc=1
+before: ok= False mismatches= ['rig.yaml', 'workflow.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json']
+after : ok= False specialized= ['rig.yaml', 'workflow.yaml'] remaining= ['guidance/team.md', 'OPENRIG-BRIDGE.json']
+strict: ok= False rc= 1
+applied= ['rig.yaml', 'workflow.yaml'] stale= []
+--- stale check: mutate a specialized file after recording ---
+stale-strict.rc=1
+stale: ok= False mismatches= ['rig.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json'] rejected= [{'path': 'rig.yaml', 'reason': 'stale specialization (bytes differ)'}]
+--- stderr ---

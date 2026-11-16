@@ -1,0 +1,25 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pC-run\nLOG=/tmp/opencode/pC-calls.log\nrm -f "$LOG"\nexport FAKE_RIG_LOG="$LOG"\nset +e\n.venv/bin/python scripts/openrig_run.py start --run-dir "$T" --dry-run --json > /tmp/opencode/pC-dry.json 2>&1\necho "dryrun.rc=$?"\nset -e\necho "call-log.exists=$([ -e "$LOG" ] && echo yes || echo no)"\necho "call-count=$([ -e "$LOG" ] && wc -l < "$LOG" || echo 0)"\n.venv/bin/python - /tmp/opencode/pC-dry.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("ok=",d["ok"],"dryRun=",d["dryRun"],"executed=",d["executed"],"steps=",[p["step"] for p in d["plan"]])\nPY\necho "--- control: a real (non-dry) start DOES call the rig CLI (fake, isolated) ---"\nset +e\n.venv/bin/python scripts/openrig_run.py start --run-dir "$T" --json --timeout 5 > /tmp/opencode/pC-real.json 2>&1\necho "real.rc=$?"\nset -e\necho "call-count-after-real=$([ -e "$LOG" ] && wc -l < "$LOG" || echo 0)"\nhead -8 "$LOG" 2>/dev/null\n'
+label=R11 neg: start --dry-run must not invoke the rig CLI (fake rig call log)
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:57:23+08:00
+finished_at=2026-11-16T00:57:29+08:00
+rc=0
+stdout_sha256=cd6fb9e6751b1705647b4623c331501fcc204a5dc143fc87181d302229bf3f2b
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+dryrun.rc=0
+call-log.exists=no
+call-count=0
+ok= True dryRun= True executed= [] steps= ['daemon-start', 'up', 'wait-ready', 'workflow-validate', 'workflow-instantiate']
+--- control: a real (non-dry) start DOES call the rig CLI (fake, isolated) ---
+real.rc=1
+call-count-after-real=8
+workflow validate /tmp/opencode/pC-run/openrig/workflow.yaml --json
+ps --nodes --rig t-rig --json
+daemon start --no-kernel --port 1111
+up /tmp/opencode/pC-run/openrig/rig.yaml
+ps --nodes --rig t-rig --json
+ps --nodes --rig t-rig --json
+ps --nodes --rig t-rig --json
+ps --nodes --rig t-rig --json
+--- stderr ---

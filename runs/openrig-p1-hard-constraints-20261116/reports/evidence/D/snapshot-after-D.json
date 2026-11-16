@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "label": "after",
+  "capturedAt": "2026-11-16T00:59:59+08:00",
+  "roots": [
+    "scripts/verify_render.py",
+    "scripts/wf.py",
+    "scripts/wf_close_lint.py",
+    "tests/test_verify_render.py",
+    "tests/test_wf_close_lint.py",
+    "tests/test_wf_render_specialize.py"
+  ],
+  "files": [
+    {
+      "path": "scripts/verify_render.py",
+      "exists": true,
+      "bytes": 8933,
+      "sha256": "14e5dd034690b24a402409d9484744bbfe7d5bafcbe245dd3ea7ac68ad8048a4",
+      "mtime": "2026-11-16T00:58:56.494601+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:59:59+08:00"
+    },
+    {
+      "path": "scripts/wf.py",
+      "exists": true,
+      "bytes": 116231,
+      "sha256": "0e5130e88c8e09d6534b38b27cfcbe71919dceeeb93907a6a79ee10b820d611d",
+      "mtime": "2026-11-16T00:59:06.430603+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:59:59+08:00"
+    },
+    {
+      "path": "scripts/wf_close_lint.py",
+      "exists": true,
+      "bytes": 40003,
+      "sha256": "2e8d70dbe3aab42ef0e2af278a9bc7400faaffd4fbeae6514a22e97e47ff7bf7",
+      "mtime": "2026-11-16T00:58:38.301597+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:59:59+08:00"
+    },
+    {
+      "path": "tests/test_verify_render.py",
+      "exists": true,
+      "bytes": 2922,
+      "sha256": "fa9cddf89bc2ab99acfb713dd3d65444d8b6744acdca4b40e74516dcacc06822",
+      "mtime": "2026-11-16T00:30:51.195093+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:59:59+08:00"
+    },
+    {
+      "path": "tests/test_wf_close_lint.py",
+      "exists": true,
+      "bytes": 24163,
+      "sha256": "68da92912e2a7c5e035ad3e503fdfc17aea5e2e32e9c58785b0c1d572aa3bb61",
+      "mtime": "2026-11-16T00:59:23.219607+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:59:59+08:00"
+    },
+    {
+      "path": "tests/test_wf_render_specialize.py",
+      "exists": true,
+      "bytes": 8383,
+      "sha256": "199f42f6f1bb645a4b37d4f940e66f6208df3945c130a2d9561996ff87e3a6f9",
+      "mtime": "2026-11-16T00:59:15.136605+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:59:59+08:00"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "present": 6,
+    "missing": 0
+  }
+}

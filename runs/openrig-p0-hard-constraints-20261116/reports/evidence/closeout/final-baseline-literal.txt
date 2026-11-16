@@ -1,0 +1,11 @@
+command=bash -o pipefail -c .venv/bin/python\ scripts/wf.py\ baseline\ openrig-p0-hard-constraints-20261116\ --json
+label=final-baseline-literal
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:37:34+08:00
+finished_at=2026-11-16T00:37:34+08:00
+rc=1
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+stderr_sha256=6e8d872dccfa42023d656dd92df90ccaccc2c1726d3b96d8d03255717ebbb73e
+--- stdout ---
+--- stderr ---
+[ERROR] 缺 projectRoot：新 run 由 .run-meta.json 提供；已有 run 请加 --project-root PATH

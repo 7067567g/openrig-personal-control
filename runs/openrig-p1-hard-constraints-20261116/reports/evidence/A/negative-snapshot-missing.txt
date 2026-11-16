@@ -1,0 +1,17 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pA-snap2\nrm -rf "$T"; mkdir -p "$T"\nset +e\n.venv/bin/python scripts/snapshot_files.py --out "$T/miss.json" --label before --path "$T/nope.txt"\necho "missing.rc=$?"\n.venv/bin/python - "$T/miss.json" <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("entry=",d["files"][0])\nprint("summary=",d["summary"])\nPY\n.venv/bin/python scripts/snapshot_files.py --out "$T/x.json" --label middle --path "$T" 2> "$T/badlabel.err"\necho "badlabel.rc=$?"\ntail -2 "$T/badlabel.err"\nset -e\n'
+label=W4 neg: missing path -> exists:false rc0; bad label -> rc2
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:53+08:00
+finished_at=2026-11-16T00:52:53+08:00
+rc=0
+stdout_sha256=d1d729b771de39d280b62220c90f854aa0cf70bc229df7d744da50ea00c44dbc
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+[OK] snapshot(before) -> /tmp/opencode/pA-snap2/miss.json total=1 present=0 missing=1
+missing.rc=0
+entry= {'path': '/tmp/opencode/pA-snap2/nope.txt', 'exists': False, 'bytes': None, 'sha256': None, 'mtime': None, 'label': 'before', 'capturedAt': '2026-11-16T00:52:53+08:00'}
+summary= {'total': 1, 'present': 0, 'missing': 1}
+badlabel.rc=2
+                         [--json]
+snapshot_files.py: error: argument --label: invalid choice: 'middle' (choose from before, after)
+--- stderr ---

@@ -1,0 +1,33 @@
+# QA scope diff — files changed after the refreshed baseline (2026-11-16 00:52:08 +0800)
+# allowed: TASK §0 whitelist + this run reports/**
+# command: find . -path ./.git -prune -o -newermt '2026-11-16 00:52:08 +0800' -type f -print | grep -v <run reports|pytest_cache|pycache|venv>
+./.github/workflows/wf-validate.yml
+./workflow-group/runs/openrig-p1-hard-constraints-20261116/DECISIONS.md
+./workflow-group/scripts/audit_managed_blocks.py
+./workflow-group/scripts/openrig_run.py
+./workflow-group/scripts/verify_render.py
+./workflow-group/scripts/wf_close_lint.py
+./workflow-group/scripts/wf.py
+./workflow-group/templates/specialized/openrig-workflow-master/ENTRYPOINTS.md
+./workflow-group/tests/test_audit_managed_blocks.py
+./workflow-group/tests/test_openrig_run.py
+./workflow-group/tests/test_wf_close_lint.py
+./workflow-group/tests/test_wf_render_specialize.py
+./workflow-group/WORKFLOW-TAGS.md
+
+# outside-run-dir tracked/untracked entries added vs refreshed baseline (wf.py verify-baseline):
+#   .github/workflows/wf-validate.yml                        (allowed)
+#   workflow-group/scripts/audit_managed_blocks.py           (allowed)
+#   workflow-group/scripts/openrig_run.py                    (allowed)
+#   workflow-group/tests/test_audit_managed_blocks.py        (allowed)
+#   workflow-group/tests/test_openrig_run.py                 (allowed)
+#   workflow-group/tests/test_wf_render_specialize.py        (allowed)
+# no statusRemoved; no other run directory touched; no roles/README/templates edits.
+
+# note: verify-baseline returns ok:false by design — statusSha256/diffSha256 must differ because
+# the implementation changed tracked file wf.py and added wf-validate.yml. Scope is judged by the
+# added/removed path set + the mtime sweep above, not by aggregate hashes.
+
+# exception (control plane, not implementation): runs/<run-id>/DECISIONS.md was appended by MAIN
+# (D-004…D-007, mtime 01:02:02) — MAIN owns DECISIONS per roles/common-contract.md, out of TDO scope.
+# All other files touched after the refreshed baseline are inside the TASK §0 whitelist or this run's reports/.

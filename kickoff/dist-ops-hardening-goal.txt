@@ -1,0 +1,4 @@
+分发/同步/运维加固：① 镜像维护.sh 与 README §六 对齐并把 5.3G 镜像日志做保留+zstd 归档（可解回），补 classify 三态夹具单测；② 多仓健康+灾备：deepseek-workspace sync-all 升级为只读健康报告，新增 backup-all 用 git bundle 落归档（可 clone 复验），修正 remote 真值；③ 10-运行时 18 个 venv 反推 frozen 清单；R2 重建分发包（修复 v5 打包脚本、重打快照+manifest+sha256+LATEST、三向一致核查与篡改反例）。
+写权限/验收精确到 SPEC；不 push、不动归档既有内容、不改 venv；无版本控制目录的改动留 run 报告。
+成功判据：夹具 rc 可断言、日志可解、bundle 可 clone、18 份 frozen、packages 三向一致+反例 FAIL+记录快照 HEAD；reports/final.md。
+反目标：为绿而伪造校验、动数据本体、跳过反例。

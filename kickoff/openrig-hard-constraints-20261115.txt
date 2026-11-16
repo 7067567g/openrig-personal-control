@@ -1,0 +1,11 @@
+目标：分析是否应对 OpenRig 应用过程采取“复制模板 / 流程包装化 / 规定必要组件”等逻辑硬约束，以及还有哪些更合适的规范方式。只做分析，不改产品代码/模板正文。
+
+必须产出 reports/ANALYSIS-HARD-CONSTRAINTS.md：
+- 对候选机制逐一比较：复制模板、generator/renderer、流程包装器（CLI/wrapper）、required-components manifest、policy-as-code、contract tests、paved road、run lockfile、CI gate、运行期硬门；
+- 每个机制分析：约束强度、灵活性、漂移风险、维护成本、版本化、采用成本、失败模式、可回滚性；
+- 明确哪些应做硬约束、哪些只应做软引导、哪些应保持显式 exception；
+- 给出推荐组合与分层落点（repo / generator / CLI / daemon / workflow engine / CI / closeout），不要只给单一答案；
+- 结合上一轮 G-01..G-17 与 OPEN-QUESTIONS Q1-Q6；
+- 明确“不要做什么”和“过度硬约束的失败形态”。
+
+约束：只写本 run 的 reports/；产品仓/模板/既有 run 只读；不改代码/配置/DB；不设金额硬预算；不 commit/push。

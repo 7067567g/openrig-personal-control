@@ -1,0 +1,15 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pA-snap\nrm -rf "$T"; mkdir -p "$T/src"\nF="$T/src/untracked-note.txt"\nprintf "v1\\n" > "$F"\n.venv/bin/python scripts/snapshot_files.py --out "$T/before.json" --label before --path "$T/src"\nprintf "v2 changed\\n" > "$F"\n.venv/bin/python scripts/snapshot_files.py --out "$T/after.json" --label after --path "$T/src"\n.venv/bin/python - "$T/before.json" "$T/after.json" <<PY\nimport json,sys\nb=json.load(open(sys.argv[1])); a=json.load(open(sys.argv[2]))\neb=b["files"][0]; ea=a["files"][0]\nprint("before=",{k:eb[k] for k in ("path","exists","bytes","sha256","label")})\nprint("after =",{k:ea[k] for k in ("path","exists","bytes","sha256","label")})\nprint("sha-distinct=",eb["sha256"]!=ea["sha256"],"summary.before=",b["summary"],"summary.after=",a["summary"])\nPY\n'
+label=W4 pos: untracked file before/after recorded with distinct sha256
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:53+08:00
+finished_at=2026-11-16T00:52:53+08:00
+rc=0
+stdout_sha256=68b13dc09a6a9576ea489948fe80dd4e3c929b9e93ead52a032c3dc5c4dd22fb
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+[OK] snapshot(before) -> /tmp/opencode/pA-snap/before.json total=1 present=1 missing=0
+[OK] snapshot(after) -> /tmp/opencode/pA-snap/after.json total=1 present=1 missing=0
+before= {'path': '/tmp/opencode/pA-snap/src/untracked-note.txt', 'exists': True, 'bytes': 3, 'sha256': '2d27fbdf4e8ca207afbfa388ca9172fbcc6c70e534af2476b3b704f87debadcf', 'label': 'before'}
+after = {'path': '/tmp/opencode/pA-snap/src/untracked-note.txt', 'exists': True, 'bytes': 11, 'sha256': '2805e46840853f405e3939e6480760c67ca48716b700b9a6564ce11cd014b81a', 'label': 'after'}
+sha-distinct= True summary.before= {'total': 1, 'present': 1, 'missing': 0} summary.after= {'total': 1, 'present': 1, 'missing': 0}
+--- stderr ---

@@ -1,0 +1,29 @@
+== case 1: nonexistent run-id, --workspace, --run-dir
+rc=1
+agents_sha_before=0757e88c3c75540c367b1d31a6411dedf84275313a50a310c251f7007a7f815f
+agents_sha_after =0757e88c3c75540c367b1d31a6411dedf84275313a50a310c251f7007a7f815f
+agents_unchanged=yes
+target_exists=no
+systemctl_calls=0
+ok= False precheck= {'ok': False, 'failed': ['run_context', 'run_docs']} injected= None monitor= None
+skipped_workspace_check= True
+
+== case 2: valid run-id but --run-dir missing four docs (run_docs fail)
+rc=1
+agents_unchanged=yes
+target_exists=no
+systemctl_calls=0
+ok= False precheck= {'ok': False, 'failed': ['run_docs']} injected= None monitor= None
+failed_ids= ['run_docs', 'workspace_context']
+
+== case 3 (control): everything valid -> injection + monitor happen only now
+rc=0
+agents_changed=yes
+target_exists=yes
+systemctl_calls=1
+ok= True precheck= {'ok': True, 'failed': []}
+injected= {'ok': True, 'file': '/tmp/opencode/qa-p1/w2/ws/AGENTS.md', 'bytes': 980}
+monitor= {'active': 'openrig-p1-hard-constraints-20261116', 'serviceStartRc': 1, 'targetFile': '/tmp/opencode/qa-p1/w2/targets/target.json'}
+
+== repo-root AGENTS.md untouched by all three cases
+09748c2c23a393ff3d0f2a82d6d2c446385c700e2e13b3dd68c42e9b382d3c7a  /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/../AGENTS.md

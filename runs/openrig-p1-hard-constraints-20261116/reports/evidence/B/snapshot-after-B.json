@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "label": "after",
+  "capturedAt": "2026-11-16T00:55:27+08:00",
+  "roots": [
+    "WORKFLOW-TAGS.md",
+    "../.github/workflows/wf-validate.yml",
+    "scripts/audit_managed_blocks.py",
+    "tests/test_audit_managed_blocks.py",
+    "templates/specialized/openrig-workflow-master/ENTRYPOINTS.md",
+    "scripts/openrig_run.py",
+    "tests/test_openrig_run.py"
+  ],
+  "files": [
+    {
+      "path": "WORKFLOW-TAGS.md",
+      "exists": true,
+      "bytes": 68033,
+      "sha256": "c2f01cad147c5b17a0f6ebb09197d174959a99c5a36eaa71c3d44b0973b96569",
+      "mtime": "2026-11-16T00:55:07.913869+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    },
+    {
+      "path": "../.github/workflows/wf-validate.yml",
+      "exists": true,
+      "bytes": 1434,
+      "sha256": "641938168d496c3dba7e76151ed0207230519c13284df5021b775ea25acda273",
+      "mtime": "2026-11-16T00:54:08.874533+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    },
+    {
+      "path": "scripts/audit_managed_blocks.py",
+      "exists": true,
+      "bytes": 8605,
+      "sha256": "ccf1d3d1f78d0d7896c4794b1b3ae073dc6e66e0b86e87e1042ef1060d7220d0",
+      "mtime": "2026-11-16T00:54:52.197544+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    },
+    {
+      "path": "tests/test_audit_managed_blocks.py",
+      "exists": true,
+      "bytes": 5704,
+      "sha256": "b5fdd805ec8e67d4948adcc7a304970e4277e8a196efc89bc35dd65785361d19",
+      "mtime": "2026-11-16T00:54:46.006543+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    },
+    {
+      "path": "templates/specialized/openrig-workflow-master/ENTRYPOINTS.md",
+      "exists": true,
+      "bytes": 13184,
+      "sha256": "ffb387ba59fcc87a8bdc4a2afc197371bf67ff4e4458fc3764ab9cc72ff11343",
+      "mtime": "2026-11-15T19:43:33.091480+08:00",
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    },
+    {
+      "path": "scripts/openrig_run.py",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "mtime": null,
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    },
+    {
+      "path": "tests/test_openrig_run.py",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "mtime": null,
+      "label": "after",
+      "capturedAt": "2026-11-16T00:55:27+08:00"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "present": 5,
+    "missing": 2
+  }
+}

@@ -1,0 +1,1 @@
+对 `/mnt/c/Users/Administrator/Desktop/相册表盘/表盘编辑器` 中 0x903 分阶段验证包的全部未解析/半解析字节做专项假设检查。以 `未解析字节盘点.md` 为覆盖清单，两个 TDO 分支分别研究容器/头部/type2/type3/type4/type7/type8 与 type9 布局/样式/动作码/尾部字段；QA 独立复核并汇成 `分析输出/未解析字段假设/reports/UNPARSED-HYPOTHESES.md`。每个字段族都要给出偏移、长度、实例值、候选语义、证据、置信度、可证伪实验和风险；严禁修改 `.bin`、导入设备或把猜测写成已确认语义。

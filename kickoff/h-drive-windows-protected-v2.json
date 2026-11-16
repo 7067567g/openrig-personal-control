@@ -1,0 +1,40 @@
+{
+  "status": "confirmed-2026-10-18-v2",
+  "policy": "Only confirmed software workspaces/active work areas stay at H:\\ top level. Root Excel/PPT stay in place. Tutorials, installers, licenses, work results/data, old backups, media, downloads and pending-delete candidates are organized into root-level category folders. No delete/copy/exec; only mkdir and move; delete candidates move to 07_待确认.",
+  "protected_toplevel": [
+    "$RECYCLE.BIN",
+    "System Volume Information",
+    "JASON",
+    "250623_petrel",
+    "Lu203_new",
+    "HGD-2024",
+    "梁平北SMI工区-简",
+    "CN",
+    "daily_path_cn",
+    "OneDrive",
+    "OneDriveTemp",
+    "FileHistory",
+    "SteamLibrary",
+    "wps"
+  ],
+  "protected_root_extensions": [
+    ".xlsx",
+    ".xls",
+    ".xlsm",
+    ".xlsb",
+    ".pptx",
+    ".ppt",
+    ".ppsx",
+    ".pps"
+  ],
+  "protected_root_files": [
+    "MediaID.bin"
+  ],
+  "notes": [
+    "Jason96, Petrel installation/license folders and all tutorials are intentionally NOT protected; they will be moved and renamed under root 02_专业软件.",
+    "license.lic will be moved to 02_专业软件\\许可文件.",
+    "Y202 data folders and dq_liefengti data are not software workspaces; they go under 01_工作资料\\专业数据.",
+    "Category folders themselves are not protected; the gate supports root-level destinations with -AllowRootStorage.",
+    "No delete/purge: delete candidates go to H:\\07_待确认."
+  ]
+}

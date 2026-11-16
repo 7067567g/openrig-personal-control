@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "runId": "openrig-p2-closure-20261116",
+  "closedAt": "2026-11-16T08:59:03+08:00",
+  "entries": [
+    {
+      "path": "DECISIONS.md",
+      "bytes": 12716,
+      "sha256": "e08f42063aad0216c2b12c330f6e258e6a1813fdf08c736676e31858764bcaf4",
+      "command": "MAIN: decision ledger D-001..D-013 (D-011 corrected)",
+      "rc": 0,
+      "revision": 3,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:58:03+08:00",
+      "replacesSha256": "2f89c14f246e3f43c572b72ab0612011408601b22fbac31d177335fd80a433cb"
+    },
+    {
+      "path": "ISSUES.xlsx",
+      "bytes": 11879,
+      "sha256": "e82631248d6d3f8832d815d3a0fd0ca238bcc85e0006cc3af37e2001a4891fe4",
+      "command": "assurance-qa: 6 rows adjudicated per D-007..D-009",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:57:34+08:00"
+    },
+    {
+      "path": "PROJECT.md",
+      "bytes": 5733,
+      "sha256": "1b27eb9189c5931871d910bb2390f6887be8fcb51308578e1f7da61cda9f385b",
+      "command": "MAIN: plan §0-§5 + residual contract block §6; closed",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:57:34+08:00"
+    },
+    {
+      "path": "STATUS-Round-1.md",
+      "bytes": 6008,
+      "sha256": "976512b3e96f867ff0780dd84be991cba52e45407e21a8e14746ad3768ba1317",
+      "command": "round status ledger (TDO writer, QA qa-done, MAIN closed)",
+      "rc": 0,
+      "revision": 2,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:57:34+08:00",
+      "replacesSha256": "308bc2685f3470568360f8b59b47ce7f905e52fb077f91a00df2bc25a57f58be"
+    },
+    {
+      "path": "reports/00-plan.md",
+      "bytes": 11633,
+      "sha256": "e6f82c6ac88e1272a46e7eeb32e7c3f137145758b0bea76a05fc7f05a469b1eb",
+      "command": "MAIN plan: packet boundaries, tests, QA matrix",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:52+08:00"
+    },
+    {
+      "path": "reports/FINAL.md",
+      "bytes": 6667,
+      "sha256": "c0687397624562c3976fef244718c66246b7424bd6d4838aa649be3923b93e72",
+      "command": "MAIN close_round: author FINAL.md (corrected D-011 attribution)",
+      "rc": 0,
+      "revision": 2,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:58:03+08:00",
+      "replacesSha256": "83e34bec40b76a3e541c56991e15d1b4dd01c1d9170fae44d1aa68bcaa1734ba"
+    },
+    {
+      "path": "reports/QA-VERDICT.md",
+      "bytes": 18521,
+      "sha256": "8fe61eaaa88516ca5edb0d837f4ae9d8a03727155065b5a71dcb5b5ee19194fe",
+      "command": "assurance-qa: independent verdict PASS-WITH-WARN",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:52+08:00"
+    },
+    {
+      "path": "reports/evidence/00-baseline.txt",
+      "bytes": 13665,
+      "sha256": "a856c614ee0f5f9b3cb4a85e4e9e78eb1cea1ee8d61adc17887cbb53dc459002",
+      "command": "baseline snapshot at run start",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:52+08:00"
+    },
+    {
+      "path": "reports/evidence/01-plan-probe.txt",
+      "bytes": 2750,
+      "sha256": "40bd2e67943f1082ca8474e696d15c4d344ce2430a1cab87df9a6ad07e1c43a5",
+      "command": "MAIN plan-time probe: pytest/doc_consistency/existence",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:52+08:00"
+    },
+    {
+      "path": "reports/evidence/02-main-rerun.txt",
+      "bytes": 1915,
+      "sha256": "63aa5ad15e4d492412700f66eab9413af2f0fcec40c49d3f31f2a72a9ebbb7e1",
+      "command": "MAIN independent re-run after impl_p2 handoff",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:52+08:00"
+    },
+    {
+      "path": "reports/evidence/03-impl-acceptance.txt",
+      "bytes": 4458,
+      "sha256": "546e2df99752b16df0aa873bf5ff1489da9bdd949cf72943a70eb6c4b4c5c938",
+      "command": "tdo-oc impl acceptance (TASK §5)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:52+08:00"
+    },
+    {
+      "path": "reports/evidence/04-qa-rerun.txt",
+      "bytes": 2246,
+      "sha256": "8a41132b063f14baa8335c2ac6683e3faa2f362d8fa39ca71e8f3701d2990a87",
+      "command": "qa independent rerun Q1/Q2/Q3/Q5/Q9",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:53+08:00"
+    },
+    {
+      "path": "reports/evidence/05-qa-negatives.txt",
+      "bytes": 3805,
+      "sha256": "32e720c494acc435eb562e3658b24d05d572094c4177d5ac542aef765a371d37",
+      "command": "qa independent negatives + scope + product",
+      "rc": 0,
+      "revision": 1,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:53:53+08:00"
+    },
+    {
+      "path": "reports/evidence/06-close-acceptance.txt",
+      "bytes": 2602,
+      "sha256": "2ff49583f6252a8edf43bf705e728652d819c476e156434c11de1ba27b83b466",
+      "command": "MAIN close acceptance + QA digest supersession confirmed",
+      "rc": 0,
+      "revision": 3,
+      "reason": "initial closeout",
+      "recordedAt": "2026-11-16T08:59:03+08:00",
+      "replacesSha256": "9f3995a0f88262a532b85e58f88d884c50a1606d327ef99b39d63b37dc015fe5"
+    }
+  ]
+}

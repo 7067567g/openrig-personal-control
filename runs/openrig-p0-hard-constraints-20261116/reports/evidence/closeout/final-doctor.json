@@ -1,0 +1,24 @@
+command=bash -o pipefail -c .venv/bin/python\ scripts/wf.py\ doctor\ openrig-p0-hard-constraints-20261116\ --json
+label=final-doctor
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:37:41+08:00
+finished_at=2026-11-16T00:37:41+08:00
+rc=0
+stdout_sha256=68a11df420997d4b90d31841fefeec57fa874eb4f5f739338e6776f6f2590e2f
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+{
+  "run": "openrig-p0-hard-constraints-20261116",
+  "errors": [],
+  "warns": [
+    "STATUS-Round-1.md: 还没有进度条目"
+  ],
+  "ok": [
+    "required-components: 13 个组件满足 required",
+    "STATUS-Round-1.md: WS/交接绑定检查通过",
+    "STATUS shards 已合并/无待合并",
+    "ISSUES 已登记（open S1/S2=0）",
+    "DECISIONS 已记 5 条"
+  ]
+}
+--- stderr ---

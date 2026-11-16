@@ -1,0 +1,13 @@
+# Packet A changed files (path | action | before_sha256 | after_sha256)
+# Before-state policy per MAIN ruling 2026-11-16: a before hash that was never captured is recorded
+# as "n/a (pre-existing untracked, no snapshot)" — the P0 precedent, see
+# runs/openrig-p0-hard-constraints-20261116/reports/evidence/impl_close_archive_render/changed-files.txt line 3.
+# No before hash is reconstructed or inferred anywhere in this packet.
+scripts/openrig_preflight.py | modify (W2: side-effect-free pre-check ordering) | n/a (pre-existing untracked, no snapshot) | c9755deda5c48a3ebd19505d20adf99160d697b7e91570af6141bffe78a0efcf
+scripts/wf.py | modify (W3: meta-set + baseline repair paths) | n/a (pre-existing dirty tracked file, no A-start snapshot) | ac349a02dae761158c9c1eb9f60facde3786e9f7e547cffc7b830371bff32c83
+scripts/snapshot_files.py | create (W4) | - | bc99cbc6f353ff45bea73e7881ac811858299a234d8325bd220a74088825fce4
+tests/test_openrig_preflight.py | modify (W2: no-side-effect negative cases) | n/a (pre-existing untracked, no snapshot) | 318853ab814c6abbca2de45ad9692b814319c1de0a94479adb3c34f4f75b2233
+tests/test_wf_baseline.py | modify (W3: meta-set -> baseline flow) | n/a (pre-existing untracked, no snapshot) | ced2aa70f7232e41e73a84148ae912aab414cde2a3bb7b58702cff5fa024e872
+tests/test_snapshot_files.py | create (W4) | - | 0d5b875cac4a5de42da6ea34e344747795529e0ebf67c47985e407b601f73b1c
+# Scope is proven by: (a) path-set-diff.txt (baseline path sets only — no line diff), (b) scope.txt
+# (mtime sweep vs whitelist), (c) targeted-pytest.txt / full-pytest.txt. See ADDENDUM-main-ruling.md.

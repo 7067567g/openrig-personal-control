@@ -1,0 +1,18 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pA-pos\nrm -rf "$T"; mkdir -p "$T/ws"\nset +e\n.venv/bin/python scripts/openrig_preflight.py --json --no-monitor --workspace "$T/ws" --run-id openrig-p1-hard-constraints-20261116 > "$T/out.json" 2>&1\nrc=$?\nset -e\necho "rc=$rc"\n.venv/bin/python - "$T/out.json" <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("ok=",d["ok"],"precheck=",d["precheck"])\nprint("checks=",[(c["id"],c["ok"]) for c in d["checks"]])\nprint("injectedAgents=",{k:d["injectedAgents"][k] for k in ("ok","file","bytes")} if d["injectedAgents"] else None)\nprint("monitor=",d["monitor"])\nPY\necho "--- injected block head ---"\ngrep -c "OPENRIG-PREFLIGHT" "$T/ws/AGENTS.md"\ngrep -o "openrig-p1-hard-constraints-20261116" "$T/ws/AGENTS.md" | head -1\n'
+label=W2 pos: valid run -> precheck ok -> inject then workspace check
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:45+08:00
+finished_at=2026-11-16T00:52:45+08:00
+rc=0
+stdout_sha256=29cbbb4b5ad5e0f5d25391f66c440b782653f7d9cc79632b3e4da29e37146862
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+rc=0
+ok= True precheck= {'ok': True, 'failed': []}
+checks= [('preflight_file', True), ('required_components', True), ('run_context', True), ('run_docs', True), ('workspace_context', True)]
+injectedAgents= {'ok': True, 'file': '/tmp/opencode/pA-pos/ws/AGENTS.md', 'bytes': 939}
+monitor= {'ok': False, 'skipped': 'no-monitor'}
+--- injected block head ---
+2
+openrig-p1-hard-constraints-20261116
+--- stderr ---

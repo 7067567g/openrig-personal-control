@@ -1,0 +1,22 @@
+cmd: verify_render.py --run-dir <tmp clean> --json
+{
+  "ok": true,
+  "runId": "run",
+  "runDir": "/tmp/opencode/qa-render-clean/run",
+  "manifestPath": "/tmp/opencode/qa-render-clean/run/openrig/render-manifest.json",
+  "checked": [
+    {
+      "path": "a.txt",
+      "expectedBytes": 13,
+      "expectedSha256": "b5930139c24a5faad2ac89046027dd5b92f950b5c9ed7e757f5f73359217af66",
+      "ok": true,
+      "actualBytes": 13,
+      "actualSha256": "b5930139c24a5faad2ac89046027dd5b92f950b5c9ed7e757f5f73359217af66"
+    }
+  ],
+  "mismatches": [],
+  "error": null,
+  "rc": 0,
+  "strict": false
+}
+rc=0

@@ -1,0 +1,27 @@
+=== ready (default, live fake rig)
+rc=0
+ok= True rc= 0 [('bridge', 'ok'), ('render', 'warn'), ('doctor', 'ok'), ('workflow_validate', 'ok'), ('seats', 'ok')]
+=== incomplete seats
+rc=1
+ok= False rc= 1 [('bridge', 'ok'), ('render', 'warn'), ('doctor', 'ok'), ('workflow_validate', 'ok'), ('seats', 'fail')]
+=== missing seat
+rc=1
+ok= False rc= 1 [('bridge', 'ok'), ('render', 'warn'), ('doctor', 'ok'), ('workflow_validate', 'ok'), ('seats', 'fail')]
+=== daemon-down, no allow
+rc=1
+ok= False rc= 1 [('bridge', 'ok'), ('render', 'warn'), ('doctor', 'ok'), ('workflow_validate', 'ok'), ('seats', 'fail')]
+=== daemon-down, --allow-daemon-down
+rc=0
+ok= True rc= 0 [('bridge', 'ok'), ('render', 'warn'), ('doctor', 'ok'), ('workflow_validate', 'ok'), ('seats', 'warn')]
+=== bridge missing rc=2
+=== bridge invalid JSON rc=2
+=== strict-render on drifted bundle
+rc=1
+ok= False rc= 1 [('bridge', 'ok'), ('render', 'fail'), ('doctor', 'fail'), ('workflow_validate', 'ok'), ('seats', 'ok')]
+=== same drifted bundle without --strict-render
+rc=1
+ok= False rc= 1 [('bridge', 'ok'), ('render', 'warn'), ('doctor', 'fail'), ('workflow_validate', 'ok'), ('seats', 'ok')]
+=== start --dry-run
+rc=0
+ok= True rc= 0 []
+dry-run fake-rig invocations: 0

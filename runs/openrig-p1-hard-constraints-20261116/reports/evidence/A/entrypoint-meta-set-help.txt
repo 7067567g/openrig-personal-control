@@ -1,0 +1,22 @@
+command=.venv/bin/python scripts/wf.py meta-set --help
+label=wf.py meta-set CLI surface
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:53:20+08:00
+finished_at=2026-11-16T00:53:20+08:00
+rc=0
+stdout_sha256=539bb1665b97975cc8dbc4b1a189adae1ce1d039b7a9080713806fabf4846781
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+usage: wf.py meta-set [-h] --project-root PROJECT_ROOT [--scope SCOPE]
+                      [--json]
+                      run_id
+
+positional arguments:
+  run_id
+
+options:
+  -h, --help            show this help message and exit
+  --project-root PROJECT_ROOT
+  --scope SCOPE
+  --json
+--- stderr ---

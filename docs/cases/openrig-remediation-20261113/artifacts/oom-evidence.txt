@@ -1,0 +1,50 @@
+11月 13 15:20:20 a7067567g-OptiPlex-3080 kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=containerd.service,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@ubuntu.service,task=chrome,pid=7661,uid=1000
+11月 13 15:20:20 a7067567g-OptiPlex-3080 kernel: Out of memory: Killed process 7661 (chrome) total-vm:1519181536kB, anon-rss:240168kB, file-rss:8kB, shmem-rss:2880kB, UID:1000 pgtables:3264kB oom_score_adj:300
+11月 13 15:20:20 a7067567g-OptiPlex-3080 kernel: oom_reaper: reaped process 7661 (chrome), now anon-rss:0kB, file-rss:0kB, shmem-rss:2812kB
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[1]: user@1000.service: The kernel OOM killer killed some processes in this unit.
+11月 13 15:19:28 a7067567g-OptiPlex-3080 systemd[2523]: dsh-web.service: Control process exited, code=killed, status=15/TERM
+11月 13 15:19:31 a7067567g-OptiPlex-3080 systemd[2523]: org.gnome.Shell@ubuntu.service: The kernel OOM killer killed some processes in this unit.
+11月 13 15:19:45 a7067567g-OptiPlex-3080 systemd[2523]: org.gnome.Shell@ubuntu.service: Main process exited, code=killed, status=9/KILL
+11月 13 15:19:45 a7067567g-OptiPlex-3080 systemd[2523]: app-gnome-update\x2dnotifier-3793.scope: Consumed 2.089s CPU time over 3h 50min 46.806s wall clock time, 387.1M memory peak, 16K memory swap peak.
+11月 13 15:20:14 a7067567g-OptiPlex-3080 systemd[2523]: dsh-terminal-13200-f7a7f808cfe5.scope: Consumed 13.266s CPU time over 22min 31.197s wall clock time, 4.6G memory peak, 1.5M memory swap peak.
+11月 13 15:20:14 a7067567g-OptiPlex-3080 systemd[2523]: dsh-terminal-13200-3373c6b4d41a.scope: Consumed 926ms CPU time over 23min 14.444s wall clock time, 72.2M memory peak, 152K memory swap peak.
+11月 13 15:20:15 a7067567g-OptiPlex-3080 systemd[2523]: app-gnome-wechat-3843.scope: systemd-oomd killed 7 process(es) in this unit.
+11月 13 15:20:16 a7067567g-OptiPlex-3080 systemd[2523]: app-org.chromium.Chromium-5108.scope: systemd-oomd killed 1 process(es) in this unit.
+11月 13 15:20:16 a7067567g-OptiPlex-3080 systemd[2523]: app-org.chromium.Chromium-5108.scope: Failed with result 'oom-kill'.
+11月 13 15:20:16 a7067567g-OptiPlex-3080 systemd[2523]: app-org.chromium.Chromium-5108.scope: Consumed 10.404s CPU time over 3h 51min 10.525s wall clock time, 202M memory peak, 640K memory swap peak.
+11月 13 15:20:18 a7067567g-OptiPlex-3080 systemd[2523]: app-gnome-wechat-3843.scope: Failed with result 'oom-kill'.
+11月 13 15:20:18 a7067567g-OptiPlex-3080 systemd[2523]: app-gnome-wechat-3843.scope: Consumed 20.456s CPU time over 3h 51min 19.023s wall clock time, 953.4M memory peak, 120.5M memory swap peak.
+11月 13 15:20:18 a7067567g-OptiPlex-3080 systemd[2523]: app-com.google.Chrome-7549.scope: Consumed 1min 3.220s CPU time over 3h 48min 53.002s wall clock time, 320.7M memory peak, 61.4M memory swap peak.
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: org.gnome.Shell@ubuntu.service: Failed with result 'oom-kill'.
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: Stopping app-gnome-Clash\x20Verge-3814.scope - Application launched by gnome-session-service...
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: Stopping app-gnome-org.gnome.SettingsDaemon.DiskUtilityNotify-3829.scope - Application launched by gnome-session-service...
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: Stopped app-gnome-org.gnome.SettingsDaemon.DiskUtilityNotify-3829.scope - Application launched by gnome-session-service.
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: Stopped app-gnome-Clash\x20Verge-3814.scope - Application launched by gnome-session-service.
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: app-gnome-Clash\x20Verge-3814.scope: Consumed 1min 55.684s CPU time over 3h 51min 21.503s wall clock time, 190.7M memory peak, 49.7M memory swap peak.
+11月 13 15:20:20 a7067567g-OptiPlex-3080 systemd[2523]: session.slice: The kernel OOM killer killed some processes in this unit.
+11月 13 15:30:56 a7067567g-OptiPlex-3080 systemd[2523]: -.slice: The kernel OOM killer killed some processes in this unit.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 gnome-session-service[121290]: Could not create transient scope for PID 121520: GDBus.Error:org.freedesktop.DBus.Error.UnixProcessIdUnknown: Failed to set unit properties: No such process
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-Clash\x20Verge-121522.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-nvidia\x2dsettings\x2dautostart-121485.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-org.gnome.Evolution\x2dalarm\x2dnotify-121513.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-org.gnome.SettingsDaemon.DiskUtilityNotify-121528.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-remmina\x2dapplet-121549.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-snap\x2duserd\x2dautostart-121531.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-ubuntu\x2dadvantage\x2dnotification-121544.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-ubuntu\x2dreport\x2don\x2dupgrade-121536.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-update\x2dnotifier-121518.scope - Application launched by gnome-session-service.
+11月 13 15:31:03 a7067567g-OptiPlex-3080 systemd[2523]: Started app-gnome-wechat-121533.scope - Application launched by gnome-session-service.
+11月 13 15:31:07 a7067567g-OptiPlex-3080 systemd[2523]: Started app-org.chromium.Chromium-123629.scope.
+11月 13 15:33:42 a7067567g-OptiPlex-3080 systemd[2523]: Stopping dsh-terminal-13200-d968fd0f174b.scope - [systemd-run] /home/a7067567g/.local/node-v24.22.1-linux-x64/bin/node /home/a7067567g/.local/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-subprocess-local/lib/runner.js -- /bin/bash --noprofile --norc -i...
+11月 13 15:33:42 a7067567g-OptiPlex-3080 systemd[2523]: Stopped dsh-terminal-13200-d968fd0f174b.scope - [systemd-run] /home/a7067567g/.local/node-v24.22.1-linux-x64/bin/node /home/a7067567g/.local/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-subprocess-local/lib/runner.js -- /bin/bash --noprofile --norc -i.
+11月 13 15:33:42 a7067567g-OptiPlex-3080 systemd[2523]: dsh-terminal-13200-d968fd0f174b.scope: Consumed 5min 35.890s CPU time over 38min 10.086s wall clock time, 11.1G memory peak, 2.2G memory swap peak.
+11月 13 15:33:42 a7067567g-OptiPlex-3080 systemd[2523]: dsh-terminal-13200-ef226a279e1a.scope: Consumed 1.537s CPU time over 3h 38min 53.508s wall clock time, 102.7M memory peak, 8K memory swap peak.
+11月 13 15:38:44 a7067567g-OptiPlex-3080 systemd[2523]: Started memory-guard.service - Memory pressure guard (Chrome > ComfyUI > SD > chat/VM).
+11月 13 15:38:44 a7067567g-OptiPlex-3080 memory-guard[125791]: memory guard started (chrome=2500MB comfy=2000MB sd=1400MB chat=900MB recover=3500MB check=5s)
+11月 13 15:38:44 a7067567g-OptiPlex-3080 memory-guard[125794]: memory recovered: 11464MiB available
+11月 13 15:39:11 a7067567g-OptiPlex-3080 memory-guard[125895]: memory guard started (chrome=999999MB comfy=0MB sd=0MB chat=0MB recover=999999MB check=1s)
+11月 13 15:39:19 a7067567g-OptiPlex-3080 systemd[2523]: Stopping memory-guard.service - Memory pressure guard (Chrome > ComfyUI > SD > chat/VM)...
+11月 13 15:39:19 a7067567g-OptiPlex-3080 systemd[2523]: Stopped memory-guard.service - Memory pressure guard (Chrome > ComfyUI > SD > chat/VM).
+11月 13 15:39:19 a7067567g-OptiPlex-3080 systemd[2523]: Started memory-guard.service - Memory pressure guard (Chrome > ComfyUI > SD > chat/VM).
+11月 13 15:39:19 a7067567g-OptiPlex-3080 memory-guard[125970]: memory guard started (chrome=2500MB comfy=2000MB sd=1400MB chat=900MB recover=3500MB check=5s)
+11月 13 15:39:19 a7067567g-OptiPlex-3080 memory-guard[125979]: memory recovered: 11459MiB available

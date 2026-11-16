@@ -1,0 +1,172 @@
+cmd: openrig_preflight.py --json --workspace /tmp/opencode/qa-ws --run-id no-such-run-xyz (rc expected 1)
+{
+  "ok": false,
+  "advisory": false,
+  "checks": [
+    {
+      "id": "preflight_file",
+      "required": true,
+      "ok": true,
+      "detail": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/openrig-workflow-master/PREFLIGHT.md 存在"
+    },
+    {
+      "id": "required_components",
+      "required": true,
+      "ok": true,
+      "detail": "13 个组件全部满足 required"
+    },
+    {
+      "id": "workspace_context",
+      "required": true,
+      "ok": true,
+      "detail": "/tmp/opencode/qa-ws/AGENTS.md 已含 run-id no-such-run-xyz 的 managed block"
+    },
+    {
+      "id": "run_context",
+      "required": true,
+      "ok": false,
+      "detail": "runs/no-such-run-xyz 不存在"
+    },
+    {
+      "id": "run_docs",
+      "required": true,
+      "ok": false,
+      "detail": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/no-such-run-xyz 缺: PROJECT.md, DECISIONS.md, ISSUES.xlsx, STATUS-Round-*.md"
+    }
+  ],
+  "reasons": [
+    "run_context: runs/no-such-run-xyz 不存在",
+    "run_docs: /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/no-such-run-xyz 缺: PROJECT.md, DECISIONS.md, ISSUES.xlsx, STATUS-Round-*.md"
+  ],
+  "role": "openrig-agent-preflight",
+  "runId": "no-such-run-xyz",
+  "rig": "",
+  "seat": "",
+  "job": "",
+  "preflightPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/openrig-workflow-master/PREFLIGHT.md",
+  "workflowPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/WORKFLOW.md",
+  "rolesPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/roles",
+  "docsContract": [
+    "PROJECT.md",
+    "DECISIONS.md",
+    "STATUS-Round-n.md",
+    "ISSUES.xlsx"
+  ],
+  "templates": [
+    {
+      "name": "双平面母版",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/openrig-workflow-master",
+      "rel": "templates/specialized/openrig-workflow-master/",
+      "why": "workflow-group 控制面 + OpenRig 多 seat 执行",
+      "exists": true
+    },
+    {
+      "name": "单用户专项治理",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/yueyue-governance",
+      "rel": "templates/specialized/yueyue-governance/",
+      "why": "单 seat + 心跳 + staging/live 治理",
+      "exists": true
+    },
+    {
+      "name": "微信桥产品重设计",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/wechat-yueyue-redesign",
+      "rel": "templates/specialized/wechat-yueyue-redesign/",
+      "why": "单窗口产品形态/交互重设计",
+      "exists": true
+    },
+    {
+      "name": "fix-wave",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/baseline/fix-wave/BASELINE.md",
+      "rel": "templates/baseline/fix-wave/BASELINE.md",
+      "why": "缺陷票批量修复，先红后绿",
+      "exists": true
+    },
+    {
+      "name": "ops-hardening",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/baseline/ops-hardening/BASELINE.md",
+      "rel": "templates/baseline/ops-hardening/BASELINE.md",
+      "why": "分发/调度/入口可靠性加固",
+      "exists": true
+    },
+    {
+      "name": "refactor-decompose",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/baseline/refactor-decompose/BASELINE.md",
+      "rel": "templates/baseline/refactor-decompose/BASELINE.md",
+      "why": "先归属冻结，再行为不变重整",
+      "exists": true
+    },
+    {
+      "name": "product-redesign-live",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/baseline/product-redesign-live/BASELINE.md",
+      "rel": "templates/baseline/product-redesign-live/BASELINE.md",
+      "why": "反目标→设计→staging→live/回滚",
+      "exists": true
+    },
+    {
+      "name": "two-plane-orchestration",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/baseline/two-plane-orchestration/BASELINE.md",
+      "rel": "templates/baseline/two-plane-orchestration/BASELINE.md",
+      "why": "双权威、隔离 home/port、QA+join+有界回边",
+      "exists": true
+    },
+    {
+      "name": "原子契约",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/contracts",
+      "rel": "templates/contracts/",
+      "why": "strategy/research/diff/architecture/optimize/verify/audit",
+      "exists": true
+    }
+  ],
+  "injectedAgents": {
+    "ok": true,
+    "file": "/tmp/opencode/qa-ws/AGENTS.md",
+    "bytes": 936
+  },
+  "monitor": {
+    "ok": true,
+    "targetFile": "/home/a7067567g/下载/deepseek/月月bot/governance-20261110/dashboard/target.json",
+    "active": "no-such-run-xyz",
+    "target": {
+      "runId": "no-such-run-xyz",
+      "label": "no-such-run-xyz",
+      "rig": "",
+      "seat": "",
+      "job": "",
+      "govDir": "/tmp/opencode/qa-ws",
+      "runDir": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/no-such-run-xyz"
+    },
+    "monitorUrl": "http://127.0.0.1:3190",
+    "service": "yueyue-monitor.service",
+    "serviceStartRc": 0,
+    "serviceError": ""
+  },
+  "mandatory": [
+    "SPEC.md §0 must declare baseline + contracts",
+    "unique rig name / unique workflow id / isolated OPENRIG_HOME",
+    "one writer per write scope; no concurrent edits on same file",
+    "snapshot and rollback before changing live",
+    "do not modify OpenRig SQLite or queue tables directly",
+    "workflow progress only through rig workflow project",
+    "archive before rig down / daemon stop",
+    "write DONE/BLOCKED and stop watchdog when terminal"
+  ]
+}
+rc=1
+# demo: workspace file content after failed validation (run-id does not exist)
+# temp workspace
+
+<!-- BEGIN OPENRIG-PREFLIGHT (managed) -->
+## OpenRig preflight — AI 必须先读
+
+- 必读：`/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/openrig-workflow-master/PREFLIGHT.md`
+- 工作流规则：`/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/WORKFLOW.md` §1–§7；角色：`/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/roles/`
+- 选型：先查 `/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/baseline/REGISTRY.md` 和 `/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/contracts/README.md`；SPEC §0 必须声明 baseline/contracts。
+- 机器可读 preflight：`python3 /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/scripts/openrig_preflight.py --json --run-id no-such-run-xyz`
+- 硬规则：唯一 rig 名 / 一个写权限一个 owner / 先快照 / 不直改 OpenRig DB / 先归档后 teardown / DONE 后必须 stop watchdog。
+- 监控台：`http://127.0.0.1:3190`（新 run 自动注册 target；只读 sidecar，不写治理状态）。
+<!-- END OPENRIG-PREFLIGHT (managed) -->
+
+before:
+5299da20adeb2c5f135ce55c59a50e8520e20f9cbb954f02c0102d7997b5d5b7  /tmp/opencode/qa-ws/AGENTS.md
+after:
+1231a86c4b0a8b526b125d5faf28fbe59930bdc16125d33c8b29c718431e57b7  /tmp/opencode/qa-ws/AGENTS.md

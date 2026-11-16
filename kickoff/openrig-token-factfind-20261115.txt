@@ -1,0 +1,7 @@
+目标：R1.0 事实探查。回答两个决定 R1 路线的问题：① opencode `run --format json` 事件流是否携带 usage；② OpenRig 的 `sessions.resume_token` 作为 pull 路线 join key 是否稳定可用。附带确认 OpenCode 消息级 token/cost 字段、当前 rig usage/contextUsage 空面、DSH 事件流是否有 usage（若可探测）。
+
+约束：
+- 只写本 run 的 reports/；不改产品代码/配置/模板正文。
+- 可以创建一个一次性 opencode probe session；必须记录 session id、命令、时间、字节数，且不得复用/修改既有会话。
+- 不设金额硬预算。Q1–Q3 按用户预授权：允许边界 fresh session；软阈值+人工升级为主；post-close 并入同一 run 但单列；仍不设固定金额门。
+- 单 TDO、线性、无 fan-out。

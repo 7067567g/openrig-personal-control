@@ -1,0 +1,49 @@
+{
+  "run_id": "sctg-app-feel-auto-20261113",
+  "architecture": "sctg-dsh-single-seat",
+  "product_rounds_total": 30,
+  "product_rounds_passed": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15"
+  ],
+  "prep_rounds": [
+    "R05.5",
+    "R09.5",
+    "R15.5"
+  ],
+  "human_checkpoints": [
+    "R16",
+    "R25",
+    "R29",
+    "R30"
+  ],
+  "external_rounds": [
+    "R21",
+    "R22",
+    "R23",
+    "R28"
+  ],
+  "observed": {
+    "rounds_yaml_slots": 33,
+    "rounds_jsonl_pass": 15,
+    "r15_5_in_rounds_jsonl": false,
+    "blocked_history": "R15",
+    "done_invalid": true
+  },
+  "notes": [
+    "state was partially reconciled externally at 15:10; this is a snapshot, not a rewrite"
+  ]
+}

@@ -1,0 +1,104 @@
+=== verify_render default
+{
+  "ok": false,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "runDir": "runs/openrig-p1-hard-constraints-20261116",
+  "manifestPath": "runs/openrig-p1-hard-constraints-20261116/openrig/render-manifest.json",
+  "checked": [
+    {
+      "path": "rig.yaml",
+      "expectedBytes": 2078,
+      "expectedSha256": "19fd8fabd810b192b3e48e6af14e04b8be4cdae2dd8a0ae123442e80bd366e39",
+      "ok": false,
+      "actualBytes": 1222,
+      "actualSha256": "3bd9446421c8f8b374de72b0abdedb85f5f8d36f690f8e9ff14963693a825de3",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "workflow.yaml",
+      "expectedBytes": 4060,
+      "expectedSha256": "184741da5bc8e668e97651bc1c48eee0ca5cb512f765931810985052c8f57a5d",
+      "ok": false,
+      "actualBytes": 3813,
+      "actualSha256": "1c458f6f0553d500f331a72fd23745da5c39a2ee9412d82de1acffde992579cb",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "agents/worker/agent.yaml",
+      "expectedBytes": 222,
+      "expectedSha256": "aabb001f1ed6ce36eb15384d67d4de0127d8097e333876436ea40a0f314f977c",
+      "ok": true,
+      "actualBytes": 222,
+      "actualSha256": "aabb001f1ed6ce36eb15384d67d4de0127d8097e333876436ea40a0f314f977c"
+    },
+    {
+      "path": "guidance/team.md",
+      "expectedBytes": 662,
+      "expectedSha256": "192a36f6a80db8ea7d606640e0eacf13d0abd9483100cecc1c899e4de1673bd0",
+      "ok": false,
+      "actualBytes": 470,
+      "actualSha256": "d4d0551d83006327828a0a730c12834b12a08fa299736c594807f9aa76626339",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "OPENRIG-BRIDGE.json",
+      "expectedBytes": 1280,
+      "expectedSha256": "c06c28ee39c7923080e255a9e3a275a27e020908d2086f643419e86aff3548c5",
+      "ok": false,
+      "actualBytes": 1038,
+      "actualSha256": "7b1c523c5a6d0ddbe47faa46deb861b3505f0604ad513eb2af40c4d9a80d8bba",
+      "reason": "bytes mismatch"
+    }
+  ],
+  "mismatches": [
+    {
+      "path": "rig.yaml",
+      "expectedBytes": 2078,
+      "expectedSha256": "19fd8fabd810b192b3e48e6af14e04b8be4cdae2dd8a0ae123442e80bd366e39",
+      "ok": false,
+      "actualBytes": 1222,
+      "actualSha256": "3bd9446421c8f8b374de72b0abdedb85f5f8d36f690f8e9ff14963693a825de3",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "workflow.yaml",
+      "expectedBytes": 4060,
+      "expectedSha256": "184741da5bc8e668e97651bc1c48eee0ca5cb512f765931810985052c8f57a5d",
+      "ok": false,
+      "actualBytes": 3813,
+      "actualSha256": "1c458f6f0553d500f331a72fd23745da5c39a2ee9412d82de1acffde992579cb",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "guidance/team.md",
+      "expectedBytes": 662,
+      "expectedSha256": "192a36f6a80db8ea7d606640e0eacf13d0abd9483100cecc1c899e4de1673bd0",
+      "ok": false,
+      "actualBytes": 470,
+      "actualSha256": "d4d0551d83006327828a0a730c12834b12a08fa299736c594807f9aa76626339",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "OPENRIG-BRIDGE.json",
+      "expectedBytes": 1280,
+      "expectedSha256": "c06c28ee39c7923080e255a9e3a275a27e020908d2086f643419e86aff3548c5",
+      "ok": false,
+      "actualBytes": 1038,
+      "actualSha256": "7b1c523c5a6d0ddbe47faa46deb861b3505f0604ad513eb2af40c4d9a80d8bba",
+      "reason": "bytes mismatch"
+    }
+  ],
+  "specialized": [],
+  "specializations": {
+    "path": "runs/openrig-p1-hard-constraints-20261116/openrig/render-specializations.json",
+    "present": false,
+    "applied": [],
+    "stale": []
+  },
+  "error": null,
+  "rc": 0,
+  "strict": false
+}
+rc=0
+=== verify_render --strict
+rc=1

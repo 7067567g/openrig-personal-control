@@ -1,0 +1,1 @@
+对调整后的 OpenRig 自有副本做一次只读全量检查，检查内容由工作流自行安排。至少覆盖仓库完整性、全 workspace build、lint/typecheck、test:repo、daemon/cli/tui/ui 全量测试、新特性定向回归、隔离 5-seat 真实 E2E、OpenCode/DSH 任务与 envelope、同 runner 续会话、跨 rig 重启 resume、workflow/spec validate+instantiate、安全与卫生清理。默认不改源码；发现缺陷登记 ISSUE 并给出证据。最终输出 reports/FULL-CHECK.md 与完整证据，doctor PASS。

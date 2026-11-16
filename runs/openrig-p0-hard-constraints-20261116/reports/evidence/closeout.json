@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "closedAt": "2026-11-16T00:38:56+08:00",
+  "entries": [
+    {
+      "path": "FINAL.md",
+      "bytes": 7397,
+      "sha256": "fb25a2594520c4371bbf34c090735fdfbf6b380b08517649343dc73b6dedded1",
+      "command": "MAIN close_round: write FINAL",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final closeout",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/00-plan.md",
+      "bytes": 10057,
+      "sha256": "92ac714081864823a843c3c12f0aaff07497778d00e07a3528f53d98c79b3608",
+      "command": "MAIN plan: write execution plan",
+      "rc": 0,
+      "revision": 1,
+      "reason": "plan evidence",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/FINAL.md",
+      "bytes": 7397,
+      "sha256": "fb25a2594520c4371bbf34c090735fdfbf6b380b08517649343dc73b6dedded1",
+      "command": "MAIN close_round: write FINAL (identical copy)",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final closeout",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/QA-VERDICT.md",
+      "bytes": 10169,
+      "sha256": "17b81182abf4b5b66652bc2123492230915f00200a65d7a1d52ebcbda55d069f",
+      "command": "QA independent verification: PASS-WITH-WARN",
+      "rc": 0,
+      "revision": 1,
+      "reason": "QA verdict",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/00-baseline.post-b.json",
+      "bytes": 164249,
+      "sha256": "fffcb8be19989771ffecab697c80d96acd54f15eb6b10c8e0181aa69b6ae0445",
+      "command": "cp 00-baseline.json before close recapture",
+      "rc": 0,
+      "revision": 1,
+      "reason": "preserve post-B snapshot",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/00-baseline.post-b.txt",
+      "bytes": 151478,
+      "sha256": "58e6fa760e71e2815e386fda6460d3f7563780799b55ed8f2500fdafb4f4e029",
+      "command": "cp 00-baseline.txt before close recapture",
+      "rc": 0,
+      "revision": 1,
+      "reason": "preserve post-B snapshot",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-baseline-literal.txt",
+      "bytes": 583,
+      "sha256": "fb2482de51c45320570f122050602a6dde9d6023febc5295d69ee5ad8a2581e4",
+      "command": "wf.py baseline openrig-p0-hard-constraints-20261116 --json",
+      "rc": 1,
+      "revision": 1,
+      "reason": "final acceptance; literal command needs --project-root (W3)",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-baseline-recapture.txt",
+      "bytes": 1272,
+      "sha256": "2c697e6c71e7b89349913c5178390aa5816cd7d1479563ce2a62d5eac6f5889c",
+      "command": "wf.py baseline openrig-p0-hard-constraints-20261116 --project-root KB --json",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-doctor.json",
+      "bytes": 844,
+      "sha256": "9ccca1a86d4f0109ba6bdd177d3a7de481d0f4015c1510f85c05428c32435e38",
+      "command": "wf.py doctor openrig-p0-hard-constraints-20261116 --json",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-full-pytest.txt",
+      "bytes": 792,
+      "sha256": "13738c86c40347b57a4a01820bfe93d09c0a3dc31035dd02b1b188e78a059fdb",
+      "command": ".venv/bin/python -m pytest tests -q -p no:cacheprovider",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-preflight-advisory.txt",
+      "bytes": 5640,
+      "sha256": "a574d03b83da8eb21b189a5056bb4ee7554a30ae1ee1adeb5758771af28deb93",
+      "command": "openrig_preflight.py --json --advisory",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-preflight-positive.txt",
+      "bytes": 6374,
+      "sha256": "c5fe93c8250238674900bc42423945743c7999b6b891cbd41e111951ebf8f3cf",
+      "command": "openrig_preflight.py --json --run-id openrig-p0-hard-constraints-20261116 --workspace KB --run-dir runs/openrig-p0-hard-constraints-20261116",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-product-baseline.txt",
+      "bytes": 270,
+      "sha256": "1f6cd1cd22461fc02954f20db254fef61faffb035714ec32b4f916b82f66e20f",
+      "command": "product repo HEAD/status/diff sha256 capture",
+      "rc": 0,
+      "revision": 1,
+      "reason": "scope evidence",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-verify-baseline.txt",
+      "bytes": 15168,
+      "sha256": "9da86fab3c6dede790718f49126b2e4957a227fea3782fa681df10fe3c81a7d1",
+      "command": "wf.py verify-baseline openrig-p0-hard-constraints-20261116 --json",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-verify-render-default.txt",
+      "bytes": 3795,
+      "sha256": "c85fe4e1612b9a4d95671338eef532fcbdd3fb4e5f9e0b9af4d46df89134d65e",
+      "command": "verify_render.py --run-dir runs/openrig-p0-hard-constraints-20261116 --json",
+      "rc": 0,
+      "revision": 1,
+      "reason": "final acceptance; live drift WARN",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/closeout/final-verify-render-strict.txt",
+      "bytes": 3803,
+      "sha256": "8bf0b5956eb46715d7c400fa02ae32407b14867ca9ff96920673e0555602da61",
+      "command": "verify_render.py --run-dir runs/openrig-p0-hard-constraints-20261116 --strict --json",
+      "rc": 1,
+      "revision": 1,
+      "reason": "final acceptance; strict drift",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/impl_baseline_evidence/SUMMARY.md",
+      "bytes": 3695,
+      "sha256": "b981be362458fa3a8d61fa4cf7fcd17c43f5615113a095e7edb27f2fb8328bbf",
+      "command": "Packet B evidence summary",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet B evidence",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/impl_close_archive_render/SUMMARY.md",
+      "bytes": 3913,
+      "sha256": "4fb4d6666f24efbea29ebf8bdeeb85f9b17aec6cd20c09897aa5d57c2a93f5d5",
+      "command": "Packet C evidence summary",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet C evidence",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/impl_preflight_components/SUMMARY.md",
+      "bytes": 3164,
+      "sha256": "444556f1d7e5f051f77a38624c2a9789d912d5492dd7d3f75c298fcbaae57e9c",
+      "command": "Packet A evidence summary",
+      "rc": 0,
+      "revision": 1,
+      "reason": "packet A evidence",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/negative-cases.txt",
+      "bytes": 2683,
+      "sha256": "013acfc7172fee8411e1c4a96c0bd723d9729933b9fecd69f12b8416e21c9272",
+      "command": "QA 14 negative cases",
+      "rc": 0,
+      "revision": 1,
+      "reason": "QA negative coverage",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/product-baseline.txt",
+      "bytes": 526,
+      "sha256": "f0f880dbeb3ad87d2fd9d834752887ef6e925b9b091032e663e898de394cd555",
+      "command": "QA product baseline",
+      "rc": 0,
+      "revision": 1,
+      "reason": "scope evidence",
+      "recordedAt": "2026-11-16T00:38:56+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/scope-diff.txt",
+      "bytes": 688,
+      "sha256": "612a040c683349e020a0cc65c44cffe205322875f8b0ac288dfe0be40fef0b79",
+      "command": "QA scope diff vs startup",
+      "rc": 0,
+      "revision": 1,
+      "reason": "scope evidence",
+      "recordedAt": "2026-11-16T00:38:56+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/six-entrypoints.txt",
+      "bytes": 2366,
+      "sha256": "800cb2d442107aa1885539fa92b463b0f9463eed20f66ef5d96a9a0814f46cc2",
+      "command": "QA six entrypoints",
+      "rc": 0,
+      "revision": 1,
+      "reason": "QA acceptance",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    },
+    {
+      "path": "reports/evidence/qa/verify-baseline-final.txt",
+      "bytes": 15421,
+      "sha256": "709b09d9a650c28f5caf1909fe580d8f73fab5fe335ffc8458aabb71e7b0f980",
+      "command": "QA verify-baseline drift proof",
+      "rc": 0,
+      "revision": 1,
+      "reason": "drift proof rc1 statusAdded=4",
+      "recordedAt": "2026-11-16T00:38:55+08:00"
+    }
+  ]
+}

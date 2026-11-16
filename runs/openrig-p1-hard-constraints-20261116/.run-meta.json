@@ -1,0 +1,7 @@
+{
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "projectRoot": "/home/a7067567g/下载/deepseek/deepseek-知识库",
+  "scope": "workflow-group/scripts/**; workflow-group/tests/**; workflow-group/WORKFLOW-TAGS.md; workflow-group/templates/specialized/openrig-workflow-master/{README,ENTRYPOINTS,ARCHITECTURE}.md; .github/workflows/wf-validate.yml; workflow-group/runs/openrig-p1-hard-constraints-20261116/**",
+  "template": "templates/specialized/openrig-workflow-master",
+  "createdAt": "2026-11-16T00:47:32+08:00"
+}

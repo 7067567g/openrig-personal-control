@@ -1,0 +1,97 @@
+{
+  "main_model": {
+    "providerID": "deepseek",
+    "id": "deepseek-flash"
+  },
+  "opencode_agent": "minimal",
+  "balance_floor_cny": 1.0,
+  "send_timeout_sec": 7200,
+  "heartbeat_sec": 300,
+  "max_nudges": 6,
+  "packs": [
+    {
+      "run_id": "kb-debt-20261013",
+      "name": "P1 KB 欠账清理",
+      "kickoff": "kickoff/kb-debt-full-burn.md",
+      "spec": "templates/specialized/kb-debt-burn/SPEC.md"
+    },
+    {
+      "run_id": "kb-method-action-20261014",
+      "name": "P2 方法论实战验证 + 消费闭环",
+      "kickoff": "kickoff/kb-method-action-full-burn.md",
+      "spec": "templates/specialized/kb-method-action/SPEC.md"
+    },
+    {
+      "run_id": "signaldeck-runtime-20261014",
+      "name": "P3 SignalDeck 实跑验证",
+      "kickoff": "kickoff/signaldeck-runtime-verify.md",
+      "spec": "templates/specialized/signaldeck-runtime-verify/SPEC.md"
+    },
+    {
+      "run_id": "kb-claim-verify-20261014",
+      "name": "P4 KB 全库断言核验",
+      "kickoff": "kickoff/kb-claim-verify-full-burn.md",
+      "spec": "templates/specialized/kb-claim-verify/SPEC.md"
+    },
+    {
+      "run_id": "burn-postmortem-20261014",
+      "name": "P5 烧额度复盘与回写",
+      "kickoff": "kickoff/burn-postmortem.md",
+      "spec": "templates/specialized/burn-postmortem/SPEC.md"
+    },
+    {
+      "run_id": "nutstore-review-20261014",
+      "name": "P6 nutstore 插件全盘审查修订",
+      "kickoff": "kickoff/nutstore-sync-review.md",
+      "spec": "templates/specialized/nutstore-sync-review/SPEC.md"
+    },
+    {
+      "run_id": "kb-consume-20261014",
+      "name": "P7 KB 消费接口",
+      "kickoff": "kickoff/kb-consume-interface.md",
+      "spec": "templates/specialized/kb-consume-interface/SPEC.md"
+    },
+    {
+      "run_id": "kb-fix-20261014",
+      "name": "P8 KB 按票修订+断言门禁",
+      "kickoff": "kickoff/kb-fix-wave.md",
+      "spec": "templates/specialized/kb-fix-wave/SPEC.md"
+    },
+    {
+      "run_id": "project-freeze-20261014",
+      "name": "P9 项目仓冻结声明红+差量+契约",
+      "kickoff": "kickoff/project-freeze-facts.md",
+      "spec": "templates/specialized/project-freeze-facts/SPEC.md"
+    },
+    {
+      "run_id": "dist-ops-20261014",
+      "name": "P10 分发/同步/运维加固",
+      "kickoff": "kickoff/dist-ops-hardening.md",
+      "spec": "templates/specialized/dist-ops-hardening/SPEC.md"
+    },
+    {
+      "run_id": "geophysics-correctness-20261014",
+      "name": "P11 物探正确性回归与格式契约",
+      "kickoff": "kickoff/geophysics-correctness.md",
+      "spec": "templates/specialized/geophysics-correctness/SPEC.md"
+    },
+    {
+      "run_id": "wf-engine-tests-20261014",
+      "name": "P12 引擎测试+CI",
+      "kickoff": "kickoff/wf-engine-tests.md",
+      "spec": "templates/specialized/wf-engine-tests/SPEC.md"
+    },
+    {
+      "run_id": "ops-reliability-20261014",
+      "name": "P13 在跑自动化+入口健康",
+      "kickoff": "kickoff/ops-reliability.md",
+      "spec": "templates/specialized/ops-reliability/SPEC.md"
+    },
+    {
+      "run_id": "signaldeck-refactor-20261025",
+      "name": "P14 SignalDeck 完全体重构（R7–R11）",
+      "kickoff": "kickoff/signaldeck-refactor.md",
+      "spec": "templates/specialized/signaldeck-refactor/SPEC.md"
+    }
+  ]
+}

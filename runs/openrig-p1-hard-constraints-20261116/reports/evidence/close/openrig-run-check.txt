@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "check",
+  "runDir": "runs/openrig-p1-hard-constraints-20261116",
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "rigName": "openrig-p1-hard-constraints-20261116",
+  "workflowSpec": "runs/openrig-p1-hard-constraints-20261116/openrig/workflow.yaml",
+  "ok": true,
+  "checks": [
+    {
+      "id": "bridge",
+      "status": "ok",
+      "detail": "runId=openrig-p1-hard-constraints-20261116 rig=openrig-p1-hard-constraints-20261116 seats=3"
+    },
+    {
+      "id": "render",
+      "status": "warn",
+      "detail": "4 file(s) differ from render-manifest.json (WARN: pass --strict-render to block)",
+      "rc": 0,
+      "mismatches": [
+        "rig.yaml",
+        "workflow.yaml",
+        "guidance/team.md",
+        "OPENRIG-BRIDGE.json"
+      ]
+    },
+    {
+      "id": "doctor",
+      "status": "ok",
+      "detail": "PASS bridge runId=openrig-p1-hard-constraints-20261116 rig=openrig-p1-hard-constraints-20261116 workflow=openrig-workflow-p1-hard-constraints-20261116 schema=2",
+      "rc": 0,
+      "tool": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/templates/specialized/openrig-workflow-master/tools/openrig_bridge.py"
+    },
+    {
+      "id": "workflow_validate",
+      "status": "ok",
+      "detail": "spec=workflow.yaml rc=0",
+      "rc": 0
+    },
+    {
+      "id": "seats",
+      "status": "ok",
+      "detail": "3/3 seats ready",
+      "rc": 0
+    }
+  ],
+  "next": [
+    "verify_render.py --run-dir <run-dir> --json  (or re-render the bundle)"
+  ],
+  "capturedAt": "2026-11-16T01:05:56+0800",
+  "rc": 0
+}

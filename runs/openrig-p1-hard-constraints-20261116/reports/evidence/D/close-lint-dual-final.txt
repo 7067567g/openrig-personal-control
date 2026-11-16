@@ -1,0 +1,21 @@
+command=bash -o pipefail -c $'\nset -u\nR=/tmp/opencode/pD-runs-close\nrm -rf "$R"; mkdir -p "$R"\nmk() {\n  id=$1; rel=$2\n  mkdir -p "$R/$id/reports/evidence"\n  .venv/bin/python - "$R/$id" "$rel" <<PY\nimport hashlib, json, sys, datetime, shutil\nfrom pathlib import Path\nrd=Path(sys.argv[1]); rel=sys.argv[2]\n(rd/"PROJECT.md").write_text("# PROJECT\\n",encoding="utf-8")\n(rd/"DECISIONS.md").write_text("# DECISIONS\\n",encoding="utf-8")\n(rd/"STATUS-Round-1.md").write_text("# STATUS\\n",encoding="utf-8")\nshutil.copyfile("templates/ISSUES.xlsx", rd/"ISSUES.xlsx")\nentries=[]\nif rel and rel != "X":\n    p=rd/rel; p.parent.mkdir(parents=True,exist_ok=True)\n    if not p.exists(): p.write_text("final for %s\\n"%rd.name,encoding="utf-8")\n    raw=p.read_bytes()\n    entries.append({"path":rel,"bytes":len(raw),"sha256":hashlib.sha256(raw).hexdigest(),\n                    "command":"pytest -q","rc":0,"revision":1,"reason":"initial closeout"})\ndata={"schemaVersion":1,"runId":rd.name,\n      "closedAt":datetime.datetime.now().astimezone().isoformat(timespec="seconds"),\n      "entries":entries}\n(rd/"reports/evidence/closeout.json").write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")\nPY\n}\nmk reports-final reports/FINAL.md\nmk root-final FINAL.md\nmk no-final X\nmkdir -p "$R/both-final/reports" "$R/both-final/reports/evidence"\n.venv/bin/python - "$R/both-final" <<PY\nimport hashlib, json, sys, datetime, shutil\nfrom pathlib import Path\nrd=Path(sys.argv[1])\n(rd/"PROJECT.md").write_text("# PROJECT\\n",encoding="utf-8")\n(rd/"DECISIONS.md").write_text("# DECISIONS\\n",encoding="utf-8")\n(rd/"STATUS-Round-1.md").write_text("# STATUS\\n",encoding="utf-8")\nshutil.copyfile("templates/ISSUES.xlsx", rd/"ISSUES.xlsx")\n(rd/"reports/FINAL.md").write_text("authoritative\\n",encoding="utf-8")\n(rd/"FINAL.md").write_text("stale copy that must be ignored\\n",encoding="utf-8")\nraw=(rd/"reports/FINAL.md").read_bytes()\ndata={"schemaVersion":1,"runId":rd.name,"closedAt":datetime.datetime.now().astimezone().isoformat(timespec="seconds"),\n      "entries":[{"path":"reports/FINAL.md","bytes":len(raw),"sha256":hashlib.sha256(raw).hexdigest(),\n                  "command":"pytest -q","rc":0,"revision":1,"reason":"initial closeout"}]}\n(rd/"reports/evidence/closeout.json").write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding="utf-8")\nPY\nset +e\nfor id in reports-final root-final both-final no-final; do\n  .venv/bin/python scripts/wf_close_lint.py --run "$id" --runs-root "$R" --strict --json > /tmp/opencode/pD-close-$id.json 2>&1\n  echo "$id.rc=$?"\n  .venv/bin/python - /tmp/opencode/pD-close-$id.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nfindings=d["runs"][0]["findings"]\nprint("  errors=",[f["code"] for f in findings if f["level"]=="ERROR"])\nPY\ndone\nset -e\necho "--- live run (expected pre-close failure: no FINAL/closeout yet, plan §6.1) ---"\nset +e\n.venv/bin/python scripts/wf_close_lint.py --run openrig-p1-hard-constraints-20261116 --strict --json > /tmp/opencode/pD-close-live.json 2>&1\necho "live-strict.rc=$?"\nset -e\n.venv/bin/python - /tmp/opencode/pD-close-live.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("  live errors=",[f["code"] for f in d["runs"][0]["findings"] if f["level"]=="ERROR"])\nPY\n'
+label=R04b: reports/FINAL.md PASS, root FINAL.md PASS, both present prefers reports, both missing ERROR (temp runs-root, four-piece docs present)
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:59:54+08:00
+finished_at=2026-11-16T00:59:55+08:00
+rc=0
+stdout_sha256=13b40ccbc20fda0385236a856950982e447dc894b77a7b11ff0eeeda86646859
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+reports-final.rc=0
+  errors= []
+root-final.rc=0
+  errors= []
+both-final.rc=0
+  errors= []
+no-final.rc=1
+  errors= ['final_missing']
+--- live run (expected pre-close failure: no FINAL/closeout yet, plan §6.1) ---
+live-strict.rc=1
+  live errors= ['final_missing', 'closeout_missing']
+--- stderr ---

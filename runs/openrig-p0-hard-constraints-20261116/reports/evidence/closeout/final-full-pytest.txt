@@ -1,0 +1,15 @@
+command=bash -o pipefail -c .venv/bin/python\ -m\ pytest\ tests\ -q\ -p\ no:cacheprovider
+label=final-full-pytest
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:37:22+08:00
+finished_at=2026-11-16T00:37:28+08:00
+rc=0
+stdout_sha256=5528b8bbb642f2558ef76088de0cd217510b3cbdd3d5171dc35757f9c8d4e303
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+........................................................................ [ 27%]
+........................................................................ [ 55%]
+........................................................................ [ 83%]
+...........................................                              [100%]
+259 passed in 6.53s
+--- stderr ---

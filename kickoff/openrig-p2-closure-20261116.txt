@@ -1,0 +1,3 @@
+目标：P2 收尾闭合。R13 只读 workflow invariants probe（不改引擎）；R14 paved-road next；修 P1 的 F-3（closeout 必须覆盖实际 FINAL 路径）与 F-5（WORKFLOW-TAGS §1.1 旧计数）。只改 workflow-group scripts/tests/docs + 本 run reports；不改 OpenRig 产品代码。
+
+硬约束：不 commit/push；不设金额预算；全量 pytest 必须绿；每个新门有负向测试；QA 独立复跑；完成后归档并拆除执行面。

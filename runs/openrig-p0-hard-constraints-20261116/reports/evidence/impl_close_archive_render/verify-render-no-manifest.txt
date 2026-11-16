@@ -1,0 +1,13 @@
+# R07 negative: manifest missing
+{
+  "ok": false,
+  "runId": "run-no-manifest",
+  "runDir": "/tmp/opencode/p0c-demo/run-no-manifest",
+  "manifestPath": "/tmp/opencode/p0c-demo/run-no-manifest/openrig/render-manifest.json",
+  "checked": [],
+  "mismatches": [],
+  "error": "render-manifest.json missing",
+  "rc": 2,
+  "strict": false
+}
+rc=2

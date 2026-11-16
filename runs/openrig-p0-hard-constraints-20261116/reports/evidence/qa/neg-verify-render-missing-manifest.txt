@@ -1,0 +1,13 @@
+cmd: verify_render.py --run-dir <no manifest> --json
+{
+  "ok": false,
+  "runId": "run",
+  "runDir": "/tmp/opencode/qa-render/run",
+  "manifestPath": "/tmp/opencode/qa-render/run/openrig/render-manifest.json",
+  "checked": [],
+  "mismatches": [],
+  "error": "render-manifest.json missing",
+  "rc": 2,
+  "strict": false
+}
+rc=2

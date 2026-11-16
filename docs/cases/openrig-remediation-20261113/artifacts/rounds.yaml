@@ -1,0 +1,1006 @@
+schema: 2
+run_id: sctg-app-feel-auto-20261113
+architecture: sctg-dsh-single-seat
+product_rounds_total: 30
+product_rounds:
+- id: R01
+  title: 工程与流程基线
+  details: Program A 合同、基线快照与 SCTG 运行约束。
+  write_scope: &id001
+  - docs/APP-FEEL-PROGRAM-CONTRACT.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R01
+  max_attempts: 1
+  contract:
+    requires: []
+    produces: *id001
+    gate: python3 tools/sctg/check_round.py R01
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node tools/check-docs-consistency.mjs
+    artifacts:
+    - docs/APP-FEEL-PROGRAM-CONTRACT.md
+    evidence:
+    - reports/sctg/evidence/R01/
+- id: R02
+  title: 本地诊断与指标
+  details: 本地计时核心 + ?debug=1 可见诊断行。
+  write_scope: &id002
+  - sim/app.js
+  - sim/index.html
+  - sim/styles.css
+  - test/app-ui-fixes.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R02
+  max_attempts: 1
+  contract:
+    requires:
+    - R01
+    produces: *id002
+    gate: python3 tools/sctg/check_round.py R02
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - sim/app.js
+    - sim/index.html
+    evidence:
+    - reports/sctg/evidence/R02/
+- id: R03
+  title: 乐观发送
+  details: 点发送后立即出现用户气泡并标记“发送中”；网络返回后变“已发送”；失败显示“发送失败”并支持重试/删除；不能因 SSE 再插入同一条用户消息；保留草稿。必须加
+    R03 optimistic send 回归测试，并在 sim/app.js 中留下 optimistic 标记。
+  write_scope: &id003
+  - sim/app.js
+  - test/app-ui-fixes.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R03
+  max_attempts: 1
+  contract:
+    requires:
+    - R02
+    produces: *id003
+    gate: python3 tools/sctg/check_round.py R03
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - test/app-ui-fixes.test.mjs
+    evidence:
+    - reports/sctg/evidence/R03/
+- id: R04
+  title: 草稿与输入区
+  details: 输入框草稿保存到 localStorage（键名含 R04/draft），切会话或刷新后恢复；提交成功后清草稿，失败保留；输入自动增高；粘贴/拖拽文件入口；键盘弹起不遮输入。必须加
+    R04 draft 回归测试，并在 sim/app.js 留下 draft 标记。
+  write_scope: &id004
+  - sim/app.js
+  - sim/styles.css
+  - test/app-ui-fixes.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R04
+  max_attempts: 1
+  contract:
+    requires:
+    - R03
+    produces: *id004
+    gate: python3 tools/sctg/check_round.py R04
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - sim/styles.css
+    - test/app-ui-fixes.test.mjs
+    evidence:
+    - reports/sctg/evidence/R04/
+- id: R05
+  title: 命令即时反馈
+  details: 本地命令执行时显示“处理中”；回执到达后原位替换，不额外插一条；未知 /命令 先弹确认发送/取消，不静默当普通任务；指令面板筛选本地完成。必须加
+    R05 回归测试，覆盖“处理中”“未知命令”“确认”三个词。
+  write_scope: &id005
+  - sim/app.js
+  - sim/app-commands.js
+  - test/app-commands.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R05
+  max_attempts: 1
+  contract:
+    requires:
+    - R04
+    produces: *id005
+    gate: python3 tools/sctg/check_round.py R05
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-commands.test.mjs
+    - node --test test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - test/app-commands.test.mjs
+    evidence:
+    - reports/sctg/evidence/R05/
+- id: R06
+  title: 滚动稳定
+  details: 图片、Markdown 表格、代码块、任务条、typing 插入后不跳走；用户主动上翻后不被强拉；新消息显示最新按钮和计数。必须加 R06 回归测试，覆盖
+    ResizeObserver、scroll-latest、最新 三个词。
+  write_scope: &id006
+  - sim/app.js
+  - sim/styles.css
+  - test/app-ui-fixes.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R06
+  max_attempts: 1
+  contract:
+    requires:
+    - R05.5
+    produces: *id006
+    gate: python3 tools/sctg/check_round.py R06
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - sim/styles.css
+    - test/app-ui-fixes.test.mjs
+    evidence:
+    - reports/sctg/evidence/R06/
+- id: R07
+  title: 任务条与首轮可靠性
+  details: 运行/排队/失败/完成状态；耗时/进度；停止/重试入口。
+  write_scope: &id007
+  - sim/app.js
+  - test/app-ui-fixes.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R07
+  max_attempts: 1
+  contract:
+    requires:
+    - R06
+    produces: *id007
+    gate: python3 tools/sctg/check_round.py R07
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - test/app-ui-fixes.test.mjs
+    evidence:
+    - reports/sctg/evidence/R07/
+- id: R08
+  title: A 程序 QA 与 live
+  details: A 程序自动 QA：自动化回归、截图/录屏和 live/真机部分标 NEED_MAIN，不在自动轮里假装完成。必须产出 docs/APP-FEEL-QA-R08.md，包含
+    NEED_MAIN、live、真机、自动 四个词。
+  write_scope: &id008
+  - docs/APP-FEEL-QA-R08.md
+  - sim/app.js
+  - test/app-ui-fixes.test.mjs
+  - test/app-commands.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R08
+  max_attempts: 1
+  contract:
+    requires:
+    - R07
+    produces: *id008
+    gate: python3 tools/sctg/check_round.py R08
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - docs/APP-FEEL-QA-R08.md
+    - sim/app.js
+    evidence:
+    - reports/sctg/evidence/R08/
+- id: R09
+  title: 任务可靠性
+  details: 任务可靠性：运行/排队/失败/完成状态、耗时/进度、停止/重试入口；队列/取消/重试不重复发送。必须加 R09 回归测试。
+  write_scope: &id009
+  - sim/app.js
+  - test/app-ui-fixes.test.mjs
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R09
+  max_attempts: 1
+  contract:
+    requires:
+    - R08
+    produces: *id009
+    gate: python3 tools/sctg/check_round.py R09
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-ui-fixes.test.mjs test/background.test.mjs test/cancel-semantics.test.mjs
+    artifacts:
+    - sim/app.js
+    - test/app-ui-fixes.test.mjs
+    evidence:
+    - reports/sctg/evidence/R09/
+- id: R10
+  title: 断线恢复
+  details: SSE 重连、历史补齐、离线发送队列；网络恢复自动续传。 必须产出 reports/sctg/R10.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id010
+  - sim/app.js
+  - lib/local-io.mjs
+  - test/app-ui-fixes.test.mjs
+  - reports/sctg/R10.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R10
+  max_attempts: 1
+  contract:
+    requires:
+    - R09.5
+    produces: *id010
+    gate: python3 tools/sctg/check_round.py R10
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/local-io-app.test.mjs test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R10.md
+    evidence:
+    - reports/sctg/evidence/R10/
+- id: R11
+  title: AI 质量基线
+  details: 人格、记忆召回、模式边界、工具使用、失败回退固定评测。 必须产出 reports/sctg/R11.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id011
+  - docs/AI-EVAL.md
+  - test/app-runtime-memory.test.mjs
+  - reports/sctg/R11.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R11
+  max_attempts: 1
+  contract:
+    requires:
+    - R10
+    produces: *id011
+    gate: python3 tools/sctg/check_round.py R11
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-runtime-memory.test.mjs
+    artifacts:
+    - docs/AI-EVAL.md
+    - reports/sctg/R11.md
+    evidence:
+    - reports/sctg/evidence/R11/
+- id: R12
+  title: AI 质量修正
+  details: 按基线修提示词/记忆策略/回退；人设一致性与召回率达标。 必须产出 reports/sctg/R12.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id012
+  - docs/persona/CHAT-PERSONA.md
+  - lib/solo-memory.mjs
+  - test/app-runtime-memory.test.mjs
+  - reports/sctg/R12.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R12
+  max_attempts: 1
+  contract:
+    requires:
+    - R11
+    produces: *id012
+    gate: python3 tools/sctg/check_round.py R12
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-runtime-memory.test.mjs
+    artifacts:
+    - docs/AI-EVAL.md
+    - reports/sctg/R12.md
+    evidence:
+    - reports/sctg/evidence/R12/
+- id: R13
+  title: 会话便利
+  details: 会话搜索、未读、最近、置顶；切换失败可见。 必须产出 reports/sctg/R13.md；如需人工/真机/live 验收，报告写 NEED_MAIN。
+  write_scope: &id013
+  - sim/app.js
+  - lib/sessions.mjs
+  - test/app-ui-fixes.test.mjs
+  - reports/sctg/R13.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R13
+  max_attempts: 1
+  contract:
+    requires:
+    - R12
+    produces: *id013
+    gate: python3 tools/sctg/check_round.py R13
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/session-picker-page.test.mjs test/local-io-app.test.mjs
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R13.md
+    evidence:
+    - reports/sctg/evidence/R13/
+- id: R14
+  title: 消息搜索
+  details: 全文搜索、最近/回忆/找；结果/空态/错误态。 必须产出 reports/sctg/R14.md；如需人工/真机/live 验收，报告写 NEED_MAIN。
+  write_scope: &id014
+  - sim/app.js
+  - lib/archive.mjs
+  - test/recent.test.mjs
+  - reports/sctg/R14.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R14
+  max_attempts: 1
+  contract:
+    requires:
+    - R13
+    produces: *id014
+    gate: python3 tools/sctg/check_round.py R14
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/recent.test.mjs test/app-ui-fixes.test.mjs
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R14.md
+    evidence:
+    - reports/sctg/evidence/R14/
+- id: R15
+  title: 记忆管理
+  details: 记忆编号、钉住、删除、清空、待整理；只读摘要。 必须产出 reports/sctg/R15.md；如需人工/真机/live 验收，报告写 NEED_MAIN。
+  write_scope: &id015
+  - sim/app.js
+  - lib/app-runtime.mjs
+  - test/app-runtime-memory.test.mjs
+  - reports/sctg/R15.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R15
+  max_attempts: 1
+  contract:
+    requires:
+    - R14
+    produces: *id015
+    gate: python3 tools/sctg/check_round.py R15
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/app-runtime-memory.test.mjs
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R15.md
+    evidence:
+    - reports/sctg/evidence/R15/
+- id: R16
+  title: B 程序 QA 与 live
+  details: 真机回归、AI 评测复跑、live 验收、残余项归档。 必须产出 reports/sctg/R16.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id016
+  - sim/**
+  - lib/**
+  - test/**
+  - reports/sctg/R16.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R16
+  max_attempts: 1
+  contract:
+    requires:
+    - R15
+    produces: *id016
+    gate: python3 tools/sctg/check_round.py R16
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: true
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - reports/sctg/R16.md
+    evidence:
+    - reports/sctg/evidence/R16/
+- id: R17
+  title: 附件入口
+  details: 拍照、相册、文件、粘贴；上传前预览/取消。 必须产出 reports/sctg/R17.md；如需人工/真机/live 验收，报告写 NEED_MAIN。
+  write_scope: &id017
+  - sim/app.js
+  - sim/index.html
+  - lib/local-io.mjs
+  - reports/sctg/R17.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R17
+  max_attempts: 1
+  contract:
+    requires:
+    - R16
+    produces: *id017
+    gate: python3 tools/sctg/check_round.py R17
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R17.md
+    evidence:
+    - reports/sctg/evidence/R17/
+- id: R18
+  title: 媒体体验
+  details: 上传进度、失败重试、图片预览/缩放、下载/分享/保存。 必须产出 reports/sctg/R18.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id018
+  - sim/app.js
+  - sim/styles.css
+  - lib/local-io.mjs
+  - reports/sctg/R18.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R18
+  max_attempts: 1
+  contract:
+    requires:
+    - R17
+    produces: *id018
+    gate: python3 tools/sctg/check_round.py R18
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R18.md
+    evidence:
+    - reports/sctg/evidence/R18/
+- id: R19
+  title: 设计系统
+  details: 颜色/间距/字号/圆角/层级 token；暗色/浅色。 必须产出 reports/sctg/R19.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id019
+  - sim/styles.css
+  - sim/index.html
+  - reports/sctg/R19.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R19
+  max_attempts: 1
+  contract:
+    requires:
+    - R18
+    produces: *id019
+    gate: python3 tools/sctg/check_round.py R19
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - sim/styles.css
+    - reports/sctg/R19.md
+    evidence:
+    - reports/sctg/evidence/R19/
+- id: R20
+  title: 自适应
+  details: 小屏/大屏/横屏/折叠、键盘、安全区、字号跟随系统。 必须产出 reports/sctg/R20.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id020
+  - sim/styles.css
+  - sim/index.html
+  - test/app-ui-fixes.test.mjs
+  - reports/sctg/R20.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R20
+  max_attempts: 1
+  contract:
+    requires:
+    - R19
+    produces: *id020
+    gate: python3 tools/sctg/check_round.py R20
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - sim/styles.css
+    - reports/sctg/R20.md
+    evidence:
+    - reports/sctg/evidence/R20/
+- id: R21
+  title: Android 启动与文件
+  details: 冷启动/启动图、返回键、文件选择器、相机入口。 该轮属于 bridge-app 外部工作区，由 tools/sctg/android_rounds.yaml
+    单独跑。
+  write_scope:
+  - reports/sctg/R21.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R21
+  max_attempts: 1
+  contract:
+    requires:
+    - R20
+    produces:
+    - ../bridge-app/**
+    - reports/sctg/R21.md
+    gate: python3 tools/sctg/check_round.py R21
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: external
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests: []
+    artifacts:
+    - reports/sctg/R21.md
+    evidence:
+    - reports/sctg/evidence/R21/
+  external_ref: android_rounds.yaml#R21
+- id: R22
+  title: Android 快捷入口
+  details: 本地通知、分享 target、深链、桌面快捷方式、更新检查。 该轮属于 bridge-app 外部工作区，由 tools/sctg/android_rounds.yaml
+    单独跑。
+  write_scope:
+  - reports/sctg/R22.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R22
+  max_attempts: 1
+  contract:
+    requires:
+    - R21
+    produces:
+    - ../bridge-app/**
+    - reports/sctg/R22.md
+    gate: python3 tools/sctg/check_round.py R22
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: external
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests: []
+    artifacts:
+    - reports/sctg/R22.md
+    evidence:
+    - reports/sctg/evidence/R22/
+  external_ref: android_rounds.yaml#R22
+- id: R23
+  title: C 程序 QA 与 live
+  details: 设备矩阵、视觉验收、原生入口验收、live + 回滚。 该轮属于 bridge-app 外部工作区，由 tools/sctg/android_rounds.yaml
+    单独跑。
+  write_scope:
+  - reports/sctg/R23.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R23
+  max_attempts: 1
+  contract:
+    requires:
+    - R22
+    produces:
+    - ../bridge-app/**
+    - sim/**
+    - test/**
+    - reports/sctg/R23.md
+    gate: python3 tools/sctg/check_round.py R23
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: external
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests: []
+    artifacts:
+    - reports/sctg/R23.md
+    evidence:
+    - reports/sctg/evidence/R23/
+  external_ref: android_rounds.yaml#R23
+- id: R24
+  title: 长历史性能
+  details: 1000+ 消息虚拟化/分页；图片懒加载/缓存。 必须产出 reports/sctg/R24.md；如需人工/真机/live 验收，报告写 NEED_MAIN。
+  write_scope: &id021
+  - sim/app.js
+  - sim/styles.css
+  - test/app-ui-fixes.test.mjs
+  - reports/sctg/R24.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R24
+  max_attempts: 1
+  contract:
+    requires:
+    - R23
+    produces: *id021
+    gate: python3 tools/sctg/check_round.py R24
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - sim/app.js
+    - reports/sctg/R24.md
+    evidence:
+    - reports/sctg/evidence/R24/
+- id: R25
+  title: 长稳与预算
+  details: 启动/滚动/输入/切会话预算；内存；7 天 soak。 必须产出 reports/sctg/R25.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id022
+  - sim/app.js
+  - test/app-ui-fixes.test.mjs
+  - reports/sctg/R25.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R25
+  max_attempts: 1
+  contract:
+    requires:
+    - R24
+    produces: *id022
+    gate: python3 tools/sctg/check_round.py R25
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: true
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - reports/sctg/R25.md
+    evidence:
+    - reports/sctg/evidence/R25/
+- id: R26
+  title: 数据搬家
+  details: 备份/恢复、导出/导入、换机迁移、schema 升级、损坏恢复。 必须产出 reports/sctg/R26.md；如需人工/真机/live
+    验收，报告写 NEED_MAIN。
+  write_scope: &id023
+  - lib/**
+  - tools/**
+  - test/**
+  - reports/sctg/R26.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R26
+  max_attempts: 1
+  contract:
+    requires:
+    - R25
+    produces: *id023
+    gate: python3 tools/sctg/check_round.py R26
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node --test test/local-io-app.test.mjs test/status-card.test.mjs
+    artifacts:
+    - reports/sctg/R26.md
+    evidence:
+    - reports/sctg/evidence/R26/
+- id: R27
+  title: 引导与诊断
+  details: 首次使用向导、配对、设置、帮助、诊断页。 必须产出 reports/sctg/R27.md；如需人工/真机/live 验收，报告写 NEED_MAIN。
+  write_scope: &id024
+  - sim/**
+  - docs/**
+  - reports/sctg/R27.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R27
+  max_attempts: 1
+  contract:
+    requires:
+    - R26
+    produces: *id024
+    gate: python3 tools/sctg/check_round.py R27
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests:
+    - node tools/check-commands.mjs
+    artifacts:
+    - reports/sctg/R27.md
+    evidence:
+    - reports/sctg/evidence/R27/
+- id: R28
+  title: 发布工程
+  details: release 签名、版本策略、CI、APK、changelog、升级引导。 该轮属于 bridge-app 外部工作区，由 tools/sctg/android_rounds.yaml
+    单独跑。
+  write_scope:
+  - reports/sctg/R28.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R28
+  max_attempts: 1
+  contract:
+    requires:
+    - R27
+    produces:
+    - ../bridge-app/**
+    - package.json
+    - docs/**
+    - reports/sctg/R28.md
+    gate: python3 tools/sctg/check_round.py R28
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: external
+  manual_checkpoint: false
+  acceptance:
+    behavior_tests: []
+    artifacts:
+    - reports/sctg/R28.md
+    evidence:
+    - reports/sctg/evidence/R28/
+  external_ref: android_rounds.yaml#R28
+- id: R29
+  title: Beta 与反馈
+  details: 连续使用 3–7 天；反馈入口；摩擦点清单；bug bash。 必须产出 reports/sctg/R29.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id025
+  - docs/**
+  - test/**
+  - reports/sctg/R29.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R29
+  max_attempts: 1
+  contract:
+    requires:
+    - R28
+    produces: *id025
+    gate: python3 tools/sctg/check_round.py R29
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: true
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - reports/sctg/R29.md
+    evidence:
+    - reports/sctg/evidence/R29/
+- id: R30
+  title: RC 与 GA
+  details: 全量回归、长稳复测、文档冻结、开源交付、tag 1.0。 必须产出 reports/sctg/R30.md；如需人工/真机/live 验收，报告写
+    NEED_MAIN。
+  write_scope: &id026
+  - docs/**
+  - package.json
+  - reports/sctg/R30.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py R30
+  max_attempts: 1
+  contract:
+    requires:
+    - R29
+    produces: *id026
+    gate: python3 tools/sctg/check_round.py R30
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: product
+  runs_via: main
+  manual_checkpoint: true
+  acceptance:
+    behavior_tests:
+    - python3 tools/sctg/app_smoke.py
+    artifacts:
+    - reports/sctg/R30.md
+    evidence:
+    - reports/sctg/evidence/R30/
+prep_rounds:
+- id: R05.5
+  title: 项目特化重整与自动跑预备
+  details: 参照 Stage-2 / Stage-2.5 / benchmark / 10card：补齐自动 driver 的 resume、契约字段、check/write_scope
+    一致性；记录当前改动台账；确认 R06 前的停止线与 NEED_MAIN 点。
+  write_scope: &id027
+  - tools/sctg/**
+  - docs/AUTO-RUN-PREP-2.md
+  - reports/compare-20261113/MODIFICATION-LEDGER.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py PREP2
+  max_attempts: 1
+  contract:
+    requires:
+    - R05
+    produces: *id027
+    gate: python3 tools/sctg/check_round.py PREP2
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；不把 gate PASS 当业务语义正确
+  kind: prep
+- id: R09.5
+  title: 前置清空：R10–R30 卡/check、外部 Android、NEED_MAIN、app smoke
+  details: 把 R10–R30 的卡/check 注册、外部 Android 轮、NEED_MAIN 边界、app smoke、前置清单一次性落下。必须产出
+    docs/AUTO-RUN-PREP-3.md 与 reports/compare-20261113/PREREQUISITES.md。
+  write_scope: &id028
+  - tools/sctg/**
+  - docs/AUTO-RUN-PREP-3.md
+  - reports/compare-20261113/PREREQUISITES.md
+  ready: true
+  check_cmd: python3 tools/sctg/check_round.py PREP3
+  max_attempts: 1
+  contract:
+    requires:
+    - R09
+    produces: *id028
+    gate: python3 tools/sctg/check_round.py PREP3
+    budget:
+      max_attempts: 1
+      seat: lead
+    not_doing: 不进入下一轮；不修改 write_scope 外文件；NEED_MAIN 不假装 PASS
+  kind: prep
+- id: R15.5
+  title: ADB 真机验收 + 指令一键化 + UI 坐标演算
+  details: OpenRig dsh seat 交付：tools/adb 单入口、UI bounds/截图/wm/rotation -> ADB 坐标演算、一键
+    accept；只提交脱敏 JSON/报告，不提交原始截图/UI dump。
+  write_scope: &id029
+  - tools/adb/**
+  - tools/sctg/adb_acceptance.py
+  - test/adb-tools.test.mjs
+  - test/test_adb_ui_coords.py
+  - reports/sctg/R15.5.md
+  - reports/sctg/adb/R15.5.json
+  ready: true
+  host_only: true
+  check_cmd: python3 tools/sctg/check_round.py ADB
+  max_attempts: 1
+  contract:
+    requires:
+    - R15
+    produces: *id029
+    gate: python3 tools/sctg/check_round.py ADB
+    budget:
+      max_attempts: 1
+      seat: openrig-dsh
+    not_doing: 不把 ADB 自动 PASS 当完整真机体验；键盘/触控/视觉/live 仍 NEED_MAIN
+  kind: prep
+human_checkpoints:
+- R16
+- R25
+- R29
+- R30
+external_rounds:
+- R21
+- R22
+- R23
+- R28

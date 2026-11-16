@@ -1,0 +1,15 @@
+# Side-effect surface check (W2 / G5)
+root AGENTS.md sha256: 09748c2c23a393ff3d0f2a82d6d2c446385c700e2e13b3dd68c42e9b382d3c7a
+root AGENTS.md mtime:  2026-11-16 00:48:07.416 +0800 (unchanged during A-D and QA; before refreshed baseline 00:52:07)
+root AGENTS.md diff:   +365 lines, 7 OpenRig managed blocks (injected by rig workspace render at 16:48:07Z; D-006 forbids implementers to roll it back)
+
+monitor target: /home/a7067567g/下载/deepseek/月月bot/governance-20261110/dashboard/target.json
+  mtime: 2026-11-16 00:41:08.715302594 +0800
+  active: openrig-docs-governance-20261115
+  targets: 8 ; this run present: False
+
+yueyue-monitor.service: active since Sun 2026-11-15 22:17:54 CST (predates the run)
+
+QA isolated W2 probes (negative-preflight-nosideeffect.txt):
+  failing pre-check -> rc1, workspace AGENTS.md sha unchanged, target.json absent, systemctl calls = 0
+  valid pre-check   -> rc0, injection + one systemctl call happen only afterwards

@@ -1,0 +1,13 @@
+目标：实施 P0 hard-constraint stack（R01–R07，R08 负向测试随包）。只改 workflow-group 的 scripts/tests 与本 run reports；不改 OpenRig 产品代码/模板正文。
+
+范围：
+- R05 preflight 真检查（ok=all(checks)，缺上下文/缺注入 fail-closed）
+- R06 required-components manifest（依赖缺失给安装命令；issues.py 不在 import 期崩溃；doctor 顶部检查）
+- R02 baseline / verify-baseline（HEAD/status/diff sha256；排除本 run 目录）
+- R03 evidence_run.sh（真实 rc，pipefail，stdout/stderr hash）
+- R01 archive-gate（复用 openrig-teardown.py 的 strict COMPLETE 语义）
+- R04 close lint strict（FINAL.md + evidence manifest + sha256；revision 通道最小实现）
+- R07 verify-render（render-manifest sha256 消费者；默认 WARN，--strict 才 ERROR）
+- R08 每个硬门至少一个负向测试
+
+硬约束：不 commit/push；不改产品仓；不设金额预算；不覆盖 pre-existing dirty；所有测试真跑；QA 独立复跑。

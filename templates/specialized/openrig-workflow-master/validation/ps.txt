@@ -1,0 +1,6 @@
+RIG                           POD       MEMBER        SESSION                           RUNTIME     MODEL(DECLARED)  STATUS    STARTUP   ORIENTED LIFECYCLE  TERMINAL WORK  ACTIVITY    CTX   RESTORE   ERROR
+openrig-master-smoke#01M5AWW4…assurance qa            assurance-qa@openrig-master-smoke opencode    opencode-go/deep…running   ready     n-a      run        active   no    working     ??    n-a       —
+openrig-master-smoke#01M5AWW4…control   main          control-main@openrig-master-smoke opencode    opencode-go/deep…running   ready     n-a      run        active   no    working     ??    n-a       —
+openrig-master-smoke#01M5AWW4…control   pmo           control-pmo@openrig-master-smoke  opencode    opencode-go/deep…running   ready     n-a      run        active   no    working     ??    n-a       —
+openrig-master-smoke#01M5AWW4…exec      tdo-dsh       exec-tdo-dsh@openrig-master-smoke dsh         not-declared     running   ready     n-a      run        active   no    working     ??    n-a       —
+openrig-master-smoke#01M5AWW4…exec      tdo-oc        exec-tdo-oc@openrig-master-smoke  opencode    opencode-go/deep…running   ready     n-a      run        active   no    working     ??    n-a       —

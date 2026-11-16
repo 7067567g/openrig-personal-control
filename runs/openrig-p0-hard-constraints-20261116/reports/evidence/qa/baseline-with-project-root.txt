@@ -1,0 +1,15 @@
+cmd: .venv/bin/python scripts/wf.py baseline openrig-p0-hard-constraints-20261116 --project-root /home/a7067567g/下载/deepseek/deepseek-知识库 --json
+{
+  "ok": true,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "jsonPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.json",
+  "txtPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.txt",
+  "head": "9fa8d27a95dba40c9f324f91497bc6754aa4b9ac",
+  "statusSha256": "198e44b5996430a7820812d0371785b2d543de18996bd9e9128aca0b3f003a4e",
+  "diffSha256": "98e9150961c53179ce6f3e83f6ba56400fc08a10b5d3e4a4c6f5672ecc8e8126",
+  "statusCount": 1789,
+  "excludePaths": [
+    "workflow-group/runs/openrig-p0-hard-constraints-20261116"
+  ]
+}
+rc=0

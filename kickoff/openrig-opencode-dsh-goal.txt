@@ -1,0 +1,6 @@
+将 OpenRig 收敛为 OpenCode + DSH 特化执行层，分两轮：
+
+R1（本轮）：在自有工作副本 `deepseek-项目/10-openrig-deepseek` 中实现 OpenCode/DSH 共用的 CLI runner 协议与两个 RuntimeAdapter，注册 runtime，建立最小 rig/workflow 模板；先以 fake runner / 纯单元测试验证，不依赖真实模型调用；完成构建。
+R2（下一轮）：接入真实 OpenCode 与 DSH 做最小 smoke，修正协议差异，收敛默认模板与非目标 runtime 的露出，完成最小 fan-out/join 验证与交接文档。
+
+硬约束：不修改 `60-外部仓库/openrig`；不启动 OpenRig 作为本 workflow 的执行面；不删除非 OpenCode/DSH runtime 源码；不泄露凭证；R2 真实 smoke 受 DSH 凭证条件约束时诚实标注。

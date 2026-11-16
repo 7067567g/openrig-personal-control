@@ -1,0 +1,97 @@
+cmd: audit_managed_blocks --strict
+{
+  "schemaVersion": 1,
+  "paths": [
+    "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md"
+  ],
+  "files": [
+    {
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md",
+      "bytes": 29160,
+      "blocks": [
+        {
+          "id": "CULTURE-default.md",
+          "startLine": 194,
+          "endLine": 215,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "guidance/team.md",
+          "startLine": 217,
+          "endLine": 227,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "openrig-start.md",
+          "startLine": 229,
+          "endLine": 285,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "openrig-onboarding-01.md",
+          "startLine": 287,
+          "endLine": 351,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "openrig-onboarding-02.md",
+          "startLine": 353,
+          "endLine": 458,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "guidance/main-approver.md",
+          "startLine": 481,
+          "endLine": 496,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        },
+        {
+          "id": "guidance/tdo-b.md",
+          "startLine": 512,
+          "endLine": 524,
+          "kind": "managed",
+          "ownerRig": null,
+          "warning": null
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "files": 1,
+    "filesWithBlocks": 1,
+    "blocks": 7,
+    "byKind": {
+      "managed": 7
+    },
+    "orphanManaged": 7,
+    "warnings": 0,
+    "unterminated": 0,
+    "errors": 0
+  },
+  "strict": {
+    "enabled": true,
+    "failures": [
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:194 managed block 'CULTURE-default.md' has no ownerRig",
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:217 managed block 'guidance/team.md' has no ownerRig",
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:229 managed block 'openrig-start.md' has no ownerRig",
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:287 managed block 'openrig-onboarding-01.md' has no ownerRig",
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:353 managed block 'openrig-onboarding-02.md' has no ownerRig",
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:481 managed block 'guidance/main-approver.md' has no ownerRig",
+      "/home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:512 managed block 'guidance/tdo-b.md' has no ownerRig"
+    ]
+  }
+}
+rc=1

@@ -1,0 +1,8 @@
+# Packet C changed files (path | action | before_sha256 | after_sha256)
+scripts/wf.py | modify (archive-gate + evidence-record) | ea393adc687320b217bd99857cf0e4b79256e720fc562f28b364c11a8a8a6d26 | 6771bef792c36cc2b4db55cea894275c2812d6a80c345b678663fd6b9ae147fb
+scripts/wf_close_lint.py | modify (--strict + closeout checks) | n/a (pre-existing untracked, no snapshot) | 38ca354dd37f6a7c487b1a3bd25920805ea49d406866453c601ce0e564e57da4
+scripts/verify_render.py | create | - | fa81230096074a5d6c2a855486cf19e152cfb7b2036a9d44fb1b406ecaec45fa
+tests/test_archive_gate.py | create | - | a374b0b69bb8b3d446c1f65fb373e0726ead0bc3843f37f9c27fa3194e710137
+tests/test_verify_render.py | create | - | fa9cddf89bc2ab99acfb713dd3d65444d8b6744acdca4b40e74516dcacc06822
+tests/test_evidence_record.py | create | - | 554362a7709d803520009629fcbddf26789104322f572b60ab5cadfd33bd646d
+tests/test_wf_close_lint.py | modify (strict cases) | n/a (pre-existing untracked, no snapshot) | c8e4b75521921ec22c591995e3d05105f73583c25f28fd16198683f84c567f1e

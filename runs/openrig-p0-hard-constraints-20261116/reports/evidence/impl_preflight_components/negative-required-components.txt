@@ -1,0 +1,114 @@
+# negative: empty root → required components fail
+# cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+# started_at=2026-11-16T00:25:46+08:00
+{
+  "ok": false,
+  "components": [
+    {
+      "id": "machine.python",
+      "group": "machine",
+      "required": true,
+      "ok": true,
+      "detail": "Python 3.12.15（需 >= 3.12）",
+      "install_hint": ""
+    },
+    {
+      "id": "machine.openpyxl",
+      "group": "machine",
+      "required": true,
+      "ok": true,
+      "detail": "openpyxl 3.1.5 可用",
+      "install_hint": ""
+    },
+    {
+      "id": "machine.pytest",
+      "group": "machine",
+      "required": true,
+      "ok": true,
+      "detail": "pytest 可用",
+      "install_hint": ""
+    },
+    {
+      "id": "control.project",
+      "group": "control",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/PROJECT.md 缺失",
+      "install_hint": "恢复 workflow-group/templates/PROJECT.md（控制面四件套模板）"
+    },
+    {
+      "id": "control.decisions",
+      "group": "control",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/DECISIONS.md 缺失",
+      "install_hint": "恢复 workflow-group/templates/DECISIONS.md"
+    },
+    {
+      "id": "control.status",
+      "group": "control",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/STATUS-Round-*.md 缺失",
+      "install_hint": "恢复 workflow-group/templates/STATUS-Round-n.md"
+    },
+    {
+      "id": "control.issues",
+      "group": "control",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/ISSUES.xlsx 缺失",
+      "install_hint": "恢复 workflow-group/templates/ISSUES.xlsx"
+    },
+    {
+      "id": "openrig.render_master",
+      "group": "openrig",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/specialized/openrig-workflow-master/render_master.py 缺失",
+      "install_hint": "恢复 templates/specialized/openrig-workflow-master/render_master.py（run 渲染入口）"
+    },
+    {
+      "id": "openrig.bridge",
+      "group": "openrig",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/specialized/openrig-workflow-master/tools/openrig_bridge.py 缺失",
+      "install_hint": "恢复 templates/specialized/openrig-workflow-master/tools/openrig_bridge.py"
+    },
+    {
+      "id": "openrig.preflight",
+      "group": "openrig",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/specialized/openrig-workflow-master/PREFLIGHT.md 缺失",
+      "install_hint": "恢复 templates/specialized/openrig-workflow-master/PREFLIGHT.md"
+    },
+    {
+      "id": "openrig.entrypoints",
+      "group": "openrig",
+      "required": true,
+      "ok": false,
+      "detail": "/tmp/empty-wg-root/templates/specialized/openrig-workflow-master/ENTRYPOINTS.md 缺失",
+      "install_hint": "恢复 templates/specialized/openrig-workflow-master/ENTRYPOINTS.md"
+    },
+    {
+      "id": "runtime.rig",
+      "group": "runtime",
+      "required": false,
+      "ok": true,
+      "detail": "rig=/tmp/openrig-workflow-p0-hard-constraints-20261116/run/seat-bin/fe0de7898b0793b627d7b7a06f7b204ae130d4724d4d9579ba78d48f509cd9b3/rig",
+      "install_hint": ""
+    },
+    {
+      "id": "runtime.teardown_guard",
+      "group": "runtime",
+      "required": false,
+      "ok": false,
+      "detail": "teardown guard /deepseek-项目/10-openrig-deepseek/scripts/openrig-teardown.py 缺失",
+      "install_hint": "安装产品仓 10-openrig-deepseek 或用 OPENRIG_TEARDOWN_GUARD 指定"
+    }
+  ]
+}
+rc=1
+# finished_at=2026-11-16T00:25:46+08:00

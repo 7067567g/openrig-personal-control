@@ -1,0 +1,1910 @@
+# baseline 2026-11-16T00:37:36+08:00
+# schemaVersion 1
+# run openrig-p0-hard-constraints-20261116
+# projectRoot /home/a7067567g/下载/deepseek/deepseek-知识库
+# HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac
+# status_sha256 198e44b5996430a7820812d0371785b2d543de18996bd9e9128aca0b3f003a4e
+# diff_sha256 98e9150961c53179ce6f3e83f6ba56400fc08a10b5d3e4a4c6f5672ecc8e8126
+# exclude_paths ["workflow-group/runs/openrig-p0-hard-constraints-20261116"]
+# --- status (excluded) ---
+ M .github/workflows/kb-validate.yml
+ M .gitignore
+ M 00-overview/golden-questions.md
+ M 00-overview/task-router.md
+ M AGENTS.md
+ M README.md
+ M content-review-queue.md
+ M docs/agents/triage-labels.md
+ M workflow-group/AGENTS.md
+ M workflow-group/DESIGN.md
+ M workflow-group/README.md
+ M workflow-group/WORKFLOW.md
+ M workflow-group/burner/queue.json
+ M workflow-group/drafts/sctg-openrig-channel-pattern-v0.1.md
+ M workflow-group/drafts/sctg/README.md
+ M workflow-group/drafts/sctg/direction-01-review-first.md
+ M workflow-group/drafts/sctg/extension-01-direction-map.md
+ M workflow-group/drafts/sctg/kit/gates/g1_scope.py
+ M workflow-group/drafts/sctg/kit/gates/g2_evidence.py
+ M workflow-group/drafts/sctg/kit/sctg.py
+ M workflow-group/drafts/sctg/lessons-01-single-line-orchestration.md
+ M workflow-group/drafts/sctg/openrig-integration-and-applicability-v0.1.md
+ M workflow-group/drafts/sctg/pre-solution-01-review-v0.2.md
+ M workflow-group/drafts/sctg/pre-solution-01.md
+ M workflow-group/drafts/sctg/pre-solution-02.md
+ M workflow-group/drafts/sctg/pre-solution-03.md
+ M workflow-group/drafts/sctg/simulations/01-openrig-real-runs.md
+ M workflow-group/drafts/sctg/simulations/02-stageguide-real-runs.md
+ M workflow-group/drafts/sctg/simulations/03-workflow-knowledge-gates.md
+ M workflow-group/drafts/sctg/simulations/README.md
+ M workflow-group/drafts/sctg/simulations/cross-01-openrig.md
+ M workflow-group/drafts/sctg/simulations/cross-02-stageguide.md
+ M workflow-group/drafts/sctg/simulations/cross-03-workflow.md
+ M workflow-group/drafts/sctg/stage2-workflow-plan-v0.1.md
+ M workflow-group/drafts/sctg/step1-10card-experience.md
+ M workflow-group/drafts/sctg/step1-shadow-run-report.md
+ M workflow-group/drafts/sctg/step1-trial-experience.md
+ M workflow-group/drafts/sctg/step1-trial2-experience.md
+ M workflow-group/drafts/sctg/strategy-3step-v0.1.md
+ M workflow-group/drafts/sctg/thought-supplement-01.md
+ M workflow-group/reports/full-curation-20261115/CURATION.md
+ M workflow-group/reports/full-curation-20261115/VERIFY-ENV.md
+ M workflow-group/reports/full-curation-20261115/VERIFY.md
+ M workflow-group/roles/PMO.md
+ M workflow-group/roles/QA.md
+ M workflow-group/roles/TDO.md
+ M workflow-group/roles/common-contract.md
+ M workflow-group/roles/delegation-briefs.md
+ M workflow-group/runs/README.md
+ M workflow-group/runs/burn-postmortem-20261014/PROJECT.md
+ M workflow-group/runs/dist-ops-20261014/DECISIONS.md
+ M workflow-group/runs/dist-ops-20261014/ISSUES.xlsx
+ M workflow-group/runs/dist-ops-20261014/PROJECT.md
+ M workflow-group/runs/geophysics-correctness-20261014/DECISIONS.md
+ M workflow-group/runs/geophysics-correctness-20261014/PROJECT.md
+ M workflow-group/runs/kb-claim-verify-20261014/PROJECT.md
+ M workflow-group/runs/kb-consume-20261014/DECISIONS.md
+ M workflow-group/runs/kb-consume-20261014/PROJECT.md
+ M workflow-group/runs/kb-debt-20261013/DECISIONS.md
+ M workflow-group/runs/kb-debt-20261013/ISSUES.xlsx
+ M workflow-group/runs/kb-debt-20261013/PROJECT.md
+ M workflow-group/runs/kb-fix-20261014/DECISIONS.md
+ M workflow-group/runs/kb-fix-20261014/ISSUES.xlsx
+ M workflow-group/runs/kb-fix-20261014/PROJECT.md
+ M workflow-group/runs/kb-method-action-20261014/DECISIONS.md
+ M workflow-group/runs/kb-method-action-20261014/PROJECT.md
+ M workflow-group/runs/nutstore-review-20261014/DECISIONS.md
+ M workflow-group/runs/nutstore-review-20261014/ISSUES.xlsx
+ M workflow-group/runs/nutstore-review-20261014/PROJECT.md
+ M workflow-group/runs/openrig-docs-governance-20261115/DECISIONS.md
+ M workflow-group/runs/openrig-docs-governance-20261115/PROJECT.md
+ M workflow-group/runs/ops-reliability-20261014/DECISIONS.md
+ M workflow-group/runs/ops-reliability-20261014/ISSUES.xlsx
+ M workflow-group/runs/ops-reliability-20261014/PROJECT.md
+ M workflow-group/runs/project-freeze-20261014/DECISIONS.md
+ M workflow-group/runs/project-freeze-20261014/ISSUES.xlsx
+ M workflow-group/runs/project-freeze-20261014/PROJECT.md
+ M workflow-group/runs/signaldeck-audit-20261013/DECISIONS.md
+ M workflow-group/runs/signaldeck-audit-20261013/ISSUES.xlsx
+ M workflow-group/runs/signaldeck-audit-20261013/PROJECT.md
+ M workflow-group/runs/signaldeck-refactor-20261025/DECISIONS.md
+ M workflow-group/runs/signaldeck-refactor-20261025/PROJECT.md
+ M workflow-group/runs/signaldeck-refactor-20261025/ROUND-PLAN.md
+ M workflow-group/runs/signaldeck-runtime-20261014/PROJECT.md
+ M workflow-group/runs/wf-engine-tests-20261014/DECISIONS.md
+ M workflow-group/runs/wf-engine-tests-20261014/ISSUES.xlsx
+ M workflow-group/runs/wf-engine-tests-20261014/PROJECT.md
+ M workflow-group/scripts/issues.py
+ M workflow-group/scripts/wf.py
+ M workflow-group/templates/DECISIONS.md
+ M workflow-group/templates/PROJECT.md
+ M workflow-group/templates/README.md
+ M workflow-group/templates/STATUS-Round-n.md
+ M workflow-group/templates/specialized/README.md
+ M workflow-group/templates/specialized/burn-postmortem/SPEC.md
+ M workflow-group/templates/specialized/dist-ops-hardening/SPEC.md
+ M workflow-group/templates/specialized/geophysics-correctness/SPEC.md
+ M workflow-group/templates/specialized/kb-claim-verify/SPEC.md
+ M workflow-group/templates/specialized/kb-consume-interface/SPEC.md
+ M workflow-group/templates/specialized/kb-debt-burn/SPEC.md
+ M workflow-group/templates/specialized/kb-fix-wave/SPEC.md
+ M workflow-group/templates/specialized/kb-method-action/SPEC.md
+ M workflow-group/templates/specialized/nutstore-sync-review/SPEC.md
+ M workflow-group/templates/specialized/ops-reliability/SPEC.md
+ M workflow-group/templates/specialized/project-freeze-facts/SPEC.md
+ M workflow-group/templates/specialized/signaldeck-runtime-verify/SPEC.md
+ M workflow-group/templates/specialized/wf-engine-tests/SPEC.md
+ M workflow-group/tests/test_issues.py
+ M workflow-group/tests/test_p5_legacy.py
+ M workflow-group/tests/test_wf.py
+?? .dsh-screenshots/screenshot-20261113-071215-987.png
+?? .dsh-screenshots/screenshot-20261113-083139-789.png
+?? auto_driver.pid
+?? workflow-group/.r7-work/gen.mjs
+?? workflow-group/.r7-work/parity-staging.out
+?? workflow-group/.r7-work/parity.new.mjs
+?? workflow-group/.r7-work/repo/10-signaldeck-cleaned/scripts/test-windows.ps1
+?? workflow-group/.r7-work/repo/10-signaldeck-cleaned/tests/gate-steps.json
+?? workflow-group/.r7-work/repo/10-signaldeck-cleaned/tests/gate-steps.windows.json
+?? workflow-group/.r7-work/repo/10-signaldeck/scripts/test-windows.ps1
+?? workflow-group/.r7-work/repo/10-signaldeck/tests/_gate-steps.ps1
+?? workflow-group/.r7-work/repo/10-signaldeck/tests/gate-steps.json
+?? workflow-group/.r7-work/repo/10-signaldeck/tests/gate-steps.windows.json
+?? workflow-group/.r7-work/run-linux.new.sh
+?? workflow-group/ADVISOR-GEMINI4ARGON-20261023.md
+?? workflow-group/ADVISOR-GEMINI4ARGON-DSH-20261023.md
+?? workflow-group/ADVISOR-QUALITY-COMPARISON-20261023.md
+?? workflow-group/EVOLUTION.md
+?? workflow-group/EXAMPLE.md
+?? workflow-group/WORKFLOW-TAGS.md
+?? workflow-group/burner/signaldeck-heartbeat.sh
+?? workflow-group/burner/signaldeck-prompt.txt
+?? workflow-group/burner/signaldeck-run.sh
+?? workflow-group/docs/cases/openrig-remediation-20261113/EVIDENCE.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/MEMORY-INCIDENT.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/MEMORY-LIMITS.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/NEXT-STEP.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/PROBLEMS.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/README.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/REMEDIATION-PLAN.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/TIMELINE.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/BLOCKED.history.txt
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/DONE.invalid-20261113.txt
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/R15.5.json
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/R15.5.md
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/ROUNDS.jsonl
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/RUN-STATE-summary.json
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/auto_driver.py
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/git-status.txt
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/memory-snapshot.txt
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/oom-evidence.txt
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/round_checks.py
+?? workflow-group/docs/cases/openrig-remediation-20261113/artifacts/rounds.yaml
+?? workflow-group/drafts/reviews/agent-A-output.md
+?? workflow-group/drafts/reviews/agent-B-output.md
+?? workflow-group/drafts/reviews/brief-A.md
+?? workflow-group/drafts/reviews/brief-A2-cross.md
+?? workflow-group/drafts/reviews/brief-B.md
+?? workflow-group/drafts/reviews/brief-B2-cross.md
+?? workflow-group/drafts/reviews/cross-A-on-B-output.md
+?? workflow-group/drafts/reviews/cross-A-on-B.md
+?? workflow-group/drafts/reviews/cross-B-on-A-output.md
+?? workflow-group/drafts/reviews/cross-B-on-A.md
+?? workflow-group/drafts/reviews/review-A-governance.md
+?? workflow-group/drafts/reviews/review-B-failure-modes.md
+?? workflow-group/drafts/sctg/ASSET-INDEX.md
+?? workflow-group/drafts/sctg/DOC-MAP.md
+?? workflow-group/drafts/sctg/development-status-20261115.md
+?? workflow-group/drafts/so-role-draft-v0.1.md
+?? workflow-group/drafts/so-role-draft.md
+?? workflow-group/kickoff/h-drive-cleanup-goal.txt
+?? workflow-group/kickoff/h-drive-cleanup.md
+?? workflow-group/kickoff/h-drive-old-backup-audit-20261018.md
+?? workflow-group/kickoff/h-drive-windows-plan.md
+?? workflow-group/kickoff/h-drive-windows-protected-v2.json
+?? workflow-group/kickoff/h-drive-windows-protected-v3.json
+?? workflow-group/kickoff/h-drive-windows-protected.json
+?? workflow-group/kickoff/openrig-advisor-refit-goal.txt
+?? workflow-group/kickoff/openrig-full-verify-goal.txt
+?? workflow-group/kickoff/openrig-hard-constraints-20261115.txt
+?? workflow-group/kickoff/openrig-launch-guardrails-20261115.txt
+?? workflow-group/kickoff/openrig-local-refit-goal.txt
+?? workflow-group/kickoff/openrig-local-refit.md
+?? workflow-group/kickoff/openrig-master-v12-audit.md
+?? workflow-group/kickoff/openrig-master-v12-goal.txt
+?? workflow-group/kickoff/openrig-opencode-dsh-goal.txt
+?? workflow-group/kickoff/openrig-p0-hard-constraints-20261116.txt
+?? workflow-group/kickoff/openrig-token-factfind-20261115.txt
+?? workflow-group/kickoff/openrig-token-governance-design-20261115.txt
+?? workflow-group/kickoff/openrig-token-r1-implement-20261115.txt
+?? workflow-group/kickoff/openrig-unparsed-bytes-20261020.txt
+?? workflow-group/kickoff/signaldeck-refactor.md
+?? workflow-group/reports/close-lint-20261111.txt
+?? workflow-group/reports/close-semantics-20261111/ACCEPTANCES.json
+?? workflow-group/reports/close-semantics-20261111/FINDINGS.csv
+?? workflow-group/reports/close-semantics-20261111/REPORT.md
+?? workflow-group/reports/close-semantics-20261111/evidence/close-lint-accepted.json
+?? workflow-group/reports/close-semantics-20261111/evidence/close-lint-baseline.json
+?? workflow-group/reports/close-semantics-20261111/evidence/close-lint-postfix-noaccept.json
+?? workflow-group/reports/close-semantics-20261111/evidence/close-lint-ws1.json
+?? workflow-group/reports/close-semantics-20261111/evidence/decision-plan.json
+?? workflow-group/reports/close-semantics-20261111/evidence/diff-summary.json
+?? workflow-group/reports/close-semantics-20261111/evidence/final-close-lint.json
+?? workflow-group/reports/close-semantics-20261111/evidence/final-doctor.txt
+?? workflow-group/reports/close-semantics-20261111/evidence/final-tests.txt
+?? workflow-group/reports/close-semantics-20261111/evidence/historical-append-log.json
+?? workflow-group/reports/close-semantics-20261111/evidence/issue-updates.json
+?? workflow-group/reports/close-semantics-20261111/evidence/issues-jsonl-cleanup.txt
+?? workflow-group/reports/close-semantics-20261111/evidence/qa-checks.txt
+?? workflow-group/reports/public-repo-gap-20261113.md
+?? workflow-group/requirements-dev.txt
+?? workflow-group/roles/MAIN.md
+?? workflow-group/roles/SAFETY.md
+?? workflow-group/runs/advisor-report-fusion-20261023/DECISIONS.md
+?? workflow-group/runs/advisor-report-fusion-20261023/ISSUES.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/ISSUES.xlsx
+?? workflow-group/runs/advisor-report-fusion-20261023/PROJECT.md
+?? workflow-group/runs/advisor-report-fusion-20261023/ROUND-PLAN.md
+?? workflow-group/runs/advisor-report-fusion-20261023/SPEC.md
+?? workflow-group/runs/advisor-report-fusion-20261023/STATUS-Round-1.md
+?? workflow-group/runs/advisor-report-fusion-20261023/STATUS-Round-2.md
+?? workflow-group/runs/advisor-report-fusion-20261023/STATUS-Round-3.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/00-source-inventory.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/01-fusion-matrix.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/02-disposition.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/03-source-coverage.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/04-implementation.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/05-verification.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/06-summary.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/README.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/VERDICT.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/claim-register.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/claim-register.raw.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/contract-lock-check.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/contract-lock-check.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/doctor.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/environment.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/final-contract-lock.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/final-doctor.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/final-fusion-check.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/final-fusion-coverage-check.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/final-pytest.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/fusion-check.err
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/fusion-check.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/fusion-check.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/fusion-coverage-check.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-archive-scan.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-bridge-doctor-v2.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-bridge-doctor-v2.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-bridge-doctor.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-bridge-doctor.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-bridge-schema-scan.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-safety-probe.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/openrig-teardown-probe.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/probe-time.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/py-compile.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/py-compile.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/pytest-full.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/pytest-full.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/repo-head.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-chars.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-metrics.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-sha256-after.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-sha256-check.rc
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-sha256-check.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-sha256.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/report-stat.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/spec-section0-probe.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/evidence/workflow-gaps-probe.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/00-w1-implementation.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/01-verification.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/02-summary.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/contract-lock-round2.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/dsh-probe-credential-fail.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/dsh-probe-credential-fail.stderr.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/environment-round2.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/final-doctor-round2.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/final-pytest-round2.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/fusion-check-round2.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/issues-round2.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/openrig-daemon-status.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/openrig-guard-real-partial.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/openrig-guard-real-partial.stderr.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/plan-gate-missing-round-plan.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/pycompile-round2.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/pytest-targeted-w1.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/report-sha256-round2.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/v2-cli-auth-negative.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/v2-cli-probe-ok.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/v2-cli-probe-ok.stderr.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round2/evidence/wf-delegate-v2-dry-run.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/00-w2-implementation.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/01-verification.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/02-summary.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/EVIDENCE-PACK.md
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/commit-run-dry-run.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/contract-lock-round3.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/evidence-pack-command.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/final-doctor-round3.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/fusion-check-round3.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/plan-gate-pass.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/pycompile-round3.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/pytest-full-round3.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/resource-check.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/status-all.clean.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/status-all.json
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/status-all.stderr.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/status-all.time.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/status-all.wall.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/reports/round3/evidence/status-shards.txt
+?? workflow-group/runs/advisor-report-fusion-20261023/status-shards/merged/20261023-154829/qa-w2.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/status-shards/merged/20261023-154829/tdo-w2a.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/status-shards/merged/20261023-154829/tdo-w2b.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/status-shards/merged/20261023-154829/tdo-w2c.jsonl
+?? workflow-group/runs/advisor-report-fusion-20261023/status-shards/merged/20261023-154829/tdo-w2d.jsonl
+?? workflow-group/runs/android-app-complete-20261112/DECISIONS.md
+?? workflow-group/runs/android-app-complete-20261112/ISSUES.jsonl
+?? workflow-group/runs/android-app-complete-20261112/ISSUES.xlsx
+?? workflow-group/runs/android-app-complete-20261112/OPENRIG-STATE.json
+?? workflow-group/runs/android-app-complete-20261112/PROJECT.md
+?? workflow-group/runs/android-app-complete-20261112/SPEC.md
+?? workflow-group/runs/android-app-complete-20261112/STATUS-Round-1.md
+?? workflow-group/runs/android-app-complete-20261112/baseline/SHA256SUMS
+?? workflow-group/runs/android-app-complete-20261112/baseline/app-debug-0.1.0.apk
+?? workflow-group/runs/android-app-complete-20261112/baseline/bridge-app-src-before.tar.gz
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/dsh/R1-dsh/changes.diff
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/dsh/R1-dsh/result.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/after-install-raw.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/after-install-raw2.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/after-install-raw3.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/after-install-raw4.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/after-install.INVALID-NOT-PNG.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/apk-badging.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/apk-sha256.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/logcat-launch.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/main-screen.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/result.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/rw-01-page.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/rw3-01-page-after-install.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/rw3-02-backkey-returns-to-chat.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/rw3-03-image-bubble-no-save.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/rw3-04-picker-chip.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/shot-01-sessions.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/shot-02-setup.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/shot-03-pairing-ok.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/shot-04-error-cleartext.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/oc/R1-oc/shot-04a-error-cleartext-BEFORE-88c58f81.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-dsh/REPORT.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-dsh/qa-picker-current-after-switch.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-dsh/qa-picker-fix-retest.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-dsh/qa-restore-main.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-dsh/report.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/REPORT.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/as-installed-app-debug.apk
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-after-enter-session.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-after-enter-session2.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-after-launch.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-after-session-tap.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-back-to-chat.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-backkey-return.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-button-probe.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-cdp-tap-result.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-enter-session-swipe-tap.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-gear-tap.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-oc-handoff-state.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-picker-retest.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-relaunch.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-restore2.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-restored-and-loaded.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-retry-after-error.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-send-6s.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-send-after-8s.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-send-reply.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-send-result-3s.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-session-picker-next.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-session-picker-open.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-settings-url-state.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-switch-attempt.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-typed-input.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-upload-attached.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-upload-sent.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-upload-step1.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/qa-upload-step2.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/report.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw-qa-01-page.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw-qa-02-settings.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw-qa-03-back-from-settings.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw-qa-04-media-viewer.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw-qa-06-cleanup.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw2-01-cleartext-overlay.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw2-02-overlay-persist-15s.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw2-03-restored-ok.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/R1-qa-oc/rw3-01-picker.png
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/baseline/baseline-manifest.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/baseline/oc-prechange-snapshot.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/baseline/sha256sum-c.txt
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/join/JOIN.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/R1/qa/plan.md
+?? workflow-group/runs/android-app-complete-20261112/evidence/openrig-transcripts/openrig-android-app-complete-20261112/capture-manifest.json
+?? workflow-group/runs/android-app-complete-20261112/openrig-bridge-doctor.txt
+?? workflow-group/runs/android-app-complete-20261112/openrig-daemon-status.txt
+?? workflow-group/runs/android-app-complete-20261112/openrig-preflight.json
+?? workflow-group/runs/android-app-complete-20261112/openrig-render-fixmodel.json
+?? workflow-group/runs/android-app-complete-20261112/openrig-render.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/android-app-complete-20261112/openrig/dsh-official-wrapper.sh
+?? workflow-group/runs/android-app-complete-20261112/openrig/dsh-opencode-go.patch.yml
+?? workflow-group/runs/android-app-complete-20261112/openrig/guidance/team.md
+?? workflow-group/runs/android-app-complete-20261112/openrig/queue-initial.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/render-manifest.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-down-model-fix.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-plan.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-ps-fixmodel.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-ps.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-up-final.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-up-fixmodel.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-up-fixmodel2.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig-up.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/rig.yaml
+?? workflow-group/runs/android-app-complete-20261112/openrig/send-pmo-correction.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/send-pmo-final.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/send-pmo.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/send-tdo-dsh.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/send-tdo-oc.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-abort-model-fix.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-instantiate-final.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-instantiate-fixmodel.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-instantiate.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-validate-final.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-validate-fixmodel.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow-validate.json
+?? workflow-group/runs/android-app-complete-20261112/openrig/workflow.yaml
+?? workflow-group/runs/close-semantics-remediation-20261111/DECISIONS.md
+?? workflow-group/runs/close-semantics-remediation-20261111/ISSUES.xlsx
+?? workflow-group/runs/close-semantics-remediation-20261111/PROJECT.md
+?? workflow-group/runs/close-semantics-remediation-20261111/SPEC.md
+?? workflow-group/runs/close-semantics-remediation-20261111/STATUS-Round-1.md
+?? workflow-group/runs/h-drive-cleanup-20261018/DECISIONS.md
+?? workflow-group/runs/h-drive-cleanup-20261018/DELEGATIONS.md
+?? workflow-group/runs/h-drive-cleanup-20261018/ISSUES.xlsx
+?? workflow-group/runs/h-drive-cleanup-20261018/PROJECT.md
+?? workflow-group/runs/h-drive-cleanup-20261018/SPEC.md
+?? workflow-group/runs/h-drive-cleanup-20261018/STATUS-Round-1.md
+?? workflow-group/runs/h-drive-cleanup-20261018/WINDOWS-RUN.md
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/r1-mkdir-wave2.jsonl
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/r1-mkdir-wave3.jsonl
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/r1-mkdir.jsonl
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/r1-move.jsonl
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/r2-move-root.jsonl
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/run-r1-moves.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/run-r2-root-moves.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/run-wave2-rest.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/actions/run-wave3.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/2026-10-18-22-10-pmo-pmo.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/pmo-audit-final-fix-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/pmo-audit-final-fix.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/pmo-close-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/pmo-close.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/qa-r1-r2-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/qa-r1-r2.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/safety-review-r1-mkdir-fix-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/safety-review-r1-mkdir-fix.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-r1-execute-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-r1-execute.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-r1-resume-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-r1-resume.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-r2-root-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-r2-root.md
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-status-write-prompt.txt
+?? workflow-group/runs/h-drive-cleanup-20261018/delegations/tdo-status-write.md
+?? workflow-group/runs/h-drive-cleanup-20261018/reports/audit-final.md
+?? workflow-group/runs/h-drive-cleanup-20261018/reports/qa-verification.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/DECISIONS.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/ISSUES.xlsx
+?? workflow-group/runs/h-drive-od-dismantle-20261018/PROJECT.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/SPEC.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/STATUS-Round-1.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/WINDOWS-RUN.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/actions/od-mkdir.jsonl
+?? workflow-group/runs/h-drive-od-dismantle-20261018/actions/od-move.jsonl
+?? workflow-group/runs/h-drive-od-dismantle-20261018/actions/run-od-mkdir.txt
+?? workflow-group/runs/h-drive-od-dismantle-20261018/actions/run-od-move.txt
+?? workflow-group/runs/h-drive-od-dismantle-20261018/delegations/pmo-od-close-prompt.txt
+?? workflow-group/runs/h-drive-od-dismantle-20261018/delegations/pmo-od-close.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/delegations/qa-od-prompt.txt
+?? workflow-group/runs/h-drive-od-dismantle-20261018/delegations/qa-od.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/delegations/tdo-od-prompt.txt
+?? workflow-group/runs/h-drive-od-dismantle-20261018/delegations/tdo-od.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/reports/audit-final.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/reports/disassemble-candidates.md
+?? workflow-group/runs/h-drive-od-dismantle-20261018/reports/qa-verification.md
+?? workflow-group/runs/h-drive-root-layout-20261018/DECISIONS.md
+?? workflow-group/runs/h-drive-root-layout-20261018/ISSUES.xlsx
+?? workflow-group/runs/h-drive-root-layout-20261018/PROJECT.md
+?? workflow-group/runs/h-drive-root-layout-20261018/SPEC.md
+?? workflow-group/runs/h-drive-root-layout-20261018/STATUS-Round-1.md
+?? workflow-group/runs/h-drive-root-layout-20261018/WINDOWS-RUN.md
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/run-v2-content.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/run-v2-empty-v2.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/run-v2-empty.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/run-v2-mkdir-root.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/run-v2-mkdir-sub.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/v2-mkdir-root.jsonl
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/v2-mkdir-sub.jsonl
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/v2-move-content-fix.jsonl
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/v2-move-content.jsonl
+?? workflow-group/runs/h-drive-root-layout-20261018/actions/v2-move-empty.jsonl
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/pmo-v2-close-prompt.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/pmo-v2-close.md
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/qa-v2-prompt.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/qa-v2.md
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/tdo-v2-content-fix-prompt.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/tdo-v2-content-fix.md
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/tdo-v2-content-prompt.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/tdo-v2-content.md
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/tdo-v2-empty-prompt.txt
+?? workflow-group/runs/h-drive-root-layout-20261018/delegations/tdo-v2-empty.md
+?? workflow-group/runs/h-drive-root-layout-20261018/reports/audit-final.md
+?? workflow-group/runs/h-drive-root-layout-20261018/reports/qa-verification.md
+?? workflow-group/runs/master-adoption-20261015/BASELINE-post.sha256
+?? workflow-group/runs/master-adoption-20261015/BASELINE-pre.sha256
+?? workflow-group/runs/master-adoption-20261015/DECISIONS.md
+?? workflow-group/runs/master-adoption-20261015/DELEGATIONS.md
+?? workflow-group/runs/master-adoption-20261015/INPUT.md
+?? workflow-group/runs/master-adoption-20261015/ISSUES.xlsx
+?? workflow-group/runs/master-adoption-20261015/PROJECT.md
+?? workflow-group/runs/master-adoption-20261015/SPEC.md
+?? workflow-group/runs/master-adoption-20261015/STATUS-Round-1.md
+?? workflow-group/runs/master-adoption-20261015/STATUS-Round-2.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-22-19-pmo-pmo.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-22-28-tdo-tdo-a1.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-22-35-tdo-tdo-a3.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-22-43-qa-qa.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-22-50-pmo-pmo.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-22-54-pmo-pmo.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-23-03-tdo-tdo-r2.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-23-07-qa-qa.md
+?? workflow-group/runs/master-adoption-20261015/delegations/2026-10-15-23-12-pmo-pmo.md
+?? workflow-group/runs/master-adoption-20261015/reports/adoption-report.md
+?? workflow-group/runs/master-adoption-20261015/reports/ws-r2.md
+?? workflow-group/runs/master-adoption-20261015/reports/ws1-core-rules.md
+?? workflow-group/runs/master-adoption-20261015/reports/ws2-roles.md
+?? workflow-group/runs/master-adoption-20261015/reports/ws3-templates.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/DECISIONS.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/ISSUES.jsonl
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/ISSUES.xlsx
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/PROJECT.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/ROUND-PLAN.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/SPEC.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/STATUS-Round-1.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/guidance/team.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/rig.yaml
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/workflow-instantiate.err
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/workflow-instantiate.json
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/workflow-validate.json
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/openrig/workflow.yaml
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/AUDIT.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/OPENCODE-TRIAL.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/OPENRIG.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/QA.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/REFACTOR-PLAN.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/VERDICT.md
+?? workflow-group/runs/moss-bijin-skill-opt-20261107/reports/VERIFY.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/DECISIONS.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/ISSUES.jsonl
+?? workflow-group/runs/openrig-advisor-refit-20261023/ISSUES.xlsx
+?? workflow-group/runs/openrig-advisor-refit-20261023/OPENRIG-STATE.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/PROJECT.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/ROUND-PLAN.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/SPEC.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/STATUS-Round-1.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/evidence/openrig-transcripts/openrig-openrig-advisor-refit-20261023/capture-manifest.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/archive-run-refresh.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/archive-run.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/bridge-capture-final.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/bridge-status-final.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/close-gate-control-main.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/close-gate-control-pmo.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/close-s2-cleared-assurance-qa.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/close-s2-cleared-control-main.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/daemon-start.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/daemon-stop.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/final-d014-assurance-qa.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/final-d014-control-main.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/final-d014-control-pmo.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/guidance/team.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/main-send-final-close.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/packet-implement-docs.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/packet-qa-docs.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/pmo-capture-1.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/pmo-capture-2.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/pmo-send-close-s2-retry.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/pmo-send-close-s2.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/pmo-send-plan.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/port-after-teardown.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/processes-after-teardown.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/ps-after-teardown.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/qa-send-closeout.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/qa-send-d012.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/qa-send-d014.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/qa-send-ws1.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/qa-send-ws2.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/queue-initial.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/render-manifest.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/rig-ps.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/rig-up.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/rig.yaml
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/send-d007-control-pmo.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/send-d007-exec-tdo-oc.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/tdo-send-p001-final.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/tdo-send-ws1-project.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/tdo-send-ws1.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/tdo-send-ws2.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/teardown-execute.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/teardown-precheck-after-refresh.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/teardown-precheck.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/tmux-after-teardown.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-instantiate.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-project-close.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-project-ws1-manual.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-show-after-ws1.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-show-final.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-show-initial.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-trace-final.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow-validate.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/openrig/workflow.yaml
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/00-sources.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/01-plan.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/04-implementation.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/05-verification.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/06-summary.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/VERDICT.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/00-sources-hash-after.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/00-sources-hash-before.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/00-sources-hash-diff.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-archive.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-final-bridge-doctor.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-final-doctor.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-final-facts.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-final-lock.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-final-pytest.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-status-all.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/06-teardown.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/BASELINE-pre-commit-surface.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/LOCK-pre-p001-resign.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/contract-lock-after.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/d019-freeze-snapshot.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/doc-noise-after.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/issues-close-residual-orchestrator.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/issues-close-s2-orchestrator.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/issues-closeout.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/p001-post-check.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/p001-post-lock.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/p001-pre/BASE-MASTER.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/p001-pre/FREEZE-NOTES.md
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/p001-pre/LOCK.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/pmo-r005-pointers.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/qa-ws1-gates.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/qa-ws1-lock-scope-probe.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/qa-ws1-recheck-main.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/qa-ws1-snapshot.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/qa-ws2-gates.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/teardown-preflight.json
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws1-doc-noise.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws1-focused-tests.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws1-full-suite.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws1-lock.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws1-project-attempt.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws1-tests.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws2-docs-sync.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws2-gtpl.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws2-map-l4-fix.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws2-p001.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws2-project-attempt.txt
+?? workflow-group/runs/openrig-advisor-refit-20261023/reports/evidence/ws2-tests.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/DECISIONS.md
+?? workflow-group/runs/openrig-audit-fix-20261020/ISSUES.xlsx
+?? workflow-group/runs/openrig-audit-fix-20261020/OPENRIG-STATE.json
+?? workflow-group/runs/openrig-audit-fix-20261020/PROJECT.md
+?? workflow-group/runs/openrig-audit-fix-20261020/QA-REPORT.md
+?? workflow-group/runs/openrig-audit-fix-20261020/SPEC.md
+?? workflow-group/runs/openrig-audit-fix-20261020/STATUS-Round-1.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/AGENTS.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/DESIGN.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/EVOLUTION.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/WORKFLOW.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/roles/delegation-briefs.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/templates/specialized/openrig-workflow-master/BASELINE-post.sha256
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/templates/specialized/openrig-workflow-master/CHANGELOG.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/pre-snapshot/templates/specialized/openrig-workflow-master/validation/README.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/stubs/opencode-garbage
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/stubs/opencode-v1
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/stubs/opencode-v2
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/stubs/opencode-v2-pureflag
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-0-context-pre.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-1-before-serve-v2.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-10-compile.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-11-diffstat.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-12-handoff-attempt.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-13-handoff-attempt-2.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-14-execution-quad.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-1b-before-serve-v2-pureflag.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-2-after-serve-v2.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-2b-after-serve-v2-pureflag.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-3-after-guard-matrix.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-4-guard-tests.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-5-doc-diff.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-6-changelog-entry.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-7-pytest-full.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-8-doc-residual-scan.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws2-9-repro-commands.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-0-reverted.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-1-baseline-pre.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-1b-baseline-head.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-2-doc-diff.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-3-baseline-restore.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-3-baseline-verify.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-3a-baseline-before-main-refresh.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/dsh/ws3-6-sha256-before-after.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/main/final-verification.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/main/hygiene-final.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/main/qa-stuck-recovery.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-after-a2-pmo-exact-repro.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-after-clean.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-before-a1-runid.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-before-a2-cli.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-before-a2-pmo-exact-repro.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-before-a3-bundle.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-before-clean.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-before-live.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-pytest-full.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-pytest-red-green.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-report.md
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/oc/ws1-repro.py
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/openrig-transcripts/openrig-audit-fix/capture-manifest.json
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-baseline.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-docs-residual.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-doctor-live.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-doctor-negatives.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-git-hygiene.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-opencode-guard.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-pytest-full.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/evidence/qa/qa-secret-scan.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/entry-qitem.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-capture.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-capture.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-daemon-stop.txt
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-down.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-down.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-ps.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-ps.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-status.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/final-status.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/guidance/team.md
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/main-close-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/main-close2-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/operator-decision-send.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/operator-decision-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/operator-doctor-doc-decision.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-p001-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-s4-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-send.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-send2.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-send2.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-send3.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/pmo-send3.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/ps-fresh.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/ps-restored.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/ps.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/ps.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/qa-final-update-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/qa-send.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/qa-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/qa-update-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/qa-update2-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/qa-update3-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/recovery-close.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/render-manifest.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-fresh.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-fresh.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-plan.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-plan.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-restore.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-restore.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-up.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig-up.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/rig.yaml
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/tdo-dsh-final-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/tdo-dsh-send.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/tdo-dsh-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/tdo-oc-final-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/tdo-oc-send.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/tdo-oc-send.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-close.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-close.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-instantiate.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-instantiate.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-list.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-validate.err
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow-validate.json
+?? workflow-group/runs/openrig-audit-fix-20261020/openrig/workflow.yaml
+?? workflow-group/runs/openrig-deepseek-refit-20261018/DECISIONS.md
+?? workflow-group/runs/openrig-deepseek-refit-20261018/ISSUES.xlsx
+?? workflow-group/runs/openrig-deepseek-refit-20261018/PROJECT.md
+?? workflow-group/runs/openrig-deepseek-refit-20261018/STATUS-Round-1.md
+?? workflow-group/runs/openrig-deepseek-refit-20261018/reports/evidence/openrig-fork-compare.json
+?? workflow-group/runs/openrig-deepseek-refit-20261018/reports/evidence/project-candidates.json
+?? workflow-group/runs/openrig-deepseek-refit-20261018/reports/round1-alternatives.md
+?? workflow-group/runs/openrig-deepseek-refit-20261018/reports/round2-plan.md
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/README.md
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/check-absence-claims.py
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/x01-fix/PATCH.md
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/x01-fix/VERIFY-ADDENDUM.md
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/x01-fix/VERIFY.md
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/x09-fix/PATCH.md
+?? workflow-group/runs/openrig-docs-governance-20261115/reports/post-close/x09-fix/VERIFY.md
+?? workflow-group/runs/openrig-full-verify-20261019/DECISIONS.md
+?? workflow-group/runs/openrig-full-verify-20261019/ISSUES.xlsx
+?? workflow-group/runs/openrig-full-verify-20261019/PROJECT.md
+?? workflow-group/runs/openrig-full-verify-20261019/SPEC.md
+?? workflow-group/runs/openrig-full-verify-20261019/STATUS-Round-1.md
+?? workflow-group/runs/openrig-full-verify-20261019/reports/FULL-CHECK.md
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/build.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-auto-processes-before.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-daemon-start.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-daemon-stop.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-down-final.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-down-final.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-down.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-down.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-dsh-transcript.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-envelope-taskcount.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-envelope-transcript.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-oc-transcript.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-ps-before.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-db-tokens.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-ps.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-send-dsh.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-send-oc.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-sidecar-dsh.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-sidecar-opencode.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-sidecars.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-transcripts.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-up.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-resume-up.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-send-dsh.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-send-dsh.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-send-envelope.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-send-envelope.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-send-oc.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-send-oc.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-sidecar-dsh-final.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-sidecar-opencode-final.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-sidecars-before.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-sidecars-raw.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-up.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-up.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-abort.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-abort.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-instantiate.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-instantiate.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-show.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-show.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-status.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-validate.err
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/e2e-workflow-validate.json
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/guard-noop-probe.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/guard-rerun.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/hygiene-final.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/hygiene-final2.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/hygiene-final3.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/hygiene-final4.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/hygiene.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/lint-final.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/lint.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/npm-ci.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/portability-analysis.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/portability-guard-ascii.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/precheck-processes.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/repo-state.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/secret-scan.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-cli-failure-analysis.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-cli-upstream-failing-files.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-cli.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-daemon-rerun.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-daemon-retest.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-daemon.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-feature.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-repo-retest.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-repo.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-tmux-cwd-upstream.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-tmux-exec-upstream.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-tui.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/test-ui.txt
+?? workflow-group/runs/openrig-full-verify-20261019/reports/evidence/upstream-state.txt
+?? workflow-group/runs/openrig-hard-constraints-20261115/DECISIONS.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/ISSUES.xlsx
+?? workflow-group/runs/openrig-hard-constraints-20261115/PROJECT.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/SPEC.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/STATUS-Round-1.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/TASK.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/evidence/openrig-transcripts/openrig-hard-constraints-20261115/capture-manifest.json
+?? workflow-group/runs/openrig-hard-constraints-20261115/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-hard-constraints-20261115/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-hard-constraints-20261115/openrig/guidance/team.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/openrig/render-manifest.json
+?? workflow-group/runs/openrig-hard-constraints-20261115/openrig/rig.yaml
+?? workflow-group/runs/openrig-hard-constraints-20261115/openrig/workflow.yaml
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/00-plan.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/ANALYSIS-HARD-CONSTRAINTS.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/DECISION-MATRIX.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/FINAL.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/OPEN-QUESTIONS.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/POST-CLOSE-CLEANUP.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/QA-VERDICT.md
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/evidence/00-baseline.txt
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/evidence/00-inputs.txt
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/evidence/00-probes.txt
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/evidence/10-analyze-probes.txt
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/evidence/20-close-verify.txt
+?? workflow-group/runs/openrig-hard-constraints-20261115/reports/evidence/qa/qa-probes.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/DECISIONS.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/ISSUES.xlsx
+?? workflow-group/runs/openrig-launch-guardrails-20261115/PROJECT.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/SPEC.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/STATUS-Round-1.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/TASK.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/evidence/openrig-transcripts/openrig-launch-guardrails-20261115/capture-manifest.json
+?? workflow-group/runs/openrig-launch-guardrails-20261115/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-launch-guardrails-20261115/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-launch-guardrails-20261115/openrig/guidance/team.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/openrig/render-manifest.json
+?? workflow-group/runs/openrig-launch-guardrails-20261115/openrig/rig.yaml
+?? workflow-group/runs/openrig-launch-guardrails-20261115/openrig/workflow.yaml
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/00-plan.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/ANALYSIS-LAUNCH-GUARDRAILS.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/FINAL.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/OPEN-QUESTIONS.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/POST-CLOSE-ADDENDUM.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/POST-CLOSE-CLEANUP.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/QA-VERDICT.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-activity-channels.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-agents-block-overwrite.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-baseline.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-claim-gap.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-g12-proposed-revision.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-preflight-probes.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-rig-send-advisory.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/00-system-update-delivery.txt
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/qa/g05-projection-audit-recipe.md
+?? workflow-group/runs/openrig-launch-guardrails-20261115/reports/evidence/qa/rerun-probes.txt
+?? workflow-group/runs/openrig-local-refit-20261018/DECISIONS.md
+?? workflow-group/runs/openrig-local-refit-20261018/ISSUES.xlsx
+?? workflow-group/runs/openrig-local-refit-20261018/PROJECT.md
+?? workflow-group/runs/openrig-local-refit-20261018/SPEC.md
+?? workflow-group/runs/openrig-local-refit-20261018/STATUS-Round-1.md
+?? workflow-group/runs/openrig-local-refit-20261018/reports/env-probe.md
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-host.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-local-workflow.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-network.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-node-opencode-versions.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-opencode-commands.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-opencode-config.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-opencode-providers.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-opencode-run.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-openrig.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/env-probe-tools.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/node-runtime-strategy.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/opencode-resume-success.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/opencode-run-success.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/opencode-toolcheck-success.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/evidence/opencode-version-after-merge.txt
+?? workflow-group/runs/openrig-local-refit-20261018/reports/node-runtime-strategy.md
+?? workflow-group/runs/openrig-local-refit-20261018/reports/opencode-remediation.md
+?? workflow-group/runs/openrig-local-refit-20261018/reports/openrig-inventory.md
+?? workflow-group/runs/openrig-local-refit-20261018/reports/round2-refit-plan.md
+?? workflow-group/runs/openrig-local-refit-20261018/reports/template-README.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/DECISIONS.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/FINAL-SELF-OPT.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/ISSUES.xlsx
+?? workflow-group/runs/openrig-master-selfopt-20261020/OPENRIG-STATE.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/PROJECT.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/QA-SELF-OPT-RECHECK.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/QA-SELF-OPT.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/SELF-OPT-PLAN.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/SPEC.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/STATUS-Round-1.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/TDO-DSH-FIX-REPORT.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/TDO-DSH-REPORT.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/TDO-OC-REPORT.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/dsh1-status.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/dsh1-status.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/dsh2-doctor.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/dsh3-capture.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/dsh4-arch-diff.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-1-doctor-live.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-2-doctor-safetyMode.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-3-doctor-schemaVersion.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-3b-doctor-schemaVersion-missing.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-4-arch-p001-terms.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-5-arch-p002.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-6-sha256.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-7-repro.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-8-closeout.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/fix-9-successor-verification.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/dsh/transcripts/capture-manifest.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/hygiene-final.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/main-sidecar-final.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/oc/oc1-args-validation.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/oc/oc2-render-manifest.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/oc/oc3-placeholder-guard.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/openrig-final-ps.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/openrig-final-workflow-status.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa-sidecar-final.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa0-snapshot.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa1-dryrun.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa1-dryrun.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa1-help.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa1-invalid-args.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-args-final.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-dry.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-dry.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-final-docs.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-help-final.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-livecheck-compare.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-livecheck.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-livecheck.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-render-a.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-render-a.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-render-b.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-render-b.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-scratch-final.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-workflow-validate.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa10-workflow-validate.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-a.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-a.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-args-final2.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-b.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-b.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-dry.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-dry.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-final2-snapshot.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-help-final2.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-livecheck-compare.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-livecheck.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-livecheck.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa11-workflow-validate.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-d010-a.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-d010-b.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-d010-recheck.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-livecheck-compare.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-livecheck.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-livecheck.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-manifest-compare.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-render-a.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-render-a.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-render-b.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa2-render-b.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-capture-rc1.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-capture-verify.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-capture.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-capture.out
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-doctor.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-status-degraded.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-status-degraded.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-status-degraded.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-status.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-status.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa3-transcripts/capture-manifest.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa4-scratch.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa5-workflow-validate.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa6-consistency.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa7-doctor-invalid.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa7-precheck-gaps.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa7-schema-version.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa8-workflow-handoff.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-capture-final.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-capture-final.out
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-status.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-status.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-transcripts-final/capture-manifest.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-ws3b-p001-commands.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-ws3b-recheck.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/qa9-ws3b-snapshot.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/recheck-hashes.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/recheck-issues-s3.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/recheck-issues.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/recheck-p001-terms.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/recheck-p002-doctor.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/evidence/qa/recheck-snapshot.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/bridge-doctor.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/daemon-start.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/final-daemon-stop.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/final-down.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/guidance/team.md
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/pmo-send.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/pmo-send.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/ps-after-send.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/ps.txt
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/qa-recheck-send.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/qa-recheck-send.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/qa-send.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/qa-send.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/rig-up.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/rig-up.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/rig.yaml
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/tdo-dsh-fix-send.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/tdo-dsh-fix-send.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/tdo-dsh-send.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/tdo-dsh-send.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/tdo-oc-send.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/tdo-oc-send.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/workflow-instantiate.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/workflow-instantiate.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/workflow-validate.err
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/workflow-validate.json
+?? workflow-group/runs/openrig-master-selfopt-20261020/openrig/workflow.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/DECISIONS.md
+?? workflow-group/runs/openrig-master-v12-20261020/ISSUES.xlsx
+?? workflow-group/runs/openrig-master-v12-20261020/OPENRIG-STATE.json
+?? workflow-group/runs/openrig-master-v12-20261020/PROJECT.md
+?? workflow-group/runs/openrig-master-v12-20261020/QA-REPORT.md
+?? workflow-group/runs/openrig-master-v12-20261020/SPEC.md
+?? workflow-group/runs/openrig-master-v12-20261020/STATUS-Round-1.md
+?? workflow-group/runs/openrig-master-v12-20261020/STATUS-Round-2.md
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-change-note.md
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-change.diff
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-live-handoff.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-live-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-post.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-pre.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-pytest-full-noshim.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-pytest-full-shim.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-pytest-rework.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-qa-packet-note.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-teardown.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-workflow-rendered-real-rig.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-workflow-validate.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/M5-workflow-validate.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-abort-first-probe.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-abort-first-probe.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-instantiate-2.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-instantiate.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-01-plan-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-02-implement-opencode-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-03-qa-opencode-failed.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-04-reworks-opencode-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-05-qa-opencode-pass-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-06-implement-dsh-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-07-qa-dsh-pass-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-08-qa-join-pass-handoff.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-project-09-close-round-done.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-projection-excerpt.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-queue-before-teardown.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-rig-import.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-01-instantiated.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-02-fanout.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-03-qa-opencode.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-04-after-qa-failed.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-05-reentered-qa-opencode.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-06-oc-branch-passed.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-07-qa-dsh.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-08-qa-join.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-09-close-round.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-10-completed.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-show-instantiated.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-summary.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-trace-final.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/M5-workflow-status-before-teardown.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/bin/rig
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/drive_probe.py
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/probe-rig.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/validate-spec.mjs
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/dsh/probe/workflow.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/IC1-stale-wake-4.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-commands.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-daemon-stop.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-daemon-stop.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-down.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-down.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-post.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M10-teardown-pre.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M7-post-final-tail.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/M7-post-final.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/P004-fix-verify.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-dsh.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-dsh.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-oc.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-oc.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-qa-r2.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-qa-r2.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-qa-status.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/decisions/send-qa-status.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/entrypoints-pytest-no-rig.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/entrypoints-pytest-with-rig.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/final-doctor.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/final-pytest-no-rig.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/final-pytest-with-rig.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/agents-before.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/agents-before.status
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/daemon-start.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/daemon-start.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/daemon-start.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/entry-qitem-poll.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/ps-after-instantiate.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/ps.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/ps.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/qitem-dsh.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/qitem-oc.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/qitem-recovery.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-final0.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-final1.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll1.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll10.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll11.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll12.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll13.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll14.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll15.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll2.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll3.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll4.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll5.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll6.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll7.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll8.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-poll9.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2b.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2c.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2d.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2e.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2f.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2g.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2h.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/queue-r2i.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/rig-plan.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/rig-plan.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/rig-up.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/rig-up.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/status-pre.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/status-pre.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/workflow-list-instantiated.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/workflow-list-instantiated.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/workflow-show-after-plan.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/workflow-show-close.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/workflow-validate.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/launch/workflow-validate.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/baseline-pre-verify.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/baseline.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/bridge-doctor.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/hash-a.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/hash-b.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/hash-diff.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/master-inventory.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/pytest.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/render-a.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/render-a.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/render-b.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/render-b.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/repo-state.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/workflow-validate-pre.err
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/main/precheck/workflow-validate-pre.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-A-after.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-B-after.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-B-before.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-C-after.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-P002-diff.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-P002-post.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-P002-pre.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-P002-summary.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M1-pytest.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-change-set.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-doctor-v2-after.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-doctor-v2-before.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-negative-absolute.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-negative-bundle-absolute.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-negative-escape.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-post.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-pre.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-render-v2-after.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M2-render-v2-before.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M3-hash-a.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M3-hash-b.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M3-hash-diff.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/M4-legacy-probe.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-A.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-B-CI.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-C.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-diff.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-post.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-pre.sha256
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/oc/P004-summary.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-R2-A.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-R2-B-after-commit.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-R2-B.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-R2-C.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-R2-non-tautology.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-R2-skipset.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M1-pytest.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M2-doctor.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M3-render-portability.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M5-workflow-validate.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M6-R2.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M7-R2-after-commit.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M7-R2.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M7-baseline-state.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M8-R2-binding.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M8-R2-render.json
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M8-R2-seats.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M8-R2-validate.txt
+?? workflow-group/runs/openrig-master-v12-20261020/evidence/qa/M8-rig-ps.json
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/entry-qitem.json
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/guidance/team.md
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/render-manifest.json
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/rig.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/workflow-instantiate.err
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/workflow-instantiate.json
+?? workflow-group/runs/openrig-master-v12-20261020/openrig/workflow.yaml
+?? workflow-group/runs/openrig-master-v12-20261020/reports/ENTRY-TICKETS-20261020.md
+?? workflow-group/runs/openrig-master-v12-20261020/reports/ENTRYPOINTS-20261020.md
+?? workflow-group/runs/openrig-master-v12-20261020/reports/PRECHECK.md
+?? workflow-group/runs/openrig-next-stage-20261022/AGENTS.md
+?? workflow-group/runs/openrig-next-stage-20261022/PROJECT.md
+?? workflow-group/runs/openrig-next-stage-20261022/SPEC.md
+?? workflow-group/runs/openrig-next-stage-20261022/STATUS-Round-1.md
+?? workflow-group/runs/openrig-next-stage-20261022/USER-REQUEST.md
+?? workflow-group/runs/openrig-next-stage-20261022/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-next-stage-20261022/openrig/guidance/team.md
+?? workflow-group/runs/openrig-next-stage-20261022/openrig/rig.yaml
+?? workflow-group/runs/openrig-next-stage-20261022/openrig/workflow.yaml
+?? workflow-group/runs/openrig-next-stage-20261022/prompts/01-archivist.md
+?? workflow-group/runs/openrig-next-stage-20261022/prompts/02-critic.md
+?? workflow-group/runs/openrig-next-stage-20261022/prompts/03-architect.md
+?? workflow-group/runs/openrig-next-stage-20261022/prompts/04-qa.md
+?? workflow-group/runs/openrig-next-stage-20261022/prompts/05-close.md
+?? workflow-group/runs/openrig-next-stage-20261022/reports/01-evidence.md
+?? workflow-group/runs/openrig-next-stage-20261022/reports/02-gaps.md
+?? workflow-group/runs/openrig-next-stage-20261022/reports/03-design.md
+?? workflow-group/runs/openrig-next-stage-20261022/reports/04-qa.md
+?? workflow-group/runs/openrig-next-stage-20261022/reports/05-final.md
+?? workflow-group/runs/openrig-next-stage-20261022/reports/06-addendum-post-close.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/DECISIONS.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/ISSUES.xlsx
+?? workflow-group/runs/openrig-opencode-dsh-20261018/PROJECT.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/SPEC.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/STATUS-Round-1.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/STATUS-Round-2.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/R1-verify.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/R2-qa.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/R2-resume-verify.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/R2-skill-path.md
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-build-lint.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-ps-nodes-final.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-rig-down.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-rig-up.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-send-dsh-raw.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-send-dsh-resume.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-send-opencode-envelope.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-send-opencode-raw.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-send-opencode-resume.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-sidecar-dsh.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-sidecar-opencode.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-smoke-transcripts.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-targeted-tests.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R1-workflow-validate.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-build-lint.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-restore-no-token.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-db-tokens.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-down.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-sidecar-dsh.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-sidecar-opencode.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-transcripts.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-up-existing-resumed.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-resume-up-fresh.json
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-skill-path-evidence.txt
+?? workflow-group/runs/openrig-opencode-dsh-20261018/reports/evidence/R2-targeted-tests.txt
+?? workflow-group/runs/openrig-seat-isolation-20261023/DECISIONS.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/ISSUES.xlsx
+?? workflow-group/runs/openrig-seat-isolation-20261023/PROJECT.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/SPEC.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/STATUS-Round-1.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/USER-REQUEST.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-seat-isolation-20261023/openrig/guidance/team.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/openrig/rig.yaml
+?? workflow-group/runs/openrig-seat-isolation-20261023/openrig/workflow.yaml
+?? workflow-group/runs/openrig-seat-isolation-20261023/prompts/01-recon.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/prompts/02-design.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/prompts/03-impl-p0.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/prompts/04-impl-p1.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/prompts/05-verify.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/prompts/06-close.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/reports/00-doc-inventory.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/reports/01-recon.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/reports/01b-recon.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/reports/QA-ESCALATION-01-seat-sandbox-ro.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/reports/QA-ESCALATION-01.md
+?? workflow-group/runs/openrig-seat-isolation-20261023/scripts/watch-steps.sh
+?? workflow-group/runs/openrig-token-factfind-20261115/DECISIONS.md
+?? workflow-group/runs/openrig-token-factfind-20261115/ISSUES.xlsx
+?? workflow-group/runs/openrig-token-factfind-20261115/PROJECT.md
+?? workflow-group/runs/openrig-token-factfind-20261115/SPEC.md
+?? workflow-group/runs/openrig-token-factfind-20261115/STATUS-Round-1.md
+?? workflow-group/runs/openrig-token-factfind-20261115/TASK.md
+?? workflow-group/runs/openrig-token-factfind-20261115/evidence/openrig-transcripts/openrig-token-factfind-20261115/capture-manifest.json
+?? workflow-group/runs/openrig-token-factfind-20261115/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-token-factfind-20261115/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-token-factfind-20261115/openrig/guidance/team.md
+?? workflow-group/runs/openrig-token-factfind-20261115/openrig/render-manifest.json
+?? workflow-group/runs/openrig-token-factfind-20261115/openrig/rig.yaml
+?? workflow-group/runs/openrig-token-factfind-20261115/openrig/workflow.yaml
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/00-plan.md
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/FACTFIND-R1.0.md
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/FINAL.md
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/MANUAL-ADJUSTMENTS.md
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/POST-CLOSE-TELEMETRY.md
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/QA-VERDICT.md
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/BASELINE-product-status.txt
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/ROUND-TELEMETRY.json
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/dsh-probe-meta.json
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/dsh-probe.jsonl
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/dsh-probe.stderr
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/join-key-check.txt
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/opencode-event-stream.jsonl
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/opencode-event-stream.stderr
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/opencode-probe-meta.json
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/opencode-session-db.json
+?? workflow-group/runs/openrig-token-factfind-20261115/reports/evidence/usage-surface-check.txt
+?? workflow-group/runs/openrig-token-governance-design-20261115/DECISIONS.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/ISSUES.xlsx
+?? workflow-group/runs/openrig-token-governance-design-20261115/PROJECT.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/SPEC.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/STATUS-Round-1.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/TASK.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-token-governance-design-20261115/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-token-governance-design-20261115/openrig/guidance/team.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/openrig/render-manifest.json
+?? workflow-group/runs/openrig-token-governance-design-20261115/openrig/rig.yaml
+?? workflow-group/runs/openrig-token-governance-design-20261115/openrig/workflow.yaml
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/00-plan.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/ACCEPTANCE-v2.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/BUDGET-MANAGEMENT-RESEARCH.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/FINAL.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/INPUT-AUDIT.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/MANUAL-ADJUSTMENTS.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/MANUAL-ADJUSTMENTS.sha256
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/OPEN-QUESTIONS.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/PLAN-v2.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/POST-CLOSE-TELEMETRY.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/QA-VERDICT.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/BASELINE-product-status.txt
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/BUDGET-MANAGEMENT-RESEARCH-preedit-20261115T140838Z.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/BUDGET-MANAGEMENT-RESEARCH-preedit-v2-20261115T140944Z.md
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/BUNDLE-MANIFEST.sha256
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/ROUND-TELEMETRY.json
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/budget-recompute-prior-run.txt
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/code-refs-check.txt
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/opencode-steps-sample.json
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/opencode-steps-sample.txt
+?? workflow-group/runs/openrig-token-governance-design-20261115/reports/evidence/telemetry-surface-empty.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/DECISIONS.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/ISSUES.xlsx
+?? workflow-group/runs/openrig-token-r1-implement-20261115/PROJECT.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/SPEC.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/STATUS-Round-1.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/TASK.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/evidence/openrig-transcripts/openrig-token-r1-implement-20261115/capture-manifest.json
+?? workflow-group/runs/openrig-token-r1-implement-20261115/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-token-r1-implement-20261115/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-token-r1-implement-20261115/openrig/guidance/team.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/openrig/render-manifest.json
+?? workflow-group/runs/openrig-token-r1-implement-20261115/openrig/rig.yaml
+?? workflow-group/runs/openrig-token-r1-implement-20261115/openrig/workflow.yaml
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/00-plan.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/FINAL.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/POST-CLOSE-CLEANUP.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/POST-CLOSE-E2E.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/POST-CLOSE-FIX.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/QA-COST.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/QA-FOLD.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/QA-READ.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/00-plan/plan-docs.sha256
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/BASELINE-product-status.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/TARGET-BEFORE.sha256
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/close_round/close-docs.sha256
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/close_round/final-status-and-head.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/e2e/e2e-db.json
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_cost_view/SUMMARY.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_cost_view/build.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_cost_view/changed-files.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_cost_view/diff.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_cost_view/hashes.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_cost_view/tests.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_read_surface/SUMMARY.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_read_surface/build.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_read_surface/changed-files.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_read_surface/diff.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_read_surface/hashes.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_read_surface/tests.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_usage_fold/SUMMARY.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_usage_fold/build.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_usage_fold/changed-files.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_usage_fold/diff.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_usage_fold/hashes.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/impl_usage_fold/tests.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/qa_cost/hashes-crosscheck.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/qa_cost/status-and-scope.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/qa_fold/hashes-crosscheck.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/qa_fold/status-and-scope.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/qa_read/hashes-crosscheck.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/evidence/qa_read/status-and-scope.txt
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/qa/qa_cost-verdict.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/qa/qa_fold-verdict.md
+?? workflow-group/runs/openrig-token-r1-implement-20261115/reports/qa/qa_read-verdict.md
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/DECISIONS.md
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/ISSUES.xlsx
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/OPENRIG-STATE.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/PROJECT.md
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/SPEC.md
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/STATUS-Round-1.md
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/daemon-stop.txt
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/openrig-transcripts/openrig-openrig-unparsed-bytes-20261020/capture-manifest.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/ps-final.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/queue-final.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/rig-down.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/workflow-show.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/evidence/workflow-trace.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/OPENRIG-BRIDGE.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/agents/worker/agent.yaml
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/bridge-capture.txt
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/bridge-status.txt
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/guidance/team.md
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/render-manifest.json
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/rig.yaml
+?? workflow-group/runs/openrig-unparsed-bytes-20261020/openrig/workflow.yaml
+?? workflow-group/runs/role-boundary-audit-20261015/BASELINE.md
+?? workflow-group/runs/role-boundary-audit-20261015/BASELINE.sha256
+?? workflow-group/runs/role-boundary-audit-20261015/DECISIONS.md
+?? workflow-group/runs/role-boundary-audit-20261015/DELEGATIONS.md
+?? workflow-group/runs/role-boundary-audit-20261015/INPUT.md
+?? workflow-group/runs/role-boundary-audit-20261015/INPUT.sha256
+?? workflow-group/runs/role-boundary-audit-20261015/ISSUES.xlsx
+?? workflow-group/runs/role-boundary-audit-20261015/PROJECT.md
+?? workflow-group/runs/role-boundary-audit-20261015/SPEC.md
+?? workflow-group/runs/role-boundary-audit-20261015/STATUS-Round-1.md
+?? workflow-group/runs/role-boundary-audit-20261015/STATUS-Round-2.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-12-pmo-pmo.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-18-tdo-tdo-a1.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-18-tdo-tdo-a2.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-25-tdo-tdo-a3.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-28-qa-qa.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-31-pmo-pmo.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-35-pmo-pmo.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-41-tdo-tdo-r2-a1.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-46-qa-qa.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-20-58-pmo-pmo.md
+?? workflow-group/runs/role-boundary-audit-20261015/delegations/2026-10-15-21-01-pmo-pmo.md
+?? workflow-group/runs/role-boundary-audit-20261015/reports/red-team-and-change-package.md
+?? workflow-group/runs/role-boundary-audit-20261015/reports/role-authority-matrix.md
+?? workflow-group/runs/role-boundary-audit-20261015/reports/shadow/cp_shadow.py
+?? workflow-group/runs/role-boundary-audit-20261015/reports/shadow/output.txt
+?? workflow-group/runs/role-boundary-audit-20261015/reports/so-role-recommendation.md
+?? workflow-group/runs/signaldeck-refactor-20261025/DELEGATIONS.md
+?? workflow-group/runs/signaldeck-refactor-20261025/STATUS-Round-7.md
+?? workflow-group/runs/signaldeck-refactor-20261025/delegations/2026-11-04-05-08-pmo-pmo.md
+?? workflow-group/runs/signaldeck-refactor-20261025/delegations/2026-11-04-05-19-pmo-pmo.md
+?? workflow-group/runs/signaldeck-refactor-20261025/delegations/2026-11-04-05-25-tdo-tdo-a2.md
+?? workflow-group/runs/signaldeck-refactor-20261025/reports/GATE-LOCK-R7.md
+?? workflow-group/runs/signaldeck-refactor-20261025/reports/patches/r7-gate-lock.patch
+?? workflow-group/runs/so-necessity-research-20261015/BASELINE.md
+?? workflow-group/runs/so-necessity-research-20261015/BASELINE.sha256
+?? workflow-group/runs/so-necessity-research-20261015/DECISIONS.md
+?? workflow-group/runs/so-necessity-research-20261015/DELEGATIONS.md
+?? workflow-group/runs/so-necessity-research-20261015/INPUT.md
+?? workflow-group/runs/so-necessity-research-20261015/ISSUES.xlsx
+?? workflow-group/runs/so-necessity-research-20261015/PROJECT.md
+?? workflow-group/runs/so-necessity-research-20261015/SPEC.md
+?? workflow-group/runs/so-necessity-research-20261015/STATUS-Round-1.md
+?? workflow-group/runs/so-necessity-research-20261015/delegations/2026-10-15-21-36-pmo-pmo.md
+?? workflow-group/runs/so-necessity-research-20261015/delegations/2026-10-15-21-41-tdo-tdo-a2.md
+?? workflow-group/runs/so-necessity-research-20261015/delegations/2026-10-15-21-51-tdo-tdo-a1.md
+?? workflow-group/runs/so-necessity-research-20261015/delegations/2026-10-15-21-57-tdo-tdo-a3.md
+?? workflow-group/runs/so-necessity-research-20261015/delegations/2026-10-15-22-02-qa-qa.md
+?? workflow-group/runs/so-necessity-research-20261015/delegations/2026-10-15-22-08-pmo-pmo.md
+?? workflow-group/runs/so-necessity-research-20261015/reports/fixtures/close-gate-cases.tsv
+?? workflow-group/runs/so-necessity-research-20261015/reports/fixtures/terminal-sample.md
+?? workflow-group/runs/so-necessity-research-20261015/reports/orphan-evidence.md
+?? workflow-group/runs/so-necessity-research-20261015/reports/red-team-and-package.md
+?? workflow-group/runs/so-necessity-research-20261015/reports/so-minimal-form.md
+?? workflow-group/runs/wf-docs-distill-20261015/DECISIONS.md
+?? workflow-group/runs/wf-docs-distill-20261015/DELEGATIONS.md
+?? workflow-group/runs/wf-docs-distill-20261015/ISSUES.xlsx
+?? workflow-group/runs/wf-docs-distill-20261015/PROJECT.md
+?? workflow-group/runs/wf-docs-distill-20261015/SPEC.md
+?? workflow-group/runs/wf-docs-distill-20261015/STATUS-Round-1.md
+?? workflow-group/runs/wf-docs-distill-20261015/STATUS-Round-2.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-18-50-pmo-pmo.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-18-55-tdo-tdo-a1.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-18-57-tdo-tdo-a2.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-18-59-qa-qa.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-19-03-pmo-pmo.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-19-10-pmo-pmo.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-19-16-tdo-tdo-a1.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-19-19-qa-qa.md
+?? workflow-group/runs/wf-docs-distill-20261015/delegations/2026-10-15-19-23-pmo-pmo.md
+?? workflow-group/runs/wf-docs-distill-20261015/reports/ws1-example.md
+?? workflow-group/runs/wf-docs-distill-20261015/reports/ws2-evolution.md
+?? workflow-group/runs/yueyue-governance-20261110/DECISIONS.md
+?? workflow-group/runs/yueyue-governance-20261110/ISSUES.xlsx
+?? workflow-group/runs/yueyue-governance-20261110/PROJECT.md
+?? workflow-group/runs/yueyue-governance-20261110/SPEC.md
+?? workflow-group/runs/yueyue-governance-20261110/STATUS-Round-1.md
+?? workflow-group/scripts/adapters/__init__.py
+?? workflow-group/scripts/adapters/headless.py
+?? workflow-group/scripts/bootstrap_env.sh
+?? workflow-group/scripts/contract_lock.py
+?? workflow-group/scripts/doc_consistency.py
+?? workflow-group/scripts/evidence_run.sh
+?? workflow-group/scripts/hdrive_gate.py
+?? workflow-group/scripts/openrig_preflight.py
+?? workflow-group/scripts/required_components.py
+?? workflow-group/scripts/test.sh
+?? workflow-group/scripts/verify_render.py
+?? workflow-group/scripts/wf_close_lint.py
+?? workflow-group/scripts/windows/hdrive_move_gate.ps1
+?? workflow-group/scripts/windows/hgate.py
+?? workflow-group/templates/baseline/FREEZE-NOTES.md
+?? workflow-group/templates/baseline/README.md
+?? workflow-group/templates/baseline/REGISTRY.json
+?? workflow-group/templates/baseline/REGISTRY.md
+?? workflow-group/templates/baseline/VERSION
+?? workflow-group/templates/baseline/fix-wave/BASELINE.md
+?? workflow-group/templates/baseline/hypothesis-analysis/BASELINE.md
+?? workflow-group/templates/baseline/knowledge-pipeline/BASELINE.md
+?? workflow-group/templates/baseline/ops-hardening/BASELINE.md
+?? workflow-group/templates/baseline/postmortem-meta-governance/BASELINE.md
+?? workflow-group/templates/baseline/product-redesign-live/BASELINE.md
+?? workflow-group/templates/baseline/refactor-decompose/BASELINE.md
+?? workflow-group/templates/baseline/safe-cleanup/BASELINE.md
+?? workflow-group/templates/baseline/two-plane-orchestration/BASELINE.md
+?? workflow-group/templates/contracts/BASE-MASTER.md
+?? workflow-group/templates/contracts/FREEZE-NOTES.md
+?? workflow-group/templates/contracts/LOCK.json
+?? workflow-group/templates/contracts/README.md
+?? workflow-group/templates/contracts/VERSION
+?? workflow-group/templates/contracts/_shared/PLAN-GATE.md
+?? workflow-group/templates/contracts/_shared/VERDICT.md
+?? workflow-group/templates/contracts/architecture/CONTRACT.md
+?? workflow-group/templates/contracts/audit/CONTRACT.md
+?? workflow-group/templates/contracts/diff/CONTRACT.md
+?? workflow-group/templates/contracts/optimize/CONTRACT.md
+?? workflow-group/templates/contracts/research/CONTRACT.md
+?? workflow-group/templates/contracts/strategy/CONTRACT.md
+?? workflow-group/templates/contracts/verify/CONTRACT.md
+?? workflow-group/templates/specialized/BASELINE-MAP.md
+?? workflow-group/templates/specialized/advisor-report-fusion/DECISIONS.md
+?? workflow-group/templates/specialized/advisor-report-fusion/ISSUE-SCHEMA.md
+?? workflow-group/templates/specialized/advisor-report-fusion/PROJECT.md
+?? workflow-group/templates/specialized/advisor-report-fusion/README.md
+?? workflow-group/templates/specialized/advisor-report-fusion/SPEC.md
+?? workflow-group/templates/specialized/advisor-report-fusion/check_fusion.py
+?? workflow-group/templates/specialized/h-drive-cleanup/DECISIONS.md
+?? workflow-group/templates/specialized/h-drive-cleanup/PROJECT.md
+?? workflow-group/templates/specialized/h-drive-cleanup/README.md
+?? workflow-group/templates/specialized/h-drive-cleanup/SPEC.md
+?? workflow-group/templates/specialized/h-drive-cleanup/actions.example.jsonl
+?? workflow-group/templates/specialized/issue-sync/README.md
+?? workflow-group/templates/specialized/issue-sync/SPEC.md
+?? workflow-group/templates/specialized/openrig-advisor-refit/DECISIONS.md
+?? workflow-group/templates/specialized/openrig-advisor-refit/PROJECT.md
+?? workflow-group/templates/specialized/openrig-advisor-refit/README.md
+?? workflow-group/templates/specialized/openrig-advisor-refit/SPEC.md
+?? workflow-group/templates/specialized/openrig-advisor-refit/specialize_bundle.py
+?? workflow-group/templates/specialized/openrig-advisor-refit/templates/agent.yaml.tpl
+?? workflow-group/templates/specialized/openrig-advisor-refit/templates/guidance-team.md
+?? workflow-group/templates/specialized/openrig-advisor-refit/templates/rig.yaml.tpl
+?? workflow-group/templates/specialized/openrig-advisor-refit/templates/workflow.yaml.tpl
+?? workflow-group/templates/specialized/openrig-full-verify/DECISIONS.md
+?? workflow-group/templates/specialized/openrig-full-verify/PROJECT.md
+?? workflow-group/templates/specialized/openrig-full-verify/README.md
+?? workflow-group/templates/specialized/openrig-full-verify/SPEC.md
+?? workflow-group/templates/specialized/openrig-local-refit/DECISIONS.md
+?? workflow-group/templates/specialized/openrig-local-refit/PROJECT.md
+?? workflow-group/templates/specialized/openrig-local-refit/README.md
+?? workflow-group/templates/specialized/openrig-local-refit/SPEC.md
+?? workflow-group/templates/specialized/openrig-master-v12/DECISIONS.md
+?? workflow-group/templates/specialized/openrig-master-v12/PROJECT.md
+?? workflow-group/templates/specialized/openrig-master-v12/README.md
+?? workflow-group/templates/specialized/openrig-master-v12/SPEC.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/DECISIONS.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/PROJECT.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/README.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/SPEC.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/STATUS-Round-n.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/templates/agent.yaml.tpl
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/templates/guidance-team.md
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/templates/rig.yaml.tpl
+?? workflow-group/templates/specialized/openrig-unparsed-bytes-analysis/templates/workflow.yaml.tpl
+?? workflow-group/templates/specialized/openrig-workflow-master/ARCHITECTURE.md
+?? workflow-group/templates/specialized/openrig-workflow-master/BASELINE-post.sha256
+?? workflow-group/templates/specialized/openrig-workflow-master/BASELINE-pre.sha256
+?? workflow-group/templates/specialized/openrig-workflow-master/CHANGELOG.md
+?? workflow-group/templates/specialized/openrig-workflow-master/DECISIONS.md
+?? workflow-group/templates/specialized/openrig-workflow-master/ENTRYPOINTS.md
+?? workflow-group/templates/specialized/openrig-workflow-master/PREFLIGHT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/PROJECT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/README.md
+?? workflow-group/templates/specialized/openrig-workflow-master/SPEC.md
+?? workflow-group/templates/specialized/openrig-workflow-master/VERSION
+?? workflow-group/templates/specialized/openrig-workflow-master/render_master.py
+?? workflow-group/templates/specialized/openrig-workflow-master/templates/agent.yaml.tpl
+?? workflow-group/templates/specialized/openrig-workflow-master/templates/guidance-team.md
+?? workflow-group/templates/specialized/openrig-workflow-master/templates/rig.yaml.tpl
+?? workflow-group/templates/specialized/openrig-workflow-master/templates/workflow.yaml.tpl
+?? workflow-group/templates/specialized/openrig-workflow-master/tools/openrig_bridge.py
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/README.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/bridge-doctor.txt
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/daemon-stop.txt
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/ps.txt
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/render-smoke.txt
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/rig-down.json
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/rig-plan.json
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/rig-up.json
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/FINAL-SELF-OPT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/QA-SELF-OPT-RECHECK.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/QA-SELF-OPT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/README.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/SELF-OPT-PLAN.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/TDO-DSH-FIX-REPORT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/TDO-DSH-REPORT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.1.0/TDO-OC-REPORT.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/v1.2.0/RELEASE.md
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/wf-newrun-doctor.txt
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/wf-newrun.txt
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/workflow-abort.json
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/workflow-instantiate.json
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/workflow-show.json
+?? workflow-group/templates/specialized/openrig-workflow-master/validation/workflow-validate.json
+?? workflow-group/templates/specialized/signaldeck-refactor/DECISIONS.md
+?? workflow-group/templates/specialized/signaldeck-refactor/PROJECT.md
+?? workflow-group/templates/specialized/signaldeck-refactor/SPEC.md
+?? workflow-group/templates/specialized/wechat-yueyue-redesign/DECISIONS.md
+?? workflow-group/templates/specialized/wechat-yueyue-redesign/PROJECT.md
+?? workflow-group/templates/specialized/wechat-yueyue-redesign/README.md
+?? workflow-group/templates/specialized/wechat-yueyue-redesign/SPEC.md
+?? workflow-group/templates/specialized/wf-docs-distill/DECISIONS.md
+?? workflow-group/templates/specialized/wf-docs-distill/PROJECT.md
+?? workflow-group/templates/specialized/wf-docs-distill/SPEC.md
+?? workflow-group/templates/specialized/yueyue-governance/DECISIONS.md
+?? workflow-group/templates/specialized/yueyue-governance/PROJECT.md
+?? workflow-group/templates/specialized/yueyue-governance/README.md
+?? workflow-group/templates/specialized/yueyue-governance/SPEC.md
+?? workflow-group/tests/test_advisor_report_fusion.py
+?? workflow-group/tests/test_archive_gate.py
+?? workflow-group/tests/test_doc_consistency.py
+?? workflow-group/tests/test_doc_noise.py
+?? workflow-group/tests/test_evidence_record.py
+?? workflow-group/tests/test_evidence_run.py
+?? workflow-group/tests/test_hdrive_gate.py
+?? workflow-group/tests/test_headless_adapter.py
+?? workflow-group/tests/test_openrig_bridge_doctor.py
+?? workflow-group/tests/test_openrig_preflight.py
+?? workflow-group/tests/test_openrig_teardown_guard.py
+?? workflow-group/tests/test_render_master_portability.py
+?? workflow-group/tests/test_required_components.py
+?? workflow-group/tests/test_template_layers.py
+?? workflow-group/tests/test_verify_render.py
+?? workflow-group/tests/test_wf_baseline.py
+?? workflow-group/tests/test_wf_close_lint.py
+?? workflow-group/tests/test_wf_opencode_guard.py
+?? workflow-group/tests/test_workflow_rework.py
+?? workflow-group/tests/windows/test_hdrive_move_gate.ps1
+?? workflow-group/tools/dsh-web-shim
+?? workflow-group/workflow-tags.json
+# --- diffstat ---
+ .github/workflows/kb-validate.yml                  |   20 +
+ .gitignore                                         |    4 +
+ 00-overview/golden-questions.md                    |    4 +-
+ 00-overview/task-router.md                         |   17 +-
+ AGENTS.md                                          |  345 +++++
+ README.md                                          |    4 +-
+ content-review-queue.md                            |   12 +-
+ docs/agents/triage-labels.md                       |    4 +-
+ workflow-group/AGENTS.md                           |   26 +-
+ workflow-group/DESIGN.md                           |  118 +-
+ workflow-group/README.md                           |   48 +-
+ workflow-group/WORKFLOW.md                         |  209 ++-
+ workflow-group/burner/queue.json                   |    8 +-
+ .../drafts/sctg-openrig-channel-pattern-v0.1.md    |    2 +
+ workflow-group/drafts/sctg/README.md               |  168 +--
+ .../drafts/sctg/direction-01-review-first.md       |    3 +
+ .../drafts/sctg/extension-01-direction-map.md      |    3 +
+ workflow-group/drafts/sctg/kit/gates/g1_scope.py   |    3 +-
+ .../drafts/sctg/kit/gates/g2_evidence.py           |   11 +-
+ workflow-group/drafts/sctg/kit/sctg.py             |   31 +-
+ .../sctg/lessons-01-single-line-orchestration.md   |    3 +
+ .../openrig-integration-and-applicability-v0.1.md  |    3 +
+ .../drafts/sctg/pre-solution-01-review-v0.2.md     |    3 +
+ workflow-group/drafts/sctg/pre-solution-01.md      |    3 +
+ workflow-group/drafts/sctg/pre-solution-02.md      |    3 +
+ workflow-group/drafts/sctg/pre-solution-03.md      |    3 +
+ .../sctg/simulations/01-openrig-real-runs.md       |    3 +
+ .../sctg/simulations/02-stageguide-real-runs.md    |    3 +
+ .../simulations/03-workflow-knowledge-gates.md     |    3 +
+ workflow-group/drafts/sctg/simulations/README.md   |    3 +
+ .../drafts/sctg/simulations/cross-01-openrig.md    |    3 +
+ .../drafts/sctg/simulations/cross-02-stageguide.md |    3 +
+ .../drafts/sctg/simulations/cross-03-workflow.md   |    3 +
+ .../drafts/sctg/stage2-workflow-plan-v0.1.md       |    3 +
+ .../drafts/sctg/step1-10card-experience.md         |    3 +
+ .../drafts/sctg/step1-shadow-run-report.md         |    3 +
+ .../drafts/sctg/step1-trial-experience.md          |    3 +
+ .../drafts/sctg/step1-trial2-experience.md         |    3 +
+ workflow-group/drafts/sctg/strategy-3step-v0.1.md  |    3 +
+ .../drafts/sctg/thought-supplement-01.md           |    3 +
+ .../reports/full-curation-20261115/CURATION.md     |   45 +
+ .../reports/full-curation-20261115/VERIFY-ENV.md   |    2 +
+ .../reports/full-curation-20261115/VERIFY.md       |    2 +
+ workflow-group/roles/PMO.md                        |   44 +-
+ workflow-group/roles/QA.md                         |   19 +-
+ workflow-group/roles/TDO.md                        |   12 +
+ workflow-group/roles/common-contract.md            |   11 +-
+ workflow-group/roles/delegation-briefs.md          |   48 +-
+ workflow-group/runs/README.md                      |    7 +-
+ .../runs/burn-postmortem-20261014/PROJECT.md       |   10 +
+ workflow-group/runs/dist-ops-20261014/DECISIONS.md |   16 +
+ workflow-group/runs/dist-ops-20261014/ISSUES.xlsx  |  Bin 15960 -> 15965 bytes
+ workflow-group/runs/dist-ops-20261014/PROJECT.md   |   10 +
+ .../geophysics-correctness-20261014/DECISIONS.md   |   16 +
+ .../geophysics-correctness-20261014/PROJECT.md     |   10 +
+ .../runs/kb-claim-verify-20261014/PROJECT.md       |   10 +
+ .../runs/kb-consume-20261014/DECISIONS.md          |   16 +
+ workflow-group/runs/kb-consume-20261014/PROJECT.md |   10 +
+ workflow-group/runs/kb-debt-20261013/DECISIONS.md  |   16 +
+ workflow-group/runs/kb-debt-20261013/ISSUES.xlsx   |  Bin 14632 -> 14647 bytes
+ workflow-group/runs/kb-debt-20261013/PROJECT.md    |   10 +
+ workflow-group/runs/kb-fix-20261014/DECISIONS.md   |   16 +
+ workflow-group/runs/kb-fix-20261014/ISSUES.xlsx    |  Bin 13845 -> 13858 bytes
+ workflow-group/runs/kb-fix-20261014/PROJECT.md     |   10 +
+ .../runs/kb-method-action-20261014/DECISIONS.md    |   16 +
+ .../runs/kb-method-action-20261014/PROJECT.md      |   10 +
+ .../runs/nutstore-review-20261014/DECISIONS.md     |   16 +
+ .../runs/nutstore-review-20261014/ISSUES.xlsx      |  Bin 16840 -> 16850 bytes
+ .../runs/nutstore-review-20261014/PROJECT.md       |   10 +
+ .../openrig-docs-governance-20261115/DECISIONS.md  |   44 +-
+ .../openrig-docs-governance-20261115/PROJECT.md    |   15 +-
+ .../runs/ops-reliability-20261014/DECISIONS.md     |   16 +
+ .../runs/ops-reliability-20261014/ISSUES.xlsx      |  Bin 12546 -> 12560 bytes
+ .../runs/ops-reliability-20261014/PROJECT.md       |   10 +
+ .../runs/project-freeze-20261014/DECISIONS.md      |   16 +
+ .../runs/project-freeze-20261014/ISSUES.xlsx       |  Bin 16921 -> 16928 bytes
+ .../runs/project-freeze-20261014/PROJECT.md        |   10 +
+ .../runs/signaldeck-audit-20261013/DECISIONS.md    |   16 +
+ .../runs/signaldeck-audit-20261013/ISSUES.xlsx     |  Bin 32055 -> 32081 bytes
+ .../runs/signaldeck-audit-20261013/PROJECT.md      |   10 +
+ .../runs/signaldeck-refactor-20261025/DECISIONS.md |   33 +-
+ .../runs/signaldeck-refactor-20261025/PROJECT.md   |   95 +-
+ .../signaldeck-refactor-20261025/ROUND-PLAN.md     |   10 +-
+ .../runs/signaldeck-runtime-20261014/PROJECT.md    |   10 +
+ .../runs/wf-engine-tests-20261014/DECISIONS.md     |   16 +
+ .../runs/wf-engine-tests-20261014/ISSUES.xlsx      |  Bin 12778 -> 12792 bytes
+ .../runs/wf-engine-tests-20261014/PROJECT.md       |   10 +
+ workflow-group/scripts/issues.py                   |  212 ++-
+ workflow-group/scripts/wf.py                       | 1545 +++++++++++++++++++-
+ workflow-group/templates/DECISIONS.md              |    1 +
+ workflow-group/templates/PROJECT.md                |   57 +-
+ workflow-group/templates/README.md                 |   70 +-
+ workflow-group/templates/STATUS-Round-n.md         |    1 +
+ workflow-group/templates/specialized/README.md     |   21 +-
+ .../templates/specialized/burn-postmortem/SPEC.md  |    5 +
+ .../specialized/dist-ops-hardening/SPEC.md         |    5 +
+ .../specialized/geophysics-correctness/SPEC.md     |    5 +
+ .../templates/specialized/kb-claim-verify/SPEC.md  |    5 +
+ .../specialized/kb-consume-interface/SPEC.md       |    5 +
+ .../templates/specialized/kb-debt-burn/SPEC.md     |    5 +
+ .../templates/specialized/kb-fix-wave/SPEC.md      |    5 +
+ .../templates/specialized/kb-method-action/SPEC.md |    5 +
+ .../specialized/nutstore-sync-review/SPEC.md       |    5 +
+ .../templates/specialized/ops-reliability/SPEC.md  |    5 +
+ .../specialized/project-freeze-facts/SPEC.md       |    5 +
+ .../specialized/signaldeck-runtime-verify/SPEC.md  |    5 +
+ .../templates/specialized/wf-engine-tests/SPEC.md  |    5 +
+ workflow-group/tests/test_issues.py                |   90 ++
+ workflow-group/tests/test_p5_legacy.py             |    2 +
+ workflow-group/tests/test_wf.py                    |  361 +++++
+ 110 files changed, 3838 insertions(+), 390 deletions(-)

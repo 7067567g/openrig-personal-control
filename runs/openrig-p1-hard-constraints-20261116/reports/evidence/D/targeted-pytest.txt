@@ -1,0 +1,12 @@
+command=.venv/bin/python -m pytest tests/test_wf_render_specialize.py tests/test_verify_render.py tests/test_wf_close_lint.py -q
+label=packet-D targeted pytest
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:59:59+08:00
+finished_at=2026-11-16T00:59:59+08:00
+rc=0
+stdout_sha256=f7765fbc2ae2ca2a69dc4df4419abc53040f1b10052551d79a5d87209f749f1b
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+..............................................                           [100%]
+46 passed in 0.05s
+--- stderr ---

@@ -1,0 +1,21 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pA-neg\nDASH=/home/a7067567g/下载/deepseek/月月bot/governance-20261110/dashboard/target.json\necho "agents.sha256.before=$(sha256sum "$T/ws/AGENTS.md" | cut -d" " -f1)"\necho "target.exists.before=$([ -e "$DASH" ] && echo yes || echo no)"\necho "target.sha256.before=$([ -e "$DASH" ] && sha256sum "$DASH" | cut -d" " -f1 || echo none)"\nset +e\n.venv/bin/python scripts/openrig_preflight.py --json --workspace "$T/ws" --run-id definitely-no-such-run-zz > "$T/out.json" 2> "$T/err.txt"\nrc=$?\nset -e\necho "rc=$rc"\n.venv/bin/python - "$T/out.json" <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("ok=",d["ok"],"precheck=",d["precheck"])\nprint("injectedAgents=",d["injectedAgents"],"monitor=",d["monitor"])\nprint("checks=",[(c["id"],c["ok"]) for c in d["checks"]])\nprint("reasons=",d["reasons"])\nPY\necho "agents.sha256.after=$(sha256sum "$T/ws/AGENTS.md" | cut -d" " -f1)"\necho "target.exists.after=$([ -e "$DASH" ] && echo yes || echo no)"\necho "target.sha256.after=$([ -e "$DASH" ] && sha256sum "$DASH" | cut -d" " -f1 || echo none)"\n'
+label=W2 neg: invalid run-id + temp workspace
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:40+08:00
+finished_at=2026-11-16T00:52:40+08:00
+rc=0
+stdout_sha256=55b000b9d626362b411b718d518913d543ba41614603229b16f5a47acdf4dd66
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+agents.sha256.before=ec64645277607334c43c31cb4cc51dc4cbbcf517d92029952c5fecd3190883b7
+target.exists.before=yes
+target.sha256.before=62ee9d576d8ee2d6626dad624d3efdc0802e75534d8940a57e2b175d19d9841d
+rc=1
+ok= False precheck= {'ok': False, 'failed': ['run_context', 'run_docs']}
+injectedAgents= None monitor= None
+checks= [('preflight_file', True), ('required_components', True), ('run_context', False), ('run_docs', False), ('workspace_context', False)]
+reasons= ['run_context: runs/definitely-no-such-run-zz 不存在', 'run_docs: /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/definitely-no-such-run-zz 缺: PROJECT.md, DECISIONS.md, ISSUES.xlsx, STATUS-Round-*.md', 'workspace_context: pre-check 失败（run_context, run_docs）；未注入 AGENTS.md、未做 workspace 校验']
+agents.sha256.after=ec64645277607334c43c31cb4cc51dc4cbbcf517d92029952c5fecd3190883b7
+target.exists.after=yes
+target.sha256.after=62ee9d576d8ee2d6626dad624d3efdc0802e75534d8940a57e2b175d19d9841d
+--- stderr ---

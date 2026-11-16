@@ -1,0 +1,11 @@
+== before (one untracked file + one missing path)
+rc=0
+[('untracked.txt', True, '2d27fbdf4e8ca207afbfa388ca9172fbcc6c70e534af2476b3b704f87debadcf'), ('does-not-exist.txt', False, None)]
+== after (content changed)
+rc=0
+before sha 2d27fbdf4e8ca207 after sha 81db67b6a5702b9b distinct True
+missing exists flag False
+readonly: file bytes still v2
+== directory recursion
+rc=0
+['a.txt', 'b.txt']

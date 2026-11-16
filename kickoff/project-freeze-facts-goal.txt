@@ -1,0 +1,4 @@
+修 deepseek-项目 父仓的"冻结声明红"与隐藏差量，并补体素契约测试：① ws-1 修 scripts/shared-declarations.json 与 20-tif2lines 冻结声明（repo-facts --check 必须 EXIT=0，不许改声明凑绿）；② ws-2 判定 CRLF/LF 隐藏差量（_service.py）与未登记 anythingxl（13 docs+2 data 入库登记），产出该提/该回滚/该删结论；③ ws-3 给 30-voxel-chinese-arch / 30-voxel-jrpg-town 按 R27 矩阵补契约测试（用例数上升、mutation 抽证 ≥3）；R2 收口孤儿资产归属与事实台账快照。
+写权限精确到 SPEC §1/§2；不动归档数据本体、不删文件、只提交不 push。
+成功判据：repo-facts --check EXIT=0；每条差量有结论+证据；pytest 全绿且用例上升；reports/final.md。
+反目标：改声明凑绿、动数据本体、顺手改无关文件。

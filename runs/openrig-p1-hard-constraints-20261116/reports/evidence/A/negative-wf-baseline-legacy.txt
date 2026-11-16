@@ -1,0 +1,13 @@
+command=bash -o pipefail -c $'\nset +e\n.venv/bin/python scripts/wf.py baseline burn-postmortem-20261014 --json\necho "rc=$?"\nset -e\ntest ! -e runs/burn-postmortem-20261014/.run-meta.json && echo "no-meta-file-written=yes"\n'
+label=W3 neg: legacy run without .run-meta.json -> rc1 with both repair paths
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:52:49+08:00
+finished_at=2026-11-16T00:52:49+08:00
+rc=0
+stdout_sha256=59e089c7b667f7e6723f4349367894ccf8ce1d32decae4a1f3268868d712513a
+stderr_sha256=951e2ffaac5d0cfc72a109900b94916a52e93a5a68e3919778c7646cc44a079d
+--- stdout ---
+rc=1
+no-meta-file-written=yes
+--- stderr ---
+[ERROR] 缺 projectRoot（.run-meta.json 无 projectRoot 且未传 --project-root）。修复任选其一：(1) python3 scripts/wf.py meta-set burn-postmortem-20261014 --project-root <git 仓库根>；(2) python3 scripts/wf.py baseline burn-postmortem-20261014 --project-root <git 仓库根>

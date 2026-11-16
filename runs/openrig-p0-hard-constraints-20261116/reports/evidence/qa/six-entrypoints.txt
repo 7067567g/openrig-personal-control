@@ -1,0 +1,36 @@
+# TASK §5 acceptance entry points — QA independent rerun (2026-11-16)
+# cwd: /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+# note: pytest run with `-p no:cacheprovider` to avoid writing outside the QA write scope.
+
+1) .venv/bin/python -m pytest tests -q -p no:cacheprovider
+   rc=0  259 passed in 6.52s
+   evidence: qa/full-pytest.txt
+
+2) .venv/bin/python scripts/openrig_preflight.py --json --advisory
+   rc=0  ok:false  (workspace_context/run_context/run_docs fail; advisory keeps rc0; ok not faked)
+   evidence: qa/preflight-advisory-empty.txt
+
+3) .venv/bin/python scripts/openrig_preflight.py --json --run-id openrig-p0-hard-constraints-20261116 \
+     --workspace /home/a7067567g/下载/deepseek/deepseek-知识库 \
+     --run-dir runs/openrig-p0-hard-constraints-20261116
+   rc=0  ok:true  (5/5 required checks ok; KB AGENTS.md sha256 unchanged 53eed071…)
+   evidence: qa/preflight-positive.txt
+
+4) .venv/bin/python scripts/wf.py baseline openrig-p0-hard-constraints-20261116 --json
+   rc=1  [ERROR] 缺 projectRoot：新 run 由 .run-meta.json 提供；已有 run 请加 --project-root PATH
+   rc=0  ok:true when run with: --project-root /home/a7067567g/下载/deepseek/deepseek-知识库
+   (run was created without .run-meta.json; TASK §3.1 allows --project-root for legacy runs.
+    QA restored the pre-QA 00-baseline.{json,txt} byte-identically afterwards; see qa-self-side-effects.md)
+   evidence: qa/baseline-rerun.txt, qa/baseline-with-project-root.txt
+
+5) .venv/bin/python scripts/wf.py verify-baseline openrig-p0-hard-constraints-20261116 --json
+   rc=1  ok:false  mismatches=[statusSha256, diffSha256]
+         statusAdded = 4 Packet-C files (verify_render.py, test_archive_gate.py,
+         test_evidence_record.py, test_verify_render.py); statusRemoved = []
+   expected per PROJECT §5.3 note; no QA-written file under run dir appears (run-dir exclusion works).
+   evidence: qa/verify-baseline-original.txt, qa/verify-baseline-final.txt
+
+6) .venv/bin/python scripts/verify_render.py --run-dir runs/openrig-p0-hard-constraints-20261116 --json
+   rc=0  ok:false  (live render drift on rig.yaml/workflow.yaml/guidance/team.md/OPENRIG-BRIDGE.json)
+   expected WARN semantics per PROJECT §5.3 note 3; --strict on the same input returns rc=1
+   evidence: qa/verify-render-default.txt, qa/neg-verify-render-mutated-strict.txt

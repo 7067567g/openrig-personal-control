@@ -1,0 +1,6 @@
+[OK] run 已建立: /home/dev/Desktop/deepseek/deepseek-知识库/workflow-group/runs/openrig-workflow-master-scratch-20261020（模板: templates/specialized/openrig-workflow-master）
+     PROJECT.md / DECISIONS.md / STATUS-Round-1.md / ISSUES.xlsx + SPEC.md + .locks/
+下一步（主会话）:
+  1) 确认 PROJECT.md §0/§1 目标与终止判据（占位符 <...> 要填掉）
+  2) python3 scripts/wf.py brief --role pmo --run openrig-workflow-master-scratch-20261020  → 贴给 PMO 会话
+  3) 随时体检: python3 scripts/wf.py doctor openrig-workflow-master-scratch-20261020

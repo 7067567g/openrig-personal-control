@@ -1,0 +1,20 @@
+# .github/workflows/wf-validate.yml — Packet B diff (git diff, tracked file)
+diff --git a/.github/workflows/wf-validate.yml b/.github/workflows/wf-validate.yml
+index 412ae75..f0c7803 100644
+--- a/.github/workflows/wf-validate.yml
++++ b/.github/workflows/wf-validate.yml
+@@ -41,3 +41,11 @@ jobs:
+ 
+       - name: pytest
+         run: python -m pytest workflow-group/tests -q
++
++      # R09：文档一致性门（canonical 计数 / 覆盖表 / 角色命令），任何 ERROR 即失败
++      - name: doc consistency（ERROR 必须为 0）
++        run: python workflow-group/scripts/doc_consistency.py --check
++
++      # R09：文档一致性回归测试（标准库 unittest，无额外依赖）
++      - name: doc consistency tests
++        run: python workflow-group/tests/test_doc_consistency.py
+
+# trigger scope unchanged (on: push/pull_request/workflow_dispatch with same paths)
+(no trigger changes in diff)

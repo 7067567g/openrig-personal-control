@@ -1,0 +1,5 @@
+对 obsidian-nutstore-sync 个人版（/home/dev/Desktop/deepseek/20-工作区/obsidian-nutstore-sync，分支 personal/phone-ai-tools）做全盘审查与修订。
+先跑 node scripts/bootstrap-deps.mjs 安装依赖；然后按 SPEC §3 的 7 个分区逐文件审查 426 个 ts/tsx，找出并修复 bug（每个 bug 要复现+严重度+回归测试），补关键路径测试，最后跑全量 pnpm test:unit / pnpm lint / pnpm build 至全绿。
+写权限：插件仓 src/tests/scripts/根配置/main.js/dist/manifest.json + runs/<RUN-ID>/**；LICENSE/个人版声明/.github 只读。
+成功判据：426/426 文件有结论；bug 清单+已修清单+回归测试；三门禁全绿（不可得项 SKIP+原因）；reports/final.md；ISSUES 无 open S1/S2。
+反目标：不 push、不改分支/tag、不删文件、不新增运行时依赖、不伪造通过。

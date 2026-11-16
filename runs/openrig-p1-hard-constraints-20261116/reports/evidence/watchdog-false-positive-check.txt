@@ -1,0 +1,43 @@
+# Check: TDO claim "watchdog false-positive on handed-off rows"
+
+Reported by exec-tdo-oc at 17:01Z: `parked-owner-consumer` woke it for
+`qitem-20261115164945-fc66753b` "as if still open", despite the row being terminal
+(`state=handed-off`, `closure_reason=handed_off_to`). Proposed engine fixes:
+(1) set `closure_target` to the successor qitem id on same-seat steps; (2) treat
+`handed_off_to` + existing successor as terminal in the watchdog.
+
+## Verification (2026-11-15T17:03Z)
+
+Fire times from `rig watchdog status 01M7G1QS0P2JGY00R7ZE84YAWP`:
+
+| wake | obligation named | row closed at | delta | verdict |
+| --- | --- | --- | --- | --- |
+| 16:52:07 | `qitem-20261115164945-fc66753b` (A) | 16:53:52 (`handed_off_to`) | +105 s | row was **open** at fire time |
+| 16:56:07 | `qitem-20261115165543-14fa98db` (C) | 16:58:17 (`handed_off_to`) | +130 s | row was **open** at fire time |
+
+- A was claimed 16:49:56 and stayed `in-progress` until its handoff at 16:53:52; the
+  successor B row was created at 16:53:52. The 16:52 wake preceded that by ~105 s.
+- C was created 16:55:43, claimed 16:55:45, closed 16:58:17. The 16:56 wake preceded
+  closure by ~130 s.
+- After both rows became terminal, the job evaluated at 16:58:08 (`skipped:
+  all-parked-owners-deferred`), and at 17:00/17:02 with `actionable=false`,
+  `lastFireAt` still 16:56:07. No fire has occurred against a terminal row.
+
+## Finding
+
+The observed wakes were **correct**: the named row was genuinely open when the
+scheduler fired. The claim of a false positive rests on the row's state *now*, not on
+its state *then*. No confirmation exists for the predicted future wakes on B/C.
+
+## Residual, unconfirmed concern
+
+`closure_target` / `handedOffTo` for A, B, C is the seat's own session string
+(`exec-tdo-oc@…`), while D correctly names `assurance-qa@…`. That is semantically odd
+for same-seat next steps, but it is engine-side design, not proven to cause a wake, and
+outside this run's write scope. Disposition: watch only.
+
+## Condition to escalate for real
+
+If `parked-owner-consumer` fires when every row owned by that seat is `handed-off` /
+`done`, capture the `historyId` + `evaluationNotes.obligations` and file with the
+watchdog history attached. Until then, no engine bug report is warranted.

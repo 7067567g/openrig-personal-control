@@ -1,0 +1,6 @@
+用 workflow-group 本地工作流（不启动 OpenRig daemon、不接入 OpenRig runtime）对 OpenRig 做先探测、后重整的两轮专项：
+
+R1：系统/Node/npm/tmux/git/网络/OpenCode/OpenRig/本地 workflow 环境探测；特别验证“opencode 已安装”与“文档命令实际可用”之间的差异；盘点 OpenRig 顶层目录、runtime、daemon/queue/workflow/topology/tests/UI/文档；产出目录/文件级重整方案。
+R2：在自有工作副本 `deepseek-项目/10-openrig-deepseek` 中做最小 OpenCode-first 整改与验证；不修改上游 `60-外部仓库/openrig`。
+
+硬约束：不启动 OpenRig；不把安装成功当运行可用；不泄露凭证/对话正文；不删除/移动源码；不 push；删除类动作单独拍板。

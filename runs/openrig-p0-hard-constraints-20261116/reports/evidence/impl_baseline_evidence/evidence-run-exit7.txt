@@ -1,0 +1,11 @@
+command=bash -o pipefail -c printf\ x\;\ exit\ 7
+label=exit7
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:28:51+08:00
+finished_at=2026-11-16T00:28:51+08:00
+rc=7
+stdout_sha256=2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+x
+--- stderr ---

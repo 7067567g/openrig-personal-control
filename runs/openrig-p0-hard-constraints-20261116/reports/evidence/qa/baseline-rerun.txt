@@ -1,0 +1,3 @@
+cmd: .venv/bin/python scripts/wf.py baseline openrig-p0-hard-constraints-20261116 --json
+[ERROR] 缺 projectRoot：新 run 由 .run-meta.json 提供；已有 run 请加 --project-root PATH
+rc=1

@@ -1,0 +1,42 @@
+# Baseline PATH-SET comparison (MAIN ruling 2026-11-16: line diff invalid, path sets only)
+# original : reports/evidence/00-baseline.original.txt (plan time 16:47:32Z)
+# current  : git status --porcelain -uall, this run's directory excluded
+#
+# WHY no line diff: the plan-time baseline rendered untracked trees as one directory entry
+#   (`?? workflow-group/scripts/`), the refreshed capture renders one line per file (-uall).
+#   Comparing those texts directly is meaningless. Only set semantics are comparable: an
+#   original untracked-directory entry is a PREFIX covering whatever files exist under it now.
+#   Stated plainly: a file ADDED inside an already-untracked directory is invisible to this
+#   comparison. That is why (b) the mtime sweep in scope.txt exists - it catches exactly the
+#   intra-directory additions, and why (c) targeted/full pytest is cited alongside it.
+
+# original entries: 245 (exact paths 191, untracked-dir prefixes 54)
+# current entries : 1923
+
+## paths present now that the baseline did NOT cover (genuinely new since baseline)
+NEW  .github/workflows/wf-validate.yml
+NEW  workflow-group/scripts/audit_managed_blocks.py
+NEW  workflow-group/scripts/openrig_run.py
+NEW  workflow-group/scripts/snapshot_files.py
+NEW  workflow-group/tests/test_audit_managed_blocks.py
+NEW  workflow-group/tests/test_openrig_run.py
+NEW  workflow-group/tests/test_snapshot_files.py
+NEW  workflow-group/tests/test_wf_render_specialize.py
+
+## baseline paths that disappeared
+GONE (none)
+
+## whitelist verdict for every NEW path (TASK §0)
+IN-SCOPE .github/workflows/wf-validate.yml
+IN-SCOPE workflow-group/scripts/audit_managed_blocks.py
+IN-SCOPE workflow-group/scripts/openrig_run.py
+IN-SCOPE workflow-group/scripts/snapshot_files.py
+IN-SCOPE workflow-group/tests/test_audit_managed_blocks.py
+IN-SCOPE workflow-group/tests/test_openrig_run.py
+IN-SCOPE workflow-group/tests/test_snapshot_files.py
+IN-SCOPE workflow-group/tests/test_wf_render_specialize.py
+
+verdict: 8 new path(s), 0 outside TASK §0 whitelist
+
+# note: the refreshed 00-baseline.txt itself is NOT used as a comparison base here - it was
+# captured after Packet A (untracked tree, no pre-A copy). See ADDENDUM-main-ruling.md.

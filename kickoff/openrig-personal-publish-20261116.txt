@@ -1,0 +1,11 @@
+目标：整理、清洗、打包并准备上传两个公开 GitHub 仓库 + 一个证据包：
+- https://github.com/7067567g/openrig-personal-local
+- https://github.com/7067567g/workflow-group-personal-use
+
+只做 staging/清洗/校验/上传准备；不把 secrets、原始 session/transcript、SQLite/home 快照、本机 token 上传到公开仓库。
+三个最终包：
+1) OpenRig source + runtime 包（openrig-personal-local）
+2) workflow-group runtime + contracts + 清洗后的 run 记录包（workflow-group-personal-use）
+3) 清洗后的 evidence/history 包（release asset）
+
+要求：名称/简介改成正式名称；README/SETUP/RUNTIME/HISTORY/MANIFEST 完整；上传后另一台电脑按 README 配置密钥即可开干。

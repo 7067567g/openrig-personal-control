@@ -1,0 +1,49 @@
+# close acceptance 2026-11-16T00:57:39Z
+# HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac
+
+## pytest
+.........................................                                [100%]
+329 passed in 7.47s
+
+## doc_consistency
+doc_consistency: 0 error(s), 0 warning(s)
+
+## probe
+{"ok":true,"terminal":["close_round"],"problems":[]}
+
+## next
+["openrig-run check --run-dir runs/openrig-p2-closure-20261116","openrig-run start --run-dir runs/openrig-p2-closure-20261116 --dry-run","openrig-run start --run-dir runs/openrig-p2-closure-20261116","verify_render.py --run-dir runs/openrig-p2-closure-20261116 --strict","wf.py archive-gate openrig-p2-closure-20261116"]
+
+## close_lint strict
+OK [openrig-p2-closure-20261116] no findings
+SUMMARY runs=1 closed=1 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=1 unaccepted_s1_s2=0 status_conflict_files=0 errors=0 warnings=0 accepted_errors=0 unaccepted_errors=0 acceptances_loaded=0 used=0 unused=0
+RESULT PASS
+
+## doctor
+[WARN ] PROJECT.md: owner=MAIN 应为 PMO
+结果: PASS (errors=0, warns=1)
+
+## states
+runs/openrig-p2-closure-20261116/PROJECT.md:state: closed
+runs/openrig-p2-closure-20261116/DECISIONS.md:state: closed
+runs/openrig-p2-closure-20261116/STATUS-Round-1.md:state: closed
+
+## product
+  openrig-upstream HEAD cd1074651c8349f4e39b2705ef0d42116b83d78b
+  openrig-upstream dirty 0
+
+## scope: files changed since plan (excl. this run)
+  AGENTS.md
+  workflow-group/scripts/wf_close_lint.py
+  workflow-group/scripts/workflow_invariants_probe.py
+  workflow-group/scripts/openrig_run.py
+  workflow-group/tests/test_workflow_invariants_probe.py
+  workflow-group/tests/test_wf_close_lint.py
+  workflow-group/tests/test_openrig_run.py
+  workflow-group/WORKFLOW-TAGS.md
+
+## note: AGENTS.md 出现在上面的改动清单里，是因为按 D-007 恢复到 HEAD（内容与 HEAD 一致，git status 为空）；不是新的越界写入。
+## note: scripts/wf.py 与 wf-validate.yml 未出现在清单里——其 mtime 为 00:59 / 00:54，早于本 run 08:40，属 pre-existing dirty。
+
+## integrity note: QA handoff message quoted QA-VERDICT.md sha256 f3c2ecc7... but disk is 8fe61eaa... (file mtime 08:53:34, after the 00:52Z message). QA appended its D-004/D-005/D-006 responses and corrected 6->7 files at 08:53:34; verdict text unchanged (PASS-WITH-WARN). closeout.json attests the on-disk bytes 8fe61eaa..., which is the authoritative artifact.
+## follow-up: QA confirmed (00:53Z, delivered later) that 8fe61eaa... supersedes f3c2ecc7...; no PASS/FAIL label changed, only §8/§9 added and a 6->7 miscount fixed. Attested bytes are the current verdict.

@@ -1,0 +1,85 @@
+# qa_final negative matrix — QA-authored fixtures (not TDO tests) — 2026-11-16
+# fixtures: /tmp/opencode/qa-p2/wf-*.yaml ; runner: scripts/workflow_invariants_probe.py --workflow
+
+good      rc=0 ok=True steps=['a', 'b', 'c', 'd'] missDep=[] missNext=[] unreach=[] terminal=[] problems=[]
+dup       rc=1 ok=False steps=['a', 'a'] missDep=[] missNext=[] unreach=[] terminal=['a'] problems=['duplicate_id:a']
+nodep     rc=1 ok=False steps=['a', 'b'] missDep=['ghost'] missNext=[] unreach=['b'] terminal=['a', 'b'] problems=['missing_depends_on:b->ghost']
+nonext    rc=1 ok=False steps=['a', 'b'] missDep=[] missNext=['nowhere'] unreach=[] terminal=[] problems=['missing_next_hop_target:b->nowhere']
+unreach   rc=0 ok=True steps=['a', 'b', 'orphan'] missDep=[] missNext=[] unreach=['orphan'] terminal=['b'] problems=[]
+empty     rc=1 ok=False steps=[] missDep=[] missNext=[] unreach=[] terminal=[] problems=['no_steps']
+inline    rc=0 ok=True steps=['a', 'b'] missDep=[] missNext=[] unreach=[] terminal=['b'] problems=[]
+flowonly  rc=0 ok=True steps=[None, None] missDep=[] missNext=[] unreach=[] terminal=[] problems=[]
+flowstep  rc=1 ok=False steps=['a', None] missDep=['ghost'] missNext=[] unreach=['a'] terminal=['a'] problems=['missing_depends_on:a->ghost']
+comment   rc=1 ok=False steps=['a   # root step', 'b'] missDep=['a'] missNext=[] unreach=['b'] terminal=['a   # root step', 'b'] problems=['missing_depends_on:b->a']
+crlf      rc=1 ok=False steps=['a', 'b'] missDep=['ghost'] missNext=[] unreach=['b'] terminal=['a', 'b'] problems=['missing_depends_on:b->ghost']
+
+## rc=2 paths
+probe missing run-dir rc=2
+probe missing workflow rc=2
+next missing bridge rc=2
+next corrupt bridge rc=2
+
+## F-3 (QA-authored fixture, imports wf_close_lint directly)
+{
+  "A_dual_root_only": [
+    "closeout_resolved_final_missing"
+  ],
+  "B_dual_entries": [],
+  "C_root_only": [],
+  "D_reports_only": [],
+  "E_identical_dual_root_only": [
+    "closeout_resolved_final_missing"
+  ],
+  "F_no_entry": [
+    "closeout_resolved_final_missing"
+  ],
+  "G_resolve_final": "reports/FINAL.md"
+}
+
+## no-live-call proof (subprocess.run/Popen/os.system = exploding stubs)
+{
+  "next_rc": 0,
+  "next_ok": true,
+  "next_steps": [
+    "openrig-run check --run-dir /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p2-closure-20261116",
+    "openrig-run start --run-dir /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p2-closure-20261116 --dry-run",
+    "openrig-run start --run-dir /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p2-closure-20261116",
+    "verify_render.py --run-dir /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p2-closure-20261116 --strict",
+    "wf.py archive-gate openrig-p2-closure-20261116"
+  ],
+  "probe_rc": 0,
+  "live_calls": {
+    "run": 0,
+    "popen": 0,
+    "system": 0,
+    "spawn": 0
+  },
+  "probe_imports_subprocess": false
+}
+
+## no-write proof for next (tree sha256 before/after)
+before=92a7997d0f740f2c22d716d9f7353f5b65e8e7a0dddb8745d93900b4ce420e2b  -
+after =92a7997d0f740f2c22d716d9f7353f5b65e8e7a0dddb8745d93900b4ce420e2b  -
+NO_CHANGE
+
+## scope: files touched under workflow-group in last 4h (excluding this run dir/venv/caches)
+./kickoff/openrig-p2-closure-20261116.txt
+./scripts/openrig_run.py
+./scripts/wf_close_lint.py
+./scripts/workflow_invariants_probe.py
+./tests/test_openrig_run.py
+./tests/test_wf_close_lint.py
+./tests/test_workflow_invariants_probe.py
+./WORKFLOW-TAGS.md
+
+## git status delta vs 00-baseline status list
+213a214
+> ?? workflow-group/scripts/workflow_invariants_probe.py
+251a253
+> ?? workflow-group/tests/test_workflow_invariants_probe.py
+254a257
+> ?? workflow-group/workflow-tags.json
+
+## product repo
+0
+cd1074651c8349f4e39b2705ef0d42116b83d78b

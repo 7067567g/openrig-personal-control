@@ -1,0 +1,14 @@
+目标：实施 P1（W2/W3/W4/W5/R04b + R09/R10/R11/R12），只改 workflow-group 的 scripts/tests/docs/CI 与本 run reports；不改 OpenRig 产品代码。
+
+范围：
+- W2：preflight 校验失败路径不得先注入 AGENTS/monitor
+- W3：run-meta 可回填/补录；baseline 不再因历史 run 缺 meta 而字面不可用
+- W4：file snapshot 命令，支持 pre-existing untracked 文件的 before/after sha
+- W5：render specialization 记录，让 verify-render 区分“合法 run 特化”与“真漂移”
+- R04b：close lint 兼容根 FINAL.md 与 reports/FINAL.md
+- R09：修 WORKFLOW-TAGS.md 红项，并接 doc_consistency 到 wf-validate CI
+- R10：managed block 只读审计（先 WARN，不迁移命名空间）
+- R11：新增 openrig-run 顺序 wrapper（check/start，P0 前置 fail-closed）
+- R12：文档明确复制/生成边界
+
+硬约束：不 commit/push；不改产品仓；不设金额预算；每个门有负向测试；QA 独立复跑。

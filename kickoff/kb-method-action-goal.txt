@@ -1,0 +1,4 @@
+用刚入库的方法论指导一个真实可运行的交互式应用原型，验证方法论可用性并把真实 KB 查询日志回写 Map4 #32 消费闭环。
+写权限：runs/<RUN-ID>/** 与 05-methodology/**（只追加）；白名单外只读。
+成功判据：方法论原则 100% 处置（采用/不适用+理由）；原型可运行并有自测证据；≥10 条真实查询日志写入 05-methodology/kb-evolution-direction-assessment.md 阶段 2（不虚构、维护性 grep 不计）；validate all / genviews --check 绿；reports/final.md 汇总。
+反目标：不伪造日志与测试结果、不改白名单外、不 push、不删文档。

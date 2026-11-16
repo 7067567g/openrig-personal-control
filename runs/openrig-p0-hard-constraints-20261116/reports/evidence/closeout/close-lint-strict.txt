@@ -1,0 +1,54 @@
+command=bash -o pipefail -c .venv/bin/python\ scripts/wf_close_lint.py\ --run\ openrig-p0-hard-constraints-20261116\ --strict\ --json
+label=close-lint-strict
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:38:58+08:00
+finished_at=2026-11-16T00:38:58+08:00
+rc=0
+stdout_sha256=1912aa480550319a2f29756e9623a5d92ffe48a561b365572b4146aa4be92e1a
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+{
+  "runs": [
+    {
+      "run_id": "openrig-p0-hard-constraints-20261116",
+      "path": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p0-hard-constraints-20261116",
+      "project_state": "closed",
+      "ok": true,
+      "errors": 0,
+      "warnings": 0,
+      "stats": {
+        "issue_rows": 0,
+        "active_open_rows": 0,
+        "open_s1_s2": 0,
+        "suspended_s1_s2": 0,
+        "resolved_s1_s2": 0,
+        "unaccepted_s1_s2": 0,
+        "status_files": 1,
+        "status_conflict_files": 0
+      },
+      "findings": []
+    }
+  ],
+  "summary": {
+    "runs_scanned": 1,
+    "closed_runs": 1,
+    "closed_violation_runs": 0,
+    "errors": 0,
+    "accepted_errors": 0,
+    "unaccepted_errors": 0,
+    "acceptances_loaded": 0,
+    "acceptances_used": 0,
+    "acceptances_unused": 0,
+    "warnings": 0,
+    "issue_rows": 0,
+    "active_open_rows": 0,
+    "open_s1_s2": 0,
+    "suspended_s1_s2": 0,
+    "resolved_s1_s2": 0,
+    "unaccepted_s1_s2": 0,
+    "status_files": 1,
+    "status_conflict_files": 0
+  },
+  "result": "PASS"
+}
+--- stderr ---

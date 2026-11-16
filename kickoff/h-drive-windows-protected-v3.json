@@ -1,0 +1,36 @@
+{
+  "status": "confirmed-2026-10-18-v3",
+  "policy": "OneDrive and OneDriveTemp are explicitly released for dismantling on user request. Other confirmed work areas and app-managed paths remain protected. No delete/copy/exec: content moves to root categories or 07_待确认; empty OneDrive shells move to 07_待确认\\空目录归档.",
+  "protected_toplevel": [
+    "$RECYCLE.BIN",
+    "System Volume Information",
+    "JASON",
+    "250623_petrel",
+    "Lu203_new",
+    "HGD-2024",
+    "梁平北SMI工区-简",
+    "CN",
+    "daily_path_cn",
+    "FileHistory",
+    "SteamLibrary",
+    "wps"
+  ],
+  "protected_root_extensions": [
+    ".xlsx",
+    ".xls",
+    ".xlsm",
+    ".xlsb",
+    ".pptx",
+    ".ppt",
+    ".ppsx",
+    ".pps"
+  ],
+  "protected_root_files": [
+    "MediaID.bin"
+  ],
+  "release_notes": [
+    "OneDrive: dismantle; extract content into 06_旧备份, 03_图片 and 07_待确认.",
+    "OneDriveTemp: move whole old temp container to 07_待确认.",
+    "FileHistory and SteamLibrary are still protected; they are candidates for a future user-approved archival move, not touched in this run."
+  ]
+}

@@ -1,0 +1,19 @@
+command=bash -o pipefail -c $'\nset -u\nF=WORKFLOW-TAGS.md\norig=$(sha256sum "$F" | cut -d" " -f1)\ncp "$F" /tmp/opencode/WORKFLOW-TAGS.keep\nrestore() { cp /tmp/opencode/WORKFLOW-TAGS.keep "$F"; }\ntrap restore EXIT\npython3 - "$F" <<PY\nimport sys\np=sys.argv[1]; t=open(p,encoding="utf-8").read()\nassert "当前 canonical=62" in t\nopen(p,"w",encoding="utf-8").write(t.replace("当前 canonical=62","当前 canonical=55",1))\nPY\necho "tampered.sha256=$(sha256sum "$F" | cut -d" " -f1)"\nset +e\n.venv/bin/python scripts/doc_consistency.py --check\necho "rc-with-55=$?"\nset -e\nrestore\ntrap - EXIT\necho "restored.sha256=$(sha256sum "$F" | cut -d" " -f1)"\necho "orig.sha256=$orig"\n[ "$(sha256sum "$F" | cut -d" " -f1)" = "$orig" ] && echo "byte-identical-restore=yes" || echo "byte-identical-restore=NO"\nset +e\n.venv/bin/python scripts/doc_consistency.py --check\necho "rc-with-62=$?"\n'
+label=R09 neg: temporarily restore canonical=55 -> doc_consistency rc1, then restore 62
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:55:07+08:00
+finished_at=2026-11-16T00:55:07+08:00
+rc=0
+stdout_sha256=425bc79148e60d8d6f2d15e909c740fd7aa6af6d528b6d2c28cd471990622e38
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+tampered.sha256=954643d346c48a4fda8e2f0241462ca29dca04b04abd2ec7a1149380dedd7278
+ERROR [tags-count] WORKFLOW-TAGS.md 声明 canonical=55，实际目录数=62
+doc_consistency: 1 error(s), 0 warning(s)
+rc-with-55=1
+restored.sha256=c2f01cad147c5b17a0f6ebb09197d174959a99c5a36eaa71c3d44b0973b96569
+orig.sha256=c2f01cad147c5b17a0f6ebb09197d174959a99c5a36eaa71c3d44b0973b96569
+byte-identical-restore=yes
+doc_consistency: 0 error(s), 0 warning(s)
+rc-with-62=0
+--- stderr ---

@@ -1,0 +1,13 @@
+=== baseline copy, no specializations
+ok False mismatch ['rig.yaml', 'workflow.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json']
+=== exact specialization for every mismatched file
+wrote 4 entries
+ok True specialized ['rig.yaml', 'workflow.yaml', 'guidance/team.md', 'OPENRIG-BRIDGE.json'] mismatch []
+default_rc=0
+strict_rc=0
+=== stale specialization (one sha corrupted)
+ok False mismatch [('workflow.yaml', 'bytes mismatch')]
+stale_default_rc=0
+stale_strict_rc=1
+=== corrupt specialization file
+corrupt_rc=2

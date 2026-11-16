@@ -1,0 +1,18 @@
+# R02 baseline (projectRoot=KB root; startup txt preserved as impl_baseline_evidence/00-baseline.startup.txt)
+# cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+# started_at=2026-11-16T00:28:24+08:00
+{
+  "ok": true,
+  "runId": "openrig-p0-hard-constraints-20261116",
+  "jsonPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.json",
+  "txtPath": "/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p0-hard-constraints-20261116/reports/evidence/00-baseline.txt",
+  "head": "9fa8d27a95dba40c9f324f91497bc6754aa4b9ac",
+  "statusSha256": "44cde8e4cd08b266652091680c8b0f9c1515b119a0823fb0d3d5bb3dd09646a1",
+  "diffSha256": "a11a6c1c8be8b942fda5ae3c921ba87ccda06aca2967a62874206f6bbf153640",
+  "statusCount": 1785,
+  "excludePaths": [
+    "workflow-group/runs/openrig-p0-hard-constraints-20261116"
+  ]
+}
+rc=0
+# finished_at=2026-11-16T00:28:24+08:00

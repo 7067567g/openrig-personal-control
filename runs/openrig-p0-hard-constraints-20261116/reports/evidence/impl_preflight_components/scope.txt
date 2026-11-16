@@ -1,0 +1,39 @@
+# Packet A scope: git status --porcelain entries under scripts/ tests/ this run reports/ AGENTS.md
+ M AGENTS.md
+ M workflow-group/scripts/issues.py
+ M workflow-group/scripts/wf.py
+ M workflow-group/tests/test_issues.py
+ M workflow-group/tests/test_p5_legacy.py
+ M workflow-group/tests/test_wf.py
+?? workflow-group/runs/openrig-p0-hard-constraints-20261116/
+?? workflow-group/scripts/adapters/
+?? workflow-group/scripts/bootstrap_env.sh
+?? workflow-group/scripts/contract_lock.py
+?? workflow-group/scripts/doc_consistency.py
+?? workflow-group/scripts/hdrive_gate.py
+?? workflow-group/scripts/openrig_preflight.py
+?? workflow-group/scripts/required_components.py
+?? workflow-group/scripts/test.sh
+?? workflow-group/scripts/wf_close_lint.py
+?? workflow-group/scripts/windows/
+?? workflow-group/tests/test_advisor_report_fusion.py
+?? workflow-group/tests/test_doc_consistency.py
+?? workflow-group/tests/test_doc_noise.py
+?? workflow-group/tests/test_hdrive_gate.py
+?? workflow-group/tests/test_headless_adapter.py
+?? workflow-group/tests/test_openrig_bridge_doctor.py
+?? workflow-group/tests/test_openrig_preflight.py
+?? workflow-group/tests/test_openrig_teardown_guard.py
+?? workflow-group/tests/test_render_master_portability.py
+?? workflow-group/tests/test_required_components.py
+?? workflow-group/tests/test_template_layers.py
+?? workflow-group/tests/test_wf_close_lint.py
+?? workflow-group/tests/test_wf_opencode_guard.py
+?? workflow-group/tests/test_workflow_rework.py
+?? workflow-group/tests/windows/
+
+# product repo (must equal plan baseline)
+HEAD e932ae94e4c07b619c39902f29db949464ebb295
+status_sha256 3b64cf901a0c232fbbae7e5937111671a01be558c910ae09132756fe54b7e269
+diff_sha256 dc564a37b301c610e7b451bf8eb401cea3baddb3b838bc8a7cc9c292d50e8172
+dirty_count 29

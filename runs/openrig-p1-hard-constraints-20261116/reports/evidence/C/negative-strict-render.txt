@@ -1,0 +1,20 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pC-run\nexport FAKE_RIG_SEATS="[\\"main@t\\"]"\nexport FAKE_RIG_MODE=ready\nset +e\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json > /tmp/opencode/pC-rw.json 2>&1\necho "default.rc=$?"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json --strict-render > /tmp/opencode/pC-rs.json 2>&1\necho "strict.rc=$?"\nset -e\n.venv/bin/python - /tmp/opencode/pC-rw.json /tmp/opencode/pC-rs.json <<PY\nimport json,sys\nw=json.load(open(sys.argv[1])); s=json.load(open(sys.argv[2]))\nrw=[c for c in w["checks"] if c["id"]=="render"][0]\nrs=[c for c in s["checks"] if c["id"]=="render"][0]\nprint("default.render=",rw["status"],"default.ok=",w["ok"],"default.rc=",w["rc"])\nprint("strict.render=",rs["status"],"strict.ok=",s["ok"],"strict.rc=",s["rc"],"mismatches=",rs.get("mismatches"))\nprint("seats.default=",[c["status"] for c in w["checks"] if c["id"]=="seats"][0])\nPY\necho "--- daemon-down again with the fixed fake (default rc1 / allow rc0) ---"\nexport FAKE_RIG_MODE=daemon-down\nset +e\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json > /tmp/opencode/pC-dd.json 2>&1; echo "daemon-down.default.rc=$?"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json --allow-daemon-down > /tmp/opencode/pC-dd2.json 2>&1; echo "daemon-down.allow.rc=$?"\n.venv/bin/python - /tmp/opencode/pC-dd.json /tmp/opencode/pC-dd2.json <<PY\nimport json,sys\na=json.load(open(sys.argv[1])); b=json.load(open(sys.argv[2]))\nprint("default.seats=",[c for c in a["checks"] if c["id"]=="seats"][0]["status"],"ok=",a["ok"])\nprint("allow.seats=",[c for c in b["checks"] if c["id"]=="seats"][0]["status"],"ok=",b["ok"],"rc=",b["rc"])\nPY\nset -e\n'
+label=R11 neg: render mismatch -> WARN rc0 by default, rc1 with --strict-render (seats ready)
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:57:47+08:00
+finished_at=2026-11-16T00:57:47+08:00
+rc=0
+stdout_sha256=41d7c80af602a6e92dfb6a6b6f8091bc0c671aed86b7ab3a3fa91802666d8150
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+default.rc=0
+strict.rc=1
+default.render= warn default.ok= True default.rc= 0
+strict.render= fail strict.ok= False strict.rc= 1 mismatches= ['rig.yaml', 'workflow.yaml']
+seats.default= ok
+--- daemon-down again with the fixed fake (default rc1 / allow rc0) ---
+daemon-down.default.rc=1
+daemon-down.allow.rc=0
+default.seats= fail ok= False
+allow.seats= warn ok= True rc= 0
+--- stderr ---

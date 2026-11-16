@@ -1,0 +1,38 @@
+# plan-time probe 2026-11-16T00:42:01Z
+# HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac
+
+## pytest
+......................                                                   [100%]
+310 passed in 7.13s
+
+## doc_consistency
+ERROR [tags-count] WORKFLOW-TAGS.md 声明 canonical=62，实际目录数=63
+doc_consistency: 1 error(s), 0 warning(s)
+rc=1
+
+## runs count
+63
+
+## probe script exists?
+no
+
+## next subcommand? (add_parser)
+no next subcommand; '"next"' 仅作为 check 输出的 next[] 字段 (openrig_run.py:172,333,544)
+
+## WORKFLOW-TAGS canonical lines
+6:> **时效声明（2026-10-23 快照）**：本文件是 2026-10-23 快照，不是当前索引；canonical run 数以 `runs/` 目录和 `scripts/doc_consistency.py` 为准；当前 canonical=62、baseline=9、specialized=26。外部/历史快照单独标注，不在本仓校验。
+23:| canonical | `deepseek-知识库/workflow-group/runs/` | 37 | 当前实测；旧工作流主体 + OpenRig 相关 run（2026-10-23 快照时为 31；2026-11-11 新增 close-semantics 专项 run） |
+213:| `burn-postmortem` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+214:| `dist-ops-hardening` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+215:| `geophysics-correctness` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+222:| `kb-claim-verify` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+223:| `kb-consume-interface` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+224:| `kb-debt-burn` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+225:| `kb-fix-wave` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+226:| `kb-method-action` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+227:| `nutstore-sync-review` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+228:| `ops-reliability` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+229:| `project-freeze-facts` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+231:| `signaldeck-runtime-verify` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+232:| `wf-docs-distill` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |
+233:| `wf-engine-tests` | external-workflow-group | M3 | 继承母版 | 本副本无新 run 证据，回指 canonical |

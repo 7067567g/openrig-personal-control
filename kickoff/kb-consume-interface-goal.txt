@@ -1,0 +1,4 @@
+把 deepseek-知识库 从文档库推进到可验证消费接口：① kb-ask.mjs（任意问题检索+canonical判定+JSONL日志）并把 #32 的 12 条真实查询复跑到 ≥11/12；② router↔frontmatter 投影一致性门禁（反例必须 FAIL）；③ 生成视图分列结构入边与消费命中 + 0 引用候选；R2 再做别名扩展修 4 条未命中（hit@3 目标 57/57）与 EV-001~006 证据到期复跑。
+写权限精确到 SPEC §1/§2 的文件清单；白名单外只读；不加网络/LLM 依赖；不改金问题题目；TDO 只改不提交、主会话每轮 wf.py commit、不 push。
+成功判据：validate all 0 FAIL/0 WARN、genviews --check、node --test、hygiene 0 expired 全绿；12 条复跑 ≥11/12；hit 指标前后对比落 reports/final.md。
+反目标：不伪造数字、不删题、不跨白名单、不做无测试的脚本。

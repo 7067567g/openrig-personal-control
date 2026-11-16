@@ -1,0 +1,7 @@
+PASS bridge runId=bridge-check-20261020 rig=openrig-bridge-check workflow=openrig-workflow-bridge-check
+seat map:
+  main         control-main@openrig-bridge-check
+  pmo          control-pmo@openrig-bridge-check
+  tdo_opencode exec-tdo-oc@openrig-bridge-check
+  tdo_dsh      exec-tdo-dsh@openrig-bridge-check
+  qa           assurance-qa@openrig-bridge-check

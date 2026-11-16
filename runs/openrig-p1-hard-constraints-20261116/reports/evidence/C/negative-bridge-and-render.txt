@@ -1,0 +1,17 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pC-run\nset +e\nmv "$T/openrig/OPENRIG-BRIDGE.json" "$T/bridge.keep"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json > /tmp/opencode/pC-nobridge.json 2>&1\necho "missing-bridge.rc=$?"\nmv "$T/bridge.keep" "$T/openrig/OPENRIG-BRIDGE.json"\nprintf "{bad json" > "$T/openrig/OPENRIG-BRIDGE.json"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json > /tmp/opencode/pC-badbridge.json 2>&1\necho "bad-bridge.rc=$?"\n.venv/bin/python - /tmp/opencode/pC-badbridge.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("bad-bridge.ok=",d["ok"],"rc=",d["rc"],"checks=",d["checks"])\nPY\npython3 - "$T" <<PY\nimport hashlib,json,sys\nfrom pathlib import Path\nrun=Path(sys.argv[1]); o=run/"openrig"\nfiles={}\nfor rel in ("rig.yaml","workflow.yaml"):\n    raw=(o/rel).read_bytes(); files[rel]={"bytes":len(raw)+7,"sha256":hashlib.sha256(raw).hexdigest()}\n(o/"render-manifest.json").write_text(json.dumps({"schemaVersion":1,"runId":"t-run","files":files}),encoding="utf-8")\n(o/"OPENRIG-BRIDGE.json").write_text(json.dumps({\n "schemaVersion":2,"runId":"t-run","rigName":"t-rig","workflowId":"t-workflow",\n "rigSpec":"rig.yaml","workflowSpec":"workflow.yaml",\n "openrigCli":str(run/"fake-rig"),"openrigHome":str(run/"home"),"daemonPort":1111,\n "seatMap":{"main":"main@t"}}),encoding="utf-8")\nPY\nexport FAKE_RIG_LOG=/tmp/opencode/pC-calls2.log; rm -f "$FAKE_RIG_LOG"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json > /tmp/opencode/pC-render-warn.json 2>&1\necho "render-mismatch-default.rc=$?"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json --strict-render > /tmp/opencode/pC-render-strict.json 2>&1\necho "render-mismatch-strict.rc=$?"\n.venv/bin/python - /tmp/opencode/pC-render-warn.json /tmp/opencode/pC-render-strict.json <<PY\nimport json,sys\nw=json.load(open(sys.argv[1])); s=json.load(open(sys.argv[2]))\nprint("default render=",[c for c in w["checks"] if c["id"]=="render"][0]["status"],"ok=",w["ok"])\nprint("strict  render=",[c for c in s["checks"] if c["id"]=="render"][0]["status"],"ok=",s["ok"],"mismatches=",[c for c in s["checks"] if c["id"]=="render"][0].get("mismatches"))\nPY\nset -e\n'
+label=R11 neg: missing/bad bridge -> rc2; strict-render mismatch -> rc1 (default warn rc0)
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:57:33+08:00
+finished_at=2026-11-16T00:57:34+08:00
+rc=0
+stdout_sha256=abb3fc0fed113eccfa8547875d87b32a432e589ee5ecdff8fc6fb9f2e6342e56
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+missing-bridge.rc=2
+bad-bridge.rc=2
+bad-bridge.ok= False rc= 2 checks= [{'id': 'bridge', 'status': 'fail', 'detail': 'bridge is not valid JSON: /tmp/opencode/pC-run/openrig/OPENRIG-BRIDGE.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)'}]
+render-mismatch-default.rc=1
+render-mismatch-strict.rc=1
+default render= warn ok= False
+strict  render= fail ok= False mismatches= ['rig.yaml', 'workflow.yaml']
+--- stderr ---

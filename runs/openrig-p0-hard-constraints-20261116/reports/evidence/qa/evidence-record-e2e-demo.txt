@@ -1,0 +1,95 @@
+# evidence-record end-to-end demo in /tmp copy (real run untouched)
+cmd: wf.py evidence-record qa-close-demo --path reports/FINAL.md --command 'cat reports/FINAL.md' --rc 0
+{
+  "ok": true,
+  "runId": "qa-close-demo",
+  "closeout": "/tmp/opencode/qa-wg/runs/qa-close-demo/reports/evidence/closeout.json",
+  "entry": {
+    "path": "reports/FINAL.md",
+    "bytes": 8,
+    "sha256": "690c6bcd8b11cfd1fe003245c057083dccc6595e1b6b523444b78570f8b6610b",
+    "command": "cat reports/FINAL.md",
+    "rc": 0,
+    "revision": 1,
+    "reason": "initial closeout",
+    "recordedAt": "2026-11-16T00:34:59+08:00"
+  },
+  "replaced": false
+}
+rc=0
+cmd: evidence-record artifact rev1
+{
+  "ok": true,
+  "runId": "qa-close-demo",
+  "closeout": "/tmp/opencode/qa-wg/runs/qa-close-demo/reports/evidence/closeout.json",
+  "entry": {
+    "path": "reports/evidence/artifact.txt",
+    "bytes": 4,
+    "sha256": "1f470029a51592913948610f8e781641627b6118280cab6e00265374742399ff",
+    "command": "echo ev1",
+    "rc": 0,
+    "revision": 1,
+    "reason": "initial closeout",
+    "recordedAt": "2026-11-16T00:35:00+08:00"
+  },
+  "replaced": false
+}
+rc=0
+--- mutate artifact, record rev2 ---
+{
+  "ok": true,
+  "runId": "qa-close-demo",
+  "closeout": "/tmp/opencode/qa-wg/runs/qa-close-demo/reports/evidence/closeout.json",
+  "entry": {
+    "path": "reports/evidence/artifact.txt",
+    "bytes": 12,
+    "sha256": "8c944926e47220f1afab3b2f001b4e9c5ad0d047c1e04aa2dfd4ad820db55238",
+    "command": "echo ev2",
+    "rc": 0,
+    "revision": 2,
+    "reason": "artifact revised",
+    "recordedAt": "2026-11-16T00:35:00+08:00",
+    "replacesSha256": "1f470029a51592913948610f8e781641627b6118280cab6e00265374742399ff"
+  },
+  "replaced": true
+}
+rc=0
+cmd: evidence-record rev2 again (must fail: revision must increase)
+[ERROR] revision 必须递增：reports/evidence/artifact.txt 现有 revision=2，新=2
+rc=1
+--- close lint strict ---
+ERROR [qa-close-demo] [final_missing] FINAL.md: strict 模式要求 FINAL.md 存在
+
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=1 warnings=0 accepted_errors=0 unaccepted_errors=1 acceptances_loaded=0 used=0 unused=0
+RESULT FAIL
+rc=1
+# same demo after adding root-level FINAL.md (close runs convention uses reports/FINAL.md)
+cmd: wf_close_lint.py --run qa-close-demo --strict
+ERROR [qa-close-demo] [final_after_closeout] FINAL.md: FINAL.md 晚于 closeout.closedAt，且没有覆盖当前 digest+reason 的 reports/evidence/revisions/REV-*.json
+
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=1 warnings=0 accepted_errors=0 unaccepted_errors=1 acceptances_loaded=0 used=0 unused=0
+RESULT FAIL
+rc=1
+--- record root FINAL.md after writing it, then strict ---
+{
+  "ok": true,
+  "runId": "qa-close-demo",
+  "closeout": "/tmp/opencode/qa-wg/runs/qa-close-demo/reports/evidence/closeout.json",
+  "entry": {
+    "path": "FINAL.md",
+    "bytes": 8,
+    "sha256": "690c6bcd8b11cfd1fe003245c057083dccc6595e1b6b523444b78570f8b6610b",
+    "command": "cat FINAL.md",
+    "rc": 0,
+    "revision": 1,
+    "reason": "initial closeout",
+    "recordedAt": "2026-11-16T00:35:10+08:00"
+  },
+  "replaced": false
+}
+rc=0
+OK [qa-close-demo] no findings
+
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=0 warnings=0 accepted_errors=0 unaccepted_errors=0 acceptances_loaded=0 used=0 unused=0
+RESULT PASS
+rc=0

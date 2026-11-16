@@ -1,0 +1,4 @@
+按 P4 产出的 16 条票（runs/kb-claim-verify-20261014/reports/tickets-proposed.md）做"验证→修订→复跑→门禁化"：R1 三路按域修订 01/04/根、02/06+归档台账、03+术语+过期数字；R2 建 scripts/kb-claims.mjs 把这些断言变成可复跑门禁并接 CI。
+写权限精确到 SPEC §1/§2 文件清单；不改金问题题目、不改归档本体、不做无票依据的改动；TDO 只改不提交、主会话每轮 wf.py commit、不 push。
+成功判据：16/16 闭环；validate all 0 FAIL/0 WARN；genviews --check、hygiene 绿；kb-claims 对已修订文档 0 命中；reports/final.md。
+反目标：改声明凑绿、顺手改无关内容、伪造复跑。

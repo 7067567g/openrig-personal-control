@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "label": "before",
+  "capturedAt": "2026-11-16T00:58:19+08:00",
+  "roots": [
+    "scripts/verify_render.py",
+    "scripts/wf.py",
+    "scripts/wf_close_lint.py",
+    "tests/test_verify_render.py",
+    "tests/test_wf_close_lint.py"
+  ],
+  "files": [
+    {
+      "path": "scripts/verify_render.py",
+      "exists": true,
+      "bytes": 4462,
+      "sha256": "fa81230096074a5d6c2a855486cf19e152cfb7b2036a9d44fb1b406ecaec45fa",
+      "mtime": "2026-11-16T00:30:13.387079+08:00",
+      "label": "before",
+      "capturedAt": "2026-11-16T00:58:19+08:00"
+    },
+    {
+      "path": "scripts/wf.py",
+      "exists": true,
+      "bytes": 113374,
+      "sha256": "ac349a02dae761158c9c1eb9f60facde3786e9f7e547cffc7b830371bff32c83",
+      "mtime": "2026-11-16T00:50:42.559474+08:00",
+      "label": "before",
+      "capturedAt": "2026-11-16T00:58:19+08:00"
+    },
+    {
+      "path": "scripts/wf_close_lint.py",
+      "exists": true,
+      "bytes": 39287,
+      "sha256": "38ca354dd37f6a7c487b1a3bd25920805ea49d406866453c601ce0e564e57da4",
+      "mtime": "2026-11-16T00:30:08.598077+08:00",
+      "label": "before",
+      "capturedAt": "2026-11-16T00:58:19+08:00"
+    },
+    {
+      "path": "tests/test_verify_render.py",
+      "exists": true,
+      "bytes": 2922,
+      "sha256": "fa9cddf89bc2ab99acfb713dd3d65444d8b6744acdca4b40e74516dcacc06822",
+      "mtime": "2026-11-16T00:30:51.195093+08:00",
+      "label": "before",
+      "capturedAt": "2026-11-16T00:58:19+08:00"
+    },
+    {
+      "path": "tests/test_wf_close_lint.py",
+      "exists": true,
+      "bytes": 20659,
+      "sha256": "c8e4b75521921ec22c591995e3d05105f73583c25f28fd16198683f84c567f1e",
+      "mtime": "2026-11-16T00:30:31.153705+08:00",
+      "label": "before",
+      "capturedAt": "2026-11-16T00:58:19+08:00"
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "present": 5,
+    "missing": 0
+  }
+}

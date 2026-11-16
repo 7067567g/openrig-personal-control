@@ -1,0 +1,18 @@
+# scope diff: current `git status --porcelain` (default, same mode as startup capture) vs startup baseline
+startup_entries=233 current_entries=243
+
+## added paths (10)
+?? workflow-group/scripts/evidence_run.sh
+?? workflow-group/scripts/required_components.py
+?? workflow-group/scripts/verify_render.py
+?? workflow-group/tests/test_archive_gate.py
+?? workflow-group/tests/test_evidence_record.py
+?? workflow-group/tests/test_evidence_run.py
+?? workflow-group/tests/test_openrig_preflight.py
+?? workflow-group/tests/test_required_components.py
+?? workflow-group/tests/test_verify_render.py
+?? workflow-group/tests/test_wf_baseline.py
+
+## removed paths (0)
+
+## same-path status-flag changes

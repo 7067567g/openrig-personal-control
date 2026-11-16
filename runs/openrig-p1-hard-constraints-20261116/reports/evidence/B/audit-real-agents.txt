@@ -1,0 +1,38 @@
+command=bash -o pipefail -c $'\nset +e\n.venv/bin/python scripts/audit_managed_blocks.py --path /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md --json > /tmp/opencode/audit-agents.json\necho "default.rc=$?"\n.venv/bin/python - /tmp/opencode/audit-agents.json <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("summary=",d["summary"])\nfor f in d["files"]:\n    for b in f["blocks"]:\n        print("block:",b["id"],b["startLine"],b["endLine"],b["kind"],b["ownerRig"])\nPY\n.venv/bin/python scripts/audit_managed_blocks.py --path /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md --strict\necho "strict.rc=$?"\nset -e\necho "--- no-block file (expected summary.blocks=0, rc0) ---"\nprintf "# nothing\\n" > /tmp/opencode/plain.md\n.venv/bin/python scripts/audit_managed_blocks.py --path /tmp/opencode/plain.md --json | .venv/bin/python -c "import json,sys;d=json.load(sys.stdin);print(\\"blocks=\\",d[\\"summary\\"][\\"blocks\\"],\\"files=\\",d[\\"summary\\"][\\"files\\"])"\necho "noblock.rc=$?"\n'
+label=R10 pos/neg: real AGENTS.md 7 orphan blocks, default rc0, --strict rc1
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:55:22+08:00
+finished_at=2026-11-16T00:55:22+08:00
+rc=0
+stdout_sha256=ca77e7daa2b49d80de8ce149ef7cc581a1d3f048d4732e3ec6ee09039f75c4f2
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+default.rc=0
+summary= {'files': 1, 'filesWithBlocks': 1, 'blocks': 7, 'byKind': {'managed': 7}, 'orphanManaged': 7, 'warnings': 0, 'unterminated': 0, 'errors': 0}
+block: CULTURE-default.md 194 215 managed None
+block: guidance/team.md 217 227 managed None
+block: openrig-start.md 229 285 managed None
+block: openrig-onboarding-01.md 287 351 managed None
+block: openrig-onboarding-02.md 353 458 managed None
+block: guidance/main-approver.md 481 496 managed None
+block: guidance/tdo-b.md 512 524 managed None
+files=1 blocks=7 byKind={'managed': 7} orphanManaged=7 warnings=0 unterminated=0
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:194-215 managed id=CULTURE-default.md ownerRig=None
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:217-227 managed id=guidance/team.md ownerRig=None
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:229-285 managed id=openrig-start.md ownerRig=None
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:287-351 managed id=openrig-onboarding-01.md ownerRig=None
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:353-458 managed id=openrig-onboarding-02.md ownerRig=None
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:481-496 managed id=guidance/main-approver.md ownerRig=None
+- [WARN] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:512-524 managed id=guidance/tdo-b.md ownerRig=None
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:194 managed block 'CULTURE-default.md' has no ownerRig
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:217 managed block 'guidance/team.md' has no ownerRig
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:229 managed block 'openrig-start.md' has no ownerRig
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:287 managed block 'openrig-onboarding-01.md' has no ownerRig
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:353 managed block 'openrig-onboarding-02.md' has no ownerRig
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:481 managed block 'guidance/main-approver.md' has no ownerRig
+[STRICT] /home/a7067567g/下载/deepseek/deepseek-知识库/AGENTS.md:512 managed block 'guidance/tdo-b.md' has no ownerRig
+strict.rc=1
+--- no-block file (expected summary.blocks=0, rc0) ---
+blocks= 0 files= 1
+noblock.rc=0
+--- stderr ---

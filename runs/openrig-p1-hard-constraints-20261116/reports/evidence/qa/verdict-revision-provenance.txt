@@ -1,0 +1,30 @@
+# QA-VERDICT revision provenance (r1 -> r2), for closes over the stale closure digest
+
+r1 (handed off):
+  queue handoff transition: 2026-11-15T17:05:23.494Z (qitem-20261115170024-c98f0ab1)
+  bytes=11998  lines=113  sha256=bbde1ad1696fae0c6e53b11ac9a70f4e8d4a1e4ead0f2df739ca1b13ec84e5fa
+  (reconstructed by reverse-applying the documented r2 edits; see /tmp/opencode/qa-p1/reconstruct-r1.py)
+
+r2 (current, closes over this):
+  mtime=2026-11-16 01:06:49.635364319 +0800  bytes=14421  path=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p1-hard-constraints-20261116/reports/QA-VERDICT.md
+  sha256=df7588116c45d571b6ea190ec1df1b94951b9d2bd59560e9d881c65868e4944d
+
+Why r2: MAIN's 17:02Z context (D-004-D-007 + main-verify-decisions.txt) arrived after the qa_final
+handoff; r2 merges three known-and-ruled items as 2 WARN + 1 SKIP, withdraws F-6 (D-004), and records
+the independent manifest re-render. Content change, not a different verdict: PASS in both r1 and r2.
+
+Proof that the 11998-byte file reviewed at 01:05 is the handoff artifact:
+  reverse-applying the six documented r2 edits to the current file yields 11998 bytes and
+  sha256 bbde1ad1… — i.e. bbde1ad1 DOES match the 11998-byte r1, not a third version.
+
+# post-close verification (QA independent, after MAIN's registration)
+# verify_render --strict: rc0 ok=True specialized=4 mismatch=0
+# wf_close_lint --strict: rc0, 0 errors
+# workflow status: completed; queue: empty
+
+# NOTE: my W5 rc1 observation (01:02) predates the registration; the later rc0 above is the
+#       expected post-condition of D-004 and does not retroactively change that observation.
+
+# r1 bytes preserved for audit: reports/evidence/qa/QA-VERDICT.r1.md (+ PROVENANCE sidecar)
+#   sha256 bbde1ad1696fae0c6e53b11ac9a70f4e8d4a1e4ead0f2df739ca1b13ec84e5fa, 11998 bytes (exact byte copy, re-verified after the move)
+#   => the qa_final closure digest can now be re-verified against preserved bytes.

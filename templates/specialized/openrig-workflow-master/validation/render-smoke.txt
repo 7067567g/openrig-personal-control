@@ -1,0 +1,12 @@
+rendered: /tmp/openrig-master-bridge-check/openrig
+next:
+  export OPENRIG_HOME=/tmp/openrig-bridge-check-home
+  export OPENRIG_OPENCODE_BIN=/home/dev/.nvm/versions/node/v24.18.0/bin/opencode
+  export OPENRIG_DSH_BIN=/home/dev/.nvm/versions/node/v24.18.0/bin/dsh
+  export OPENRIG_OPENCODE_MODEL=opencode-go/deepseek-v4.1-flash
+  export OPENRIG_DSH_PROFILE=headless
+  'node /home/dev/Desktop/deepseek/deepseek-项目/10-openrig-deepseek/packages/cli/dist/bin-wrapper.js' daemon start --no-kernel --port 47892
+  'node /home/dev/Desktop/deepseek/deepseek-项目/10-openrig-deepseek/packages/cli/dist/bin-wrapper.js' up /tmp/openrig-master-bridge-check/openrig/rig.yaml --cwd '/home/dev/Desktop/deepseek/deepseek-项目/10-openrig-deepseek' --non-interruptive --yes --json
+  'node /home/dev/Desktop/deepseek/deepseek-项目/10-openrig-deepseek/packages/cli/dist/bin-wrapper.js' workflow validate /tmp/openrig-master-bridge-check/openrig/workflow.yaml --json
+  'node /home/dev/Desktop/deepseek/deepseek-项目/10-openrig-deepseek/packages/cli/dist/bin-wrapper.js' workflow instantiate /tmp/openrig-master-bridge-check/openrig/workflow.yaml \
+    --root-objective 'Execute run bridge-check-20261020' --created-by control-main@openrig-bridge-check --json

@@ -1,0 +1,6 @@
+清理 deepseek-知识库 的 4 笔欠账，在一个额度窗口内最大化转化为可验证成果。
+项目根 = /home/dev/Desktop/deepseek/deepseek-知识库（本仓）；写权限按 run SPEC.md §2 的分区表（KB 正式域内的白名单是本 run 的显式豁免）。
+四笔欠账：1) _reference/方法论待入库-20260924/ 4 篇唯一副本入库 05-methodology/（骨架/结构/填充三层与灰测网页工程方法论）；2) 检索可测化：scripts/kb-recall-eval.mjs + 单测，57 条金问题 hit@1/2/3 基线；3) I-08：12 个 2026-09-24 样本补 E/R 评分并回写评估文档与 content-review-queue.md；4) _reference 根目录 12 个未跟踪文件与 README 记录矛盾的收口。
+成功判据：4/4 素材处置且 validate all 0 FAIL；评测工具单测通过并有 57 条基线数字与未命中清单；10 条 GQ 补期望答案要点并抽检；12/12 样本有分+理由+证据；12/12 _reference 文件定案且记录与磁盘一致；全量门禁绿并产出 reports/audit-final.md。
+反目标：不改项目仓、不动白名单外目录、不虚构评测数据、不删除源素材（回收需用户确认）、不做无证据的大改。
+节奏：R1 五路并行（WS-1/2/4/5/8）→ QA → PMO 收轮 → 决策；R2 补 WS-3/WS-6 与修复 → 回归；R3 收口。

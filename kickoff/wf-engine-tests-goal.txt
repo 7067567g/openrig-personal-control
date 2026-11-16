@@ -1,0 +1,4 @@
+给 workflow-group 引擎补测试与 CI 并落地 P5 遗留：① wf.py 状态机守卫/锁 TTL 与安全释放/append-status 的 --also gitignore 过滤/commit/ledger/doctor 分支 pytest；② issues.py 与 run_queue.py（mock HTTP）测试 + 新建 .github/workflows/wf-validate.yml；③ S-1/S-2/S-3 落地（--also 过滤、delegate/squad 心跳可见性、new-run 预填 per-WS 交接）。
+写 workflow-group/tests/** + CI + 必要小修；不改 roles、不改 KB 正式域；不 push。
+成功判据：python3 -m pytest workflow-group/tests -q 全绿且每个反例先红后绿；CI 文件合法；reports/final.md。
+反目标：为过测试放宽断言、改无关文件。

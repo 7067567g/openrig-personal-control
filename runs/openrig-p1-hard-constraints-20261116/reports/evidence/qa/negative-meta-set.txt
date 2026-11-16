@@ -1,0 +1,41 @@
+== legacy run has no .run-meta.json:
+.
+..
+reports
+== baseline before meta-set
+[ERROR] 缺 projectRoot（.run-meta.json 无 projectRoot 且未传 --project-root）。修复任选其一：(1) python3 scripts/wf.py meta-set legacy-run-20200101 --project-root <git 仓库根>；(2) python3 scripts/wf.py baseline legacy-run-20200101 --project-root <git 仓库根>
+rc=1
+== meta-set
+{
+  "ok": true,
+  "runId": "legacy-run-20200101",
+  "metaPath": "/tmp/opencode/qa-p1/w3/runs/legacy-run-20200101/.run-meta.json",
+  "projectRoot": "/home/a7067567g/下载/deepseek/deepseek-知识库",
+  "scope": "QA isolated check",
+  "updatedAt": "2026-11-16T01:03:02+08:00"
+}
+rc=0
+== .run-meta.json
+{
+  "runId": "legacy-run-20200101",
+  "projectRoot": "/home/a7067567g/下载/deepseek/deepseek-知识库",
+  "scope": "QA isolated check",
+  "template": "",
+  "createdAt": "2026-11-16T01:03:02+08:00",
+  "updatedAt": "2026-11-16T01:03:02+08:00"
+}
+== baseline after meta-set
+{
+  "ok": true,
+  "runId": "legacy-run-20200101",
+  "jsonPath": "/tmp/opencode/qa-p1/w3/runs/legacy-run-20200101/reports/evidence/00-baseline.json",
+  "txtPath": "/tmp/opencode/qa-p1/w3/runs/legacy-run-20200101/reports/evidence/00-baseline.txt",
+  "head": "9fa8d27a95dba40c9f324f91497bc6754aa4b9ac",
+  "statusSha256": "17c7b697efce5a3f7e0af04abde98e797efcf11df03a5a8838891871d63a704f",
+  "diffSha256": "f20ad4a32d70dea150b715182c2fd48691eea68ff1395262c543fddb0f3e6aaf",
+  "statusCount": 2004,
+  "excludePaths": [
+    "workflow-group/runs/legacy-run-20200101"
+  ]
+}
+rc=0

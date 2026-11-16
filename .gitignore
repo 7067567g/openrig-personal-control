@@ -1,0 +1,16 @@
+# Packaging .gitignore for Workflow Group Personal Use.
+
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.r7-work/
+.cache/
+*.log
+*.tmp
+*.sqlite
+*.sqlite-*
+*.db
+.env
+.env.*
+.DS_Store

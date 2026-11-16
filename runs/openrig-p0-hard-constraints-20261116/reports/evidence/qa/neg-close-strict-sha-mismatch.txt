@@ -1,0 +1,5 @@
+ERROR [good-run] [closeout_hash_mismatch] reports/evidence/artifact.txt: reports/evidence/artifact.txt sha256 不符（manifest=04e4877bac978b7952f0d544fc52ebff5411d351d129f1f056fa43f11da9af2b 实际=d4e4877bac978b7952f0d544fc52ebff5411d351d129f1f056fa43f11da9af2b）
+ERROR [good-run] [closeout_hash_mismatch] FINAL.md: FINAL.md sha256 不符（manifest=090c6bcd8b11cfd1fe003245c057083dccc6595e1b6b523444b78570f8b6610b 实际=690c6bcd8b11cfd1fe003245c057083dccc6595e1b6b523444b78570f8b6610b）
+
+SUMMARY runs=1 closed=0 closed_violation_runs=0 open_s1_s2=0 suspended_s1_s2=0 unaccepted_s1_s2=0 status_conflict_files=0 errors=2 warnings=0 accepted_errors=0 unaccepted_errors=2 acceptances_loaded=0 used=0 unused=0
+RESULT FAIL

@@ -1,0 +1,95 @@
+# R07 negative: same copy with --strict
+{
+  "ok": false,
+  "runId": "run-copy",
+  "runDir": "/tmp/opencode/p0c-demo/run-copy",
+  "manifestPath": "/tmp/opencode/p0c-demo/run-copy/openrig/render-manifest.json",
+  "checked": [
+    {
+      "path": "rig.yaml",
+      "expectedBytes": 2078,
+      "expectedSha256": "247a15d2f122fdc50a6e524caf11efffc5a022c388be06c868f7c493bfa91333",
+      "ok": false,
+      "actualBytes": 1192,
+      "actualSha256": "6960c5a7a3446ca447c8194585266464be559230a2ea73fd8cc3aea081f7ff50",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "workflow.yaml",
+      "expectedBytes": 4060,
+      "expectedSha256": "788d8bf21141745dbe2efd003b4d08e2c3a4b67b1cac5a2084c5fb994a1484a1",
+      "ok": false,
+      "actualBytes": 3870,
+      "actualSha256": "5a4aec0f50002fcfebabc5cd88ed4bb0ac661fee3364d7603797f35a13176eb8",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "agents/worker/agent.yaml",
+      "expectedBytes": 222,
+      "expectedSha256": "aabb001f1ed6ce36eb15384d67d4de0127d8097e333876436ea40a0f314f977c",
+      "ok": true,
+      "actualBytes": 222,
+      "actualSha256": "aabb001f1ed6ce36eb15384d67d4de0127d8097e333876436ea40a0f314f977c"
+    },
+    {
+      "path": "guidance/team.md",
+      "expectedBytes": 662,
+      "expectedSha256": "74c5cc54689f5025bb956d2471c900c3b5c5e3b7e4ed5f2d8898f42196263710",
+      "ok": false,
+      "actualBytes": 487,
+      "actualSha256": "f0be8da4b555ef2914538311f74df2d4a019aa6f85b0ea429c0587e21c2d060e",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "OPENRIG-BRIDGE.json",
+      "expectedBytes": 1280,
+      "expectedSha256": "7bcf700b176abd98188da15d1d9496aeffb25fe9006e084b487985ea2b4e8f07",
+      "ok": false,
+      "actualBytes": 1038,
+      "actualSha256": "750b9ae26b944cf5796cc91eb2c17271f295a05816ff165036addd9f11932cac",
+      "reason": "bytes mismatch"
+    }
+  ],
+  "mismatches": [
+    {
+      "path": "rig.yaml",
+      "expectedBytes": 2078,
+      "expectedSha256": "247a15d2f122fdc50a6e524caf11efffc5a022c388be06c868f7c493bfa91333",
+      "ok": false,
+      "actualBytes": 1192,
+      "actualSha256": "6960c5a7a3446ca447c8194585266464be559230a2ea73fd8cc3aea081f7ff50",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "workflow.yaml",
+      "expectedBytes": 4060,
+      "expectedSha256": "788d8bf21141745dbe2efd003b4d08e2c3a4b67b1cac5a2084c5fb994a1484a1",
+      "ok": false,
+      "actualBytes": 3870,
+      "actualSha256": "5a4aec0f50002fcfebabc5cd88ed4bb0ac661fee3364d7603797f35a13176eb8",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "guidance/team.md",
+      "expectedBytes": 662,
+      "expectedSha256": "74c5cc54689f5025bb956d2471c900c3b5c5e3b7e4ed5f2d8898f42196263710",
+      "ok": false,
+      "actualBytes": 487,
+      "actualSha256": "f0be8da4b555ef2914538311f74df2d4a019aa6f85b0ea429c0587e21c2d060e",
+      "reason": "bytes mismatch"
+    },
+    {
+      "path": "OPENRIG-BRIDGE.json",
+      "expectedBytes": 1280,
+      "expectedSha256": "7bcf700b176abd98188da15d1d9496aeffb25fe9006e084b487985ea2b4e8f07",
+      "ok": false,
+      "actualBytes": 1038,
+      "actualSha256": "750b9ae26b944cf5796cc91eb2c17271f295a05816ff165036addd9f11932cac",
+      "reason": "bytes mismatch"
+    }
+  ],
+  "error": null,
+  "rc": 1,
+  "strict": true
+}
+rc=1

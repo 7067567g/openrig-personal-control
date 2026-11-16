@@ -1,0 +1,10 @@
+reports: rc=0 errors=[]
+root: rc=0 errors=[]
+both: rc=0 errors=[]
+none: rc=1 errors=['final_missing']
+both_wrong_reports: rc=0 errors=[]
+badsha: rc=1 errors=['closeout_hash_mismatch']
+badrev: rc=1 errors=['revision_chain']
+--- live run (pre-close, expected rc=1) ---
+live.rc=1
+ live errors= ['final_missing', 'closeout_missing']

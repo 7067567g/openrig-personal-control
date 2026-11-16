@@ -1,0 +1,1 @@
+按三份顾问报告（OpenCode / DSH / 质量对比）与已裁决融合台账，用 OpenRig 特化并执行一条工作流：完成当前 workflow-group 的退役术语降噪与 issue-sync 模板保守收敛，跑通 plan→docs→qa→templates→qa→main close 的隔离双平面执行，产出可复跑测试证据、严格 COMPLETE 归档和 teardown 后卫生证据；不重做报告全文抽取，不强制 M2 清零，不降级 safe-cleanup。

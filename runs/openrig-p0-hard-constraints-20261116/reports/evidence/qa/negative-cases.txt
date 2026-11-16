@@ -1,0 +1,22 @@
+# Independent negative cases (11, covering 6 hard gates) — each run and asserted by QA, not read from TDO logs
+
+id | gate | command | expected | actual | evidence
+N1 | R05 preflight | openrig_preflight.py --json (no workspace/run-id) | ok:false, rc1 | ok:false, rc1 | neg-preflight-no-context.txt
+N2 | R05 preflight | openrig_preflight.py --json --workspace KB --run-id no-such-run-xyz | ok:false, rc1 | ok:false, rc1 | neg-preflight-bad-runid.txt
+N3 | R06 issues.py | python with sys.modules['openpyxl']=None; import issues; read_rows(jsonl mirror) | import ok, JSONL fallback | HAS_OPENPYXL=False, row returned, rc0 | neg-issues-no-openpyxl-jsonl-fallback.txt
+N4 | R06 components | required_components.py --root /tmp/opencode/qa-wg-empty --json | required fail, hints | rc1, 8 required fail, all 8 have install_hint | neg-required-components-empty-root.json
+N5 | R03 evidence_run | evidence_run.sh --shell 'printf x; exit 7' | file rc=7, wrapper rc7 | rc=7, sha fields present, wrapper 7 | neg-evidence-run-exit7.txt
+N6 | R03 evidence_run | evidence_run.sh --shell 'false | tail' | rc1 (pipefail) | rc=1, hashes present | neg-evidence-run-pipefail.txt
+N7 | R01 archive-gate | archive-gate with fake guard PARTIAL | ok:false, gate rc2, missing passthrough | rc2, archiveStatus=PARTIAL, missing=[transcriptCapture] | neg-archive-gate-partial.txt
+N8 | R01 archive-gate | archive-gate with OPENRIG_TEARDOWN_GUARD=/nonexistent | rc3 "guard missing" | rc3, error=guard missing | neg-archive-gate-missing-guard.txt
+N9 | R04 close strict | wf_close_lint.py --run empty-run --runs-root /tmp --strict | ERROR final_missing+closeout_missing, rc1 | rc1, both codes | neg-close-strict-empty-run.json
+N10 | R04 close strict | good manifest with one wrong sha256 | ERROR closeout_hash_mismatch, rc1 | rc1, hash mismatch reported | neg-close-strict-sha-mismatch.txt
+N11 | R04 close strict | revision=2 without replacesSha256 | ERROR revision_chain, rc1 | rc1, revision_chain reported | neg-close-strict-rev-chain.txt
+N12 | R07 verify-render | mutated copy, --strict | rc1 ok:false | rc1 ok:false | neg-verify-render-mutated-strict.txt
+N13 | R07 verify-render | mutated copy, default | rc0 ok:false (WARN) | rc0 ok:false | neg-verify-render-mutated-default.txt
+N14 | R07 verify-render | manifest removed | rc2 | rc2 error=render-manifest.json missing | neg-verify-render-missing-manifest.txt
+
+Positives independently reproduced:
+- archive-gate fake guard COMPLETE -> rc0 ok:true (fake-archive-gate-complete.txt)
+- verify_render clean manifest -> rc0 ok:true (pos-verify-render-clean.txt)
+- close strict valid run+manifest -> rc0 PASS (pos-close-strict-good-run.txt, evidence-record-e2e-demo.txt)

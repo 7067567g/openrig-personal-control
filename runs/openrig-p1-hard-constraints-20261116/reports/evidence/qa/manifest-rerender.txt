@@ -1,0 +1,23 @@
+# Independent re-render of the run bundle (verifies D-004's premise: manifest is sound)
+# cmd: python3 render_master.py --run-id openrig-p1-hard-constraints-20261116 \
+#        --rig-name openrig-p1-hard-constraints-20261116 --workflow-id openrig-workflow-p1-hard-constraints-20261116 \
+#        --project-root <KB> --output-dir /tmp/opencode/qa-p1/rerender2 \
+#        --openrig-cli /home/a7067567g/.local/bin/rig --openrig-home /tmp/openrig-workflow-p1-hard-constraints-20261116 \
+#        --daemon-port 47978 --opencode-model deepseek/deepseek-flash
+# rc=0
+
+manifest renderedAt=2026-11-15T16:47:32Z masterVersion=1.2.0
+MATCH rig.yaml                     bytes= 2078 sha=19fd8fabd810
+MATCH workflow.yaml                bytes= 4060 sha=184741da5bc8
+MATCH agents/worker/agent.yaml     bytes=  222 sha=aabb001f1ed6
+MATCH guidance/team.md             bytes=  662 sha=192a36f6a80d
+DIFF  OPENRIG-BRIDGE.json          bytes= 1295 sha=b11add9f9c6b (differs only in OPENRIG_OPENCODE_BIN: re-render without --opencode-bin; MAIN render with it => c06c28ee… = manifest)
+
+# drift timing (live run):
+2026-11-16 00:47:32.367298585 +0800 /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p1-hard-constraints-20261116/openrig/render-manifest.json
+2026-11-16 00:47:58.759426277 +0800 /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p1-hard-constraints-20261116/openrig/rig.yaml
+2026-11-16 00:47:58.761426277 +0800 /home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group/runs/openrig-p1-hard-constraints-20261116/openrig/workflow.yaml
+
+# seat graph: manifest-faithful render vs live bundle
+render pods/members: id: control id: main id: pmo id: exec id: tdo-oc id: tdo-dsh id: assurance id: qa 
+live   pods/members: id: control id: main id: exec id: tdo-oc id: assurance id: qa 

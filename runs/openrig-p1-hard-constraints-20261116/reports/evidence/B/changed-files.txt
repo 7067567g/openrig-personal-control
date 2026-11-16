@@ -1,0 +1,12 @@
+# Packet B changed files (path | action | before_sha256 | after_sha256)
+# Before-state policy per MAIN ruling 2026-11-16 (P0 precedent): never-captured before state is
+# recorded as n/a, never reconstructed or inferred.
+# .github/workflows/wf-validate.yml was CLEAN at the plan baseline (absent from
+# 00-baseline.original.txt status lines), so its before hash is the exact git HEAD blob:
+#   git show HEAD:.github/workflows/wf-validate.yml | sha256sum  -> d84743bb…3bc, 1017 bytes
+WORKFLOW-TAGS.md | modify (R09: canonical 55 -> 62) | n/a (pre-existing untracked, no snapshot) | c2f01cad147c5b17a0f6ebb09197d174959a99c5a36eaa71c3d44b0973b96569
+.github/workflows/wf-validate.yml | modify (R09: doc gate + doc tests after pytest) | d84743bb18538f4e376188eea57e1470aa2e3862467e868d166c1456b06853bc | 641938168d496c3dba7e76151ed0207230519c13284df5021b775ea25acda273
+scripts/audit_managed_blocks.py | create (R10) | - | ccf1d3d1f78d0d7896c4794b1b3ae073dc6e66e0b86e87e1042ef1060d7220d0
+tests/test_audit_managed_blocks.py | create (R10) | - | b5fdd805ec8e67d4948adcc7a304970e4277e8a196efc89bc35dd65785361d19
+# Scope is proven by: (a) path-set-diff.txt in evidence/A (baseline path sets only), (b) scope.txt
+# (mtime sweep vs whitelist), (c) ci-wiring-diff.txt (real git diff of the only tracked file) plus pytest.

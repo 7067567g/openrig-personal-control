@@ -1,0 +1,4 @@
+在跑自动化与日常入口可靠性：① 月月bot qq-bridge 加测试 runner + B1 seen_messages 去重持久化/B2 catchup_max_age 回归（先 FAIL 后 PASS）+ 日志轮转 + hardstop unit 路径修正；② 快捷方式 apps.json 校验器（绝对路径/缺目标反例 FAIL）+ relink 干跑 + 收口未提交文件；③ 链接核查误报修复（URL 解码/代码块剔除）+ 聚合门禁 运维核查.sh；R2 只登记 B3-B6 gaps。
+写权限精确到 SPEC；不改 镜像维护.sh/镜像日志（P10 在写）；不 push；无版本控制的改动留清单。
+成功判据：runner 全绿且 B1/B2 先红后绿；反例 FAIL；夹具 0 误报；reports/final.md。
+反目标：为过测试放宽断言、动 P10 文件、跳过反例。

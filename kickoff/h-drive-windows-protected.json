@@ -1,0 +1,49 @@
+{
+  "status": "confirmed-2026-10-18",
+  "policy": "Protected paths stay at their existing H:\\ top-level names. Root Excel/PPT stay in place. Delete candidates are moved to H:\\_整理收纳\\90_待确认; delete op is disabled.",
+  "protected_toplevel": [
+    "$RECYCLE.BIN",
+    "System Volume Information",
+    "JASON",
+    "Jason96",
+    "JASON插值使用教程",
+    "JASON提平面使用教程",
+    "Petrel2018_PJ",
+    "Petrel20182_PJ",
+    "Petrel三维显示教程",
+    "Petrel追层",
+    "250623_petrel",
+    "Lu203_new",
+    "HGD-2024",
+    "梁平北SMI工区-简",
+    "daily_path_cn",
+    "CN",
+    "Y202东方连片深度偏新成果240711",
+    "dq_liefengti20241205(chen)",
+    "OneDrive",
+    "OneDriveTemp",
+    "FileHistory",
+    "wps",
+    "SteamLibrary",
+    "廖宇轩的移动硬盘_电话13667347457"
+  ],
+  "protected_root_extensions": [
+    ".xlsx",
+    ".xls",
+    ".xlsm",
+    ".xlsb",
+    ".pptx",
+    ".ppt",
+    ".ppsx",
+    ".pps"
+  ],
+  "protected_root_files": [
+    "license.lic",
+    "MediaID.bin"
+  ],
+  "notes": [
+    "Protected_toplevel also protects matching root files because the first path component is used.",
+    "The gate has no delete/copy/exec operation; only mkdir and move.",
+    "Any object whose disposition would be delete must be proposed as a move to H:\\_整理收纳\\90_待确认."
+  ]
+}

@@ -1,0 +1,31 @@
+== path escape
+[ERROR] --path 必须位于 openrig/ 内: ../../etc/passwd
+rc=1
+== empty reason
+[ERROR] --reason 不能为空：特化必须写明为什么这个 run 与母版渲染结果不同
+rc=1
+== valid
+{
+  "ok": true,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "path": "workflow.yaml",
+  "bytes": 3813,
+  "sha256": "1c458f6f0553d500f331a72fd23745da5c39a2ee9412d82de1acffde992579cb",
+  "reason": "QA probe",
+  "specPath": "/tmp/opencode/qa-p1/rs/runs/openrig-p1-hard-constraints-20261116/openrig/render-specializations.json",
+  "entries": 1
+}
+rc=0
+== artifact
+{
+  "schemaVersion": 1,
+  "runId": "openrig-p1-hard-constraints-20261116",
+  "files": {
+    "workflow.yaml": {
+      "bytes": 3813,
+      "sha256": "1c458f6f0553d500f331a72fd23745da5c39a2ee9412d82de1acffde992579cb",
+      "reason": "QA probe",
+      "recordedAt": "2026-11-16T01:03:46+08:00"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+目标：在不修改产品代码的前提下，把上一轮 OpenRig 烧 token 复核结论收敛成一套可执行的“线性 + 有界轮次”专项方案，并补一轮“无硬上限预算管理”研究。
+
+必须产出（只写本 run 的 reports/ 目录）：
+1. reports/PLAN-v2.md
+   - 5 个 bounded round（R0 基线/契约、R1 运行时遥测、R2 context/session 预算、R3 模板与门禁、R4 小流量 E2E）；
+   - 每轮的写范围、线性 step、packet 边界、验收命令、fresh-session 策略、手工调整窗口；
+   - 明确“线性 ≠ 一条大长链”：同一时刻一个 writer，但每轮必须 fresh session。
+2. reports/BUDGET-MANAGEMENT-RESEARCH.md
+   - 探索阶段不做固定金额硬预算；
+   - 研究无硬上限的预算治理：分项遥测、归因、软阈值、异常检测、自适应节奏、session 轮换、返工成本与预算卡死的权衡；
+   - 给出可落地的指标、信号、告警、人工升级方式；
+   - 明确哪些机制现在能接、哪些需要后续多实例数据才能校准。
+3. reports/ACCEPTANCE-v2.md
+   - 每个产出有可复跑检查；每条关键结论有文件/行/命令支撑。
+4. reports/OPEN-QUESTIONS.md
+   - 只列需要人类拍板的问题，不自行替用户做取舍。
+5. QA 独立复核，写 reports/QA-VERDICT.md。
+
+硬约束：
+- 只读 OpenRig 源码仓、workflow-group 模板/文档、OpenCode 会话库；不改产品代码、配置、数据库。
+- 写权限仅限 runs/openrig-token-governance-design-20261115/**。
+- 不设固定金额预算，不把 budget.enabled/金额上限当作本方案前提。
+- 所有结论必须带路径/命令/证据；禁止只写“已分析”。
+- 线性工作流：一个 TDO 顺序执行，QA 失败只回紧邻 TDO step；不并行、不 fan-out。

@@ -1,0 +1,4 @@
+复盘本次"拉主会话烧额度"实战并回写工作流组：读取 burner/burner.log 与各 run 的 DELEGATIONS/reports（只读），统计消耗、轮次、失败模式、锁/权限/超时问题；把踩到的坑变成 WORKFLOW/roles/DESIGN/burner 的规则或代码；产出复盘报告。
+写权限：workflow-group/** 与 runs/<RUN-ID>/**；KB 正式域只读。
+成功判据：复盘报告（数据+失败模式+改进清单）；至少 3 处有依据的规范/代码改进；wf.py 语法与模板冒烟通过。
+反目标：不改 KB 正式域、不动项目仓、不 push、不堆无依据规则。

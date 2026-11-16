@@ -1,0 +1,37 @@
+# MAIN independent verification — TDO handoff claims (2026-11-15T17:02Z)
+
+Scope: verify exec-tdo-oc's Packet A–D handoff message before answering its four
+decisions. Commands run from `workflow-group/` unless stated. All rc captured directly
+(no pipes).
+
+| # | Claim | Command | Real rc | Observed |
+| --- | --- | --- | --- | --- |
+| 1 | full pytest 310 passed | `.venv/bin/python -m pytest tests -q` | 0 | `310 passed in 7.02s` |
+| 2 | doc_consistency rc0 | `.venv/bin/python scripts/doc_consistency.py --check` | 0 | `0 error(s), 0 warning(s)` |
+| 3 | product repo three values unchanged | `git -C /home/a7067567g/下载/deepseek/deepseek-项目/10-openrig-deepseek …` | 0 | HEAD `e932ae9…`, status `3b64cf9…`, diff `2cbcef6…`, 29 dirty — identical to plan §2 |
+| 4 | close-lint fails pre-close | `.venv/bin/python scripts/wf_close_lint.py --run openrig-p1-hard-constraints-20261116 --strict` | 1 | `final_missing` + `closeout_missing`; message already names `reports/FINAL.md 或根 FINAL.md` (R04b active) |
+| 5 | render drift is 4 files | `.venv/bin/python scripts/verify_render.py --run-dir runs/openrig-p1-hard-constraints-20261116 --json` | 0 | mismatch: `rig.yaml`, `workflow.yaml`, `guidance/team.md`, `OPENRIG-BRIDGE.json`; `agents/worker/agent.yaml` ok |
+| 6 | drift is systematic, not one-off | same command on `runs/openrig-p0-hard-constraints-20261116` and `runs/openrig-token-r1-implement-20261115` | 0 | identical 4-file mismatch pattern in both older runs |
+| 7 | manifest itself is not corrupt | re-render same params to `/tmp/opencode/p1-render` with `render_master.py` | 0 | fresh render reproduces manifest hashes exactly: `rig.yaml` 2078/`19fd8f…`, `workflow.yaml` 4060/`184741…` |
+| 8 | drift timing | `stat -c '%y %n' runs/…/openrig/*` | 0 | manifest 00:47:32; `rig.yaml`/`workflow.yaml`/`guidance/team.md`/`OPENRIG-BRIDGE.json` all 00:47:58; `agent.yaml` untouched |
+| 9 | BASELINE-post staleness | `sha256sum -c BASELINE-post.sha256` in `templates/specialized/openrig-workflow-master` | 1 | 35 OK, 3 FAILED: `ENTRYPOINTS.md`, `README.md`, `SPEC.md` |
+| 10 | README/SPEC staleness predates this run | `stat` mtimes vs `BASELINE-post.sha256` (2026-10-20) | 0 | README 2026-10-23 15:39, SPEC 2026-10-23 15:15, ENTRYPOINTS 2026-11-16 00:56 |
+
+## What the drift actually is (evidence #7/#8)
+
+The rendered files were replaced 26 s after render by a **coherent 3-seat
+specialization**, not random corruption:
+
+- `seatMap` drops `pmo` / `tdo_dsh`; `policy.maxActiveAgents` 2→1; `maxHops` 10→12;
+- `rig.yaml` drops the `pmo` pod and the `tdo-dsh` member, rewires edges to
+  `control.main → exec.tdo-oc`;
+- the resulting shape matches `SPEC.md` §9 (3 seats, strictly linear steps).
+
+So the intent is authored (SPEC §9), but the specialization was never registered
+through `render-specialize` — it was applied by the launch path before W5 existed.
+
+## Conclusion carried into DECISIONS D-004…D-007
+
+No re-render (would change a live seat graph). Close records the specialization with an
+explicit reason; the launch-path gap and BASELINE-post staleness are reported as
+follow-ups, not silently fixed outside TASK §0.

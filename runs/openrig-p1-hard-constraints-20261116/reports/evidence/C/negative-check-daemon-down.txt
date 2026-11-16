@@ -1,0 +1,16 @@
+command=bash -o pipefail -c $'\nset -u\nT=/tmp/opencode/pC-run\nrm -rf "$T"; mkdir -p "$T/openrig/tools"\ncat > "$T/fake-rig" <<"EOF"\n#!/usr/bin/env python3\nimport json,os,sys\nlog=os.environ.get("FAKE_RIG_LOG")\nif log:\n    open(log,"a",encoding="utf-8").write(" ".join(sys.argv[1:])+"\\n")\na=sys.argv[1:]\nif a[:2]==["workflow","validate"]:\n    print(json.dumps({"ok":True})); sys.exit(0)\nif a[:1]==["ps"]:\n    print("daemon down",file=sys.stderr); sys.exit(1)\nprint(json.dumps({"ok":True})); sys.exit(0)\nEOF\nchmod +x "$T/fake-rig"\ncat > "$T/openrig/tools/openrig_bridge.py" <<"EOF"\n#!/usr/bin/env python3\nimport sys\nprint("PASS bridge fake"); sys.exit(0)\nEOF\nprintf "rig: t\\n" > "$T/openrig/rig.yaml"\nprintf "workflow: t\\n" > "$T/openrig/workflow.yaml"\n.venv/bin/python - "$T" <<PY\nimport hashlib,json,sys\nfrom pathlib import Path\nrun=Path(sys.argv[1]); o=run/"openrig"\nfiles={}\nfor rel in ("rig.yaml","workflow.yaml"):\n    raw=(o/rel).read_bytes(); files[rel]={"bytes":len(raw),"sha256":hashlib.sha256(raw).hexdigest()}\n(o/"render-manifest.json").write_text(json.dumps({"schemaVersion":1,"runId":"t-run","files":files}),encoding="utf-8")\n(o/"OPENRIG-BRIDGE.json").write_text(json.dumps({\n "schemaVersion":2,"runId":"t-run","rigName":"t-rig","workflowId":"t-workflow",\n "rigSpec":"rig.yaml","workflowSpec":"workflow.yaml",\n "openrigCli":str(run/"fake-rig"),"openrigHome":str(run/"home"),"daemonPort":1111,\n "seatMap":{"main":"main@t"}}),encoding="utf-8")\nPY\nset +e\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json > "$T/default.json" 2>&1; echo "default.rc=$?"\n.venv/bin/python scripts/openrig_run.py check --run-dir "$T" --json --allow-daemon-down > "$T/allow.json" 2>&1; echo "allow-daemon-down.rc=$?"\nset -e\n.venv/bin/python - "$T/default.json" <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("default.ok=",d["ok"],"checks=",{c["id"]:c["status"] for c in d["checks"]})\nfor n in d["next"]: print("next:",n)\nPY\n.venv/bin/python - "$T/allow.json" <<PY\nimport json,sys\nd=json.load(open(sys.argv[1]))\nprint("allow.ok=",d["ok"],"seats=",[c for c in d["checks"] if c["id"]=="seats"][0]["status"])\nPY\n'
+label=R11 neg: fake rig daemon-down -> rc1; --allow-daemon-down -> rc0
+cwd=/home/a7067567g/下载/deepseek/deepseek-知识库/workflow-group
+started_at=2026-11-16T00:57:20+08:00
+finished_at=2026-11-16T00:57:20+08:00
+rc=0
+stdout_sha256=0a23249b7c3ae948d8aeedc77cdd14e623f4de26ac40a5acbd8fa5fed641494f
+stderr_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stdout ---
+default.rc=1
+allow-daemon-down.rc=0
+default.ok= False checks= {'bridge': 'ok', 'render': 'ok', 'doctor': 'ok', 'workflow_validate': 'ok', 'seats': 'fail'}
+next: /tmp/opencode/pC-run/fake-rig daemon start --no-kernel --port 1111
+next: /tmp/opencode/pC-run/fake-rig up /tmp/opencode/pC-run/openrig/rig.yaml
+allow.ok= True seats= warn
+--- stderr ---

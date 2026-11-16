@@ -1,0 +1,11 @@
+目标：分析“除了引导文件之外”，如何让新会话拉起 OpenRig 时少走错路、少遗漏东西。只做分析，不改产品代码/模板正文。
+
+必须产出 reports/ANALYSIS-LAUNCH-GUARDRAILS.md：
+- 从最近真实 run 提取失败/遗漏模式（openrig-docs-governance-20261115、openrig-token-factfind-20261115、openrig-token-r1-implement-20261115）；
+- 区分“引导文件能解决的”和“必须靠机制解决的”；
+- 给出分层控制：repo / run / workflow / seat / closeout；
+- 覆盖但不限于：launch preflight、bundle linter、required components、identity/DB binding probe、cwd/AGENTS 污染检查、telemetry readiness、fresh-session 标记、packet 粒度检查、evidence schema、closeout gate、canary probe；
+- 每条给出成本/收益/失败模式/建议优先级（P0/P1/P2），并明确“现在能做 / 需要小实现 / 需要引擎改动”；
+- 不设金额硬预算；不写空泛原则。
+
+约束：只写本 run 的 reports/；产品仓/模板/既有 run 只读；不改代码/配置/DB；所有结论带 path:line 或命令证据。

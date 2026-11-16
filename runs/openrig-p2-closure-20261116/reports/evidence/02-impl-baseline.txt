@@ -1,0 +1,28 @@
+# impl_p2 baseline 2026-11-16T00:44Z (TDO-OC, read-only capture before edits)
+# HEAD 9fa8d27a95dba40c9f324f91497bc6754aa4b9ac
+
+# --- target file status (note: all five targets are pre-existing UNTRACKED, not modified-by-me) ---
+?? workflow-group/WORKFLOW-TAGS.md
+?? workflow-group/scripts/openrig_run.py
+?? workflow-group/scripts/wf_close_lint.py
+?? workflow-group/tests/test_openrig_run.py
+?? workflow-group/tests/test_wf_close_lint.py
+# workflow-group/scripts/workflow_invariants_probe.py         (absent)
+# workflow-group/tests/test_workflow_invariants_probe.py      (absent)
+
+# --- sha256 before edit ---
+9fd129d1203ed85a8b85e6a5694b4008f0ab6091dc5c5b9285e0c73594d01ceb  scripts/openrig_run.py
+2e8d70dbe3aab42ef0e2af278a9bc7400faaffd4fbeae6514a22e97e47ff7bf7  scripts/wf_close_lint.py
+c2f01cad147c5b17a0f6ebb09197d174959a99c5a36eaa71c3d44b0973b96569  WORKFLOW-TAGS.md
+80cddc8175ce43b6a5f1029f98f5996c3819b9b884b7eac5037ed1e4ff4f0089  tests/test_openrig_run.py
+68da92912e2a7c5e035ad3e503fdfc17aea5e2e32e9c58785b0c1d572aa3bb61  tests/test_wf_close_lint.py
+
+# --- full pytest before edit ---
+$ .venv/bin/python -m pytest tests -q
+310 passed in 7.41s
+
+# --- doc_consistency before edit ---
+$ .venv/bin/python scripts/doc_consistency.py --check
+ERROR [tags-count] WORKFLOW-TAGS.md 声明 canonical=62，实际目录数=63
+doc_consistency: 1 error(s), 0 warning(s)
+rc=1
