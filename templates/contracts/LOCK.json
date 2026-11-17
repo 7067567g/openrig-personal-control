@@ -4,22 +4,22 @@
       "WORKFLOW.md": "826646449176f283860fa37d4f81b8e1ae8eb2c0dad51cb40a2c17590bc196f6",
       "roles/MAIN.md": "71e6f819e8eb7dda24b88fe0e535a6873e568d8bbb4c231623a4cafe2ec98c72",
       "roles/PMO.md": "4adeb93ec6293d8d1f1ea0786e1e73929f4e1ae0c9e4578b4292964208fac407",
-      "roles/QA.md": "6941f1e8f043d233fd765e4d544fdf4766fc3b815bc42ee184a16e60879c58ee",
+      "roles/QA.md": "1ccc514db556bb8cbd0f69bf7b69e4eaf39b9e4b3582f98c6973ba8e02873179",
       "roles/SAFETY.md": "7d60f20acec1ab6258b925b70cd32feef670a34d8870c388718dab9c9f1f46fb",
       "roles/TDO.md": "007824bec0a39156fbd088dbe72c13dc7201602d66175e4c54053e4dc85a644a",
-      "roles/common-contract.md": "9b8290ee41ab490b578550f433a6413d19648e87d3ed7f5362c84bfe76039bdf",
-      "templates/DECISIONS.md": "168d711981435f84750a397c0d6046e6b4b59887d323c2fd0e6ebb5dd438adc3",
+      "roles/common-contract.md": "6e6a98fd27d2a78f1d41aaf2cc6cd23f47448215e8ec1670cc8ea7d63187f38a",
+      "templates/DECISIONS.md": "5db273b3fe076dc0df8a81cb61b36a2e7c887c51a843b61b01f7fed444238667",
       "templates/ISSUES.xlsx": "732b2613218b2b7b69ddac0d396ad30cf23c4914f64a9d36712f78285b88f302",
-      "templates/PROJECT.md": "2cb1407fb1e9f1fdbe333d17f147f304b5494dd77ee40a3da6b6ec62f983a713",
-      "templates/STATUS-Round-n.md": "aee31c7fab0a1a112744bbd10290651b4e5066f522bf82a2f7307d9a464a2949"
+      "templates/PROJECT.md": "c8d7b3985115332ec8f656dde5ee0e6e70bfe585550367f3db54746bb3b95ac2",
+      "templates/STATUS-Round-n.md": "950bde44f006b24347d664ad6836a92f34bb24dc00fea88a94ec002ea81112a9"
     },
     "id": "workflow-group-base",
-    "version": "1.2.0"
+    "version": "1.2.1"
   },
   "contractSet": {
     "files": {
       "BASE-MASTER.md": "bf7b6a90675217b7fbc8e86bea85feb9df33fdbc836ace27ef9980d904aca25c",
-      "FREEZE-NOTES.md": "fb3d81cdd5e59262c35e027dc18367400c41856f06c5e4c2db75443dba3b18f7",
+      "FREEZE-NOTES.md": "08db7b843c67e2561f69265fcf418d50e7bc39d12a179fb709514ab693c2c205",
       "README.md": "8bff99afec3262136978a7a31dee5d60e07e175d2e6dcb557531fbf6c30edb7f",
       "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
       "_shared/PLAN-GATE.md": "d09fea278322a2961538d5898283ca01ce4e6998d6f33f4691af09d963b482e7",

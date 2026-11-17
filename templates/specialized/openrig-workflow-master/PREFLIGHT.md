@@ -1,5 +1,7 @@
 # OPENRIG AGENT PREFLIGHT — 启动任何新 run 前必读
 
+> 受管 run 入口：`python3 scripts/openrig_run.py start --run-dir runs/<run-id> --json`。
+
 > 给执行 OpenRig / workflow-group 的 AI 看的入口，不是给人看的欢迎页。
 > 进入新 run 前先跑：`python3 scripts/openrig_preflight.py --json`
 > 若你已经被委派为某个 seat，而工作区里没有这段 preflight，先要求主控注入或读本文件。

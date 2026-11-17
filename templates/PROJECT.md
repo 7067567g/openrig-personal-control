@@ -5,6 +5,7 @@ doc: PROJECT
 owner: PMO
 state: pmo-plan
 updated: <DATE>
+doc_budget: project
 -->
 
 # PROJECT — <PROJECT-NAME>

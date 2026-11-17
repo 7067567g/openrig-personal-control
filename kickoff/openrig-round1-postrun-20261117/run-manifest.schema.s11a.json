@@ -1,0 +1,453 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openrig.local/schemas/run-manifest.schema.s11a.json",
+  "title": "OpenRig supervised run manifest (S11a freeze)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "manifestId",
+    "runId",
+    "launchId",
+    "intent",
+    "generatedAt",
+    "runContext",
+    "inputs",
+    "steps",
+    "seats",
+    "status",
+    "revision"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "manifestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "launchId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intent": {
+      "enum": [
+        "fresh",
+        "resume",
+        "status",
+        "stop"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "runContext": {
+      "type": "object",
+      "required": [
+        "runDir",
+        "bridgePath",
+        "bridgeSha256",
+        "openrigHome",
+        "openrigCli"
+      ],
+      "properties": {
+        "runDir": {
+          "type": "string"
+        },
+        "bridgePath": {
+          "type": "string"
+        },
+        "bridgeSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "openrigHome": {
+          "type": "string"
+        },
+        "daemonPort": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "openrigCli": {
+          "type": "string"
+        },
+        "supervisorVersion": {
+          "type": "string"
+        },
+        "productGitSha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "workflowGroupGitSha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "envKeys": {
+      "type": "array",
+      "description": "Names only. Values must never be written to the manifest.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "path",
+          "sha256",
+          "required"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sourceId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "stepId",
+          "cmd",
+          "cwd",
+          "startedAt",
+          "endedAt",
+          "rc",
+          "evidencePath"
+        ],
+        "properties": {
+          "stepId": {
+            "type": "string"
+          },
+          "cmd": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "startedAt": {
+            "type": "string"
+          },
+          "endedAt": {
+            "type": "string"
+          },
+          "rc": {
+            "type": "integer"
+          },
+          "stdoutSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "stderrSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "evidencePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "stateBefore": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "stateAfter": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "partial": {
+            "type": "boolean"
+          },
+          "redacted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "seats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "logicalId",
+          "canonicalSessionName",
+          "expectedAction",
+          "actualOutcome"
+        ],
+        "properties": {
+          "logicalId": {
+            "type": "string"
+          },
+          "canonicalSessionName": {
+            "type": "string"
+          },
+          "nodeId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expectedAction": {
+            "enum": [
+              "resume-original",
+              "fresh-primed",
+              "new",
+              "stop",
+              "n-a"
+            ]
+          },
+          "actualOutcome": {
+            "enum": [
+              "resumed",
+              "fresh-primed",
+              "awaiting-decision",
+              "attention_required",
+              "failed",
+              "ready",
+              "n-a"
+            ]
+          },
+          "freshAuthorized": {
+            "type": "boolean"
+          },
+          "freshReason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidencePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "actualOutcomeObserved": {
+            "type": "boolean"
+          },
+          "actualOutcomeReason": {
+            "type": "string"
+          },
+          "session": {
+            "enum": [
+              "present",
+              "detached",
+              "exited",
+              "absent"
+            ]
+          },
+          "activity": {
+            "enum": [
+              "working",
+              "idle-at-prompt",
+              "unknown"
+            ]
+          },
+          "evidence": {
+            "enum": [
+              "oracle",
+              "observed",
+              "degraded"
+            ]
+          },
+          "evidenceReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "startupStatus": {
+            "type": "string"
+          },
+          "resumeTokenPresent": {
+            "type": "boolean"
+          },
+          "restorePolicy": {
+            "type": "string"
+          },
+          "outcomeMatched": {
+            "type": "boolean"
+          },
+          "observed": {
+            "type": "boolean"
+          },
+          "observationSource": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string"
+        },
+        "entryQitemId": {
+          "type": "string"
+        },
+        "specPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "specSha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "operationKey": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "properties": {
+        "gate": {
+          "enum": [
+            "not-run",
+            "pass",
+            "fail"
+          ]
+        },
+        "manifestPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "archiveStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "checkedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required": {
+          "type": "object"
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "producer"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "producer": {
+            "type": "string"
+          },
+          "consumer": {
+            "type": "string"
+          },
+          "retention": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "starting",
+        "active",
+        "stopping",
+        "stopped",
+        "failed"
+      ]
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "seatsNotApplicableReason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outputsNotApplicableReason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "description": "S11a freeze cleanup: explicit not-applicable reasons for empty evidence arrays, seat outcome normalization (no null enum), and string workflow identities. Derived from kickoff/openrig-completion-round-20261116/schemas/run-manifest.schema.json without modifying that frozen baseline."
+}

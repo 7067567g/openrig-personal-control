@@ -1,301 +1,196 @@
-# CLEANING-REPORT — workflow-group-personal-use
+# CLEANING-REPORT — openrig-personal-control
 
-Package: `workflow-group-personal-use`
-Step: `stage_packages` (workflow run `openrig-personal-publish-20261116`)
-Date: 2026-11-16
-Executed by: `exec-tdo-oc@openrig-personal-publish-20261116`
-Source: personal `workflow-group` workspace (subtree of a private knowledge base),
-HEAD `9fa8d27a95dba40c9f324f91497bc6754aa4b9ac`.
+Package: `openrig-personal-control`
+Update date: 2026-11-18
+Scope: sync the sanitized public control package with the current S10 workflow-group scripts and tests.
+Prior report: `CLEANING-REPORT-20261116.md` (archived copy of the previous `CLEANING-REPORT.md`).
 
-## 1. Include / exclude
+## 1. Source provenance
 
 | Item | Value |
 | --- | --- |
-| Staging root | `workflow-group-personal-use/` |
-| Files staged | 553 (see `PACKAGE-MANIFEST.json`) |
-| Bytes staged | 4,162,121 (3.97 MiB) |
-| Runs shipped in full | 3 (`openrig-p0/p1/p2-…-20261116`) |
-| Runs excluded | 60 (available in the evidence bundle) |
-| Raw transcript directories in source `runs/` | 19 |
-| `events.jsonl` files in source `runs/` | 7 |
-| SQLite databases in source `runs/` | 0 |
+| Source branch | `main` |
+| Source HEAD | `a1f6eaa982ac9b92f9e360d9c0bab7496524a16d` |
+| Source worktree | private `workflow-group` workspace, read-only during this update |
+| Public clone base | `c805f9b7230b03d98ece2c32d3a2f40b459b5490` on `main` |
+| Shipped runs | 3, unchanged: `openrig-p0-hard-constraints-20261116`, `openrig-p1-hard-constraints-20261116`, `openrig-p2-closure-20261116` |
+| Package files | 623 files covered by `SHA256SUMS` and `PACKAGE-MANIFEST.json` (the two metadata files are not listed in themselves) |
 
-Included: `scripts/`, `tests/`, `templates/` (baseline + contracts + specialized),
-`roles/`, `kickoff/`, `burner/`, `docs/`, the three runs, the top-level documents
-(`README.md`, `WORKFLOW.md`, `DESIGN.md`, `AGENTS.md`, `WORKFLOW-TAGS.md`,
-`EXAMPLE.md`, `EVOLUTION.md`, `requirements-dev.txt`, `workflow-tags.json`) plus
-the new `README-PERSONAL.md`, `SETUP.md`, `HISTORY-INDEX.md`, `runtime/bootstrap.sh`,
-`.gitignore`.
+The source worktree is a private knowledge-base subtree. Only its current `scripts/` and `tests/` content was read for this update; the public clone and this report are the only write targets. No source repository commit, staging, push, or deletion was performed.
 
-Excluded by pattern:
+## 2. Update contents
+
+### 2.1 Scripts
+
+`scripts/` now contains 28 files: **8 new**, **6 updated**, **14 unchanged**.
+
+New scripts:
+
+- `scripts/openrig_certify.py`
+- `scripts/openrig_certify_s11b.py`
+- `scripts/openrig_continuity.py`
+- `scripts/openrig_findings.py`
+- `scripts/openrig_gate.py`
+- `scripts/openrig_lite.py`
+- `scripts/openrig_manifest.py`
+- `scripts/openrig_runtime_output.py`
+
+Updated scripts:
+
+- `scripts/contract_lock.py`
+- `scripts/doc_consistency.py`
+- `scripts/openrig_preflight.py`
+- `scripts/openrig_run.py`
+- `scripts/wf.py`
+- `scripts/wf_close_lint.py`
+
+### 2.2 Tests
+
+`tests/` now contains 84 files: **54 new**, **6 updated**, **24 unchanged**.
+
+Updated tests:
+
+- `tests/conftest.py`
+- `tests/test_doc_consistency.py`
+- `tests/test_openrig_run.py`
+- `tests/test_wf.py`
+- `tests/test_wf_close_lint.py`
+- `tests/test_workflow_rework.py`
+
+New test content is grouped as follows:
+
+- 13 top-level OpenRig test files (`tests/test_openrig_*.py`);
+- 26 fixture files under `tests/fixtures/` (fake-rig, S9 continuity, supervisor simulation, and the packaged historical-findings policy used only by tests);
+- 15 redteam files under `tests/redteam/` including the mutation-coverage driver and verdict reference notes.
+
+The test-only historical-findings policy is packaged at `tests/fixtures/historical-findings-policy.json` so the public package can run its own tests without the private product checkout. The test conftest points the runtime policy environment at that packaged fixture when present.
+
+### 2.3 Necessary package support updates
+
+The current scripts/tests require the following non-root support data and consistency updates:
+
+- `DOC-BUDGET.json` and `DOC-BUDGET.md` were added as the single documentation-budget source and short guide now required by `scripts/doc_consistency.py`.
+- `roles/common-contract.md` and `roles/QA.md` received the minimal current budget pointers/rules.
+- `templates/PROJECT.md`, `templates/DECISIONS.md`, and `templates/STATUS-Round-n.md` received their `doc_budget:` headers.
+- `templates/baseline/REGISTRY.json`, the nine `templates/baseline/*/BASELINE.md` files, and `templates/contracts/FREEZE-NOTES.md` were advanced only from base-master `1.2.0` to `1.2.1`.
+- `templates/contracts/LOCK.json` was regenerated from the final package worktree with `python3 scripts/contract_lock.py write --force`.
+- `templates/specialized/openrig-workflow-master/templates/workflow.yaml.tpl`, `render_master.py`, `README.md`, `PREFLIGHT.md`, and `ENTRYPOINTS.md` received the current 12-hop/managed-supervisor requirements.
+- `kickoff/openrig-s10-certification-20261116/CERT-MATRIX.json`,
+  `kickoff/openrig-round1-postrun-20261117/run-manifest.schema.s11a.json`, and
+  `kickoff/openrig-round1-postrun-20261117/runtime-output-evidence.schema.s11b.json`
+  were added because them as read-only reference inputs in their tests.
+
+These are the minimum necessary changes to keep the package's existing sanitized root documents, roles, and templates compatible with the synchronized scripts/tests. The package-specific root documents (`README*`, `SETUP.md`, `HISTORY-INDEX.md`, `RELEASE-NOTES.md`, `STACK.json`, `WORKFLOW.md`, `WORKFLOW-TAGS.md`, `workflow-tags.json`, `AGENTS.md`, `DESIGN.md`, `.gitignore`, `runtime/`, and the existing run set) were not replaced.
+
+## 3. Include / exclude policy
+
+Included:
+
+- current `scripts/` and `tests/` content, minus the exclusions below;
+- the existing three shipped run directories and their historical control evidence;
+- existing sanitized package documents, roles, templates, runtime, kickoff, and burner content;
+- the minimal support updates listed in §2.3.
+
+Excluded from this update:
 
 ```text
 .venv/  .r7-work/  .pytest_cache/  __pycache__/  *.pyc  .omo/  .cache/
 drafts/  delegations/  reports/  tools/
-60 older runs (listed in HISTORY-INDEX.md, served by the evidence asset)
-runs/**/openrig/**                      # render output with machine paths
-runs/**/evidence/openrig-transcripts/** # raw transcripts
+all source runs/** (not copied)
+runs/**/evidence/openrig-transcripts/**
+runs/**/openrig/**
 runs/**/.locks/**
 *.sqlite*  *.db  *.log  *.tmp  .DS_Store  .env*
 ```
 
-Rationale:
+No raw transcript, SQLite database, live daemon state, OpenRig render tree, session capture, or local virtualenv was added. The existing three run directories were not modified by this update.
 
-- `runs/**/openrig/` is run-time render state (rig/workflow YAML, bridge JSON,
-  guidance copies) that embeds absolute paths and is not a historical fact.
-- `drafts/`, `delegations/`, `reports/`, `tools/` at workspace level are personal
-  scratch space and workspace-level tooling, not the control plane.
-- `.venv/` is builder-bound; `SETUP.md` recreates it.
+## 4. Hard-gate scans
 
-## 2. Hard gate — secret scan
+All commands were run from the package root unless noted.
 
-### 2.0 Scan scope (including packaging documents)
-
-Every scan below covers the **whole package tree**, which explicitly includes the
-documents added at package time:
-
-`README-PERSONAL.md`, `SETUP.md`, `HISTORY-INDEX.md`, `RELEASE-NOTES.md`,
-`runtime/bootstrap.sh`, `CLEANING-REPORT.md`, `PACKAGE-MANIFEST.json`,
-`SHA256SUMS`, `.gitignore`.
-
-`RELEASE-NOTES.md` (the `--notes-file` for the `v2026.11.16` GitHub release) was
-also checked by hand: it contains the product name, the tag, the release date,
-the contents list, a quick-start pointer to `SETUP.md`, provenance without any
-local absolute path, and the security statement referring back to this report. It
-is counted in `PACKAGE-MANIFEST.json` and listed in `SHA256SUMS`.
-
-Same command as the sibling package (see its §2). Result across the three
-packages: **89 matches in 37 files, all individually reviewed as false positives**;
-**zero matches inside this package** except the shared `SHA256SUMS` artefact.
+### 4.1 Raw session / database scan
 
 ```bash
-rg -n --hidden --no-ignore -g '!.git/**' -g '!*.zst' -g '!*.xlsx' -e "$PAT" \
-  workflow-group-personal-use
-```
-
-Result: **no output.**
-
-Word-level review over the staged package:
-
-```bash
-rg -n -i --hidden --no-ignore -g '!.git/**' \
-  -e 'bearer [A-Za-z0-9._-]{16,}' \
-  -e '(api[_-]?key|secret|token|password)[[:space:]]*[:=][[:space:]]*[^[:space:]"'"'"']{8,}' \
-  workflow-group-personal-use
-```
-
-Result: **4 files, 4 matches — all documentation or code, none a value.**
-
-| File:line | Match | Classification |
-| --- | --- | --- |
-| `WORKFLOW.md:294` | `export OPENCODE_SERVER_PASSWORD=...` | (a) documentation placeholder (`...`) |
-| `scripts/wf.py:1027` | `f"opencode:{pw}"` | code that builds a Basic Auth header from a caller-supplied variable — no literal |
-| `templates/.../ARCHITECTURE.md:194` | `sk-<token>`, `Bearer <token>` | (a) description of the scanner's own patterns |
-| `templates/.../validation/v1.1.0/TDO-DSH-REPORT.md:19` | table row text | (a) report prose |
-
-Broader `token|password|secret|api_key` word search matches many files, but every
-hit is a variable name (`token = …`), a doc placeholder, or a test fixture value
-such as `test-token`, `dummy`, `example.invalid`. **Class (c) real credentials: 0.**
-
-### 2.1 Credential-store read — removed in round 2 (TASK §6 review)
-
-TASK §6 requires hits on `.credentials`-class references to be reviewed by hand.
-One existed and was missed in round 1:
-
-| File | Round-1 state | Round-2 action |
-| --- | --- | --- |
-| `burner/signaldeck-run.sh` | lines 5-6 exported `DEEPSEEK_API_KEY` / `OPENCODE_API_KEY` by parsing the user's credential store with an inline `python3 -c` **inside a public, executable script** | **removed**; the script now asserts `: "${DEEPSEEK_API_KEY:?export DEEPSEEK_API_KEY before running this script}"` and reads no file |
-
-- No key **value** ever shipped (G1 stayed green throughout).
-- What did leak was *layout*: the store path, its YAML shape and the key names —
-  reconnaissance value on a compromised machine, and an avoidable public example.
-- Verification: `grep -rn 'credentials\|\.bashrc' workflow-group-personal-use` now
-  returns nothing outside this report.
-
-Related, same round: `burner/run_queue.py` no longer falls back to scraping the
-user's shell config for the key. `load_key()` reads the environment only, and the
-docstring and error message that advertised the old fallback were rewritten.
-The unused `import re` was dropped.
-
-## 3. Hard gate — raw session / SQLite / home-snapshot scan
-
-```bash
-find workflow-group-personal-use \
+find . -path './.git' -prune -o \
   \( -name 'events.jsonl' -o -path '*/transcripts/*' -o -path '*/sessions/*' \
      -o -name '*.sqlite*' -o -name '*.db' -o -name '.credentials' -o -name 'auth.json' \
-     -o -path '*/.dsh/*' -o -path '*/secrets/*' -o -name 'id_rsa*' \) -print
+     -o -path '*/.dsh/*' -o -path '*/secrets/*' -o -name 'id_rsa*' \
+     -o -path './runs/*/openrig/*' -o -path './runs/*/evidence/openrig-transcripts/*' \) -print
 ```
 
-Result: **no output (0 hits).** Verified additionally that no `runs/**/openrig/`,
-`runs/**/evidence/openrig-transcripts/`, `.venv/` or non-p0/p1/p2 run exists in
-the package.
+Result: **0 hits**. Cache/artifact scan for `.venv`, `.pytest_cache`, `__pycache__`, `*.pyc`, `.omo`, `.cache`, `*.log`, and `*.tmp`: **0 hits**. Shipped run directory count: **3**.
 
-## 4. Local absolute paths
+### 4.2 Secret scan
 
-Hard gate (must be zero) over `README-PERSONAL.md`, `SETUP.md`, `RELEASE-NOTES.md`,
-`runtime/**`, `PACKAGE-MANIFEST.json`:
+Patterns covered bearer-like values, `api_key`/`secret`/`token`/`password` assignments, high-entropy key prefixes, private-key headers, and credential-store references:
 
 ```bash
-rg -n '/home/[A-Za-z0-9._-]+' workflow-group-personal-use/{README-PERSONAL.md,SETUP.md,RELEASE-NOTES.md,runtime}
+rg -n -i --hidden --no-ignore -g '!.git/**' -g '!*.xlsx' -g '!*.zst' \
+  -e 'bearer [A-Za-z0-9._-]{16,}' \
+  -e '(api[_-]?key|secret|token|password)[[:space:]]*[:=][[:space:]]*[^[:space:]"'\'' ]{8,}' .
 ```
 
-Result: **no output.**
-
-### 4.1 Executable scripts — must contain no machine path
-
-`00-plan.md` §4.4 forbids machine paths in executable scripts. Two scripts and one
-data prompt originally violated this; all are now path-free.
+Additional key/credential patterns were scanned with:
 
 ```bash
-rg -n '/home/[A-Za-z0-9._-]+' workflow-group-personal-use/burner workflow-group-personal-use/scripts
+rg -n --hidden -g '!.git/**' -g '!*.xlsx' -g '!*.zst' \
+  -e 'sk-[A-Za-z0-9_-]{20,}' -e 'ghp_[A-Za-z0-9]{20,}' \
+  -e 'AKIA[0-9A-Z]{16}' -e '-----BEGIN (RSA|OPENSSH|EC|PGP) PRIVATE KEY-----' \
+  -e '\.credentials' -e 'auth\.json' .
 ```
 
-Result: **no output.**
+Result: **48 broad-pattern matches in the package tree, all reviewed as false positives; 0 real credential values.** The matches are variable names (`token = ...`), redaction tests (`token=<redacted>`), synthetic fixture literals such as `test-token`, `sk-runtime-output-secret`, and documentation placeholders such as `Bearer <token>` or `OPENCODE_SERVER_PASSWORD=...`. The additional key-prefix/private-key scan produced 10 matches, all test prose or the two cleaning reports; no key material was present.
 
-| File | Was | Now |
-| --- | --- | --- |
-| `burner/signaldeck-run.sh` | 4 machine paths (`cd <abs>`, `PATH=<abs>`, two `.credentials.yaml` reads) | `WG` resolved from `${BASH_SOURCE[0]}`; key required from the environment via `: "${DEEPSEEK_API_KEY:?...}"`; no file read |
-| `burner/signaldeck-heartbeat.sh` | `WG="/home/<user>/…/workflow-group"` | `WG` resolved from `${BASH_SOURCE[0]}`; run id from `$1` or `BURNER_RUN_ID` |
-| `burner/signaldeck-prompt.txt` | line 2 stated an absolute working directory | `<WORKFLOW_GROUP_DIR>` placeholder |
-| `scripts/openrig_preflight.py` | line 37 `DEFAULT_DASHBOARD` hardcoded a dashboard path | env-driven (see §4.2) |
-
-### 4.2 `scripts/openrig_preflight.py` monitor target
-
-Resolution order, most specific first — no machine path anywhere:
-
-1. `YUEYUE_MONITOR_TARGETS` / `OPENRIG_MONITOR_TARGETS` — explicit `target.json` path
-2. `OPENRIG_DASHBOARD` / `YUEYUE_DASHBOARD` — directory, target is `<dir>/target.json`
-3. fallback `~/.openrig/monitor/target.json`
-
-The chosen source is reported as `targetFileSource` in the injection result
-(`env:YUEYUE_MONITOR_TARGETS` / `env:dashboard` / `default`), so an unconfigured
-fallback is visible instead of silent. Existing `YUEYUE_MONITOR_TARGETS` behaviour
-is unchanged, and `tests/test_openrig_preflight.py` passes (7/7).
-
-### 4.3 Rewritten template paths
-
-| File | Original | Now |
-| --- | --- | --- |
-| `templates/specialized/yueyue-governance/PROJECT.md` | `/home/<user>/…/月月bot` (×3) | `<DS_ROOT>/月月bot/…` |
-| `templates/specialized/wechat-yueyue-redesign/PROJECT.md` | `/home/<user>/…/月月bot` | `<DS_ROOT>/月月bot` |
-| `templates/specialized/signaldeck-refactor/SPEC.md` | `/home/<user>/…/deepseek-项目/10-signaldeck/**` | `<DS_ROOT>/deepseek-项目/10-signaldeck/**` |
-
-### 4.4 Historical paths retained — measured, not estimated
+### 4.3 Home-path scan
 
 ```bash
-grep -rlE '/home/[A-Za-z0-9._-]+' . | wc -l      # 169 files
-grep -rnE '/home/[A-Za-z0-9._-]+' . | wc -l      # 523 occurrences
+rg -n --hidden -g '!.git/**' -e '/home/[A-Za-z0-9._-]+' .
 ```
 
-| Directory | Files | Lines | Nature |
-| --- | ---: | ---: | --- |
-| `runs/**` | 123 | 407 | Historical run evidence (logs, `file:line` citations). Rewriting would falsify the record. |
-| `templates/**` | 22 | 47 | Template background and `render_master.py` example placeholders (`/home/dev`, not this machine) |
-| `kickoff/**` | 19 | 60 | Historical kickoff briefs, e.g. `kickoff/signaldeck-runtime-verify.md:8,10,19` (`/home/dev/Desktop/…`). Retained per `00-plan.md` §4.4; listed here explicitly so it is a recorded allowance, not an oversight. |
-| `docs/**` | 4 | 8 | Historical case documents |
-| `EVOLUTION.md` | 1 | 1 | Illustrative example in method history |
-| `burner/**` | 0 | 0 | **Now clean** — see §4.1 |
+Result: **528 occurrences in 172 files**. Classification:
 
-`HISTORY-INDEX.md` states explicitly that historical paths are not current
-configuration.
+| Area | Files | Status |
+| --- | ---: | --- |
+| `runs/**` | 123 | Historical run evidence; preserved unchanged |
+| `templates/**` | 22 | Historical `/home/dev` examples/placeholders already present in the sanitized package |
+| `kickoff/**` | 19 | Historical kickoff briefs; preserved |
+| `docs/**` | 4 | Historical remediation case notes; preserved |
+| `tests/**` | 1 | Synthetic `/tmp/.../home/state/opencode` test string, not a machine path |
+| `EVOLUTION.md` | 1 | Historical example |
+| `CLEANING-REPORT*.md` | 2 | Current and archived cleaning-report scan descriptions |
 
-### 4.5 Machine identifiers in `workflow-tags.json`
-
-`workflow-tags.json` contains 7 occurrences of the archiving machine id
-(`<hostname>-<user>`) inside historical archive paths. These are provenance
-identifiers, not credentials and not paths that any code resolves. They are
-retained so the tag index stays consistent with the archived records; this entry
-is the explicit record QA asked for. A consumer that needs a scrubbed view can run
-`s/<hostname>-<user>/<MACHINE>/g` without ambiguity.
-
-## 5. Large files
+Exact local-user-path scan:
 
 ```bash
-find workflow-group-personal-use -type f -size +20M -printf '%s %p\n'
+rg -n --hidden -g '!.git/**' '<MACHINE_HOME>' .
 ```
 
-Result: **no output.** Largest file is `workflow-tags.json` (~148 KB).
+Result: 411 occurrences in 126 files, all in the preserved run evidence, historical kickoff/template examples, docs, or archived prior cleaning report. **No match was introduced in the synchronized scripts/tests or in this fresh report.** The public package does not use a local machine path as current configuration.
 
-## 6. Executable bits
+## 5. Validation
 
 ```bash
-find workflow-group-personal-use/runtime -name '*.sh' ! -perm -u+x -print
+cd openrig-personal-control
+python3 scripts/doc_consistency.py --check
+# doc_consistency: 0 error(s), 0 warning(s)  rc=0
+
+python3 scripts/contract_lock.py check
+# [OK] ... workflow-group-base@1.2.1 + atomic-contract-set@1.0.0 (13 files)  rc=0
+
+PYTHONDONTWRITEBYTECODE=1 "$WORKFLOW_GROUP_PYTHON" -m pytest -p no:cacheprovider tests -q
+# 1129 passed, 21 skipped  rc=0
 ```
 
-Result: **no output.** `runtime/bootstrap.sh` and `scripts/evidence_run.sh` are
-executable; other source scripts keep their original modes.
+The 21 skips are offline/package-environment skips (live daemon, external product checkout, or optional runtime integration); they are not treated as passes. The final `PACKAGE-MANIFEST.json` records the current 623-file payload and `SHA256SUMS` covers every payload file except the two metadata files themselves.
 
-## 7. Known gaps
+## 6. Known gaps / residuals
 
-1. This subtree has no independent git history — it is exported from a larger
-   private knowledge base. The new repository therefore starts with a single
-   first commit; `HISTORY-INDEX.md` records provenance.
-2. 60 older runs are not in this repository. Their control documents are in
-   `openrig-personal-evidence-20261116.tar.zst`; the `HISTORY-INDEX.md` table maps
-   every run to its location.
-3. `.run-meta.json` files exist for only 2 of the 3 shipped runs (the p0 run has
-   none in the source tree). They were not fabricated.
-4. Historical absolute paths remain in run evidence logs by design — they are
-   evidence, and rewriting them would falsify the record.
+1. Historical machine paths remain in the three shipped run directories, kickoff briefs, template examples, case docs, and the archived prior cleaning report. They are provenance/evidence, not current executable configuration; rewriting them would falsify the historical record.
+2. The public clone has no live daemon and no private product checkout, so live lifecycle/model-backed probes are not run here. The package test suite is offline and records those skips.
+3. The package-specific root documents were preserved in sanitized form. Only the minimal role/template/header changes required by the synchronized scripts and tests were applied.
+4. `PACKAGE-MANIFEST.json` and `SHA256SUMS` intentionally do not hash themselves; every other package file is covered.
 
-### 7.1 `WORKFLOW-TAGS.md` canonical count corrected (round 2)
+## 7. Pointer
 
-The shipped subtree contains 3 canonical runs (all older runs live in the evidence
-asset), while `WORKFLOW-TAGS.md` declared the source workspace's 63. That made
-`scripts/doc_consistency.py --check` fail — which meant `runtime/bootstrap.sh`
-would fail on a fresh clone, before any user did anything wrong.
-
-Fixed by declaring `canonical=3` (matching `runs/`) and adding a delivery-boundary
-note stating that 3 of the original 63 runs ship here and the other 60 are in
-`openrig-personal-evidence-20261116.tar.zst`. Verified:
-
-```bash
-python3 scripts/doc_consistency.py --check   # 0 error(s), 0 warning(s)
-python3 -m pytest tests -q                   # 321 passed, 8 skipped
-```
-
-### 7.2 `requirements-dev.txt` was incomplete — false green caught by round 3
-
-Round 2 reported "321 passed / 8 skipped". That result was produced in an
-environment that already had PyYAML installed. `tests/test_workflow_rework.py:35`
-imports `yaml` at module level, but `requirements-dev.txt` did not declare it, so
-`runtime/bootstrap.sh` on a clean copy failed at pytest **collection**:
-
-```text
-E   ModuleNotFoundError: No module named 'yaml'
-```
-
-This is the most dangerous class of defect in this package: every gate we ran
-(G1-G6) was green, the suite was green *on my machine*, and the install path was
-still broken for every other machine. Fixed:
-
-| File | Change |
-| --- | --- |
-| `requirements-dev.txt` | added `PyYAML>=6,<7`; documented `psutil` as optional (its call site in `wf.py` is wrapped in try/except and degrades to `None`) |
-| `SETUP.md` | added PyYAML to the requirements table and a note that any `ModuleNotFoundError` during collection means the declaration list is incomplete |
-
-Verification, in a **clean copy** at `/tmp/opencode/p2-bootstrap-check` with no
-pre-existing venv:
-
-```bash
-cp -a workflow-group-personal-use /tmp/opencode/p2-bootstrap-check
-cd /tmp/opencode/p2-bootstrap-check && rm -rf .venv
-bash runtime/bootstrap.sh      # rc=0
-# venv built solely from requirements-dev.txt
-# doc_consistency: 0 error(s), 0 warning(s)
-# 321 passed, 8 skipped
-```
-
-Dependency audit performed to catch siblings of this defect: all top-level
-imports across `scripts/` and `tests/` were enumerated and diffed against the
-stdlib and the local packages. Third-party imports found: `pytest`, `openpyxl`,
-`yaml` (now declared) and `psutil` (optional, scored as such).
-
-## 8. Provenance
-
-| Field | Value |
-| --- | --- |
-| Source workspace | personal `workflow-group` (private knowledge-base subtree) |
-| Source HEAD | `9fa8d27a95dba40c9f324f91497bc6754aa4b9ac` |
-| Staged | 2026-11-16 |
-| Staged by | `exec-tdo-oc@openrig-personal-publish-20261116` |
+The prior package cleaning report is archived verbatim as `CLEANING-REPORT-20261116.md`. It remains the authority for the original 2026-11-16 package provenance and its earlier exclusion review.

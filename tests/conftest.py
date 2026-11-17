@@ -7,6 +7,7 @@ WS-2 的测试文件不得依赖本文件的夹具（见 PROJECT §0.1 文件边
 """
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -15,6 +16,10 @@ from types import SimpleNamespace
 import pytest
 
 TESTS_DIR = Path(__file__).resolve().parent
+_POLICY_FIXTURE = TESTS_DIR / "fixtures" / "historical-findings-policy.json"
+if _POLICY_FIXTURE.is_file():
+    # Public-package tests run without the private workspace's product checkout.
+    os.environ.setdefault("OPENRIG_HISTORICAL_FINDINGS_POLICY", str(_POLICY_FIXTURE))
 SCRIPTS_DIR = TESTS_DIR.parent / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))

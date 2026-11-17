@@ -312,13 +312,11 @@ def test_max_hops_bounds_base_graph_plus_rework_cycles():
 
     max_hops = spec["loop_guards"]["max_hops"]
     assert isinstance(max_hops, int) and max_hops >= 1
-    # One full rework of BOTH branches adds two advances per branch. The
-    # declared budget must cover base + both branches reworked once (4 + 4 = 8),
-    # leaving headroom but not an unbounded loop.
-    assert max_hops >= base + 4, (
-        f"max_hops={max_hops} cannot cover one full rework of both branches "
-        f"(base={base} + 4); the failed edge would trip the guard on first retry"
-    )
+    # The dependency walk above is four edges; close_round itself is the fifth
+    # routing advance. One full rework of BOTH branches adds two advances per
+    # branch. 2026-11-17 hotfix: 5 + 2 + 2 = 9 needs coverage with headroom.
+    assert max_hops == 12, "2026-11-17 hotfix binds this template to max_hops: 12"
+    assert max_hops >= base + 5, "must cover the close projection and both branch reworks"
     assert max_hops <= 20, "budget grew far beyond the documented rework headroom"
 
 

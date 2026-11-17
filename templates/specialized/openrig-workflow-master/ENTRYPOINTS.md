@@ -1,5 +1,7 @@
 # 入口与调用 — openrig-workflow-master v1.2
 
+> 受管 run 入口：`python3 scripts/openrig_run.py start --run-dir runs/<run-id> --json`。
+
 > 目的：回答两个问题：**从哪里进入？进入后调用哪一层？**
 > 本文件是路由说明，不替代 `SPEC.md`（双平面契约）、`PROJECT.md`（每个 run 的目标）与 `ARCHITECTURE.md`（详细设计）。
 > 文档地图：本仓文档地图见 [../../../docs/openrig/README.md](../../../docs/openrig/README.md)；新 run 起点见 [PREFLIGHT.md](PREFLIGHT.md)。

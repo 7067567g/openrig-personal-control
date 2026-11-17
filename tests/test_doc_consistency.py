@@ -153,5 +153,56 @@ class RoleByTests(TempRootCase):
         self.assertEqual([], dc.check_role_state_by(self.root / "roles"))
 
 
+class DocBudgetTests(TempRootCase):
+    def _write_valid_budget(self) -> None:
+        families = {}
+        for name in dc.REQUIRED_BUDGET_FAMILIES:
+            if name in ("machine_readable", "evidence_log"):
+                families[name] = {"cap_bytes": None, "mode": "unlimited", "match": ["**/*.json"]}
+            else:
+                mode = "hard" if name == "generated_view" else "soft"
+                families[name] = {"cap_bytes": 4096, "mode": mode, "match": ["**/*.md"]}
+        table = {
+            "schemaVersion": 1,
+            "policyVersion": dc.BUDGET_POLICY_VERSION,
+            "units": "bytes",
+            "families": families,
+            "adoption": {
+                "runMetaField": "docBudgetPolicy",
+                "runMetaValue": dc.BUDGET_POLICY_VERSION,
+            },
+        }
+        self._touch("DOC-BUDGET.json", json.dumps(table))
+        self._touch("DOC-BUDGET.md", "# budget\n")
+        self._touch("roles/common-contract.md", "见 DOC-BUDGET.json\n")
+        self._touch("roles/QA.md", "doc_bytes: plan 1/1\n")
+        self._touch("templates/PROJECT.md", "doc_budget: project\n")
+        self._touch("templates/DECISIONS.md", "doc_budget: decision\n")
+        self._touch("templates/STATUS-Round-n.md", "doc_budget: status\n")
+
+    def test_missing_budget_table_is_error(self) -> None:
+        findings = dc.check_doc_budget(self.root)
+        self.assertTrue(any(f.level == dc.ERROR and "DOC-BUDGET.json" in f.message for f in findings))
+
+    def test_valid_budget_table_is_clean(self) -> None:
+        self._write_valid_budget()
+        self.assertEqual([], dc.check_doc_budget(self.root))
+
+    def test_budget_cap_must_be_positive_for_prose_family(self) -> None:
+        self._write_valid_budget()
+        path = self.root / "DOC-BUDGET.json"
+        table = json.loads(path.read_text())
+        table["families"]["plan"]["cap_bytes"] = 0
+        path.write_text(json.dumps(table), encoding="utf-8")
+        findings = dc.check_doc_budget(self.root)
+        self.assertTrue(any(f.code == "doc-budget" and "plan.cap_bytes" in f.message for f in findings))
+
+    def test_guide_over_2kb_is_error(self) -> None:
+        self._write_valid_budget()
+        self._touch("DOC-BUDGET.md", "x" * 2049)
+        findings = dc.check_doc_budget(self.root)
+        self.assertTrue(any("超过 2048B" in f.message for f in findings))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

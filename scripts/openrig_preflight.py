@@ -7,9 +7,10 @@ Usage (agent reads JSON; human can read markdown):
   python3 scripts/openrig_preflight.py --run-id X --rig Y --seat a@Y \
     --run-dir .../runs/X --gov-dir .../workspace --job <jobId> --workspace .../workspace --json
 
-It prints the curated preflight, lists reference templates, injects a managed
-block into <workspace>/AGENTS.md, and registers the run in the read-only monitor
-target file (starting yueyue-monitor.service when available).
+It prints the curated preflight, lists reference templates, and injects a managed
+block into <workspace>/AGENTS.md. Monitor-target registration is opt-in via
+OPENRIG_MONITOR_DIR; when unset it is skipped with a named reason rather than
+using a machine-local dashboard path.
 
 Order is fail-closed and side-effect free until the read-only pre-check passes:
 `preflight_file` / `required_components` / `run_context` / `run_docs` first; a
@@ -34,21 +35,24 @@ import required_components
 
 ROOT = Path(__file__).resolve().parents[1]
 PREFLIGHT = ROOT / "templates" / "specialized" / "openrig-workflow-master" / "PREFLIGHT.md"
-# Monitor target resolution, in order of specificity. Nothing machine-specific is
-# baked in: an explicit file wins, then a dashboard directory from the
-# environment, then a per-user default under $HOME.
-_EXPLICIT_TARGET = os.environ.get("YUEYUE_MONITOR_TARGETS") or os.environ.get("OPENRIG_MONITOR_TARGETS")
-_DASHBOARD_DIR = os.environ.get("OPENRIG_DASHBOARD") or os.environ.get("YUEYUE_DASHBOARD")
-DEFAULT_DASHBOARD = Path(_DASHBOARD_DIR).expanduser() if _DASHBOARD_DIR else None
-if _EXPLICIT_TARGET:
-    TARGET_FILE = Path(_EXPLICIT_TARGET).expanduser()
-    TARGET_FILE_SOURCE = "env:YUEYUE_MONITOR_TARGETS"
-elif DEFAULT_DASHBOARD is not None:
-    TARGET_FILE = DEFAULT_DASHBOARD / "target.json"
-    TARGET_FILE_SOURCE = "env:dashboard"
-else:
-    TARGET_FILE = Path.home() / ".openrig" / "monitor" / "target.json"
-    TARGET_FILE_SOURCE = "default"
+
+
+def resolve_monitor_target_file(monitor_dir: str | None = None) -> Path | None:
+    """Return an explicitly configured monitor target path, or None.
+
+    No machine-local dashboard directory is assumed.  Callers that want monitor
+    registration must set OPENRIG_MONITOR_DIR; otherwise registration is skipped
+    with a named reason.
+    """
+    raw = monitor_dir if monitor_dir is not None else os.environ.get("OPENRIG_MONITOR_DIR")
+    if not raw:
+        return None
+    return Path(raw).expanduser().resolve() / "target.json"
+
+
+_monitor_dir = os.environ.get("OPENRIG_MONITOR_DIR")
+DEFAULT_DASHBOARD = Path(_monitor_dir).expanduser().resolve() if _monitor_dir else None
+TARGET_FILE = resolve_monitor_target_file()
 MONITOR_URL = os.environ.get("YUEYUE_MONITOR_URL", "http://127.0.0.1:3190")
 
 KNOWN_TEMPLATES = [
@@ -94,7 +98,7 @@ def inject_agents(workspace: str, run_id: str = "", monitor_url: str = MONITOR_U
 - 选型：先查 `{ROOT / 'templates/baseline/REGISTRY.md'}` 和 `{ROOT / 'templates/contracts/README.md'}`；SPEC §0 必须声明 baseline/contracts。
 - 机器可读 preflight：`python3 {ROOT / 'scripts/openrig_preflight.py'} --json --run-id {run_id or '<run-id>'}`
 - 硬规则：唯一 rig 名 / 一个写权限一个 owner / 先快照 / 不直改 OpenRig DB / 先归档后 teardown / DONE 后必须 stop watchdog。
-- 监控台：`{monitor_url}`（新 run 自动注册 target；只读 sidecar，不写治理状态）。
+- 监控台：`{monitor_url}`（仅配置 `OPENRIG_MONITOR_DIR` 时注册 target；未配置会明确跳过，不写本机路径）。
 <!-- END OPENRIG-PREFLIGHT (managed) -->"""
     if re.search(r"<!-- BEGIN OPENRIG-PREFLIGHT \(managed\) -->.*?<!-- END OPENRIG-PREFLIGHT \(managed\) -->", old, re.S):
         new = re.sub(r"<!-- BEGIN OPENRIG-PREFLIGHT \(managed\) -->.*?<!-- END OPENRIG-PREFLIGHT \(managed\) -->", block, old, flags=re.S)
@@ -110,6 +114,12 @@ def register_monitor(args, run_dir: str, gov_dir: str) -> dict:
     run_id = args.run_id or (Path(run_dir).name if run_dir else "")
     if not run_id:
         return {"ok": False, "reason": "no --run-id"}
+    if TARGET_FILE is None:
+        return {
+            "ok": False,
+            "skipped": "monitor_dir_unset",
+            "reason": "OPENRIG_MONITOR_DIR is unset; monitor target registration skipped",
+        }
     target = {
         "runId": run_id,
         "label": args.label or run_id,
@@ -141,7 +151,6 @@ def register_monitor(args, run_dir: str, gov_dir: str) -> dict:
     return {
         "ok": started.returncode == 0 if started else False,
         "targetFile": str(TARGET_FILE),
-        "targetFileSource": TARGET_FILE_SOURCE,
         "active": run_id,
         "target": target,
         "monitorUrl": MONITOR_URL,

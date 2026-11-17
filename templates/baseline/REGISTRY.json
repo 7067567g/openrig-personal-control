@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "baselineSet": "composite-baselines",
   "version": "1.1.0",
-  "baseMaster": "workflow-group-base@1.2.0",
+  "baseMaster": "workflow-group-base@1.2.1",
   "atomicContractSet": "atomic-contract-set@1.0.0",
   "directTemplate": false,
   "semantics": "Composite-type reference templates. Consult before creating a specialized run template; not directly instantiable.",

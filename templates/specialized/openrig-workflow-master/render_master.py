@@ -178,10 +178,16 @@ def build_bridge(args: argparse.Namespace, output: Path, rig_name: str, workflow
         "policy": {
             "mode": "managed-isolated",
             "maxActiveAgents": 2,
-            "maxHops": 10,
+            "maxHops": 12,
             "preferResume": True,
             "safetyMode": "on-demand",
             "allowSourceChanges": True,
+        },
+        "policyEnforcement": {
+            "safetyMode": "contract-only-unenforced",
+            "allowSourceChanges": "advisory-unenforced",
+            "maxActiveAgents": "advisory-unenforced",
+            "note": "These fields are not runtime gates in OpenRig v1.2; see SAFETY-ENFORCEMENT.md.",
         },
     }
 
@@ -269,7 +275,7 @@ def next_commands(args: argparse.Namespace, output: Path, bridge: dict) -> list[
     commands.append(f"{q(args.openrig_cli)} daemon start --no-kernel --port {args.daemon_port}")
     commands.append(
         f"{q(args.openrig_cli)} up {q(str(output / 'rig.yaml'))} "
-        f"--cwd {q(bridge['projectRoot'])} --non-interruptive --yes --json"
+        f"--cwd {q(bridge['projectRoot'])} --yes --json"
     )
     commands.append(f"{q(args.openrig_cli)} workflow validate {q(str(output / 'workflow.yaml'))} --json")
     commands.append(

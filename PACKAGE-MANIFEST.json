@@ -1,9 +1,9 @@
 {
   "package": "openrig-personal-control",
-  "generatedAt": "2026-11-16T03:10:27Z",
-  "generatedBy": "OpenRig Personal Stack rename/alignment 2026-11-16",
-  "fileCount": 555,
-  "bytes": 4177268,
+  "generatedAt": "2026-11-17T22:09:41Z",
+  "generatedBy": "OpenRig public control S10 scripts/tests sync 2026-11-18",
+  "fileCount": 623,
+  "bytes": 5434377,
   "largest": [
     {
       "path": "runs/openrig-p1-hard-constraints-20261116/reports/evidence/00-baseline.json",
@@ -42,18 +42,20 @@
       "bytes": 151290
     },
     {
-      "path": "scripts/wf.py",
-      "bytes": 116231
+      "path": "scripts/openrig_continuity.py",
+      "bytes": 124706
     }
   ],
   "sha256Manifest": "SHA256SUMS",
-  "sha256ManifestLines": 555,
+  "sha256ManifestLines": 623,
   "exclusions": [
     ".venv/",
     ".r7-work/",
     ".pytest_cache/",
     "__pycache__/",
+    "*.pyc",
     ".omo/",
+    ".cache/",
     "drafts/",
     "delegations/",
     "reports/",
@@ -76,7 +78,8 @@
     "Exported subtree without independent git history.",
     "60 older runs live only in the evidence asset.",
     ".run-meta.json present for 2 of 3 shipped runs.",
-    "WORKFLOW-TAGS.md canonical count reduced to 3 to match the shipped run set; see CLEANING-REPORT §7.1."
+    "WORKFLOW-TAGS.md canonical count reduced to 3 to match the shipped run set; see CLEANING-REPORT-20261116.md §7.1.",
+    "21 tests skip offline/live/product-integration paths unavailable in the public package environment."
   ],
   "notes": [
     "SHA256SUMS and PACKAGE-MANIFEST.json are not listed within themselves; every other file is covered."

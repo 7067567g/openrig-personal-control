@@ -11,13 +11,14 @@
 #     closed exit enum; targets are static step ids) and
 #     `loop_guards.max_hops` (enforced by the projector on every advance).
 #
-# Hop budget: the base dependency walk is plan(1) → implement_*(1) →
-# qa_*(1) → qa_join(1), i.e. 4 routing advances to create close_round. Each
-# failed QA adds exactly two advances on that branch (the failed edge back to
-# the TDO, then that TDO's handoff into its QA). max_hops: 10 covers the base
-# graph plus one complete rework of BOTH branches (4 + 2 + 2 = 8), with two
-# further single-branch advances of headroom; exhaustion is converted by the
-# engine into an honest `max_hops_exceeded` failure, never an unbounded loop.
+# Hop budget: the base dependency walk is plan(1) → implement_opencode(1) →
+# implement_dsh(1) → qa_join(1) → close_round projection(1), i.e. 5 routing
+# advances to create close_round. Each failed QA adds exactly two advances on
+# that branch (the failed edge back to the TDO, then that TDO's handoff into
+# its QA). max_hops: 12 covers the base graph plus one complete rework of BOTH
+# branches (5 + 2 + 2 = 9), with three further advances of headroom; exhaustion
+# is converted by the engine into an honest `max_hops_exceeded` failure, never
+# an unbounded loop.
 workflow:
   id: {{WORKFLOW_ID}}
   version: 1
@@ -87,7 +88,7 @@ workflow:
     closure_required: true
     allowed_exits: [handoff, waiting, done, failed]
   loop_guards:
-    max_hops: 10
+    max_hops: 12
     spawn_budget: 0
   closure:
     success: Round closed with both runtime branches and QA proof.

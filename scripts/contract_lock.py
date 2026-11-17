@@ -27,7 +27,7 @@ LOCK = CONTRACTS / "LOCK.json"
 VERSION_FILE = CONTRACTS / "VERSION"
 
 BASE_MASTER_ID = "workflow-group-base"
-BASE_MASTER_VERSION = "1.2.0"
+BASE_MASTER_VERSION = "1.2.1"
 BASE_MASTER_FILES = [
     "WORKFLOW.md",
     "roles/common-contract.md",

@@ -20,7 +20,8 @@
 5. **复发**：上一轮已关闭的问题是否再次出现？出现则新开一行并引用旧 ID。
 6. **风险**：即使本轮通过，也要登记 1–3 条下一轮/交付阶段可能爆的风险（真实风险，不要凑数）。
 7. **无主项**：发现无主项（无 WS 归属/无 owner/无去向）时，登记 ISSUES 行（含责任角色与建议动作），**不自行处置、不代签 owner**。
-8. **安全门控 run**：核对 `safety/actions|gates|reviews|human-approvals|executions`；每个 FAIL 是否恰好一条独立 review；每个 red 是否有人工批准；每笔执行是否 PASS 或 review approve、digest 一致、无批量/绕过。任何未授权执行记 S1。
+8. **文档预算**：读 `DOC-BUDGET.json`；对计划中的 `doc_bytes:`、QA/收口文档的 `budget_exception:` 用 `wc -c` 独立复跑。超限无 E3 例外记 S2；例外超过每 run 2 条记 S2；生成 md 视图缺 `generated-from:` 或同族 JSON 记 S2。
+9. **安全门控 run**：核对 `safety/actions|gates|reviews|human-approvals|executions`；每个 FAIL 是否恰好一条独立 review；每个 red 是否有人工批准；每笔执行是否 PASS 或 review approve、digest 一致、无批量/绕过。任何未授权执行记 S1。
 
 ## 三、ISSUES 写法（字段规则）
 

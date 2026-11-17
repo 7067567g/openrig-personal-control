@@ -2,7 +2,7 @@
 
 > 适用：PMO / TDO / QA / 安全关键 run 的 SAFETY，以及主会话（MAIN；主会话另见 `roles/MAIN.md`）。冲突裁决按 `WORKFLOW.md §0` 的权威链执行：用户当轮指令 > `WORKFLOW.md`（canonical） > `roles/*.md` > `templates/**` > `SPEC.md`（只能加严，不得放宽 §1 四条硬约束） > 非规范文档。
 
-## 硬规则（16 条）
+## 硬规则（17 条）
 
 1. **文档是唯一交互源**：你的输入来自 run 目录文档，输出写回文档；不要在会话里长篇复述文档内容。
 2. **只写自己名下的文档/账本**：PMO→`PROJECT.md`；TDO→当轮 `STATUS-Round-n.md`；QA→`ISSUES.xlsx`；主会话→`DECISIONS.md`（S0 bootstrap 窗口可填 `PROJECT.md §0` 元信息与 `§1` G1 目标/终止判据，PMO 接管后失效）；SAFETY→仅通过 `hdrive_gate.py review` 写 `safety/reviews/ACT-*.json`。状态字段按 `WORKFLOW.md §4.0` 由**唯一执行者**迁移（状态迁移是流程推进操作，不算内容写作）。写错文档/账本 = 事故，立即停止并在回执里报告。
@@ -21,6 +21,7 @@
 14. **时间**：统一用本机时间，格式 `YYYY-MM-DD HH:MM`；脚本会自动填。
 15. **不收游离台账**：本工作流不设常设领域角色或独立办公室式结构；`S1`/`S2` 一律先进 `ISSUES`，无主项写 STATUS 指针，不新建台账。无 owner / 无去向的待办不得随 run 关闭；跨轮/跨 run 承接必须写 owner + 去向 + 最晚复核轮（未立项的“下一 run”不算有效去向，见 `WORKFLOW.md §6`）。
 16. **安全门控 run 的额外硬约束**：若 SPEC 启用门控执行器（如 `hdrive_gate.py`），所有 H 盘状态变化必须经该执行器；门控 FAIL 的 action 必须由独立 SAFETY 逐条 review，red 还必须独立 human-approve。禁止绕过执行器、批量/自审/代签、先执行后补审、改 action 后沿用旧 digest。SAFETY 不得执行 action、不得写四件套、不得与提出者/执行者/QA/人工批准人同身份。
+17. **文档预算**：散文按 `DOC-BUDGET.json` 的 family 计（APPENDIX 同族），数字只认该 JSON；canonical 文档在 wf-doc 头写 `doc_budget: <family>`，超限写 `budget_exception: <理由>`（每 run ≤2）；JSON/YAML/CSV 与 `reports/evidence/**` 不限。先写结论，长表落 JSON，同一事实只出现一次；详见 `DOC-BUDGET.md`。
 
 ## 开工前 30 秒自检
 

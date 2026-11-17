@@ -41,6 +41,7 @@ decision_id/owner/destination/review_round/reason.
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import hashlib
 import json
 import re
@@ -63,6 +64,10 @@ CLOSED_STATUS = "已关闭"
 TERMINAL_STATUS_WORDS = ("达成", "终止", "关闭")
 REQUIRED_DOCS = ("PROJECT.md", "DECISIONS.md", "ISSUES.xlsx")
 WF_DOC_FIELDS = ("run", "round", "doc", "owner", "state", "updated")
+DOC_BUDGET_POLICY = "DOC-BUDGET-v1"
+DOC_BUDGET_PATH = WORKFLOW_GROUP_DIR / "DOC-BUDGET.json"
+DOC_BUDGET_SKIP_PREFIXES = ("reports/evidence/", "openrig/", "workspace/")
+DOC_BUDGET_FAMILY_ORDER = ("plan", "decision", "qa", "final", "status", "project", "spec")
 ISSUE_REQUIRED_HEADERS = ("ID", "严重度", "状态", "关联决策ID")
 
 
@@ -410,6 +415,256 @@ def _add(
     )
 
 
+def _load_doc_budget_table() -> Tuple[Optional[Dict[str, object]], Optional[str]]:
+    if not DOC_BUDGET_PATH.is_file():
+        return None, f"DOC-BUDGET.json missing: {DOC_BUDGET_PATH}"
+    try:
+        data = json.loads(DOC_BUDGET_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return None, f"DOC-BUDGET.json unreadable: {exc}"
+    if not isinstance(data, dict) or not isinstance(data.get("families"), dict):
+        return None, "DOC-BUDGET.json must be an object with a families object"
+    return data, None
+
+
+def _budget_active(run_dir: Path, canonical_texts: Sequence[str]) -> bool:
+    meta_path = run_dir / ".run-meta.json"
+    if meta_path.is_file():
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            meta = {}
+        if isinstance(meta, dict) and meta.get("docBudgetPolicy") == DOC_BUDGET_POLICY:
+            return True
+    for text in canonical_texts:
+        header, _ = parse_wf_doc_header(text)
+        if header and _norm(header.get("doc_budget")):
+            return True
+    return False
+
+
+def _budget_rel(path: Path, run_dir: Path) -> str:
+    return path.relative_to(run_dir).as_posix()
+
+
+def _budget_excluded(rel: str) -> bool:
+    return any(rel.startswith(prefix) for prefix in DOC_BUDGET_SKIP_PREFIXES)
+
+
+def _budget_classify(rel: str, text: str, families: Dict[str, object]) -> str:
+    if re.search(r"(?m)^\s*generated-from:\s*\S+", text):
+        return "generated_view"
+    for name in DOC_BUDGET_FAMILY_ORDER:
+        item = families.get(name)
+        if not isinstance(item, dict):
+            continue
+        patterns = item.get("match")
+        if not isinstance(patterns, list):
+            continue
+        if any(isinstance(pattern, str) and fnmatch.fnmatch(rel, pattern) for pattern in patterns):
+            return name
+    return "other_narrative"
+
+
+def check_doc_budget(run_dir: Path) -> List[Finding]:
+    """Mechanical DOC-BUDGET-v1 checks. Legacy runs stay quiet."""
+    findings: List[Finding] = []
+    canonical_paths = [run_dir / "PROJECT.md", run_dir / "DECISIONS.md", *sorted(run_dir.glob("STATUS-Round-*.md"))]
+    canonical_texts = [read_text(path) for path in canonical_paths if path.is_file()]
+    if not _budget_active(run_dir, canonical_texts):
+        return findings
+
+    table, error = _load_doc_budget_table()
+    if error or table is None:
+        _add(findings, "ERROR", "doc_budget_table_invalid", error or "DOC-BUDGET.json unusable", DOC_BUDGET_PATH)
+        return findings
+    families = table["families"]
+    assert isinstance(families, dict)
+
+    expected_declaration = {"PROJECT.md": "project", "DECISIONS.md": "decision"}
+    for path in canonical_paths:
+        if not path.is_file():
+            continue
+        rel = _budget_rel(path, run_dir)
+        header, line_no = parse_wf_doc_header(read_text(path))
+        declared = _norm(header.get("doc_budget")) if header else ""
+        expected = expected_declaration.get(rel)
+        if rel.startswith("STATUS-Round-"):
+            expected = "status"
+        if not declared:
+            _add(
+                findings,
+                "WARN",
+                "doc_budget_missing",
+                f"{rel} has no wf-doc doc_budget declaration",
+                path,
+                line_no or 1,
+            )
+        elif expected and declared != expected:
+            _add(
+                findings,
+                "ERROR",
+                "doc_budget_family_mismatch",
+                f"{rel} declares doc_budget={declared}, expected {expected}",
+                path,
+                line_no,
+            )
+
+    records: List[Dict[str, object]] = []
+    exception_total = 0
+    for path in sorted(run_dir.rglob("*.md")):
+        if not path.is_file():
+            continue
+        rel = _budget_rel(path, run_dir)
+        if _budget_excluded(rel):
+            continue
+        text = read_text(path)
+        header, line_no = parse_wf_doc_header(text)
+        declared = _norm(header.get("doc_budget")) if header else ""
+        if declared and declared not in families:
+            _add(
+                findings,
+                "ERROR",
+                "doc_budget_unknown_family",
+                f"{rel} declares unknown doc_budget family {declared!r}",
+                path,
+                line_no,
+            )
+        exceptions = [m.group(1).strip() for m in re.finditer(r"(?m)^\s*budget_exception:\s*(.+)$", text) if m.group(1).strip()]
+        exception_total += len(exceptions)
+        family = _budget_classify(rel, text, families)
+        records.append(
+            {
+                "path": path,
+                "rel": rel,
+                "family": family,
+                "bytes": path.stat().st_size,
+                "exceptions": exceptions,
+                "text": text,
+            }
+        )
+
+    if exception_total > 2:
+        _add(
+            findings,
+            "ERROR",
+            "doc_budget_exceptions_exceeded",
+            f"run declares {exception_total} budget_exception lines; max is 2",
+            run_dir,
+        )
+
+    groups: Dict[str, List[Dict[str, object]]] = {}
+    for record in records:
+        groups.setdefault(str(record["family"]), []).append(record)
+
+    for family, group in groups.items():
+        item = families.get(family)
+        if not isinstance(item, dict):
+            continue
+        cap = item.get("cap_bytes")
+        mode = item.get("mode")
+        aggregate = item.get("aggregate", "per_family")
+        if mode == "unlimited" or not isinstance(cap, int):
+            continue
+        has_exception = any(bool(record["exceptions"]) for record in group)
+        if aggregate == "per_file":
+            for record in group:
+                actual = int(record["bytes"])
+                if actual <= cap:
+                    continue
+                path = record["path"]
+                assert isinstance(path, Path)
+                if mode == "soft" and record["exceptions"]:
+                    _add(
+                        findings,
+                        "WARN",
+                        "doc_budget_exception_used",
+                        f"{record['rel']} is {actual}B > {cap}B; exception declared",
+                        path,
+                    )
+                else:
+                    code = "generated_view_exceeded" if family == "generated_view" else "doc_budget_exceeded"
+                    _add(
+                        findings,
+                        "ERROR",
+                        code,
+                        f"{record['rel']} is {actual}B > {family} cap {cap}B",
+                        path,
+                    )
+        else:
+            actual = sum(int(record["bytes"]) for record in group)
+            if actual <= cap:
+                continue
+            first_path = group[0]["path"]
+            assert isinstance(first_path, Path)
+            if mode == "soft" and has_exception:
+                _add(
+                    findings,
+                    "WARN",
+                    "doc_budget_exception_used",
+                    f"{family} family is {actual}B > {cap}B; exception declared",
+                    first_path,
+                )
+            else:
+                _add(
+                    findings,
+                    "ERROR",
+                    "doc_budget_exceeded",
+                    f"{family} family is {actual}B > {cap}B (files={len(group)})",
+                    first_path,
+                )
+
+    for record in records:
+        rel = str(record["rel"])
+        text = str(record["text"])
+        path = record["path"]
+        assert isinstance(path, Path)
+        generated = re.search(r"(?m)^\s*generated-from:\s*(\S+)\s*$", text)
+        if generated:
+            source = generated.group(1).strip("`'\"")
+            source_path = Path(source)
+            if not source_path.is_absolute():
+                source_path = run_dir / source_path
+            if not source_path.exists():
+                _add(
+                    findings,
+                    "ERROR",
+                    "generated_view_source_missing",
+                    f"{rel} generated-from target does not exist: {source}",
+                    path,
+                )
+        elif re.match(r"reports/EXECUTION-TREE-.*\.md$", rel):
+            _add(
+                findings,
+                "WARN",
+                "generated_view_header_missing",
+                f"{rel} is a generated-tree view but has no generated-from header",
+                path,
+            )
+
+    plan_path = run_dir / "reports" / "00-plan.md"
+    if plan_path.is_file():
+        plan_text = read_text(plan_path)
+        match = re.search(r"(?m)^\s*doc_bytes:\s*(.+)$", plan_text)
+        if not match:
+            _add(
+                findings,
+                "ERROR",
+                "plan_doc_bytes_missing",
+                "reports/00-plan.md must declare `doc_bytes:` before execution",
+                plan_path,
+            )
+        elif "DOC-BUDGET.json" not in match.group(1):
+            _add(
+                findings,
+                "WARN",
+                "plan_doc_bytes_table_pointer_missing",
+                "doc_bytes line should point to DOC-BUDGET.json as the single source",
+                plan_path,
+            )
+    return findings
+
+
 def lint_run(run_dir: Path, reports_root: Optional[Path] = None) -> RunReport:
     """Lint one run directory. Never raises for bad content."""
     run_dir = Path(run_dir)
@@ -628,6 +883,8 @@ def lint_run(run_dir: Path, reports_root: Optional[Path] = None) -> RunReport:
                 bad_rows[0][0],
             )
 
+    report.stats["doc_budget_active"] = 1 if _budget_active(run_dir, [project_text, decisions_text, *[read_text(p) for p in status_paths if p.is_file()]]) else 0
+    report.findings.extend(check_doc_budget(run_dir))
     return report
 
 

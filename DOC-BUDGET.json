@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "DOC-BUDGET-v1",
+  "subject": "Documentation budget for workflow-group runs",
+  "authority": "workflow-group/DOC-BUDGET.json",
+  "units": "bytes",
+  "effectiveFrom": "2026-11-16",
+  "placement": {
+    "decision": "B+D",
+    "meaning": "Freeze before S9; carry as one machine-readable table plus one short rule. No new run or seat.",
+    "decisionRecord": "runs/openrig-doc-budget-20261116/DECISIONS.md#D-004",
+    "evidence": "runs/openrig-doc-budget-20261116/reports/DOC-BUDGET.json"
+  },
+  "families": {
+    "plan": {
+      "cap_bytes": 6144,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "reports/00-plan.md",
+        "reports/APPENDIX-00-plan-*.md"
+      ]
+    },
+    "decision": {
+      "cap_bytes": 6144,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "DECISIONS.md"
+      ]
+    },
+    "qa": {
+      "cap_bytes": 6144,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "reports/qa/QA-VERDICT*.md"
+      ]
+    },
+    "final": {
+      "cap_bytes": 2048,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "reports/FINAL.md"
+      ]
+    },
+    "status": {
+      "cap_bytes": 4096,
+      "mode": "soft",
+      "aggregate": "per_file",
+      "match": [
+        "STATUS-Round-*.md"
+      ]
+    },
+    "project": {
+      "cap_bytes": 8192,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "PROJECT.md"
+      ]
+    },
+    "spec": {
+      "cap_bytes": 8192,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "SPEC.md"
+      ]
+    },
+    "generated_view": {
+      "cap_bytes": 4096,
+      "mode": "hard",
+      "aggregate": "per_file",
+      "requires_header": "generated-from:",
+      "match": [
+        "**/*.md"
+      ]
+    },
+    "other_narrative": {
+      "cap_bytes": 4096,
+      "mode": "soft",
+      "aggregate": "per_family",
+      "match": [
+        "**/*.md"
+      ],
+      "exclude": [
+        "reports/evidence/**",
+        "openrig/**",
+        "workspace/**"
+      ]
+    },
+    "machine_readable": {
+      "cap_bytes": null,
+      "mode": "unlimited",
+      "aggregate": "per_file",
+      "match": [
+        "**/*.json",
+        "**/*.yaml",
+        "**/*.yml",
+        "**/*.jsonl",
+        "**/*.csv"
+      ]
+    },
+    "evidence_log": {
+      "cap_bytes": null,
+      "mode": "unlimited",
+      "aggregate": "per_file",
+      "match": [
+        "reports/evidence/**"
+      ]
+    }
+  },
+  "exceptions": {
+    "E1": "Read-only frozen inputs and external source text do not count; cite their path only.",
+    "E2": "Machine-readable artifacts and evidence logs have no prose cap; prose cites them by path.",
+    "E3": "An over-cap prose family needs `budget_exception: <reason>`; at most 2 exceptions per run.",
+    "E4": "Content explicitly required by the current user instruction is exempt; mark it `user-mandated` with provenance."
+  },
+  "rules": {
+    "family_aggregation": "APPENDIX files count in the same family; splitting bytes across files does not create headroom.",
+    "summary_before_appendix": "Write the one-page conclusion first; appendices are opt-in and limited.",
+    "same_fact_once": "A fact appears once; other documents cite its ID or path.",
+    "machine_readable_canonical": "Node trees, guard matrices, and acceptance commands are JSON/YAML; prose is a <=4KB view.",
+    "generated_view_header": "A generated markdown view must carry `generated-from:` and point to an existing same-family JSON/YAML source.",
+    "qa_measurement": "QA records `doc_bytes: <family> <actual>/<cap>` plus a reproducible `wc -c` command."
+  },
+  "enforcement_points": {
+    "EP1": "S9 workflow.yaml plan step requires `doc_bytes:` in reports/00-plan.md; this points to this table.",
+    "EP2": "QA verdict records per-family actual/cap and a reproducible byte command.",
+    "EP3": "wf_close_lint enforces doc_budget headers, family caps, exceptions, and generated-view rules.",
+    "EP4": "doc_consistency validates this file, role pointer, template declarations, and the <=2KB DOC-BUDGET.md.",
+    "EP5": "generated markdown views are capped at 4KB and must point to an existing canonical JSON/YAML artifact."
+  },
+  "adoption": {
+    "runMetaField": "docBudgetPolicy",
+    "runMetaValue": "DOC-BUDGET-v1",
+    "legacyBehavior": "Runs without the marker or any doc_budget header are treated as legacy and are not retro-failed; new runs are marked by wf.py new-run."
+  },
+  "baseMaster": "workflow-group-base@1.2.1",
+  "atomicContractSet": "atomic-contract-set@1.0.0",
+  "implementation": {
+    "runMetaField": "docBudgetPolicy",
+    "runMetaValue": "DOC-BUDGET-v1",
+    "canonicalHeaders": "PROJECT=project, DECISIONS=decision, STATUS-Round-*=status",
+    "planGate": "reports/00-plan.md must contain doc_bytes: and point to DOC-BUDGET.json",
+    "closeLint": "scripts/wf_close_lint.py checks family caps, exceptions, generated views",
+    "consistency": "scripts/doc_consistency.py checks single source, pointers, <=2KB guide and template declarations"
+  }
+}

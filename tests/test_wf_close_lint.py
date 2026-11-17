@@ -244,6 +244,95 @@ class CloseLintTests(unittest.TestCase):
     def codes(self, report):
         return [finding.code for finding in report.findings]
 
+    def _add_budget_header(self, path: Path, family: str) -> None:
+        text = path.read_text(encoding="utf-8")
+        if "doc_budget:" not in text:
+            text = text.replace(
+                "updated: 2026-11-11\n-->",
+                f"updated: 2026-11-11\ndoc_budget: {family}\n-->",
+                1,
+            )
+        path.write_text(text, encoding="utf-8")
+
+    def _make_budget_run(self, run_id: str) -> Path:
+        run_dir = self.make_run(run_id)
+        (run_dir / ".run-meta.json").write_text(
+            json.dumps({"runId": run_id, "docBudgetPolicy": "DOC-BUDGET-v1"}),
+            encoding="utf-8",
+        )
+        self._add_budget_header(run_dir / "PROJECT.md", "project")
+        self._add_budget_header(run_dir / "DECISIONS.md", "decision")
+        self._add_budget_header(run_dir / "STATUS-Round-1.md", "status")
+        return run_dir
+
+    def test_doc_budget_valid_run_is_clean(self) -> None:
+        run_dir = self._make_budget_run("budget-clean")
+        report = close_lint.lint_run(run_dir)
+        budget_codes = [c for c in self.codes(report) if c.startswith("doc_budget") or c.startswith("plan_doc")]
+        self.assertEqual([], budget_codes)
+
+    def test_doc_budget_missing_canonical_header_is_warning(self) -> None:
+        run_dir = self.make_run("budget-missing-header")
+        (run_dir / ".run-meta.json").write_text(
+            json.dumps({"runId": "budget-missing-header", "docBudgetPolicy": "DOC-BUDGET-v1"}),
+            encoding="utf-8",
+        )
+        report = close_lint.lint_run(run_dir)
+        self.assertIn("doc_budget_missing", self.codes(report))
+        self.assertEqual(report.error_count, 0)
+
+    def test_doc_budget_over_cap_is_error(self) -> None:
+        run_dir = self._make_budget_run("budget-over")
+        with (run_dir / "DECISIONS.md").open("a", encoding="utf-8") as handle:
+            handle.write("\n" + "x" * 7000 + "\n")
+        report = close_lint.lint_run(run_dir)
+        self.assertIn("doc_budget_exceeded", self.codes(report))
+
+    def test_doc_budget_exception_allows_soft_over_cap(self) -> None:
+        run_dir = self._make_budget_run("budget-exception")
+        with (run_dir / "DECISIONS.md").open("a", encoding="utf-8") as handle:
+            handle.write("\nbudget_exception: long audit trail\n" + "x" * 7000 + "\n")
+        report = close_lint.lint_run(run_dir)
+        self.assertNotIn("doc_budget_exceeded", self.codes(report))
+        self.assertIn("doc_budget_exception_used", self.codes(report))
+
+    def test_doc_budget_more_than_two_exceptions_is_error(self) -> None:
+        run_dir = self._make_budget_run("budget-too-many-exceptions")
+        for rel in ("PROJECT.md", "DECISIONS.md", "STATUS-Round-1.md"):
+            with (run_dir / rel).open("a", encoding="utf-8") as handle:
+                handle.write("\nbudget_exception: reason\n")
+        report = close_lint.lint_run(run_dir)
+        self.assertIn("doc_budget_exceptions_exceeded", self.codes(report))
+
+    def test_generated_view_over_4kb_is_error(self) -> None:
+        run_dir = self._make_budget_run("budget-generated-view")
+        reports = run_dir / "reports"
+        reports.mkdir(exist_ok=True)
+        (reports / "TREE.json").write_text("{}", encoding="utf-8")
+        (reports / "EXECUTION-TREE-X.md").write_text(
+            "generated-from: reports/TREE.json\n" + "x" * 5000,
+            encoding="utf-8",
+        )
+        report = close_lint.lint_run(run_dir)
+        self.assertIn("generated_view_exceeded", self.codes(report))
+
+    def test_generated_tree_without_header_is_warning(self) -> None:
+        run_dir = self._make_budget_run("budget-tree-header")
+        reports = run_dir / "reports"
+        reports.mkdir(exist_ok=True)
+        (reports / "EXECUTION-TREE-Y.md").write_text("# tree\n", encoding="utf-8")
+        report = close_lint.lint_run(run_dir)
+        self.assertIn("generated_view_header_missing", self.codes(report))
+        self.assertEqual(report.error_count, 0)
+
+    def test_plan_doc_bytes_missing_is_error(self) -> None:
+        run_dir = self._make_budget_run("budget-plan-missing")
+        reports = run_dir / "reports"
+        reports.mkdir(exist_ok=True)
+        (reports / "00-plan.md").write_text("# plan\n", encoding="utf-8")
+        report = close_lint.lint_run(run_dir)
+        self.assertIn("plan_doc_bytes_missing", self.codes(report))
+
     def test_normal_closed_run_is_clean(self) -> None:
         run_dir = self.make_run(
             "normal-run",

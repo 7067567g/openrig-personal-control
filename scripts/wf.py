@@ -533,6 +533,10 @@ def cmd_new_run(args):
         write_header_field(rd / "PROJECT.md", key, value)
     inst("DECISIONS.md", "DECISIONS.md")
     inst("STATUS-Round-n.md", "STATUS-Round-1.md")
+    # DOC-BUDGET-v1: every new run opts in explicitly; legacy runs stay quiet.
+    write_header_field(rd / "PROJECT.md", "doc_budget", "project")
+    write_header_field(rd / "DECISIONS.md", "doc_budget", "decision")
+    write_header_field(rd / "STATUS-Round-1.md", "doc_budget", "status")
     # S-3：按 TDO 数预填 per-WS 交接小节（模板无该槽时自动跳过，向后兼容）
     st1 = rd / "STATUS-Round-1.md"
     st1.write_text(
@@ -551,6 +555,7 @@ def cmd_new_run(args):
         "scope": args.scope or "",
         "template": str(tpl),
         "createdAt": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "docBudgetPolicy": "DOC-BUDGET-v1",
     }
     (rd / ".run-meta.json").write_text(
         json.dumps(run_meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

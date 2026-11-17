@@ -6,7 +6,7 @@
 - **原子契约语义未变**：`templates/contracts/VERSION` 仍为 `1.0.0`，7 个原子轮型及其 `_shared/**` 语义未改。
 - **重签范围**：`LOCK.json` 重签基础母版与 `templates/contracts/**` 的 sha256；`contractSet.version` 保持 `1.0.0`。
 - **新增关闭门**：`scripts/wf_close_lint.py` 为只读关闭语义 linter；新 run 在 `PROJECT closed` 前必须 ERROR=0，历史 run 的已知违规登记在 `reports/close-lint-20261111.txt`。
-- **迁移影响**：旧 run/旧 SPEC 不需要改写；新 run 的 `SPEC.md §0` 仍写 `contracts: <type>@1.0.0`。引用 base 版本处应写 `workflow-group-base@1.2.0`。
+- **迁移影响**：旧 run/旧 SPEC 不需要改写；新 run 的 `SPEC.md §0` 仍写 `contracts: <type>@1.0.0`。引用 base 版本处应写 `workflow-group-base@1.2.1`。
 
 ## 1.1.0 — 2026-10-23
 

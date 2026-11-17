@@ -5,6 +5,7 @@ doc: STATUS
 owner: TDO
 state: tdo-pending
 updated: <DATE>
+doc_budget: status
 -->
 
 # STATUS · Round <ROUND-N> — <PROJECT-NAME>

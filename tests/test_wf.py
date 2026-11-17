@@ -356,6 +356,16 @@ def test_doctor_json_shape(new_run, capsys):
 
 
 # ============================================ 7. wf-doc tags / state --by
+def test_new_run_marks_doc_budget_policy_and_headers(new_run):
+    """DOC-BUDGET-v1: new runs opt in explicitly and declare canonical families."""
+    rd = new_run(run_id="t-doc-budget")
+    meta = json.loads((rd / ".run-meta.json").read_text(encoding="utf-8"))
+    assert meta["docBudgetPolicy"] == "DOC-BUDGET-v1"
+    assert "doc_budget: project" in (rd / "PROJECT.md").read_text(encoding="utf-8")
+    assert "doc_budget: decision" in (rd / "DECISIONS.md").read_text(encoding="utf-8")
+    assert "doc_budget: status" in (rd / "STATUS-Round-1.md").read_text(encoding="utf-8")
+
+
 def test_new_run_writes_machine_readable_template_metadata(wf_env):
     """AFC-003：new-run 从 SPEC §0 投影 baseline/contracts/tags/maturity。"""
     args = argparse.Namespace(

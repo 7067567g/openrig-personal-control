@@ -7,7 +7,8 @@
 2. ``templates/baseline/*`` 与 REGISTRY.json 的 id 集合一致且数量为 9；
 3. WORKFLOW-TAGS.md 顶部的 canonical/baseline/specialized 声明与实测目录数一致；
 4. WORKFLOW.md 内 ``§x.y`` 引用能解析到标题或编号项；
-5. roles/*.md 内的 ``wf.py state`` 状态迁移命令是否带 ``--by``（WARN）。
+5. roles/*.md 内的 ``wf.py state`` 状态迁移命令是否带 ``--by``（WARN）；
+6. ``DOC-BUDGET.json`` 单一数字源、角色指针与 <=2KB 说明页是否一致。
 
 用法::
 
@@ -32,6 +33,12 @@ WARN = "WARN"
 # canonical 复合类型基准模板的冻结数量；新增/删除 baseline 时必须显式更新本常量
 # 并同步 REGISTRY.json、REGISTRY.md、FREEZE-NOTES.md 与 WORKFLOW-TAGS.md。
 EXPECTED_BASELINE_COUNT = 9
+
+BUDGET_POLICY_VERSION = "DOC-BUDGET-v1"
+REQUIRED_BUDGET_FAMILIES = (
+    "plan", "decision", "qa", "final", "status", "project", "spec",
+    "generated_view", "other_narrative", "machine_readable", "evidence_log",
+)
 
 DEFAULT_ROOT = Path(__file__).resolve().parent.parent
 
@@ -357,6 +364,89 @@ def check_role_state_by(roles_dir: Path) -> list[Finding]:
     return findings
 
 
+def check_doc_budget(root: Path) -> list[Finding]:
+    """Validate the single-source document budget table and its entry pointers."""
+
+    findings: list[Finding] = []
+    table_path = root / "DOC-BUDGET.json"
+    if not table_path.is_file():
+        return [Finding(ERROR, "doc-budget", f"缺少文件: {table_path}")]
+    try:
+        table = json.loads(table_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return [Finding(ERROR, "doc-budget", f"DOC-BUDGET.json 不是合法 JSON: {exc}")]
+    if not isinstance(table, dict):
+        return [Finding(ERROR, "doc-budget", "DOC-BUDGET.json 顶层必须是对象")]
+
+    if table.get("policyVersion") != BUDGET_POLICY_VERSION:
+        findings.append(
+            Finding(
+                ERROR,
+                "doc-budget",
+                f"policyVersion 必须为 {BUDGET_POLICY_VERSION}，实际={table.get('policyVersion')!r}",
+            )
+        )
+    if table.get("units") != "bytes":
+        findings.append(Finding(ERROR, "doc-budget", "units 必须为 bytes"))
+    if not isinstance(table.get("families"), dict):
+        return findings + [Finding(ERROR, "doc-budget", "缺少 families 对象")]
+
+    families = table["families"]
+    for name in REQUIRED_BUDGET_FAMILIES:
+        item = families.get(name)
+        if not isinstance(item, dict):
+            findings.append(Finding(ERROR, "doc-budget", f"families 缺少 {name}"))
+            continue
+        mode = item.get("mode")
+        if mode not in ("soft", "hard", "unlimited"):
+            findings.append(Finding(ERROR, "doc-budget", f"{name}.mode 非法: {mode!r}"))
+        cap = item.get("cap_bytes")
+        if mode == "unlimited":
+            if cap is not None:
+                findings.append(Finding(ERROR, "doc-budget", f"{name} 为 unlimited 时 cap_bytes 必须为 null"))
+        elif not isinstance(cap, int) or cap <= 0:
+            findings.append(Finding(ERROR, "doc-budget", f"{name}.cap_bytes 必须是正整数"))
+        matches = item.get("match")
+        if not isinstance(matches, list) or not matches:
+            findings.append(Finding(ERROR, "doc-budget", f"{name}.match 必须是非空数组"))
+
+    adoption = table.get("adoption")
+    if not isinstance(adoption, dict) or adoption.get("runMetaField") != "docBudgetPolicy" or adoption.get("runMetaValue") != BUDGET_POLICY_VERSION:
+        findings.append(
+            Finding(
+                ERROR,
+                "doc-budget",
+                "adoption 必须声明 runMetaField=docBudgetPolicy 且 runMetaValue=DOC-BUDGET-v1",
+            )
+        )
+
+    common = root / "roles" / "common-contract.md"
+    if not common.is_file() or "DOC-BUDGET.json" not in common.read_text(encoding="utf-8"):
+        findings.append(Finding(ERROR, "doc-budget", "roles/common-contract.md 缺 DOC-BUDGET.json 指针"))
+
+    qa_role = root / "roles" / "QA.md"
+    if not qa_role.is_file() or "doc_bytes" not in qa_role.read_text(encoding="utf-8"):
+        findings.append(Finding(ERROR, "doc-budget", "roles/QA.md 缺 doc_bytes 复跑要求"))
+
+    guide = root / "DOC-BUDGET.md"
+    if not guide.is_file():
+        findings.append(Finding(ERROR, "doc-budget", "缺少 DOC-BUDGET.md 说明页"))
+    elif guide.stat().st_size > 2048:
+        findings.append(
+            Finding(ERROR, "doc-budget", f"DOC-BUDGET.md 超过 2048B：{guide.stat().st_size}B")
+        )
+
+    for rel, family in (
+        ("templates/PROJECT.md", "project"),
+        ("templates/DECISIONS.md", "decision"),
+        ("templates/STATUS-Round-n.md", "status"),
+    ):
+        path = root / rel
+        if not path.is_file() or f"doc_budget: {family}" not in path.read_text(encoding="utf-8"):
+            findings.append(Finding(ERROR, "doc-budget", f"{rel} 缺 doc_budget: {family}"))
+    return findings
+
+
 def check_root(root: Path) -> list[Finding]:
     """运行全部检查。"""
 
@@ -366,6 +456,7 @@ def check_root(root: Path) -> list[Finding]:
     findings.extend(check_workflow_tags_counts(root))
     findings.extend(check_canonical_references(root))
     findings.extend(check_role_state_by(root / "roles"))
+    findings.extend(check_doc_budget(root))
     return findings
 
 

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "runId": "openrig-s10-certification-20261116",
+  "runtimeBoundary": {
+    "certifiedRuntime": "opencode",
+    "model": "deepseek/deepseek-flash",
+    "seats": 1,
+    "workflowSteps": 1,
+    "notCertified": ["claude-code", "codex", "dsh", "kernel", "remote-host", "multi-seat-concurrency"]
+  },
+  "rows": [
+    {"id": "CERT-01", "kind": "live", "scenario": "real start", "expect": {"rc": 0, "daemonIsolated": true, "seatReady": true, "workflowInstantiated": true, "entryQitem": true}},
+    {"id": "CERT-02", "kind": "live", "scenario": "real prompt and marker", "expect": {"rc": 0, "markerFile": true, "transcriptHasPrompt": true, "transcriptHasResponse": true}},
+    {"id": "CERT-03", "kind": "live", "scenario": "real resume", "expect": {"rc": 0, "upExisting": true, "continuityActualOutcome": "resumed", "duplicateInstantiate": false}},
+    {"id": "CERT-04", "kind": "live", "scenario": "explicit fresh and unauthorized fresh", "expect": {"authorizedRc": 0, "authorizedOutcome": "fresh-primed", "unauthorizedRc": 2, "mutationBeforeReject": false}},
+    {"id": "CERT-05", "kind": "live", "scenario": "manifest and partial evidence", "expect": {"manifestKeySet": true, "stepReceipts": true, "partialOnControlledFailure": true}},
+    {"id": "CERT-06", "kind": "live", "scenario": "direct L3 HTTP denial", "expect": {"s1MutationRc": 403, "handlerCalls": 0, "readOnlyAllowed": true, "s2Allowed": true}},
+    {"id": "CERT-07", "kind": "live", "scenario": "archive gate before stop", "expect": {"incompleteRc": 2, "downCalls": 0, "completeRc": 0}},
+    {"id": "CERT-08", "kind": "live", "scenario": "negative controls", "expect": {"homeConflictRc": 2, "portConflictRc": 2, "staleLaunchRc": 2, "compactNotManagedRc": 2, "orphanReportReadOnly": true}},
+    {"id": "CERT-09", "kind": "live", "scenario": "cleanup", "expect": {"archiveStatus": "COMPLETE", "unitInactive": true, "portFree": true, "tmuxAbsent": true, "daemonAbsent": true}},
+    {"id": "CERT-10", "kind": "static", "scenario": "S8/S9 regression and docs", "expect": {"s8s9Matrix": true, "docConsistency": true, "contractLock": true, "docBudget": true}}
+  ],
+  "evidence": {
+    "root": "reports/certification/",
+    "required": ["CERT-01.json", "CERT-02.json", "CERT-03.json", "CERT-04.json", "CERT-05.json", "CERT-06.json", "CERT-07.json", "CERT-08.json", "CERT-09.json", "CERT-10.json", "FINAL.md"]
+  },
+  "humanGate": {
+    "executeFlag": "--execute",
+    "operatorApprovalRequired": true,
+    "llmMayNotSelfApprove": true,
+    "firstFailurePreserved": true
+  }
+}

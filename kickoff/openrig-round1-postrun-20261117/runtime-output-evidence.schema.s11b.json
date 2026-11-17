@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openrig.local/schemas/runtime-output-evidence.schema.s11b.json",
+  "title": "OpenRig bounded runtime-output evidence (P-S10-03)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "policy",
+    "captureId",
+    "label",
+    "cmd",
+    "argvRedacted",
+    "cwd",
+    "startedAt",
+    "endedAt",
+    "rc",
+    "timedOut",
+    "timeoutSeconds",
+    "streams",
+    "captureErrors"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "runtime-output-evidence"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "tailBytes",
+        "inlineLimitBytes",
+        "spillRoot",
+        "fileMode"
+      ],
+      "properties": {
+        "name": {
+          "const": "openrig-runtime-output"
+        },
+        "version": {
+          "const": 1
+        },
+        "tailBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inlineLimitBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "spillRoot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fileMode": {
+          "type": "string",
+          "pattern": "^0[0-7]{3}$"
+        }
+      }
+    },
+    "captureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cmd": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "argvRedacted": {
+      "type": "boolean"
+    },
+    "cwd": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string"
+    },
+    "endedAt": {
+      "type": "string"
+    },
+    "rc": {
+      "type": "integer"
+    },
+    "timedOut": {
+      "type": "boolean"
+    },
+    "timeoutSeconds": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "streams": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stdout",
+        "stderr"
+      ],
+      "properties": {
+        "stdout": {
+          "$ref": "#/$defs/stream"
+        },
+        "stderr": {
+          "$ref": "#/$defs/stream"
+        }
+      }
+    },
+    "captureErrors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "stream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "tail",
+        "tailBytes",
+        "tailLimitBytes",
+        "truncated",
+        "omittedBytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tail": {
+          "type": "string"
+        },
+        "tailBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tailLimitBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "omittedBytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

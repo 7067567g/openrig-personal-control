@@ -1,6 +1,6 @@
 # BASELINE — safe-cleanup
 
-> **基准模板（base reference template）** ｜ 版本 `1.0.0` ｜ 成熟度 `M3` ｜ 基础母版 `workflow-group-base@1.2.0` ｜ 原子契约 `audit@1.0.0, optimize@1.0.0, verify@1.0.0`
+> **基准模板（base reference template）** ｜ 版本 `1.0.0` ｜ 成熟度 `M3` ｜ 基础母版 `workflow-group-base@1.2.1` ｜ 原子契约 `audit@1.0.0, optimize@1.0.0, verify@1.0.0`
 > 本文件是复合类型的重点参考，不是可直接实例化的 run 模板。真正跑 run 请使用 `templates/specialized/<domain-template>`，并在其 `SPEC.md` §0 声明本 baseline id/version。
 
 ## 1. 主攻方向

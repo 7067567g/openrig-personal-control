@@ -5,6 +5,7 @@ doc: DECISIONS
 owner: 主会话
 state: open
 updated: <DATE>
+doc_budget: decision
 -->
 
 # DECISIONS — <PROJECT-NAME>

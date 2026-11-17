@@ -1,5 +1,7 @@
 # openrig-workflow-master — OpenRig 混合编排母版
 
+> 受管 run 入口：`python3 scripts/openrig_run.py start --run-dir runs/<run-id> --json`。
+
 版本：`1.2.0`（见 `VERSION` / `CHANGELOG.md` / [`validation/v1.2.0/RELEASE.md`](validation/v1.2.0/RELEASE.md)）
 
 ## 是什么
